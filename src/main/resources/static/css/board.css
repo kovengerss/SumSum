@@ -767,10 +767,6 @@ h1{
     float:none;
 }
 
-.color-change{
-    background: orange;
-}
-
 .question-button{
     font-size: 13px;
     height: auto;
@@ -1124,3 +1120,7 @@ ul{
     }
 }
 
+.color-change{
+    background-color: yellow;
+    border-color: yellow;
+}
