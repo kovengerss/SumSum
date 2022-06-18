@@ -346,7 +346,7 @@ div.btns {
 }
 
 .app-banner{
-    background-image: url("매칭신청베너.png");
+    background-image: url(../img/매칭신청베너.png);
     height: 338px;
     background-position: center;
     background-size: 1205px;

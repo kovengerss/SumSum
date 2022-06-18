@@ -448,7 +448,7 @@ input[type=checkbox] {
 
 #cbx_chkAll{
     position: absolute;
-    top: 7px;
+    top: -12px;
 }
 
 /* .form-control{
@@ -463,14 +463,77 @@ input[type=checkbox] {
 
 
 /* 종임님 상단바 */
+/* 사이드 메뉴 바 */
+.menu-active {
+    background: orange;
+}
+.menu-ractive{
+    background: #00000078;
+}
+.offcanvas-header {
+    background-color: #f9d9da;
+}
 
+.sidebar-body{
+    padding: 1.25rem;
+    border-bottom: 1px solid #f5d6d6;
+}
+
+.profile {
+    margin-right: 130px;
+}
+
+.user-info{
+    margin-left: 1rem;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.offcanvas-title{
+    margin: 0 auto;
+}
+
+.main-link {
+    justify-content: space-between;
+    width: 100%;
+    font-size: 13px;
+    display: flex;
+    margin-top: 2rem;
+}
+
+.main-link img {
+    display:block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+}
+
+.signup-btn {
+    background-color: #f1f1f1;
+    position: absolute;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.menuList .item {
+    border-bottom: 1px solid #f5d6d6;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    display: block;
+    font-weight: 500;
+}
+
+/* 상단 고정바 css  */
 .top-header {
     background-color: #fff;
     border-bottom-width: 1px;
     position: fixed;
     top: 0;
     width: 100%;
-    height: 87px;
+    height: 61px;
     box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
     z-index: 1000;
 }
@@ -486,18 +549,16 @@ input[type=checkbox] {
     padding-right: 1.5rem;
     position: relative;
     text-align: center;
-    left: -89px;
 
 }
 
-.top-header .top-header-wrap .menu {
+.top-header .top-header-wrap .menuBtn {
+    position: absolute;
+    top: 0;
     left: 0;
     padding: 1.28rem;
     background: none;
     border: none;
-    position: relative;
-    top: 8px;
-
 }
 
 .top-header .top-header-wrap .a-alarmBadge {
@@ -519,7 +580,6 @@ input[type=checkbox] {
 }
 
 .main-logo {
-    padding-top: 11px;
     display: inline-block;
     position: relative;
     margin: 0px 0px 0px 317px;
@@ -533,37 +593,19 @@ input[type=checkbox] {
     align-items: center;
     line-height: 60px;
     height: 60px;
-    position: relative;
-    top: 13px;
-    color: black;
 }
 
 .right-header a+a{
     margin-left: 24px;
 }
-.right-header a{
-    color: black;
-    text-decoration: none;
+
+.signup {
+    background-color: #fd5d5f;
+    color: #fff;
+    height: 35px;
+    width: 86px;
+    line-height: 2.7;
+    border-radius: 12px;
 }
-.right-header a:hover{
-    color: black;
-}
-
-
-
-
-
-.sent-request-list{
-    margin-top: 3.125rem;
-    margin-bottom: 3.75rem;
-    word-break: break-word;
-    box-sizing: border-box;
-    width: 1428px;
-    height: 1123px;
-    margin: 0 auto;
-    position: relative;
-    top: 117px;
-}
-
 
 /* 종임님 상단바 끝 */
