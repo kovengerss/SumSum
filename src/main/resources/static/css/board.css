@@ -1121,6 +1121,10 @@ ul{
 }
 
 .color-change{
-    background-color: yellow;
-    border-color: yellow;
+    background-color:  linen;
+    border-color:  lightgreen;
+}
+
+.declaration-color{
+    background-color: #fd5d5f;
 }
