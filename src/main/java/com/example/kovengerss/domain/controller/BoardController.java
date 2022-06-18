@@ -12,4 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board/*")
 public class BoardController {
     private final BoardService boardService;
+    //경로 get or post
 }
