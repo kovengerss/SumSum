@@ -1,0 +1,59 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+body{
+    background-color: rgb(147, 124, 202);
+}
+
+div.choice{
+    position: absolute;
+    top: 25%;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+div.choice_ment{
+    margin-bottom: 40px;
+}
+div.choice_ment span{
+    font-family: 'Jalnan';
+    font-size: 60px;
+    color: rgb(249, 216, 161);
+
+}
+div.choice_ment_p{
+    display: block;
+    margin-top: 60px;
+}
+div.choice_ment_p p{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    color: rgb(249, 216, 161);
+    margin-top: -20px;
+}
+div.choice_box_empty{
+    height: 65px;
+}
+div.choice_box_all{
+    display: flex;
+    justify-content: center;
+}
+div.choice_box{
+    margin: 60px 35px;
+}
+
+a{
+    font-family: 'Jalnan';
+    font-size: 60px;
+    text-decoration:none;
+    color: rgb(249, 212, 161);
+}
+div.choice_box{
+    padding: 30px 50px;
+    width: 270px;
+    height: 370px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+}
+

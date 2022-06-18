@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디/비밀번호찾기|썸썸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/find.css">
+</head>
+<body>
+<form>
+    <div class="FindIdPw">
+        <div class="some_find_main">
+            <div class="some_find_main_buttons">
+                <button type="button" class="find_id_button">아이디 찾기</button>
+                <button type="button" class="find_pw_button">비밀번호 찾기</button>
+            </div>
+            <div class="find_id_pw">
+                <!-- 아이디찾기 -->
+                <div class="some_find_id_phonenum_input_detail">
+                    <div class="some_find_id_phonenum">
+                        <div class="some_find_id_phonenum_input">
+                            <label class="label" for="1st_num">연락처</label>
+                            <div class="some_find_phonenum_certify">
+                                <div class="some_find_phonenum_input_detail">
+                                    <select id="1st_num" class="">
+                                        <option value="010">010</option>
+                                        <option value="011">011</option>
+                                        <option value="016">016</option>
+                                    </select>
+                                    <input class="2nd_num" type="tel" required="" maxlength="4" value="">
+                                    <input id="3rd_num" class="" type="tel" required="" maxlength="4" value="">
+                                    <p class="error-msg">연락처를 입력해주세요.</p>
+                                </div>
+                                <div class="some_join_phonenum_certify_button">
+                                    <button type="button">인증번호 발송</button>
+                                    <p class="error-msg">인증번호가 발송되었습니다.</p>
+                                    <p class="error-msg">연락처를 입력해주세요.</p>
+                                    <p class="error-msg">연락처가 올바르지 않습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="some_find_certify_num">
+                        <p class="">인증번호</p>
+                        <div class="">
+                            <div class="find_id_certify_num_input">
+                                <input id="authInput" type="text" maxlength="6" placeholder="인증번호 입력" value="" class="">
+                                <p class="error-msg">잘못된 인증번호 입니다. 확인 후 다시 입력해 주세요.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="Find_id_ment">
+                        <span style="color: rgb(51, 51, 51);">아이디 찾기는 번호 인증을 한 고객님만 이용이 가능</span>한 서비스입니다. 번호 인증을 하지 않았을 경우에는 아이디를 찾기가 어렵습니다.</p>
+                    <p class="Find_id_ment">인증번호가 오지 않는다면, 스팸 차단 서비스 혹은 휴대폰 내 차단 설정에서 1588-8585(썸썸) 번호가 수신 차단여부를 확인해 주세요. 재발송은 3분 후부터 가능합니다.</p>
+                </div>
+                <!-- 비밀번호 찾기 -->
+                <div class="find_pw" style="display: none;">
+                    <p class="findpw_ment">가입하신 이메일을 입력하시면<br> 비밀번호 재설정을 위한 링크를 보내드립니다.</p>
+                    <div class="InputNew__FormGroupContainer-jcpp79-0 OwLoL">
+                        <div class="form-group form-group">
+                            <div class="find_pw_id">
+                                <input placeholder="example@somesome.com" type="text" id="" class="" value="">
+                                <p class="error-msg">이메일을 입력해 주세요</p>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="findpw_ment_footer">링크는 24시간 동안 유효하며, 이후에는 이메일을 다시 입력하셔야 합니다. (이메일이 오지 않는다면 스팸함을 확인해주세요.)</span></div>
+                <!-- 확인버튼 -->
+                <div class="find_button">
+                    <button type="button" class="" >확인</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+</body>
+<script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="../static/js/find.js"></script>
+</html>

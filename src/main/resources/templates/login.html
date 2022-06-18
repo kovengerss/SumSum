@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인|썸썸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+<form name="some_login">
+    <div class="somelogin_box">
+        <a class="main_icon">
+            <img src="../static/img/sumsum_logo.png">
+        </a>
+        <div class="line"></div>
+        <div class="somelogin">
+            <div class="somelogin_id">
+                <div class="somelogin_id_box">
+                    <label class="label" for="id" >아이디</label>
+                    <div class="somelogin_id_input">
+                        <input name="id" placeholder="아이디" type="text" max-length="20" id="id" class="" value="">
+                        <p id ="idBox"class="error-msg"><!-- 아이디를 입력해주세요. --></p>
+                    </div>
+                </div>
+            </div>
+            <div class="somelogin_pw">
+                <div class="somelogin_pw_box">
+                    <label class="label" for="pw" >비밀번호</label>
+                    <div class="somelogin_pw_input">
+                        <input name="pw" placeholder="비밀번호"  type="password" max-length="20" id="pw" class="" value="">
+                        <p id ="pwBox"class="error-msg"><!-- 비밀번호를 입력해주세요. --></p>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="somelogin_button">로그인</button>
+            <div class="somelogin_choice">
+                <a class="join" href="../templates/sign.html">이메일로 가입</a>
+                <a class="find" href="../templates/find.html">아이디/비밀번호 찾기</a>
+            </div>
+            <div>
+                <a class="admin_login" href="../templates/adminLogin.html">관리자 페이지 로그인</a>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+<script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+    const id = document.getElementById("id");
+    const pw = document.getElementById("pw");
+
+
+    id.addEventListener("keyup",function(){
+        const idBox = document.getElementById("idBox");
+        console.log("emd");
+
+        idBox.innerHTML = "썸썸 아이디를 입력해주세요"
+
+    });
+    id.addEventListener("blur",function(){
+        const idBox = document.getElementById("idBox");
+        console.log("emd2");
+
+        idBox.innerHTML = ""
+        id.style.borderColor = "cornsilk";
+
+    });
+
+
+
+    /* pw.addEventListener("click",function(){
+        const idBox = document.getElementById("pwBox");
+        console.log("emd");
+
+        idBox.innerHTML = "썸썸 아이디를 입력해주세요"
+
+    });*/
+    pw.addEventListener("focus",function(){
+        const pwBox = document.getElementById("pwBox");
+        console.log("emd2");
+
+        pwBox.innerHTML = "비밀번호를 입력해주세요"
+        /* pw.style.borderColor = "lightskyblue"; */
+
+    });
+
+    pw.addEventListener("keyup",function(){
+        const pwBox = document.getElementById("pwBox");
+        console.log("emd");
+
+        pwBox.innerHTML = ""
+        pw.style.borderColor = "cornsilk";
+    });
+
+</script>
+</html>
