@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class PointVO {
+public class PointVO {/*포인트*/
     private Integer pointNum; //nextval()
     private Integer pointPrice;//결제 가격
     private String pointWay;//결제 수단

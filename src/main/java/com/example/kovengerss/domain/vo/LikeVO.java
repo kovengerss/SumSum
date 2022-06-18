@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class LikeVO {
+public class LikeVO {/*좋아요*/
     private Integer likeNum;
     private Integer boardNum;
     private Integer userNum;

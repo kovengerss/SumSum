@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class ReplyVO {
+public class ReplyVO {/*게시판 답글*/
     private Integer replyNum;
     private String replyContent;
     private String replyRegisterDate;

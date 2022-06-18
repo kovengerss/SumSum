@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class IdealVO {
+public class IdealVO {/*이상형*/
     private Integer idealNum;
     private Integer age; //나이
     private String gender; //성별
