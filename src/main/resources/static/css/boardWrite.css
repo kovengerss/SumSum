@@ -737,8 +737,10 @@ textarea{
     word-break: keep-all;
 }
 
-@media(min-width: 992px){
-    .notice-box{
+@media(min-width: 768px){
+        .notice-box{
+        padding-bottom: 20px;
+        padding-left: 20px;
         position: relative;
         z-index: 0;
         border: 1px solid #f3f3f3;
@@ -747,11 +749,8 @@ textarea{
         background-color: #fff!important;
     }
 }
-@media(min-width: 768px){
+@media(min-width: 992px){
     .notice-box{
-        margin-top: 10px;
-        padding-bottom: 20px;
-        padding-left: 20px;
         position: relative;
         z-index: 0;
         border: 1px solid #f3f3f3;
