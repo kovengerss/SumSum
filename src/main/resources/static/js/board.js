@@ -11,13 +11,15 @@ let badge = $(".badge");
         }
     }
 
-    function declaration(){
-        if($(".declaration-button").hasClass("declaration-color")){
-            $(".declaration-button").removeClass("declaration-color");
-        }else{
-            $(".declaration-button").addClass("declaration-color");
-        }
+function declaration(){
+    if($(".declaration-button").hasClass("declaration-color")){
+        $(".declaration-button").removeClass("declaration-color");
+        $(".declaration-text").removeClass("declaration-text-color")
+    }else{
+        $(".declaration-button").addClass("declaration-color");
+        $(".declaration-text").addClass("declaration-text-color")
     }
+}
 
     let commentButton =$(".button-comment");
 
