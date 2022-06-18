@@ -218,73 +218,75 @@ a {
                         </div> 
                         <!-- 오른쪽 글 갯수 정보 -->
                         <div class="right-info">
-                            <div class="profileCard">
-                                <h4 class="profileCardTitle">포인트 결제</h4>
-                                <div class="profileCardShadow">
-                                    <div class="innerBox">
-                                        <d1 class="rateInfoRow">
-                                            <dt>최종 결제 금액</dt>
-<!--                                            <dd class="c-complete">-->
-<!--                                                <span id="selTotalAmount">1000</span>-->
-<!--                                                원-->
-<!--                                            </dd>-->
-                                        </d1>
-                                        <ul class="rateInfoRow1">
-                                            <li>
-                                                <select class="rateSelect" id="selItem">
-                                                    <option id="money">1000원</option>
-                                                    <option id="money">5000원</option>
-                                                    <option id="money">10000원</option>
-                                                    <option id="money">30000원</option>
-                                                    <option id="money">50000원</option>
-                                                </select>
-                                            </li>
-<!--                                            <li>-->
-<!--                                                <dl>-->
-<!--                                                    <dt>금액</dt>-->
-<!--                                                    <dd>-->
-<!--                                                        <span id="selTotalAmount">100000</span>-->
-<!--                                                        원-->
-<!--                                                    </dd>-->
-<!--                                                </dl>-->
-<!--                                            </li>-->
-                                        </ul>
-                                    </div>
-                                    <div class="innerBox">
-                                        <d1 class="rateInfoRow3">
-                                            <dt>총 충전 포인트 </dt>
-                                            <dd class="c-complete">
-                                                <span id="selTotalAmount">1000</span>
-                                                P
-                                            </dd>
-                                        </d1>
-                                    </div>
-                                    <div class="pay-options">
-                                        <span class="input-icon">
-                                            <img style="width: 40px; height: 40px; margin-bottom: 11px;" src="https://cdn-icons-png.flaticon.com/512/62/62780.png">
-                                        </span>
-                                        <select class="payMethod" id="selpayMethod">
-                                            <option value="">결제 수단을 선택해 주세요</option>
-                                            <option value="card">신용카드</option>
-                                            <option value="trans">계좌이체</option>
-                                            <option value="vBank">가상계좌</option>
-                                        </select>
-                                    </div>
-                                    <div class="dupChkArea">
-                                        <label for"conChk">
-                                            <input type="checkbox">
-                                            <span>선택한 수단으로 다음 충전 시 이용하겠습니다</span>
-                                        </label>
-                                    </div>
-                                    <div class="rateTxt">
-                                        <p>상품 정보를 확인 하였으며,</p>
-                                        <p>회원 본인은 결제에 동의합니다.</p>
-                                    </div>
-                                    <div class="sendBtnArea">
-                                        <button type="submit" id="payBtn" class="pay-btn">결제하기</button>
+                            <form action="" method="post" onsubmit="getPoint()">
+                                <div class="profileCard">
+                                    <h4 class="profileCardTitle">포인트 결제</h4>
+                                    <div class="profileCardShadow">
+                                        <div class="innerBox">
+                                            <d1 class="rateInfoRow">
+                                                <dt>최종 결제 금액</dt>
+    <!--                                            <dd class="c-complete">-->
+    <!--                                                <span id="selTotalAmount">1000</span>-->
+    <!--                                                원-->
+    <!--                                            </dd>-->
+                                            </d1>
+                                            <ul class="rateInfoRow1">
+                                                <li>
+                                                    <select class="rateSelect" id="selItem">
+                                                        <option id="money">1000원</option>
+                                                        <option id="money">5000원</option>
+                                                        <option id="money">10000원</option>
+                                                        <option id="money">30000원</option>
+                                                        <option id="money">50000원</option>
+                                                    </select>
+                                                </li>
+    <!--                                            <li>-->
+    <!--                                                <dl>-->
+    <!--                                                    <dt>금액</dt>-->
+    <!--                                                    <dd>-->
+    <!--                                                        <span id="selTotalAmount">100000</span>-->
+    <!--                                                        원-->
+    <!--                                                    </dd>-->
+    <!--                                                </dl>-->
+    <!--                                            </li>-->
+                                            </ul>
+                                        </div>
+                                        <div class="innerBox">
+                                            <d1 class="rateInfoRow3">
+                                                <dt>총 충전 포인트 </dt>
+                                                <dd class="c-complete">
+                                                    <span id="selTotalAmount">1000</span>
+                                                    P
+                                                </dd>
+                                            </d1>
+                                        </div>
+                                        <div class="pay-options">
+                                            <span class="input-icon">
+                                                <img style="width: 40px; height: 40px; margin-bottom: 11px;" src="https://cdn-icons-png.flaticon.com/512/62/62780.png">
+                                            </span>
+                                            <select class="payMethod" id="selpayMethod">
+                                                <option value="">결제 수단을 선택해 주세요</option>
+                                                <option value="card">신용카드</option>
+                                                <option value="trans">계좌이체</option>
+                                                <option value="vBank">가상계좌</option>
+                                            </select>
+                                        </div>
+                                        <div class="dupChkArea">
+                                            <label for"conChk">
+                                                <input type="checkbox">
+                                                <span>선택한 수단으로 다음 충전 시 이용하겠습니다</span>
+                                            </label>
+                                        </div>
+                                        <div class="rateTxt">
+                                            <p>상품 정보를 확인 하였으며,</p>
+                                            <p>회원 본인은 결제에 동의합니다.</p>
+                                        </div>
+                                        <div class="sendBtnArea">
+                                            <button type="submit" id="payBtn" class="pay-btn">결제하기</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>                            
                 </main>   

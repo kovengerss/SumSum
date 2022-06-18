@@ -171,12 +171,12 @@ body {
                                 6/15
                             </span>
                             <button class="letter-btn">삭제</button>
-                            <button class="letter-btn" id="send">답장</button>
-                            <form id="frm" name="frm" action="" method="" style="display: none;">
+                            <button class="letter-btn" id="send" onsubmit="sendLetter()">답장</button>
+                            <form id="frm" name="frm" action="" method="post" style="display: none;">
                                 <div class="chat-wrap letter-con">
                                     <input type="text" id="title" name="title" placeholder="제목" style="width: 97%; margin-bottom: 10px;" />
                                     <textarea id="content" name="content" cols="40" rows="10" style="width: 97%;" placeholder="내용"></textarea>
-                                    <button type="button" name="write" id="write" style="display: block; margin: 0 auto; width: 63px;">쓰기</button>
+                                    <button onsubmit="sendLetter()" type="button" name="write" id="write" style="display: block; margin: 0 auto; width: 63px;">쓰기</button>
                                 </div>
                             </form>
                         </div>
