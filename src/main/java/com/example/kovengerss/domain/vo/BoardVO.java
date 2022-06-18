@@ -9,7 +9,9 @@ public class BoardVO {
     private Integer boardNum;
     private String boardTitle;
     private String boardContent;
+    private String boardField;
     private String boardRegisterDate;
     private String boardUpdateDate;
     private Integer userNum;
+    private Integer warningCount;
 }
