@@ -3,12 +3,15 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.dao.BoardDAO;
 import com.example.kovengerss.domain.vo.BoardVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Qualifier("board") @Primary
 public class BoardServiceImpl implements BoardService{
     private final BoardDAO boardDAO;
 
