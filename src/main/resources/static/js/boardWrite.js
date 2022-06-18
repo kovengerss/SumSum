@@ -8,6 +8,7 @@ title.on("keyup",function () {
             }
     });
 
+/*
     let content = $(".note-codable");
     let contentSub = $(".note-editable");
 
@@ -23,6 +24,7 @@ console.log(contentSub.val().length);
         console.log(contentSub.val().size());
         console.log(contentSub.val());
     });
+*/
 
 
 

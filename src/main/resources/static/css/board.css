@@ -1121,10 +1121,33 @@ ul{
 }
 
 .color-change{
-    background-color:  linen;
-    border-color:  lightgreen;
+    background-color:  #e1cb5e;
+    border-color:  #eee1a1;
+}
+
+.color-changeAppil{
+    background-color:  #ff9090 ;
+    border-color:  #c8c8c8 ;
 }
 
 .declaration-color{
-    background-color: #fd5d5f;
+    background-color: #ff0000;
+    border-color: #ff5232;
 }
+
+.declaration-text-color{
+    color: white;
+}
+
+.good-button{
+    color: #e3e3e3;
+}
+
+.icon-change{
+    color: red;
+}
+
+.icon-changeAppil{
+    color: #ff4040;
+}
+
