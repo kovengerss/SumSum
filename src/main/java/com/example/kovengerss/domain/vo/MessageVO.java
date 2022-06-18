@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class MessageVO {
+public class MessageVO {/*쪽지*/
     private Integer messageNum;
     private String messageTitle;
     private String messageContent;

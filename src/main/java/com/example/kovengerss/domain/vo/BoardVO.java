@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class BoardVO {
+public class BoardVO {/*게시판*/
     private Integer boardNum;
     private String boardTitle;
     private String boardContent;
