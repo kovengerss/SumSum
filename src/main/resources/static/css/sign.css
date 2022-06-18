@@ -1,0 +1,569 @@
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+    height: 100%;
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+div label{
+    width: 79px;
+    height: 40px;
+    font-size: 13px;
+    line-height: 40px;
+}
+span{
+    font-size: 13px;
+
+}
+
+.background-wrap {
+    width: 100%;
+}
+
+.signup-container {
+    margin: 0 auto;
+    max-width: 355px;
+}
+
+
+.signup-container .header {
+    margin: auto;
+    width: 424px;
+    background-color: #333;
+    padding: 24px 20px 20px;
+    height: 86px;
+}
+
+.signup-container .lawtalk {
+    display: block;
+    color: #FF4E00;
+    font-size: 18px;
+    letter-spacing: -2px;
+    margin-top: -7px;
+}
+.signup-container{
+    position: relative;
+    top: 113px;
+}
+
+.signup-container .lawtalk h2 {
+    margin: 0;
+}
+
+.signup-container .goodlawyers {
+    margin-top: -9px;
+}
+
+.signup-container .goodlawyers b {
+    color: #fff;
+    font-size: 24px;
+}
+
+.clien-sign-up {
+    margin-top: 15px;
+}
+
+.clien-sign-up-span {
+    color: #fff;
+    font-size: 16px;
+}
+
+
+
+
+.vertical-line {
+    border-left: 1px solid #f7e317;
+    height: 100%;
+    float: left;
+}
+.vertical-line2 {
+    border-left: 1px solid #1e0ed4;
+    height: 100%;
+    float: left;
+}
+
+.text {
+    margin: auto 12px;
+    float: left;
+}
+
+.kakao-icon {
+    background-image: url("https://d2ai3ajp99ywjy.cloudfront.net/app/images/f68fbcaa58e2893c0642.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    float: left;
+    height: 100%;
+    margin: 0 7px;
+    width: 30px;
+}
+
+
+.toggle {
+    position: relative;
+    display: inline-block;
+}
+
+label.toggle-item {
+    width: 35px;
+    background: #2e394d;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    transition: all 0.3s ease;
+    transform-origin: 20% center;
+    top: 5px;
+    cursor: pointer;
+}
+
+label.toggle-item:before {
+    display: block;
+    transition: all 0.2s ease;
+    width: 35px;
+    height: 20px;
+    top: 5px;
+    left: 5px;
+    border-radius: 2em;
+    border: 2px solid #88cf8f;
+    transition: 0.3s ease;
+}
+
+.normal1 label{
+    background: #c0b3b6;
+}
+.normal1 label:before {
+    border: none;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+}
+
+#normal1:checked + label {
+    background: #37b0c9;
+}
+#normal1:checked + label:before {
+    left: 20px;
+}
+
+
+.normal2 label{
+    background: #c0b3b6;
+}
+.normal2 label:before {
+    border: none;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+}
+
+#normal2:checked + label {
+    background: #fd5d5f;
+}
+#normal2:checked + label:before {
+    left: 20px;
+}
+
+
+.facebook-icon {
+    background-image: url("https://www.earlyadopter.co.kr/wp-content/uploads/2021/04/Facebook-logo-1024x717.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 65px;
+    float: left;
+    height: 100%;
+    margin: 0 7px;
+    width: 30px;
+}
+
+.info {
+    background-color: #f9f6f4;
+    box-sizing: border-box;
+    color: #333;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    height: 32px;
+    line-height: 32px;
+    margin-top: 8px;
+    padding: 0 16px;
+    margin-bottom: 0;
+}
+
+.input-info {
+    /* padding: 10px 16px 46px; */
+    background-color: #fff;
+}
+/* 버튼 */
+div.some_join_input_button button{
+    width: 100px;
+    height: 30px;
+    color: #555;
+    background-color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #999;
+    position: absolute;
+    margin: 10px 176px 0;
+
+
+}
+
+/* .sign-main-container .form-control {
+    border: 0;
+    box-shadow: none!important;
+    color: #757575;
+    font-size: 13px;
+    height: 26px;
+    width: 230px;
+    padding: 6px 12px;
+} */
+
+.form-control-button{
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    line-height: 3;
+    color: #757575;
+    padding: 10px 0;
+}
+
+.form-group {
+    margin-top: 30px;
+    position: relative;
+}
+
+label {
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.code-button {
+    background-color: #fff;
+    border: 0;
+    position: absolute;
+    right: 0;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+.cons-info {
+    background-color: #fff;
+    font-size: 13px;
+    padding: 0 16px;
+    line-height: 60px;
+    vertical-align: middle;
+    border-top: 1px solid #f9f6f4;
+}
+
+.cons-button {
+    margin-left: 270px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* .constract-container {
+    padding: 10px 16px 46px;
+    background-color: #fff;
+} */
+
+.constract-all {
+    color: #555;
+    font-size: 13px;
+    line-height: 16px;
+    margin-left: 34px;
+    margin-top: 26px;
+}
+
+
+
+
+.constract-all-text {
+    color: #757575;
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 34px;
+    margin-top: 8px;
+}
+
+
+.constract-text {
+    color: #555;
+    font-size: 16px;
+    line-height: 16px;
+    margin-left: 34px;
+    margin-top: 26px;
+}
+
+.description {
+    color: #555;
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: -3px;
+    padding-top: 9px;
+    letter-spacing: -1px;
+}
+
+.check-age {
+    letter-spacing: -1px;
+    margin-top: 22px;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+}
+.constract-container {
+    margin-top: 70px;
+}
+
+.constract-container input {
+    position: absolute;
+    left: 0;
+    margin-left: -26px;
+    margin-top: 15px;
+}
+
+.footer-button {
+    width: 335px;
+    height: 46px;
+    color: #fff;
+    background-color: black;
+    font-weight: 600;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+
+.footer-button-click {
+    background-color: black;
+    border: none;
+    color: #fff;
+    font-family: Notokr-Bold;
+    font-size: 15px;
+    height: 48px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.row-footer {
+    padding: 20px 24px;
+    text-align: center;
+}
+
+.row {
+    padding: 10px 0;
+    margin-top: -10px;
+}
+
+div.main_icon span{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* font-family: 'Jua', sans-serif; */
+    font-size:15px;
+    font-weight: 800;
+}
+a.main_icon{
+    display: flex;
+    justify-content: center;
+}
+
+div.line{
+    margin-top: 30px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    height: 1px;
+    align-self: center;
+}
+div.line_agree{
+    border-bottom: 1px solid rgb(221, 221, 221);
+    height: 1px;
+    align-self: center;
+
+}
+div.some_join_input{
+    display: flex;
+}
+div.some_join_input_codeNum{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+div.some_join_input_name{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+div.some_join_input input{
+    width: 230px;
+    height: 26px;
+    line-height: 1.2;
+    font-size:13px;
+    padding: 6px 12px;
+    background-color:#f9f9f9 ;
+    border: 1px solid #f9f9f9;
+}
+div.some_join_input input:focus{
+    outline: none;
+    background-color: white;
+    border: 1px solid #fd5d5f;
+}
+
+
+input[type='checkbox']{
+    accent-color: #fd5d5f;
+}
+
+div.some_join_input_nick label{width: 95px;
+    height: 30px;
+    color: #555;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #999;
+}
+
+input[type=checkbox] {
+
+    -ms-transform: scale(2); /* IE */
+
+    -moz-transform: scale(2); /* FF */
+
+    -webkit-transform: scale(2); /* Safari and Chrome */
+
+    -o-transform: scale(2); /* Opera */
+
+    padding: 10px;
+
+}
+
+#cbx_chkAll{
+    position: absolute;
+    top: 7px;
+}
+
+/* .form-control{
+    background-color: rgb(249, 249, 249);
+} */
+
+
+
+
+
+
+
+
+/* 종임님 상단바 */
+
+.top-header {
+    background-color: #fff;
+    border-bottom-width: 1px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 87px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
+    z-index: 1000;
+}
+
+.top-header .top-header-wrap {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1500px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+    text-align: center;
+    left: -89px;
+
+}
+
+.top-header .top-header-wrap .menu {
+    left: 0;
+    padding: 1.28rem;
+    background: none;
+    border: none;
+    position: relative;
+    top: 8px;
+
+}
+
+.top-header .top-header-wrap .a-alarmBadge {
+    position: absolute;
+    background-color: #fd5d5f;
+    border-radius: 9999px;
+    right: 0;
+    top: 0;
+    width: 6px;
+    height: 6px;
+}
+
+.top-header .top-header-wrap .menuBar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 4px;
+}
+
+.main-logo {
+    padding-top: 11px;
+    display: inline-block;
+    position: relative;
+    margin: 0px 0px 0px 317px;
+    z-index: 7;
+}
+
+.right-header {
+    white-space: nowrap;
+    float: right;
+    display: flex;
+    align-items: center;
+    line-height: 60px;
+    height: 60px;
+    position: relative;
+    top: 13px;
+    color: black;
+}
+
+.right-header a+a{
+    margin-left: 24px;
+}
+.right-header a{
+    color: black;
+    text-decoration: none;
+}
+.right-header a:hover{
+    color: black;
+}
+
+
+
+
+
+.sent-request-list{
+    margin-top: 3.125rem;
+    margin-bottom: 3.75rem;
+    word-break: break-word;
+    box-sizing: border-box;
+    width: 1428px;
+    height: 1123px;
+    margin: 0 auto;
+    position: relative;
+    top: 117px;
+}
+
+
+/* 종임님 상단바 끝 */

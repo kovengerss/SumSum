@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="../static/css/sign.css" rel="stylesheet">
+    <title>회원가입 | 썸썸</title>
+</head>
+<body>
+<div class="background-wrap">
+
+    <div class="top-header">
+        <div class="top-header-wrap">
+            <button class="menu">
+                <span class="a-alarmBadge" style="top: 11px; right: 9px;"></span>
+                <span class="menuBar"></span>
+                <span class="menuBar" style="width:19px; height: 4px;"></span>
+                <span class="menuBar"></span>
+            </button>
+            <h1 class="main-logo">
+                <a href="" style="position:relative;  left: 51px;top: 11px;">
+                    <img src="../static/img/sumsum_logo.png">
+                </a>
+            </h1>
+            <div class="right-header">
+                <!-- 포인트 점수 받아오기 -->
+                <a class="point" href="">
+                    잔여포인트 0점
+                </a>
+                <!-- 채팅 받아오기 -->
+                <a class="chatting" href="">
+                    채팅
+                </a>
+                <!-- 로그인 -->
+                <a class="login" href="">
+                    로그인
+                </a>
+                <!-- 회원가입 -->
+                <a class="signup" href="">
+                    회원가입
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="signup-container">
+        <div class="main_icon">
+            <span>둘이 시작되는 곳</span>
+            <a class="main_icon">
+                <img src="../static/img/sumsum_logo.png">
+            </a>
+            <div class="line"></div>
+        </div>
+
+        <form  action="JoinOk.ul" id="form" name="joinForm" method="post" class="sign-main-container">
+
+            <div class="input-info">
+                <!-- 이메일 -->
+                <div class="form-group">
+                    <div class="some_join_input">
+                        <label class="label" for="account-email">아이디</label>
+                        <div class="">
+                            <input name="userEmail" class="form-control" id="account-email" type="email" placeholder="example@sumsum.com" >
+                            <div>
+                                <label class="account-email-error" for="account-email" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 비밀번호 -->
+                <div class="form-group" style="position: relative;top: 11px;">
+                    <div class="some_join_input">
+                        <label class="label" for="account-password">비밀번호</label>
+                        <div class="">
+                            <input name="userPw" class="form-control pwbox" id="account-password" type="password" placeholder="비밀번호">
+                            <div>
+                                <label class="account-password-error" for="account-password" style="font-size: 13px; font-weight: 400;color: #757575;"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 비밀번호 확인 -->
+                <div class="form-group">
+                    <div class="some_join_input">
+                        <label class="label" for="account-password-confirm"> </label>
+                        <div class="">
+                            <input class="form-control pwbox" name="reuserPw" id="account-password-confirm" type="password" placeholder="비밀번호 재확인" >
+                            <div>
+                                <label class="account-password-confirm-error" for="account-confirm-password" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 닉네임 -->
+                <div class="form-group">
+                    <div class="some_join_input">
+                        <label class="label" for="account-id">닉네임</label>
+                        <div class=""style="position: absolute;margin: 0 0 0 80px">
+                            <input name="userId"class="form-control" id="account-id" type="text" placeholder="닉네임을 입력해주세요.">
+                            <div class="some_join_input_nick">
+                                <input type="button" style="cursor: pointer; border:1; background-color: #fff; height: 30px;width: 95px;color: #555;border: 1px solid #999;margin-top: 10px;"  value="중복확인" onclick="checkId()">
+                            </div>
+                        </div>
+                        <p style= "color: blue; width: auto; display: inline-block;  margin-left: 54px; "id="result" name="result"></p>
+                    </div>
+                </div>
+                <!-- 이름 -->
+                <div class="form-group">
+                    <div class="some_join_input">
+                        <div class="some_join_input_name">
+                            <label class="label" for="account-name">이름</label>
+                            <div class="">
+                                <input name="userName" class="form-control" id="account-name" type="text" placeholder="반드시 실명을 입력해주세요.">
+                                <div>
+                                    <label class="account-name-error" for="account-name" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="input-info">
+                    <!-- 핸드폰번호 -->
+                    <div class="form-group">
+                        <div class="some_join_input">
+                            <label class="label" for="account-hp">핸드폰번호</label>
+                            <div>
+                                <input name="userPhoneNum" class="form-control" id="account-hp" type="tel"  placeholder="01012345678" maxlength="13" >
+
+                                <div>
+                                    <label class="tel-error" for="account-hp" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="some_join_input_button">
+                            <button type="button" onclick="pushCode()" class="code-button"  id="sendPhoneNumber">인증번호 발송</button>
+                        </div>
+                        <!-- 인증번호 -->
+                        <div class="form-group">
+                            <div class="some_join_input">
+                                <div class="some_join_input_codeNum">
+                                    <label class="label" >인증번호</label>
+                                    <div>
+                                        <label class="codeLabel" for="codeNum" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                        <input class="form-control" id="codeNum" type="text" placeholder="인증번호" name="codeNum" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="some_join_input_button">
+                                <button type="button" class="code-button" id="checkButton" name="checkButton" >인증</button>
+                            </div>
+                        </div>
+
+                        <!-- <h3 class="info">약관동의</h3> -->
+                        <div class="constract-container">
+                            <div class="constract-all">
+
+                                <label>
+                                    모두 동의
+                                    <input type="checkbox" id="cbx_chkAll">
+                                    <span class="span-tag">[선택 정보 포함]</span>
+                                </label>
+                            </div>
+                            <!-- <div class="constract-all-text">
+                                서비스 이용약관, 개인정보 취급방침, 개인정보 이용/수집, 프로모션 정보 수신에 모두 동의함을 의미합니다.
+                            </div> -->
+                            <!-- <div class="line_agree"></div> -->
+                            <div class="constract-text">
+                                <label>
+                                    서비스 이용약관 동의
+                                    <input type="checkbox" id="checkList1" name="chk">
+                                    <span class="span-tag">[필수]</span>
+                                </label>
+                            </div>
+                            <div class="constract-text">
+                                <label>
+                                    개인정보 처리방침 동의
+                                    <input type="checkbox"  id="checkList2"  name="chk">
+                                </label>
+                                <span class="span-tag">[필수]</span>
+                            </div>
+                            <div class="constract-text">
+                                <label>
+                                    만 14세 이상입니다.
+                                    <input type="checkbox"  id="checkList3"  name="chk">
+                                </label>
+                                <span class="span-tag">[필수]</span>
+                            </div>
+                            <div class="constract-text">
+                                <label>
+                                    이메일 수신
+                                    <input type="checkbox" name="chk">
+                                </label>
+                                <span class="span-tag">[선택]</span>
+                            </div>
+                            <div class="constract-text">
+                                <label>
+                                    문자 수신
+                                    <input type="checkbox" name="chk">
+                                </label>
+                                <span class="span-tag">[선택]</span>
+                            </div>
+                        </div>
+
+
+                        <div class="footer-button">
+                            <button type="submit" value="가입 완료" class="footer-button-click" style="background-color: black; color: #fff; border: 0;">
+                                가입신청
+                            </button>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                        <span class="somesomeSignup">이미 썸썸 회원이신가요?
+                            <a class="some_login_check" href="../login/login.html" style="font-weight: 800; color: #000;">로그인하기</a>
+                        </span>
+                        </div>
+                    </div>
+        </form>
+
+    </div>
+</div>
+</body>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=581665816618857" nonce="SiOBIhLG"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../static/js/sign.js"></script>
+<script>
+
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '581665816618857', // 내 앱 ID를 입력한다.
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v10.0'
+        });
+        FB.AppEvents.logPageView();
+    };
+</script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+    function saveToDos(token) { //item을 localStorage에 저장합니다.
+        typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token));
+    };
+
+    window.Kakao.init('ce8ffd83b94def59565558100e1c525c');
+
+    function kakaoLogin() {
+        window.Kakao.Auth.login({
+            scope: 'profile_nickname, account_email, gender', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+            success: function(response) {
+                saveToDos(response.access_token)  // 로그인 성공하면 사용자 엑세스 토큰 sessionStorage에 저장
+                window.Kakao.API.request({ // 사용자 정보 가져오기
+                    url: '/v2/user/me',
+                    success: (res)=> {
+                        const kakao_account = res.kakao_account;
+                        alert('로그인 성공');
+                        window.location.href='/kovengerss/LawKnowMainPage.jsp'
+                    }
+                });
+            },
+            fail: function(error) {
+                console.log(error);
+            }
+        });
+    };
+
+    const login = document.querySelector('#kakaoLogin');
+    login.addEventListener('click', kakaoLogin);
+</script>
+<script>
+
+    window.Kakao.Auth.setAccessToken(JSON.parse(sessionStorage.getItem('AccessKEY'))); //sessionStorage에 저장된 사용자 엑세스 토큰 받아온다.
+
+    function kakaoLogout() {
+        if (!Kakao.Auth.getAccessToken()) {
+            console.log('Not logged in.');
+            return;
+        }
+        Kakao.Auth.logout(function(response) {
+            alert(response +' logout');
+            window.location.href='/kovengerss/login.jsp'
+        });
+    };
+
+    function secession() {
+        Kakao.API.request({
+            url: '/v1/user/unlink',
+            success: function(response) {
+                console.log(response);
+                //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+                window.location.href='/kovengerss/login.jsp'
+            },
+            fail: function(error) {
+                console.log('탈퇴 미완료')
+                console.log(error);
+            },
+        });
+    };
+
+    const logout = document.querySelector('#kakaoLogout');
+    const sion = document.querySelector('#secession');
+
+    /*   logout.addEventListener('click', kakaoLogout);
+      sion.addEventListener('click', secession); */
+</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+
+
+    $(document).ready(function(){
+        var now = new Date();
+        var year = now.getFullYear();
+        //년도 selectbox만들기
+        for(var i = 1900 ; i <= year ; i++) {
+            $('#year').append('<option value="' + i + '">' + i + '년</option>');
+        }
+
+    });
+
+</script>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연애 질문|썸썸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/love.css">
+</head>
+<body>
+<div class="choice_love_box">
+    <div class="choice_ment">
+        <span>연애 질문 작성하기</span>
+    </div>
+    <div class="choice_ment_p" style="text-align: center;">
+        <p>내 짝은 어디에 있을까?</p>
+        <p>성의껏 작성할수록 매칭 확률 UP!</p>
+        <p>질문지 작성 후 매칭이 시작됩니다!</p>
+    </div>
+
+    <form action="" id="love_form">
+        <div class="choice_love1">
+            <div class="choice_love">
+                <!-- 나이 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="age" >나이</label>
+                        <div class="input">
+                            <input type="number" name="age" id="age" maxlength="2" min='20' max='40' step='1'placeholder="숫자만 입력해 주세요."value="" required >
+                        </div>
+                    </div>
+                </div>
+                <!-- 성별 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="gender">성별</label>
+                        <div class="love_choice_option">
+                            <select id="gender" class="" required>
+                                <option value="">성별을 체크해주세요</option>
+                                <option value="남">남</option>
+                                <option value="여">여</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--거주지-->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="place">거주지</label>
+                        <div class="love_choice_option">
+                            <select id="place" class="" required>
+                                <option value="">거주지를 체크해주세요</option>
+                                <option value="서울">서울</option>
+                                <option value="경기">경기</option>
+                                <option value="강원">강원</option>
+                                <option value="충청">충청</option>
+                                <option value="경상">경상</option>
+                                <option value="전라">전라</option>
+                                <option value="제주">제주</option>
+                                <option value="해외">해외</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- MBTI -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="mbti">MBTI</label>
+                        <div class="love_choice_option">
+                            <select id="mbti" class=""required>
+                                <option value="">MBTI를 체크해주세요</option>
+                                <option value="enfp">enfp</option>
+                                <option value="enfj">enfj</option>
+                                <option value="entp">entp</option>
+                                <option value="entj">entj</option>
+                                <option value="esfp">esfp</option>
+                                <option value="esfj">esfj</option>
+                                <option value="estp">estp</option>
+                                <option value="estj">estj</option>
+                                <option value="infp">infp</option>
+                                <option value="infj">infj</option>
+                                <option value="intp">intp</option>
+                                <option value="intj">intj</option>
+                                <option value="isfp">isfp</option>
+                                <option value="isfj">isfj</option>
+                                <option value="istp">istp</option>
+                                <option value="istj">istj</option>
+                                <option value="모름">모름</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--흡연-->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="place">흡연</label>
+                        <div class="love_choice_option">
+                            <select id="place" class="" required>
+                                <option value="">흡연 유무를 체크해주세요</option>
+                                <option value="meet">흡연자</option>
+                                <option value="marry">비흡연자</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- 직장 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="place">직장</label>
+                        <div class="love_choice_option">
+                            <select id="place" class="">
+                                <option value="" selected>직업 선택</option>
+                                <option value="pro">전문직</option>
+                                <option value="pubEnt">공기업</option>
+                                <option value="pubOff">공무원</option>
+                                <option value="big">대기업</option>
+                                <option value="middle">중소기업</option>
+                                <option value="small">자영업</option>
+                                <option value="student">학생</option>
+                                <option value="nothing">무직</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- 선택하기 끝 --->
+
+                <!-- 취미 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label"  >취미</label>
+                        <div class="input">
+                            <input type="text" maxlength="15" placeholder="15자 이내로 작성 부탁드립니다." value="" required >
+                        </div>
+                    </div>
+                </div>
+                <!-- 직장 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" >직장</label>
+                        <div class="input">
+                            <input type="text" maxlength="15" placeholder="15자 이내로 작성 부탁드립니다." value="" required >
+                        </div>
+                    </div>
+                </div>
+                <!-- 이상형 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label"  >이상형</label>
+                        <div class="input">
+                            <input type="text" maxlength="15" placeholder="15자 이내로 작성 부탁드립니다." value="" required >
+                        </div>
+                    </div>
+                </div>
+                <!-- 자기소개  -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" >자기소개</label>
+                        <div class="input">
+                            <textarea type="text" minlength="30"placeholder="30자 이상 작성 부탁드립니다." value="" required ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- 작성완료 -->
+                <button type="submit" class="sumsignup_button">작성완료</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="love.js"></script>
+</html>

@@ -1,0 +1,117 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+body{
+    background-color: rgb(147, 124, 202);
+}
+.choice_love_box{
+    height: 100%;
+    width: 514px;
+    margin-left: 38%;
+    margin-top: 100px;
+}
+
+div.choice_ment{
+    margin-bottom: 40px;
+}
+div.choice_ment span{
+    font-family: 'Jalnan';
+    font-size: 60px;
+    color: rgb(249, 216, 161);
+
+}
+div.choice_ment_p{
+    display: block;
+    margin-top: 60px;
+}
+div.choice_ment_p p{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    color: rgb(249, 216, 161);
+    margin-top: -20px;
+}
+/*input입력창 */
+div.input input{
+    width: 230px;
+    height: 26px;
+    line-height: 1.2;
+    font-size:13px;
+    padding: 6px 12px;
+    background-color:#f9f9f9 ;
+    border: 1px solid #f9f9f9;
+}
+div.input input:focus{
+    outline: none;
+    background-color: white;
+    border: 1px solid rgb(249, 216, 161);;
+}
+
+/*textarea 입력*/
+div.input textarea{
+    width: 230px;
+    height: 100px;
+    line-height: 1.2;
+    font-size:13px;
+    padding: 6px 12px;
+    background-color:#f9f9f9 ;
+    border: 1px solid #f9f9f9;
+    resize: none;
+}
+div.input textarea:focus{
+    outline: none;
+    background-color: white;
+    border: 1px solid rgb(249, 216, 161);;
+}
+
+label{
+    width: 85px;
+    height: 40px;
+    font-size: 13px;
+    line-height: 40px;
+    color: rgb(249, 216, 161);
+    font-weight: 800;
+}
+
+/* 입력창 전체박스 */
+div.choice_love{
+    margin-left: 88px;
+
+}
+
+/* 입력창 */
+div.sumchoice_age{
+    display: inline-flex;
+    margin-top: 30px;
+}
+
+/*select*/
+select {
+    width: 256px;
+    height: 40px;
+    padding: 6px 12px;
+    background-color:#f9f9f9 ;
+    border: 1px solid #f9f9f9;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+select:focus{
+    outline: none;
+    background-color: white;
+    border: 1px solid rgb(249, 216, 161);;
+}
+
+/* 가입하기 */
+button{
+    width: 342px;
+    height: 46px;
+    color: #fff;
+    background-color: black;
+    font-weight: 600;
+    margin-top: 50px;
+    cursor: pointer;
+    z-index: 0;
+}
