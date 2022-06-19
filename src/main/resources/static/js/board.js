@@ -21,9 +21,41 @@ function declaration(){
     }
 }
 
+$(".declaration-button").on("click",function () {
+    if($(".declaration-button").hasClass("declaration-color")){
+        alert("신고완료");
+    }else{
+        alert("신고취소");
+    }
+});
+
     let commentButton =$(".button-comment");
 
     commentButton.on("click",function(){
         $(".commentWrapper").fadeToggle("middle");
-    })
+    });
+
+let commentSubmit = $(".comment-submit");
+let comment = $(".comment");
+
+    comment.on("keyup",function(){
+        if(comment.val().length != 0){
+            commentSubmit.css("background-color","#40a0ff");
+            commentSubmit.css("border-color","#90c8ff");
+        }else{
+            commentSubmit.css("background-color","#1fc7c1");
+            commentSubmit.css("border-color","#8ddbd7");
+        }
+    });
+
+commentSubmit.on("click",function () {
+    if(comment.val().length == 0) {
+        alert("댓글을 입력해주세요");
+    }else{
+        alert("댓글 등록완료");
+    }
+});
+
+
+
 
