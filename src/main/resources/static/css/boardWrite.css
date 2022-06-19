@@ -671,7 +671,7 @@ body img{
     color: #1bb1ab;
 }
 
-.btn{
+.btn123{
     display: inline-block;
     margin-bottom: 0;
     font-weight: 400;
@@ -689,6 +689,12 @@ body img{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.btn123:hover {
+    background: #90c8ff;
+    border-color:  #40a0ff;
+    color: white;
 }
 
 button{
