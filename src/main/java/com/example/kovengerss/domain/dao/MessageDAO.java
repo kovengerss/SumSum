@@ -13,7 +13,7 @@ public class MessageDAO {
     private final MessageMapper messageMapper;
 
     //메세지(쪽지) 목록
-    public List<MessageVO> getList(){;}
+    public void getList(){;}
     //메세지(쪽지) 입력
     public  void msgInsert(MessageVO messageVO){;}
     //메세지(쪽지) 수정
@@ -21,13 +21,13 @@ public class MessageDAO {
     //메세지(쪽지) 삭제
     public  void msgDelete(MessageVO messageVO){;}
     //메세지(쪽지) 전체수
-    public Integer msgGetTotal(){;}
+    public void msgGetTotal(){;}
     //메세지(쪽지) 보낸 시간 가져오기
-    public String msgGetSendDate(){;}
+    public void msgGetSendDate(){;}
     //메세지(쪽지) 한개 가져오기
-    public MessageVO msgSelectOne(Integer messageNum){;}
+    public void msgSelectOne(Integer messageNum){;}
     //메세지(쪽지) 제목 가져오기
-    public String msgSelectTitle(MessageVO messageVO){;}
+    public void msgSelectTitle(MessageVO messageVO){;}
     //메세지(쪽지) 내용 가져오기
-    public String msgSelectContent(MessageVO messageVO){;}
+    public void msgSelectContent(MessageVO messageVO){;}
 }

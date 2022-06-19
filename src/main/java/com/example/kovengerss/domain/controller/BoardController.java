@@ -17,7 +17,7 @@ public class BoardController {
     private final BoardService boardService;
     private Model model;
 
-    @GetMapping("list")
+    @GetMapping("boardList")
     public void getList(Model model){
         log.info("----------------------------");
         log.info("list.............");
@@ -25,13 +25,12 @@ public class BoardController {
         model.addAttribute("boardList", boardService.getList());
     }
 
-    @PostMapping("insert")
-    public void boardInsert(Model model){
-        log.info("----------------------------");
-        log.info("insert.............");
-        log.info("----------------------------");
-        model.addAttribute("boardInsert", boardService.boardInsert());
+    @PostMapping("boardWrite")
+    public void boardInsert(){
+
     }
+
+
 
 
 }
