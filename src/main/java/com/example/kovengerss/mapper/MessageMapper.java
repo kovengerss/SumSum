@@ -14,7 +14,7 @@ public interface MessageMapper {
     //메세지(쪽지) 수정
     public  void update(MessageVO messageVO);
     //메세지(쪽지) 삭제
-    public  void delet(MessageVO messageVO);
+    public  void delete(MessageVO messageVO);
     //메세지(쪽지) 전체수
     public Integer getTotal();
     //메세지(쪽지) 보낸 시간 가져오기

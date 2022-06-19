@@ -23,7 +23,6 @@ public class MyBatisConfig {
 
     private final ApplicationContext applicationContext;
 
-
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
     public HikariConfig hikariConfig() {

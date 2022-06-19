@@ -29,8 +29,9 @@ public interface BoardMapper {
     public Integer getWarningCount();
     //게시글 제목 가져오기
     public String getTitle(BoardVO boardVO);
+    //게시글 내용 가져오기
+    public String getContent(BoardVO boardVO);
     //게시글 카테고리 가져오기
     public String getField(BoardVO boardVO);
-    //게시글 카테고리 가져오기
-    public String getContent(BoardVO boardVO);
+
 }
