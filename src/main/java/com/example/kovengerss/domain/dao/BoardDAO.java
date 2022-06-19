@@ -17,7 +17,7 @@ public class BoardDAO {
     //게시글 추가
     public void boardInsert(BoardVO boardVO){;}
     //게시글 한 개 가져오기
-    public BoardVO boardSelectOne(Integer boardNumber){;}
+    public void boardSelectOne(Integer boardNumber){;}
     //게시글 수정
     public void boardUpdate(BoardVO boardVO){;}
     //게시글 삭제
@@ -25,11 +25,11 @@ public class BoardDAO {
     //게시글 전체 개수
     public void boardGetTotal(){;}
     //게시글 작성 시간 가져오기
-    public String boardGetRegisterDate(){;}
+    public void boardGetRegisterDate(){;}
     //게시글 수정 시간 가져오기
-    public String boardGetUpdateDate(){;}
+    public void boardGetUpdateDate(){;}
     //게시글 신고 횟수 가져오기
-    public Integer boardGetWarningCount(){;}
+    public void boardGetWarningCount(){;}
 
 
 

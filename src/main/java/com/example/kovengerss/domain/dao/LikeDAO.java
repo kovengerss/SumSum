@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 public class LikeDAO {
     private final LikeMapper likeMapper;
     //좋아요 갯수
-    public Integer likeCount(LikeVO likeVO){;}
+    public void likeCount(LikeVO likeVO){;}
 }
