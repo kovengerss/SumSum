@@ -24,14 +24,14 @@ public class BoardController {
         log.info("----------------------------");
         model.addAttribute("boardList", boardService.getList());
     }
-//
-//    @PostMapping("insert")
-//    public void boardInsert(Model model){
-//        log.info("----------------------------");
-//        log.info("insert.............");
-//        log.info("----------------------------");
-//        model.addAttribute("boardInsert", boardService.boardInsert());
-//    }
+
+    @PostMapping("insert")
+    public void boardInsert(Model model){
+        log.info("----------------------------");
+        log.info("insert.............");
+        log.info("----------------------------");
+        model.addAttribute("boardInsert", boardService.boardInsert());
+    }
 
     
 }
