@@ -13,6 +13,24 @@ import org.springframework.stereotype.Service;
 public class LikeServiceImpl implements LikeService{
     private final LikeDAO likeDAO;
 
+
     @Override
-    public Integer likeCount(LikeVO likeVO) { return null; }
+    public void likeSelect(LikeVO likeVO) {
+
+    }
+
+    @Override
+    public void likeInsert(LikeVO likeVO) {
+
+    }
+
+    @Override
+    public void likeDelete(LikeVO likeVO) {
+
+    }
+
+    @Override
+    public void likeGetBoardNum(LikeVO likeVO) {
+
+    }
 }

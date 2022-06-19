@@ -25,5 +25,14 @@ public interface BoardService {
     public String boardGetUpdateDate();
     //게시글 신고 횟수 가져오기
     public Integer boardGetWarningCount();
+    //게시글 제목 가져오기
+    public void boardGetTitle(BoardVO boardVO);
+    //게시글 내용 가져오기
+    public void boardGetContent(BoardVO boardVO);
+    //게시글 카테고리 가져오기
+    public void boardGetField(BoardVO boardVO);
+
+
+
 
 }

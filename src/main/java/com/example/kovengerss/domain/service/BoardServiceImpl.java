@@ -28,6 +28,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public BoardVO boardSelectOne(Integer boardNumber) {
+
         return null;
     }
 
@@ -46,18 +47,37 @@ public class BoardServiceImpl implements BoardService{
 
     }
 
+
+    @Override
+    public void boardGetTitle(BoardVO boardVO) {
+
+    }
+
+    @Override
+    public void boardGetContent(BoardVO boardVO) {
+
+    }
+
+    @Override
+    public void boardGetField(BoardVO boardVO) {
+
+    }
+
     @Override
     public String boardGetRegisterDate() {
+
         return null;
     }
 
     @Override
     public String boardGetUpdateDate() {
+
         return null;
     }
 
     @Override
     public Integer boardGetWarningCount() {
+
         return null;
     }
 }

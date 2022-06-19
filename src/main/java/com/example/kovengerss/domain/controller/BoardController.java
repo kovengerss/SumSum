@@ -15,22 +15,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board/*")
 public class BoardController {
     private final BoardService boardService;
-    private Model model;
 
     @GetMapping("boardList")
-    public void getList(Model model){
-        log.info("----------------------------");
-        log.info("list.............");
-        log.info("----------------------------");
-        model.addAttribute("boardList", boardService.getList());
+    public void getList(){
+
+    }
+
+    @GetMapping("appilBoardList")
+    public void boardGetAppil(){
+
+    }
+    @GetMapping("reviewBoardList")
+    public void boardGetReview(){
+
     }
 
     @PostMapping("boardWrite")
     public void boardInsert(){
 
     }
-
-
 
 
 }

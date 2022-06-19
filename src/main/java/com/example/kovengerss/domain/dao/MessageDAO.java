@@ -13,7 +13,7 @@ public class MessageDAO {
     private final MessageMapper messageMapper;
 
     //메세지(쪽지) 목록
-    public void getList(){;}
+    public void msgGetList(){;}
     //메세지(쪽지) 입력
     public  void msgInsert(MessageVO messageVO){;}
     //메세지(쪽지) 수정
