@@ -23,13 +23,13 @@ public class BoardDAO {
     //게시글 삭제
     public void boardDelete(BoardVO boardVO){;}
     //게시글 전체 개수
-    public void getTotal(){;}
+    public void boardGetTotal(){;}
     //게시글 작성 시간 가져오기
-    public String getRegisterDate(){;}
+    public String boardGetRegisterDate(){;}
     //게시글 수정 시간 가져오기
-    public String getUpdateDate(){;}
+    public String boardGetUpdateDate(){;}
     //게시글 신고 횟수 가져오기
-    public Integer getWarningCount(){;}
+    public Integer boardGetWarningCount(){;}
 
 
 
