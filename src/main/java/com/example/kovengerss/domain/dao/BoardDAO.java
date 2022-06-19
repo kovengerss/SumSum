@@ -13,7 +13,7 @@ public class BoardDAO {
     private final BoardMapper boardMapper;
 
     //게시글 목록
-    public List<BoardVO> getList(){;}
+    public List<BoardVO> getList(){return boardMapper.getList();}
     //게시글 추가
     public void boardInsert(BoardVO boardVO){;}
     //게시글 한 개 가져오기
