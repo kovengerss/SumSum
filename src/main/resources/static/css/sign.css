@@ -47,6 +47,7 @@ span{
 .signup-container{
     position: relative;
     top: 113px;
+    height: 1380px;
 }
 
 .signup-container .lawtalk h2 {
@@ -222,16 +223,16 @@ div.some_join_input_button button{
     padding: 6px 12px;
 } */
 
-.form-control-button{
-    border: 0;
-    border-bottom: 1px solid #ddd;
-    background-color: #fff;
-    width: 100%;
-    display: flex;
-    line-height: 3;
-    color: #757575;
-    padding: 10px 0;
-}
+/*.form-control-button{*/
+/*    border: 0;*/
+/*    border-bottom: 1px solid #ddd;*/
+/*    background-color: #fff;*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    line-height: 3;*/
+/*    color: #757575;*/
+/*    padding: 10px 0;*/
+/*}*/
 
 .form-group {
     margin-top: 30px;
@@ -368,7 +369,6 @@ div.main_icon span{
     margin-bottom: 20px;
     /* font-family: 'Jua', sans-serif; */
     font-size:15px;
-    font-weight: 800;
 }
 a.main_icon{
     display: flex;
@@ -402,16 +402,16 @@ div.some_join_input_name{
     margin-top: 20px;
 }
 
-div.some_join_input input{
-    width: 230px;
-    height: 26px;
+div.some_find_id_phonenum_input input{
+    width: 280px;
+    height: 40px;
     line-height: 1.2;
     font-size:13px;
     padding: 6px 12px;
     background-color:#f9f9f9 ;
     border: 1px solid #f9f9f9;
 }
-div.some_join_input input:focus{
+div.some_find_id_phonenum_input input:focus{
     outline: none;
     background-color: white;
     border: 1px solid #fd5d5f;
@@ -455,14 +455,6 @@ input[type=checkbox] {
     background-color: rgb(249, 249, 249);
 } */
 
-
-
-
-
-
-
-
-/* 종임님 상단바 */
 /* 사이드 메뉴 바 */
 .menu-active {
     background: orange;
@@ -604,8 +596,77 @@ input[type=checkbox] {
     color: #fff;
     height: 35px;
     width: 86px;
-    line-height: 2.7;
+    line-height: 2.2;
     border-radius: 12px;
 }
+/* 쪽지 */
+.channel-talk-button {
+    cursor: pointer;
+    position: fixed;
+    border-style: none;
+    width: 60px;
+    height: 60px;
+    bottom: 71px;
+    right: 28px;
+    background: url("https://cdn-icons-png.flaticon.com/512/3010/3010825.png") 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1000;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+    border-radius: 50%;
+}
 
-/* 종임님 상단바 끝 */
+/* footer css */
+.footer {
+    font-size: .75rem;
+    border-top: 1px solid #f3f5f9;
+    height: 240px;
+    padding-top: 60px;
+    background-color: #f9d9da;
+
+}
+
+.footer-container {
+    display: flex;
+    height: 100%;
+    margin: auto;
+    max-width: 100%;
+    width: 1172px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    font-size: .875rem;
+    max-width: 520px;
+}
+
+.footer-logo {
+    margin-top: 20px;
+}
+
+.footer-info {
+    display: flex;
+    list-style-type: none;
+    margin-top: 1.25rem;
+}
+
+.ft {
+    margin-right: 0.75rem;
+}
+.ft-1{
+    font-size: .875rem;
+    padding-left: 33px;
+    max-width: 520px;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+
+
+
+
+
