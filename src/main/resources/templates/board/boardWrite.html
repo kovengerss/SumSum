@@ -116,69 +116,71 @@
                 <main class="main-layout">
                     <div class="row">
                         <div class="md-8">
-                            <div class="sub-title">
-                                <label class="sub-title-label" style="font-size: 13px">고민 글 작성</label>
-                                <select style="outline: none;"class="categorySelector">
-                                                <option selected="seleted" disabled="disabled">카테고리 선택하세요.</option>
-                                                <optgroup label="정규 카테고리">
-                                                    <option>고민 상담</option>
-                                                    <option>어필 하기</option>
-                                                    <option>후기</option>
-                                                </optgroup>
-                                            </select>
-                                    </div>
-                                    <div class="px-4 content-layout" style="border:1px solid #e3e3e3;">
-                                        <div class="question-editor">
-                                            <div class="question-title">
-                                                <header>
-                                                    <form class="question-title-form">
-                                                <span>
-                                                    <i class="icon">Q.</i>
-                                                </span>
-                                                        <input clas="title-input" type="text" maxlength="60" placeholder="제목을 입력해주세요.">
-                                            </form>
-                                            <span class="title-check"></span>
-                                        </header>
-                                    </div>
-                                    <div class="content-editor">
-                                        <div class="editor">
-                                            <div class="editor-content"  style="margin-top:10px;">
-                                                <textarea id="summernote" class="content content-length" placeholder="글을 입력해주세요." onclick="length()">
-                                                </textarea>
-                                            </div>
-                                         <!--   텍스트 길이 체크
-                                                <div class="content-check my-2">
-                                                <div class="content-check-required" style="display: flex;justify-content: flex-end;">
-                                                    <img src="../../static/img/하트.png" class="required-img">
-                                                    <span class="text text-color" style="padding-top: 5px;">
-                                                        <span class="font-midium text-pri">80</span>
-                                                        글자를 더 채워주세요!
+                            <form action="" name="" id="" method="post" onsubmit="writeBorad()">
+                                <div class="sub-title">
+                                    <label class="sub-title-label" style="font-size: 13px">고민 글 작성</label>
+                                    <select style="outline: none;"class="categorySelector">
+                                                    <option selected="seleted" disabled="disabled">카테고리 선택하세요.</option>
+                                                    <optgroup label="정규 카테고리">
+                                                        <option>고민 상담</option>
+                                                        <option>어필 하기</option>
+                                                        <option>후기</option>
+                                                    </optgroup>
+                                                </select>
+                                        </div>
+                                        <div class="px-4 content-layout" style="border:1px solid #e3e3e3;">
+                                            <div class="question-editor">
+                                                <div class="question-title">
+                                                    <header>
+                                                        <form class="question-title-form">
+                                                    <span>
+                                                        <i class="icon">Q.</i>
                                                     </span>
+                                                            <input class="title-input" type="text" maxlength="60" placeholder="제목을 입력해주세요.">
+                                                </form>
+                                                <span class="title-check"></span>
+                                            </header>
+                                        </div>
+                                        <div class="content-editor">
+                                            <div class="editor">
+                                                <div class="editor-content"  style="margin-top:10px;">
+                                                    <textarea id="summernote" class="content content-length" placeholder="글을 입력해주세요." onclick="length()">
+                                                    </textarea>
                                                 </div>
-                                            </div>-->
-                                         <!-- 버튼 부분
-                                             <div class="menubar">
-                                                <button class="menubar-button">
-                                                    <i class="icon" style="font-size: 20px;"><strong>B</strong></i>
-                                                </button>
-                                                <button class="menubar-button">
-                                                    <i class="icon oblique" style="font-size: 20px;">I</i>
-                                                </button>
-                                                <button class="menubar-button">
-                                                    <i class="icon decoration" style="font-size: 20px;">U</i>
-                                                </button>
-                                                <button class="menubar-button">
-                                                    <i class="icon" style="font-size: 20px;">⊠</i>
-                                                    <input type="file" style="display:none;">
-                                                </button>
-                                            </div>-->
+                                             <!--   텍스트 길이 체크
+                                                    <div class="content-check my-2">
+                                                    <div class="content-check-required" style="display: flex;justify-content: flex-end;">
+                                                        <img src="../../static/img/하트.png" class="required-img">
+                                                        <span class="text text-color" style="padding-top: 5px;">
+                                                            <span class="font-midium text-pri">80</span>
+                                                            글자를 더 채워주세요!
+                                                        </span>
+                                                    </div>
+                                                </div>-->
+                                             <!-- 버튼 부분
+                                                 <div class="menubar">
+                                                    <button class="menubar-button">
+                                                        <i class="icon" style="font-size: 20px;"><strong>B</strong></i>
+                                                    </button>
+                                                    <button class="menubar-button">
+                                                        <i class="icon oblique" style="font-size: 20px;">I</i>
+                                                    </button>
+                                                    <button class="menubar-button">
+                                                        <i class="icon decoration" style="font-size: 20px;">U</i>
+                                                    </button>
+                                                    <button class="menubar-button">
+                                                        <i class="icon" style="font-size: 20px;">⊠</i>
+                                                        <input type="file" style="display:none;">
+                                                    </button>
+                                                </div>-->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-footer form-edit-footer">
-                                <button class="footer-button-css btn" style="border:1px solid #e3e3e3">고민 등록</button>
-                            </div>
+                                <div class="form-footer form-edit-footer">
+                                    <button class="footer-button-css btn123" style="border:1px solid #e3e3e3">고민 등록</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="md-4">
                             <div>
@@ -261,7 +263,6 @@
 </footer>
 <script>
     $('#summernote').summernote({
-        placeholder:"hello",
         airMode: true
     });
 </script>

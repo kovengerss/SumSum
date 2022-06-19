@@ -874,6 +874,7 @@ h1{
 }
 
 .comment{
+    width: 100%;
     padding-bottom: 6px;
     padding-top: 9px;
     outline: none;
