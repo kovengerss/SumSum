@@ -38,7 +38,7 @@ body {
 }
 
 .letter-font {
-    margin-left: 144px;
+    margin-left: 20%;
     font-size: 1.8rem;
     line-height: 2.4rem;
     font-style: normal;
@@ -48,10 +48,11 @@ body {
 }
 
 .letter-content {
-    padding: 12px 0px 6px;
+    PADDING: 10px 30px;
     background-color: rgb(255, 255, 255);
     border-radius: 18px;
     box-shadow: rgb(0 0 0 / 10%) 0px 2px 16px 1px;
+    margin: 20px 20px;
 }
 
 .letter-content-send {
@@ -87,8 +88,9 @@ body {
     background-color: #fd5d5f;
     color: #fff;
     border: 1px solid #fff;
-    border-radius: 10px;
+    border-radius: 7px;
     margin-left: 12px;
+    PADDING: 5px 11px;
 }
 
 .send-letter {
@@ -99,6 +101,7 @@ body {
 .tab_box , .tabs{
     border: none;
     background-color: #fff;
+    margin-left: 8px;
 }
 
 .tab_box .active {
@@ -108,10 +111,10 @@ body {
 
 .tab_box span{
     background-color: #fe5d5f;
-    font-size: 16px;
+    font-size: 14px;
     padding: 5px;
     border: 1px solid #fe5d5f;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .check-btn {
@@ -123,12 +126,18 @@ body {
 
 .answer-content {
     display: block;
-    width: 100%;
+    width:95%;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     height: 100px;
     margin-bottom: 10px;
+    padding: 10px; 15px;
+}
+div#chat-wrap input:focus{
+    outline: none;
+    background-color: white;
+    border: 1px solid rgb(249, 216, 161);
 }
 
 </style>
@@ -150,6 +159,7 @@ body {
                 </button>
             </div>
         </div>
+        <!-- 수신함-->
             <div class="letter-content" id="letter-content">
                 <div class="chat-wrap">
                     <div style="width: 100%;">
@@ -174,15 +184,54 @@ body {
                             <button class="letter-btn" id="send" onsubmit="sendLetter()">답장</button>
                             <form id="frm" name="frm" action="" method="post" style="display: none;">
                                 <div class="chat-wrap letter-con">
+<<<<<<< HEAD
                                     <input type="text" id="title" name="title" placeholder="제목" style="width: 97%; margin-bottom: 10px;" />
                                     <textarea id="content" name="content" cols="40" rows="10" style="width: 97%;" placeholder="내용"></textarea>
                                     <button onsubmit="sendLetter()" type="button" name="write" id="write" style="display: block; margin: 0 auto; width: 63px;">쓰기</button>
+=======
+                                    <input type="text" id="title" name="title" placeholder="제목" style="width: 95%;height: 30px; margin-top: 15px;margin-bottom: 10px; padding: 0 15px; border: 1px solid #e0e0e0;;" />
+                                    <textarea id="content" name="content" cols="40" rows="10" style="width: 95%;margin-bottom: 10px; padding: 10px 15px;resize: none;border: 1px solid #e0e0e0;" placeholder="상대방에게 보낼 내용을 작성해주세요."></textarea>
+                                    <button type="button" name="write" id="write" style="display: block; margin: 0 auto;width: 100px;height: 30px;border: none;border-radius: 8px;background-color:#fd5d5f;color:#fff">발송하기</button>
+>>>>>>> 2d2b743 (css수정)
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="letter-content" id="letter-content">
+            <div class="chat-wrap">
+                <div style="width: 100%;">
+                    <div class="chat-header">
+                        <button class="check-btn" id="check">ㅎㅇ</button>
+                        <!-- 보내기 -->
+                        <form id="contentCheck" name="contentCheck" action="" style="display:none;">
+                            <div class="answer-content" id="contentCheck">
+                                안녕하세요
+                            </div>
+                        </form>
+                        <!-- 쪽지 내용 -->
+                    </div>
+                    <div class="from-who">
+                            <span class="who">
+                                발송자:이종임
+                            </span>
+                        <span class="time">
+                                6/15
+                            </span>
+                        <button class="letter-btn">삭제</button>
+                        <button class="letter-btn" id="send">답장</button>
+                        <form id="frm" name="frm" action="" method="" style="display: none;">
+                            <div class="chat-wrap letter-con">
+                                <input type="text" id="title" name="title" placeholder="제목" style="width: 95%;height: 30px; margin-top: 15px;margin-bottom: 10px; padding: 0 15px;" />
+                                <textarea id="content" name="content" cols="40" rows="10" style="width: 95%;margin-bottom: 10px; padding: 10px 15px;resize: none;" placeholder="상대방에게 보낼 내용을 작성해주세요."></textarea>
+                                <button type="button" name="write" id="write" style="display: block; margin: 0 auto; width: 70px;">발송하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- 발신함 -->
             <div class="letter-content" id="sendLetter" style =" display: none;">
                 <div class="chat-wrap">

@@ -101,7 +101,7 @@ select {
 select:focus{
     outline: none;
     background-color: white;
-    border: 1px solid rgb(249, 216, 161);;
+    border: 1px solid rgb(249, 216, 161);
 }
 
 /* 가입하기 */
