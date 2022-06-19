@@ -15,6 +15,7 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService{
     private final BoardDAO boardDAO;
 
+
     @Override
     public List<BoardVO> getList() {
         return null;
@@ -22,8 +23,8 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void boardInsert(BoardVO boardVO) {
-        //return 타입은 해당 DAO 보면서 참고 하세요. 6월17일 강의 1시간05분 참고.
-   }
+    //return 타입은 해당 DAO 보면서 참고 하세요. 6월17일 강의 1시간05분 참고.
+    }
 
     @Override
     public BoardVO boardSelectOne(Integer boardNumber) {
@@ -41,22 +42,22 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void getTotal() {
+    public void boardGetTotal() {
 
     }
 
     @Override
-    public String getRegisterDate() {
+    public String boardGetRegisterDate() {
         return null;
     }
 
     @Override
-    public String getUpdateDate() {
+    public String boardGetUpdateDate() {
         return null;
     }
 
     @Override
-    public Integer getWarningCount() {
+    public Integer boardGetWarningCount() {
         return null;
     }
 }
