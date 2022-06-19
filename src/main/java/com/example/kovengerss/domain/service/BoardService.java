@@ -25,4 +25,5 @@ public interface BoardService {
     public String getUpdateDate();
     //게시글 신고 횟수 가져오기
     public Integer getWarningCount();
+
 }
