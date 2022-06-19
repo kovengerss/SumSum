@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService{
     private final UserDAO userDAO;
 
     @Override
-    public UserVO userSelect(Integer userNum) {
-        return null;
+    public void userSelect(Integer userNum) {
+
     }
 
     @Override
@@ -34,42 +34,42 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Boolean CheckId(String userId) {
-        return null;
+    public void CheckId(String userId) {
+
     }
 
     @Override
-    public String getId(UserVO userVO) {
-        return null;
+    public void userGetId(UserVO userVO) {
+
     }
 
     @Override
-    public String getPw(UserVO userVO) {
-        return null;
+    public void userGetPw(UserVO userVO) {
+
     }
 
     @Override
-    public String getEmail(UserVO userVO) {
-        return null;
+    public void userGetEmail(UserVO userVO) {
+
     }
 
     @Override
-    public String getPhoneNumber(UserVO userVO) {
-        return null;
+    public void userGetPhoneNumber(UserVO userVO) {
+
     }
 
     @Override
-    public String getBirth(UserVO userVO) {
-        return null;
+    public void userGetBirth(UserVO userVO) {
+
     }
 
     @Override
-    public String getGender(UserVO userVO) {
-        return null;
+    public void userGetGender(UserVO userVO) {
+
     }
 
     @Override
-    public Integer getIdealNum(UserVO userVO) {
-        return null;
+    public void userGetIdealNum(UserVO userVO) {
+
     }
 }
