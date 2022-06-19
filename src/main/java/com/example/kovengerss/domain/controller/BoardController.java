@@ -33,5 +33,5 @@ public class BoardController {
         model.addAttribute("boardInsert", boardService.boardInsert());
     }
 
-
+    
 }
