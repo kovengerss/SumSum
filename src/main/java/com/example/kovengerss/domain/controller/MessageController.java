@@ -18,13 +18,13 @@ public class MessageController {
 
     }
     // 쪽지 발신함
-    @GetMapping("letter")
+    @GetMapping("sendLetter")
     public void msgSendList(){
 
     }
 
-    // 쪽지 발신함
-    @GetMapping("letter")
+    // 쪽지 수신함
+    @GetMapping("getLetter")
     public void msgGetList(){
 
     }
