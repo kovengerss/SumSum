@@ -14,10 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     private final UserService userService;
     //회원가입
-    @GetMapping("sign")
+    @PostMapping("sign")
     public void userInsert(){
 
     }
+
+    //로그인
+    @PostMapping("login")
+    public void userLogin(){
+
+    }
+
     //마이페이지 전체정보
     @GetMapping("myPage")
     public void getMyPage(){
@@ -30,7 +37,7 @@ public class UserController {
     }
     //마이페이지 답장 목록
     @GetMapping("myPageAnswer")
-    public void getMyPageAnswer(){
+    public void getMyPageAnswerList(){
 
     }
 
@@ -43,6 +50,18 @@ public class UserController {
     //마이페이지 포인트 내역
     @GetMapping("myPagePoint")
     public void getPointSelect(){
+
+    }
+
+    //연애 선택
+    @PostMapping("love")
+    public void getLove(){
+
+    }
+
+    //결혼 선택
+    @PostMapping("marry")
+    public void getMarry(){
 
     }
 

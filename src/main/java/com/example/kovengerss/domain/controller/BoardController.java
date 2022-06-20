@@ -15,21 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board/*")
 public class BoardController {
     private final BoardService boardService;
-
+    // 글 목록
     @GetMapping("boardList")
     public void getList(){
 
     }
-
+    // 어필 목록
     @GetMapping("appilBoardList")
     public void boardGetAppil(){
 
     }
+    // 후기 목록
     @GetMapping("reviewBoardList")
     public void boardGetReview(){
 
     }
-
+    // 글 작성
     @PostMapping("boardWrite")
     public void boardInsert(){
 
