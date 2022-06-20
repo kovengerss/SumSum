@@ -1,24 +1,28 @@
 package com.example.kovengerss.domain.controller;
 
-import com.example.kovengerss.domain.service.AdminService;
 import com.example.kovengerss.domain.service.BoardService;
+import com.example.kovengerss.domain.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-public class AdminController {
-    private final AdminService adminService;
-    // 관리자 로그인
-    @PostMapping("adminLogin")
-        public void adminLogin(){
+public class PointController {
+    private final PointService pointService;
 
-        }
+
+    //포인트 결제
+    @PostMapping("myPagePoint")
+    public void payPoint(){
+
+    }
+
+
+
+
 
 
 }

@@ -12,16 +12,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class MessageController {
     private final MessageService messageService;
-
+    // 쪽지 보내기
     @PostMapping("pick")
     public void msgInsert(){
 
     }
-
+    // 쪽지 발신함
     @GetMapping("letter")
-    public void msgList(){
+    public void msgSendList(){
 
     }
 
+    // 쪽지 발신함
+    @GetMapping("letter")
+    public void msgGetList(){
+
+    }
 
 }
