@@ -8,8 +8,10 @@
         <typeAlias type="com.example.kovengerss.domain.vo.MessageVO" alias="messageVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.AnswerVO" alias="answerVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.IdealVO" alias="idealVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.CoupleIdealVO" alias="coupleIdealVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.AdminVO" alias="adminVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.LikeVO" alias="likeVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.PointVO" alias="pointVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.BlackListVO" alias="blackListVO"/>
     </typeAliases>
 </configuration>
