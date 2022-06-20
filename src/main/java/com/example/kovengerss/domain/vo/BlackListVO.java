@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class BlackListVO {
     private Integer blackListNum;
-    private String blackListOk;
-    private String blackListDate;
+    private String blackListOk; //블랙리스트 유무
+    private String blackListDate; 
     private Integer userNum;
 }
