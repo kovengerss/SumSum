@@ -6,4 +6,9 @@
         FROM TBL_BOARD
     </select>
 
+
+    <insert id="insert">
+        INSERT INTO TBL_BOARD (BOARD_NUM, BOARD_TITLE, BOARD_CONTENT)
+        VALUES (SEQ_BOARDNUM.NEXTVAL, #{boardTitle}, #{boardContent})
+    </insert>
 </mapper>
