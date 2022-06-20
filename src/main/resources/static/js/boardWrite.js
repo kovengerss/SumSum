@@ -8,30 +8,34 @@ title.on("keyup",function () {
             }
     });
 
-    let content =$(".content");
-
-    content.on("keyup",function () {
-        console.log(content.val().length);
-    });
-
-/*
-    let content = $(".note-codable");
     let contentSub = $(".note-editable");
 
-
-    console.log(content.val().length);
-console.log(contentSub.val().length);
-
-
-
     contentSub.on("keyup",function () {
-        console.log("들어왓음?");
-        console.log(contentSub.val().length());
-        console.log(contentSub.val().size());
-        console.log(contentSub.val());
-    });
-*/
+        console.log(contentSub.text().length);
+        console.log(contentSub.text());
+        if(contentSub.text().length <= 80){
+            $(".note-status-output").text(80 - contentSub.text().length+" 글자를 더 채워주세요😷");
+            $(".note-status-output").css("margin-bottom", "18px");
+            $(".note-status-output").css("border", "none");
+            $(".note-status-output").css("display", "flex");
+            $(".note-status-output").css("font-size", "18px");
+            $(".note-status-output").css("justify-content", "flex-end");
+            $(".note-status-output").css("padding-right", "20px");
+            $(".note-status-output").css("padding-bottom", "20px");
+            $(".note-status-output").css("color","#ff9090")
+            $(".btn123").css("background","none");
+            $(".btn123").css("border","1px solid #e3e3e3");
+            $(".btn123").css("color","#1bb1ab");
+        }else{
+            $(".note-status-output").text("글자를 다 채웠습니다!!😀");
+            $(".note-status-output").css("color","#0080ff ")
+            $(".btn123").css("background","#90c8ff ");
+            $(".btn123").css("border","#40a0ff ");
+            $(".btn123").css("color","white");
+        }
 
+
+    });
 
 
 
