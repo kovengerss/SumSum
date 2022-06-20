@@ -49,8 +49,8 @@ div.somelogin_id_box{
 
 /* 로그인화면 아이디 박스 */
 div.somelogin_id_input input{
-    width: 230px;
-    height: 26px;
+    width: 280px;
+    height: 40px;
     line-height: 1.2;
     font-size:13px;
     padding: 6px 12px;
@@ -72,8 +72,8 @@ div.somelogin_pw_box{
 
 /*로그인화면 비밀번호 박스 */
 div.somelogin_pw_input input{
-    width: 230px;
-    height: 26px;
+    width: 280px;
+    height: 40px;
     line-height: 1.2;
     font-size:13px;
     padding: 6px 12px;
@@ -233,6 +233,7 @@ a.admin_login{
 
 .top-header .top-header-wrap .a-alarmBadge {
     position: absolute;
+    margin: 0px 262px 0px 0px;
     background-color: #fd5d5f;
     border-radius: 9999px;
     right: 0;
@@ -301,7 +302,7 @@ a.admin_login{
     height: 240px;
     padding-top: 60px;
     background-color: #f9d9da;
-    margin-top: 700px;
+    margin-top: 800px;
 }
 
 .footer-container {

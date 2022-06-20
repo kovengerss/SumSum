@@ -8,8 +8,8 @@ body{
 .choice_love_box{
     height: 100%;
     width: 514px;
-    margin-left: 38%;
-    margin-top: 100px;
+    margin-left: 35%;
+    margin-top: 15%;
 }
 
 div.choice_ment{
@@ -33,8 +33,8 @@ div.choice_ment_p p{
 }
 /*input입력창 */
 div.input input{
-    width: 230px;
-    height: 26px;
+    width: 280px;
+    height: 40px;
     line-height: 1.2;
     font-size:13px;
     padding: 6px 12px;
@@ -49,7 +49,7 @@ div.input input:focus{
 
 /*textarea 입력*/
 div.input textarea{
-    width: 230px;
+    width: 280px;
     height: 100px;
     line-height: 1.2;
     font-size:13px;
@@ -87,7 +87,7 @@ div.sumchoice_age{
 
 /*select*/
 select {
-    width: 256px;
+    width: 280px;
     height: 40px;
     padding: 6px 12px;
     background-color:#f9f9f9 ;
@@ -101,7 +101,7 @@ select {
 select:focus{
     outline: none;
     background-color: white;
-    border: 1px solid rgb(249, 216, 161);;
+    border: 1px solid rgb(249, 216, 161);
 }
 
 /* 가입하기 */
@@ -114,4 +114,213 @@ button{
     margin-top: 50px;
     cursor: pointer;
     z-index: 0;
+}
+
+/* 사이드 메뉴 바 */
+.menu-active {
+    background: orange;
+}
+.menu-ractive{
+    background: #00000078;
+}
+.offcanvas-header {
+    background-color: #f9d9da;
+}
+
+.sidebar-body{
+    padding: 1.25rem;
+    border-bottom: 1px solid #f5d6d6;
+}
+
+.profile {
+    margin-right: 130px;
+}
+
+.user-info{
+    margin-left: 1rem;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.offcanvas-title{
+    margin: 0 auto;
+}
+
+.main-link {
+    justify-content: space-between;
+    width: 100%;
+    font-size: 13px;
+    display: flex;
+    margin-top: 2rem;
+}
+
+.main-link img {
+    display:block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+}
+
+.signup-btn {
+    background-color: #f1f1f1;
+    position: absolute;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.menuList .item {
+    border-bottom: 1px solid #f5d6d6;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    display: block;
+    font-weight: 500;
+}
+
+/* 상단 고정바 css  */
+.top-header {
+    background-color: #fff;
+    border-bottom-width: 1px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 61px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
+    z-index: 1000;
+}
+
+.top-header .top-header-wrap {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1500px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+    text-align: center;
+
+}
+
+.top-header .top-header-wrap .menuBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1.28rem;
+    background: none;
+    border: none;
+}
+
+.top-header .top-header-wrap .a-alarmBadge {
+    position: absolute;
+    background-color: #fd5d5f;
+    border-radius: 9999px;
+    right: 0;
+    top: 0;
+    width: 6px;
+    height: 6px;
+}
+
+.top-header .top-header-wrap .menuBar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 4px;
+}
+
+.main-logo {
+    display: inline-block;
+    position: relative;
+    margin: 0px 0px 0px 317px;
+    z-index: 7;
+}
+
+.right-header {
+    white-space: nowrap;
+    float: right;
+    display: flex;
+    align-items: center;
+    line-height: 60px;
+    height: 60px;
+}
+
+.right-header a+a{
+    margin-left: 24px;
+}
+
+.signup {
+    background-color: #fd5d5f;
+    color: #fff;
+    height: 35px;
+    width: 86px;
+    line-height: 2.2;
+    border-radius: 12px;
+}
+/* 쪽지 */
+.channel-talk-button {
+    cursor: pointer;
+    position: fixed;
+    border-style: none;
+    width: 60px;
+    height: 60px;
+    bottom: 71px;
+    right: 28px;
+    background: url("https://cdn-icons-png.flaticon.com/512/3010/3010825.png") 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1000;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+    border-radius: 50%;
+}
+
+/* footer css */
+.footer {
+    font-size: .75rem;
+    border-top: 1px solid #f3f5f9;
+    height: 240px;
+    padding-top: 60px;
+    background-color: #f9d9da;
+}
+
+.footer-container {
+    display: flex;
+    height: 100%;
+    margin: auto;
+    max-width: 100%;
+    width: 1172px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    font-size: .875rem;
+    max-width: 520px;
+}
+
+.footer-logo {
+    margin-top: 20px;
+}
+
+.footer-info {
+    display: flex;
+    list-style-type: none;
+    margin-top: 1.25rem;
+}
+
+.ft {
+    margin-right: 0.75rem;
+}
+.ft-1{
+    font-size: .875rem;
+    padding-left: 33px;
+    max-width: 520px;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
