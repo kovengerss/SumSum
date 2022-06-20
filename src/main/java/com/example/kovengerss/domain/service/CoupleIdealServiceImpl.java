@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("board") @Primary
+@Qualifier("coupleIdeal") @Primary
 public class CoupleIdealServiceImpl implements CoupleIdealService{
     private final CoupleIdealDAO coupleIdealDAO;
 
