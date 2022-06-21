@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+<<<<<<< HEAD
 
 import javax.servlet.http.HttpServletRequest;
+=======
+>>>>>>> 566f7d39c2507d3691e55b6d1bfd84d73b823454
 
 //TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
 //관리자로그인	        adminLogin		        post		모든항목			      필요	    adminpage

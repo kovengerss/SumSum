@@ -2,7 +2,10 @@ package com.example.kovengerss.Mapper;
 
 import com.example.kovengerss.domain.dao.UserDAO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.example.kovengerss.domain.vo.UserVO;
+=======
+>>>>>>> 566f7d39c2507d3691e55b6d1bfd84d73b823454
 =======
 >>>>>>> 566f7d39c2507d3691e55b6d1bfd84d73b823454
 import com.example.kovengerss.mapper.UserMapper;

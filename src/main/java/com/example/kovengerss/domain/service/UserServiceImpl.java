@@ -13,7 +13,11 @@ import org.springframework.stereotype.Service;
 @Qualifier("user") @Primary
 @Slf4j
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class UserServiceImpl implements UserService{
+=======
+public class UserServiceImpl implements UserService {
+>>>>>>> 566f7d39c2507d3691e55b6d1bfd84d73b823454
 =======
 public class UserServiceImpl implements UserService {
 >>>>>>> 566f7d39c2507d3691e55b6d1bfd84d73b823454
