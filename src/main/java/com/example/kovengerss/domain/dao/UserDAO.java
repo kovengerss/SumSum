@@ -12,7 +12,7 @@ public class UserDAO {
 
     //회원 정보 조회
     public void userSelect(Integer userNum){;}
-    //회원가입
+    //회원가입 수정
     public void userInsert(UserVO userVO){userMapper.insert(userVO);}
     //회원 정보 수정
     public void userUpdate(Integer userNum){;}
