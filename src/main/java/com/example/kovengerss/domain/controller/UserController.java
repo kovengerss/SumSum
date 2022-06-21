@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    //.회원가입
+    //회원가입
     @GetMapping("sign")
     public void signUpForm(){
     }
