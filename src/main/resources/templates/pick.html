@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/pick.css">
+    <link rel="stylesheet" href="/css/pick.css">
     <title>썸썸 매칭페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,9 +114,9 @@
                     오늘의 추천 상대
                 </span>
         </h1>
-        <form name="WriteForm" action="" method="post">
-            <div class="felx-container">
 
+            <div class="felx-container">
+                <form name="WriteForm" action="/register" method="post">
                 <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
 
                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
@@ -158,17 +158,18 @@
                                 <div class="modal-body">
                                     <div>
                                         <!-- 쪽지를 보내주세요 -->
-                                        <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
+                                        <input type="text" name="messageTitle" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
                                     </div>
-                                    <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
+                                    <textarea name="messageContent" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger">Send</button>
+                                    <button  class="btn btn-danger">Send</button>
                                     <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- 쪽지보내기 모달창 끝-->
                     <!-- 모달 상세보기 시작 -->
                     <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -223,6 +224,7 @@
                     </div>
                     <!-- 모달 상세보기 끝 -->
                 </div>
+                </form>
 
 
                 <!--  -->
@@ -443,7 +445,7 @@
 
 
             </div>
-        </form>
+
 
         <div class="writeFormBox"  style=" background-image: url('../static/img/buttonbox.png' );">
             <!--  <h3 class="bigChar">
