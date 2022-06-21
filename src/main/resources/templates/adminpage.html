@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/adminpage.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>썸썸</title>
+</head>
+<body style="background-color: #f8f8f8">
+<!-- 상단 고정 바 -->
+<div class="top-header">
+    <div class="top-header-wrap">
+        <!--  <button class="menuBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="slidebutton">
+             <span class="a-alarmBadge" style="top: 11px; right: 9px;"></span>
+             <span class="menuBar"></span>
+             <span class="menuBar" style="width:19px; height: 4px;"></span>
+             <span class="menuBar"></span>
+         </button> -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    <div class = "sidebar-title">
+                        <strong>썸썸</strong>
+                    </div>
+                </h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body sidebodyGW">
+            </div>
+
+        </div>
+        <h1 class="main-logo">
+            <a href="main.html">
+                <img src="/img/sumsum_logo.png">
+            </a>
+        </h1>
+        <div class="right-header">
+            <!-- 포인트 점수 받아오기 -->
+            <a class="point" href="myPagePoint.html">
+                잔여포인트 0점
+            </a>
+            <!-- 채팅 받아오기 -->
+            <a class="chatting" href="letter.html">
+                쪽지
+            </a>
+            <!-- 로그인 -->
+            <a class="login" href="login.html">
+                로그인
+            </a>
+            <!-- 회원가입 -->
+            <a class="signup" href="sign.html">
+                회원가입
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div style="padding-top: 124px;">
+<section>
+    <aside>
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   왼쪽 상단-->
+        <div style="position:fixed;">
+            <div  class="list-group" style="width: 350px;border-radius: 10px; padding-left: 33px;">
+                <button  style="padding: 24px; background-color: tomato; font-weight: bolder; font-size: 22px; text-align: center;" type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    사용자 관리
+                </button>
+                <button style="padding: 15px; font-weight: bolder;" type="button" class="list-group-item list-group-item-action">전체 사용자</button>
+                <button style="padding: 15px; font-weight: bolder;" type="button" class="list-group-item list-group-item-action">자유 게시판</button>
+                <button style="padding: 15px; font-weight: bolder;"type="button" class="list-group-item list-group-item-action">어필 하기</button>
+                <button style="padding: 15px; font-weight: bolder;" type="button" class="list-group-item list-group-item-action">고민 상담</button>
+                <button style="padding: 15px; font-weight: bolder;" type="button" class="list-group-item list-group-item-action">회원 결제 내역</button>
+                <button style="padding: 15px; background-color: darkgrey; font-weight: bolder; text-align: center; font-size: 19px;" type="button" class="list-group-item list-group-item-action">B L A C K  -  L I S T</button>
+            </div>
+        </div>
+    </aside>
+    <!-- 검색 창 -->
+    <main>
+    <input type="text" placeholder="검색어 입력" class="search" style="padding: 30px;">
+    <button type="submit" class="search-btn">검색</button>
+
+
+    <div id="board">
+        <div class="board_list_wrap">
+            <div class="board_list" style="width: 1440px;">
+                <div class="board_list_head">
+                    <div class="num">번호</div>
+                    <div class="cate">카테고리</div>
+                    <div class="tit">제목</div>
+                    <div class="writer">회원 ID</div>
+                    <div class="date">작성 날짜</div>
+                    <div class="view">신고누적</div>
+                    <div class="regist_date">가입 날짜</div>
+                    <div class="dele">관리</div>
+                </div>
+                <div class="board_list_body">
+                    <div class="item">
+                        <div class="num">- 0 -</div>
+                        <div class="cate">공지사항</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">충전 서비스 이용안내</a></div>
+                        <div class="writer">ADMIN</div>
+                        <div class="date">2012-06-15</div>
+                        <div class="view">0</div>
+                        <div class="regist_date">2012-01-12</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">8</div>
+                        <div class="cate">고민 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">상대측 부모님이 키가 작다고 싫어해요</a></div>
+                        <div class="writer">에베베</div>
+                        <div class="date">2022-03-10</div>
+                        <div class="view">15</div>
+                        <div class="regist_date">2019-06-29</div>
+                        <div class="dele" style="display: -webkit-inline-box; ">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">7</div>
+                        <div class="cate">어필 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">저도 요번에 연애 할 수 있겠죠?</a></div>
+                        <div class="writer">장가가자</div>
+                        <div class="date">2019-06-02</div>
+                        <div class="view">87</div>
+                        <div class="regist_date">2015-11-11</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">6</div>
+                        <div class="cate">자유게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">선착순 5명 유력 급등 주 가족방 공개</a></div>
+                        <div class="writer">문의주세요</div>
+                        <div class="date">2017-12-19</div>
+                        <div class="view">198</div>
+                        <div class="regist_date">2013-02-18</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">5</div>
+                        <div class="cate">자유 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">새해특집 같이 볼 여자 구함</a></div>
+                        <div class="writer">이상한사람아님</div>
+                        <div class="date">2018-12-31</div>
+                        <div class="view">1745</div>
+                        <div class="regist_date">2018-12-24</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">4</div>
+                        <div class="cate">고민 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">3년 사귄 남친 알고보니 15cm 깔창..</a></div>
+                        <div class="writer">혐오스럽</div>
+                        <div class="date">2018-10-11</div>
+                        <div class="view">19</div>
+                        <div class="regist_date">2017-01-05</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">3</div>
+                        <div class="cate">고민 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">22를 챙겨야 할까요??ㅜㅜ</a></div>
+                        <div class="writer">연린이..</div>
+                        <div class="date">2018-06-19</div>
+                        <div class="view">3</div>
+                        <div class="regist_date">2017-10-16</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">2</div>
+                        <div class="cate">어필 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">충북 여신입니다</a></div>
+                        <div class="writer">뚜연공쥬</div>
+                        <div class="date">2017-12-25</div>
+                        <div class="view">143</div>
+                        <div class="regist_date">2017-05-12</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="num">1</div>
+                        <div class="cate">자유 게시판</div>
+                        <div class="tit"><a href="#" style="margin-left: 100px;">출석체크 합니다~</a></div>
+                        <div class="writer">VOS 울억</div>
+                        <div class="date">2017-11-20</div>
+                        <div class="view">1045</div>
+                        <div class="regist_date">2017-04-05</div>
+                        <div class="dele" style="display: -webkit-inline-box;">
+                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
+                                <button class="update-btn">정 지</button>
+                            </div>
+                            <div style="width: 60px;">
+                                <button class="delete-btn">삭 제</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-left: 42%; padding-top: 20px; ">
+                <a href="#" class="bt first" style="font-weight: bold; font-size: 29px;"><<</a>
+                <a href="#" class="bt prev" style="font-weight: bold; font-size: 29px;"><</a>
+                <a href="#" class="num" style="font-size: 29px;">1</a>
+                <a href="#" class="num" style="font-size: 29px;">2</a>
+                <a href="#" class="num" style="font-size: 29px;">3</a>
+                <a href="#" class="bt next" style="font-weight: bold; font-size: 29px;">></a>
+                <a href="#" class="bt last" style="font-weight: bold; font-size: 29px;">>></a>
+            </div>
+        </div>
+    </div>
+    </main>
+</section>
+</div>
+
+
+
+
+
+
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<!-- footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <a href="main.html">
+                <img src="/img/sumsum_logo.png">
+            </a>
+        </div>
+        <div>
+            <ul class="footer-list">
+                <li class="ft">썸썸소개</li>
+                <li class="ft">이용약관</li>
+                <li class="ft">개인정보처리방침</li>
+                <li class="ft">자주 묻는 질문(FAQ)</li>
+                <li class="ft">문의하기</li>
+            </ul>
+            <ul class="footer-info">
+                <li class="ft">법인명: 썸썸 코벤져스</li>
+                <li class="ft">사업자 등록번호:123-12-123456</li>
+                <li class="ft">사업자 정보확인</li>
+                <li class="ft">대표자명: 한동석</li>
+                <li class="ft">주소: 서울 강남구 테헤란로 146</li>
+            </ul>
+            <div class="ft-1">
+                © 2022 kovengers. We are best team.
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    function button_event(){
+
+        if (confirm("정말 회원을 영구 정지시키시겠습니까??") == true){    //확인
+            var form = document.test;
+            form.submit();
+
+        }else{   //취소
+            return;
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

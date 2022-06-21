@@ -18,7 +18,7 @@ public class AnswerDAO {
     }
     //메세지 답장 작성
     public void answerInsert(AnswerVO answerVO){
-    answerMapper.insert(answerVO);
+        answerMapper.insert(answerVO);
     }
     //메세지  답장 한개 가져오기
     public AnswerVO answerSelectOne(int answerNum){
@@ -28,7 +28,7 @@ public class AnswerDAO {
         return answerMapper.update(answerVO)==1;}
     //메세지 답장 삭제
     public boolean answerDelete(int answerNum){
-    return answerMapper.delete(answerNum)==1;
+        return answerMapper.delete(answerNum)==1;
     }
     //메세지 답장 보낸 시간 가져오기
     public String answerGetSendDate(int answerNum){
