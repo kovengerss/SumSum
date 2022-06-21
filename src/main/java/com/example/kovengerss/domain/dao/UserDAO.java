@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class UserDAO {
     private final UserMapper userMapper;
 
-    //회원 정보 조회
+    //회원 정보 조회ㅋ
     public void userSelect(Integer userNum){;}
     //회원가입
     public void userInsert(UserVO userVO){userMapper.insert(userVO);}
