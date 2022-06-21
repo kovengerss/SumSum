@@ -13,21 +13,21 @@ public class MessageDAO {
     private final MessageMapper messageMapper;
 
     //메세지(쪽지) 목록
-    public void msgGetList(){;}
+    public List<MessageVO> msgGetList(){ return messageMapper.getList();}
     //메세지(쪽지) 입력
-    public  void msgInsert(MessageVO messageVO){;}
+    public  void msgInsert(MessageVO messageVO){messageMapper.insert(messageVO);}
     //메세지(쪽지) 수정
-    public  void msgUpdate(MessageVO messageVO){;}
+    public  boolean msgUpdate(MessageVO messageVO){ return messageMapper.update(messageVO) ==1;}
     //메세지(쪽지) 삭제
-    public  void msgDelete(MessageVO messageVO){;}
+    public  boolean msgDelete(MessageVO messageVO){ return messageMapper.delete(messageVO) ==1;}
     //메세지(쪽지) 전체수
-    public void msgGetTotal(){;}
+    public int msgGetTotal(){ return messageMapper.getTotal();}
     //메세지(쪽지) 보낸 시간 가져오기
-    public void msgGetSendDate(){;}
+    public String msgGetSendDate(int messageNum){ return messageMapper.getSendDate(messageNum);}
     //메세지(쪽지) 한개 가져오기
-    public void msgSelectOne(Integer messageNum){;}
+    public MessageVO msgSelectOne(int messageNum){return messageMapper.select(messageNum);}
     //메세지(쪽지) 제목 가져오기
-    public void msgSelectTitle(MessageVO messageVO){;}
+    public String msgSelectTitle(int messageNum){return messageMapper.selectTitle(messageNum);}
     //메세지(쪽지) 내용 가져오기
-    public void msgSelectContent(MessageVO messageVO){;}
+    public String msgSelectContent(int messageNum){return messageMapper.selectContent(messageNum);}
 }

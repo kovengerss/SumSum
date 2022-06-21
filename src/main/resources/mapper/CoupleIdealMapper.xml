@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.kovengerss.mapper.CoupleIdealMapper">
-
+    <insert id="insert">
+    INSERT INTO TBL_COUPLE_IDEAL
+    (COUPLE_IDEAL_NUM, COUPLE_AGE, COUPLE_GENDER, COUPLE_HOBBY, COUPLE_RESIDENCE, COUPLE_MBTI, COUPLE_SELF_INTRODUCE, COUPLE_IDEAL_CONTENT, COUPLE_SMOKE, COUPLE_JOB)
+    VALUES(SEQ_COUPLE_IDEAL.NEXTVAL,#{coupleAge} ,#{coupleGender} ,#{coupleHobby} ,#{coupleResidence} ,#{coupleMbti},#{coupleSelfIntroduce} , #{coupleIdealContent},#{coupleSmoke} ,#{coupleJob})
+    </insert>
 </mapper>

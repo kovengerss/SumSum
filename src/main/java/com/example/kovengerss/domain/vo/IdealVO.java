@@ -16,4 +16,12 @@ public class IdealVO {/*이상형*/
     private String selfIntroduce;//자기소개
     private String houseExist; //자가
     private Integer userNum;
+
+    //이상형
+    private String idealContent;
+    //흡연
+    private String smoke;
+    //직업
+    private String job;
+    //
 }
