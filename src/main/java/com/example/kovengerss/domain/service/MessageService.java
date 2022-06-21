@@ -15,7 +15,7 @@ public interface MessageService {
     //메세지(쪽지) 수정
     public   boolean msgUpdate(MessageVO messageVO);
     //메세지(쪽지) 삭제
-    public   boolean msgDelete(MessageVO messageVO);
+    public   boolean msgDelete(Integer messageNum);
     //메세지(쪽지) 전체수
     public int msgGetTotal();
     //메세지(쪽지) 보낸 시간 가져오기

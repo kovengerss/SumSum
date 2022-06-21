@@ -156,7 +156,7 @@ div#chat-wrap input:focus{
                 <button class="tabs active" onclick ="tabOpen(event, 'letter-content');" id="basic_content">
                         <span class="bullet">수신함</span>
                 </button>
-                <button class="tabs" onclick="tabOpen(event, 'sendLetter');" >
+                <button  type ="button"class="tabs"><!--onclick="tabOpen(event, 'sendLetter');"-->
                         <span class="bullet">발신함</span>
                 </button>
             </div>
@@ -196,32 +196,40 @@ div#chat-wrap input:focus{
                 </div>
             </div>
         <!-- 발신함 -->
-            <div class="letter-content" id="sendLetter" style =" display: none;">
+
+        <th:block th:each="message:${messageList}">
+            <form action="/remove" method="post">
+            <div class="letter-content" id="sendLetter" style ="display: block;" th:object="${message}">
                 <div class="chat-wrap">
                     <div style="width: 100%;">
                         <div class="chat-header">
-                            <button class="check-btn" id="myCheck">ㅎㅇ</button>
+                            <span th:text="*{messageNum}" ></span>
+                            <button type="button"class="check-btn" id="myCheck"th:text="*{messageTitle}"></button>
                         <!-- 보내기 -->
-                            <form id="myContentCheck" name="myContentCheck" action="" style="display:none;">
-                                <div class="answer-content" id="myContentCheck">
-                                    안녕하세요
+                          <!--  <form id="myContentCheck" name="myContentCheck" action="" style="display:none;">-->
+                                <div class="answer-content" id="myContentCheck" th:text="*{messageContent}">
+
                                 </div>
-                            </form>
+                          <!--  </form>-->
                         <!-- 쪽지 내용 -->
                         </div>
                         <div class="from-who">
                             <span class="who">
                                 이종임
                             </span>
-                            <span class="time">
-                                6/15
+                            <span class="time" th:text="*{messageSendDate}">
+
                             </span>
-                            <button class="letter-btn">삭제</button>
+                            <button class="letter-btn" >삭제</button>
                         </div>
                     </div>
                 </div>
             </div>
+            </form>
+        </th:block>
+        </form>
     </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

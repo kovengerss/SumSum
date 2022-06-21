@@ -32,8 +32,8 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
-    public boolean msgDelete(MessageVO messageVO) {
-        return messageDAO.msgDelete(messageVO);
+    public boolean msgDelete(Integer messageNum) {
+        return messageDAO.msgDelete(messageNum);
     }
 
     @Override

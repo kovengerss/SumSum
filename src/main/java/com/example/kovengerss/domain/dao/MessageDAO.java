@@ -19,7 +19,7 @@ public class MessageDAO {
     //메세지(쪽지) 수정
     public  boolean msgUpdate(MessageVO messageVO){ return messageMapper.update(messageVO) ==1;}
     //메세지(쪽지) 삭제
-    public  boolean msgDelete(MessageVO messageVO){ return messageMapper.delete(messageVO) ==1;}
+    public  boolean msgDelete(Integer messageNum){ return messageMapper.delete(messageNum) ==1;}
     //메세지(쪽지) 전체수
     public int msgGetTotal(){ return messageMapper.getTotal();}
     //메세지(쪽지) 보낸 시간 가져오기

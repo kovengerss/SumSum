@@ -21,7 +21,7 @@ public class MessageMapperTests {
     }*/
 
 
-    @Test
+  /*  @Test
     public void insertTest(){
         MessageVO messageVO = new MessageVO();
         messageVO.setMessageTitle("인설트테스트901 제목");
@@ -29,7 +29,7 @@ public class MessageMapperTests {
         messageMapper.insert(messageVO);
         log.info("인설트된 메세지 번호 :" + messageVO.getMessageNum());
 
-    }
+    }*/
 
     /*@Test
     public void selectone(){
@@ -38,9 +38,13 @@ public class MessageMapperTests {
 
     }*/
 
- /*  @Test
+  /* @Test
     public void selectContent(){
-        messageMapper.selectContent(1);
+        messageMapper.selectContent(3);
     }*/
+    @Test
+    public void deleteTest(){
+        log.info("DELETE COUNT : " +messageMapper.delete(1));
+    }
 
 }

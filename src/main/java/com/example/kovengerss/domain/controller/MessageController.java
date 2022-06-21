@@ -40,10 +40,19 @@ public class MessageController {
         log.info("list.............");
         log.info("----------------------------");
 
-        model.addAttribute("boardList", messageService.getList());
+        model.addAttribute("messageList", messageService.getList());
         return "/letter";
     }
 
+    @PostMapping("remove")
+    public String remove(Integer messageNum,Model model){
+        log.info("----------------------------");
+        log.info("remove............. : ");
+        log.info("----------------------------");
+
+        messageService.msgDelete(messageNum);
+        return getList(model);
+    }
 
 /*
     // 쪽지 보내기
