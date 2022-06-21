@@ -3,6 +3,7 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.dao.UserDAO;
 import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Qualifier("user") @Primary
+@Slf4j
 public class UserServiceImpl implements UserService{
     private final UserDAO userDAO;
 
@@ -20,7 +22,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void userInsert(UserVO userVO) {
-
+        userDAO.userInsert(userVO);
     }
 
     @Override
@@ -29,8 +31,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void userDelete(UserVO userVO) {
-
+    public boolean userDelete(int userNum) {
+        return userDAO.userDelete(userNum);
     }
 
     @Override

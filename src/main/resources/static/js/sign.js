@@ -8,11 +8,10 @@ function checkId() {
         return false;
     }
     $.ajax({
-        url: "/kovengerss/UserCheckIdOk.ul",
+        url: "/sign",
         type: "get",
+        async: false,
         data: {userId: $("input[name='userId']").val()},
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
         success: function (result) {
             if (result.check==1) {
                 alert("이미 존재하는 아이디 입니다.");

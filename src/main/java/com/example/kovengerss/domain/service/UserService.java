@@ -13,7 +13,7 @@ public interface UserService {
     //회원 정보 수정
     public void userUpdate(Integer userNum);
     //회원 탈퇴
-    public void userDelete(UserVO userVO);
+    public boolean userDelete(int userNum);
     //아이디 중복검사
     public void CheckId(String userId);
     //아이디 가져오기

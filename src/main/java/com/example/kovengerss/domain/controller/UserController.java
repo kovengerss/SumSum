@@ -1,12 +1,15 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.UserService;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 //TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
 //관리자로그인	        adminLogin		        post		모든항목			      필요	    adminpage
@@ -34,15 +37,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     private final UserService userService;
     //회원가입
-    @PostMapping("sign")
-    public void userInsert(){
+    @GetMapping("sign")
+    public void signUpForm(){
+    }
 
+    @PostMapping("sign")
+    public String userInsert(UserVO userVO){
+        log.info("----------------------------");
+        log.info("Insert............. : " + userVO);
+        log.info("----------------------------");
+        userService.userInsert(userVO);
+        return "login";
     }
 
     //로그인
-    @PostMapping("login")
-    public void userLogin(){
+    @GetMapping("login")
+    public String loginForm(HttpServletRequest req){
+        return "login";
+    }
 
+    @PostMapping("login")
+    public String userLogin(){
+        return "main";
     }
 
     //마이페이지 전체정보
@@ -84,6 +100,22 @@ public class UserController {
     public void getMarry(){
 
     }
+    //     탈퇴
+    @GetMapping("myPage")
+    public String deleteForm(Integer userNum){
+        log.info("----------------------------");
+        log.info("remove............. : " + userNum);
+        log.info("----------------------------");
 
+        return "myPage";
+    }
+    @PostMapping("myPage")
+    public String delete(int userNum){
+        log.info("----------------------------");
+        log.info("remove............. : " + 2);
+        log.info("----------------------------");
+        userService.userDelete(2);
+        return "main";
+    }
 
 }
