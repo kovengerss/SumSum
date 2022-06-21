@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.kovengerss.mapper.MessageMapper">
+    <!---->
+    <select id="getList" resultType="messageVO">
+        SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE, USER_NUM
+        FROM TBL_MESSAGE
+    </select>
+    <insert id="insert">
+        <selectKey keyProperty="messageNum" order="BEFORE" resultType="_int">
+            SELECT SEQ_MESSAGE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_MESSAGE
+        (MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE)
+        VALUES(SEQ_MESSAGE.NEXTVAL,#{messageTitle} ,#{messageContent},SYSDATE)
+    </insert>
+    <update id="update">
+         UPDATE TBL_MESSAGE
+         SET MESSAGE_TITLE=#{messageTitle}, MESSAGE_CONTENT=#{messageContent}, MESSAGE_SEND_DATE=SYSDATE
+         WHERE MESSAGE_NUM=#{messageNum}
+    </update>
+    <!--메세지 총 개수 가져오기-->
+    <select id="getTotal" resultType="_int">
+         SELECT COUNT(MESSAGE_NUM) FROM TBL_MESSAGE
+    </select>
+    <!--메세지 보낸 시간 가져오기-->
+    <select id="getSendDate" resultType="string">
+        SELECT MESSAGE_SEND_DATE
+        FROM TBL_MESSAGE
+        WHERE MESSAGE_NUM = #{messageNum}
+    </select>
+    <!--메세지 한개 가져오기-->
+    <select id="select" resultType="messageVO">
+         SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE, USER_NUM
+         FROM TBL_MESSAGE
+         WHERE MESSAGE_NUM=#{messageNum}
+    </select>
+    <select id="selectTitle" resultType="string">
+         SELECT MESSAGE_TITLE
+         FROM TBL_MESSAGE
+         WHERE MESSAGE_NUM = #{messageNum}
+    </select>
+    <select id="selectContent" resultType="string">
+         SELECT MESSAGE_CONTENT
+         FROM TBL_MESSAGE
+         WHERE MESSAGE_NUM = #{messageNum}
+    </select>
+
+
+
 
 </mapper>

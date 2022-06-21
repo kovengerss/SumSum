@@ -7,44 +7,52 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Qualifier("answer") @Primary
 public class AnswerServiceImpl implements AnswerService{
     private final AnswerDAO answerDAO;
 
+
+    @Override
+    public List<AnswerVO> getList() {
+        return answerDAO.getList();
+    }
+
     @Override
     public void answerInsert(AnswerVO answerVO) {
-
+        answerDAO.answerInsert(answerVO);
     }
 
     @Override
-    public AnswerVO answerSelectOne(Integer answerNum) {
-        return null;
+    public AnswerVO answerSelectOne(int answerNum) {
+        return answerDAO.answerSelectOne(answerNum);
     }
 
     @Override
-    public void answerUpdate(AnswerVO answerVO) {
-
+    public boolean answerUpdate(AnswerVO answerVO) {
+        return answerDAO.answerUpdate(answerVO);
     }
 
     @Override
-    public void answerDelete(AnswerVO answerVO) {
-
+    public boolean answerDelete(int answerNum) {
+        return answerDAO.answerDelete(answerNum);
     }
 
     @Override
-    public String answerGetSendDate() {
-        return null;
+    public String answerGetSendDate(int answerNum) {
+        return answerDAO.answerGetSendDate(answerNum);
     }
 
     @Override
-    public String answerSelectTitle(AnswerVO answerVO) {
-        return null;
+    public String answerSelectTitle(int answerNum) {
+        return answerDAO.answerSelectTitle(answerNum);
     }
 
     @Override
-    public String answerSelectContent(AnswerVO answerVO) {
-        return null;
+    public String answerSelectContent(int answerNum) {
+        return answerDAO.answerSelectContent(answerNum);
     }
 }

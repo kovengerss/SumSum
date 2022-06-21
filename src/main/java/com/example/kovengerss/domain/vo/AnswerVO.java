@@ -12,4 +12,5 @@ public class AnswerVO {/*쪽지 답장*/
     private String answerTitle;
     private String answerContent;
     private String answerSendDate;
+
 }
