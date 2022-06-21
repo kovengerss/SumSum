@@ -1,7 +1,10 @@
 package com.example.kovengerss.Mapper;
 
 import com.example.kovengerss.domain.dao.UserDAO;
+<<<<<<< HEAD
 import com.example.kovengerss.domain.vo.UserVO;
+=======
+>>>>>>> 566f7d39c2507d3691e55b6d1bfd84d73b823454
 import com.example.kovengerss.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

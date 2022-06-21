@@ -12,17 +12,17 @@ public interface MessageMapper {
     //메세지(쪽지) 입력
     public  void insert(MessageVO messageVO);
     //메세지(쪽지) 수정
-    public  void update(MessageVO messageVO);
+    public  int update(MessageVO messageVO);
     //메세지(쪽지) 삭제
-    public  void delete(MessageVO messageVO);
+    public  int delete(MessageVO messageVO);
     //메세지(쪽지) 전체수
-    public Integer getTotal();
+    public int getTotal();
     //메세지(쪽지) 보낸 시간 가져오기
-    public String getSendDate();
+    public String getSendDate(Integer messageNum);
     //메세지(쪽지) 한개 가져오기
     public MessageVO select(Integer messageNum);
     //메세지(쪽지) 제목 가져오기
-    public String selectTitle(MessageVO messageVO);
+    public String selectTitle(Integer messageNum);
     //메세지(쪽지) 내용 가져오기
-    public String selectContent(MessageVO messageVO);
+    public String selectContent(Integer messageNum);
 }
