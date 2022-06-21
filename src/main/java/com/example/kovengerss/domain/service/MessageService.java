@@ -13,17 +13,17 @@ public interface MessageService {
     //메세지(쪽지) 입력
     public  void msgInsert(MessageVO messageVO);
     //메세지(쪽지) 수정
-    public   boolean msgUpdate(MessageVO messageVO);
+    public  void msgUpdate(MessageVO messageVO);
     //메세지(쪽지) 삭제
-    public   boolean msgDelete(MessageVO messageVO);
+    public  void msgDelete(MessageVO messageVO);
     //메세지(쪽지) 전체수
-    public int msgGetTotal();
+    public Integer msgGetTotal();
     //메세지(쪽지) 보낸 시간 가져오기
-    public String msgGetSendDate(int messageNum);
+    public String msgGetSendDate();
     //메세지(쪽지) 한개 가져오기
-    public MessageVO msgSelectOne(int messageNum);
+    public MessageVO msgSelectOne(Integer messageNum);
     //메세지(쪽지) 제목 가져오기
-    public String msgSelectTitle(int messageNum);
+    public String msgSelectTitle(MessageVO messageVO);
     //메세지(쪽지) 내용 가져오기
-    public String msgSelectContent(int messageNum);
+    public String msgSelectContent(MessageVO messageVO);
 }
