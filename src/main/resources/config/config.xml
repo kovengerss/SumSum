@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.example.kovengerss.domain.vo.UserVO" alias="userVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.BoardVO" alias="boardVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.ReplyVO" alias="replyVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.MessageVO" alias="messageVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.AnswerVO" alias="answerVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.IdealVO" alias="idealVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.CoupleIdealVO" alias="coupleIdealVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.AdminVO" alias="adminVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.LikeVO" alias="likeVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.PointVO" alias="pointVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.BlackListVO" alias="blackListVO"/>
+    </typeAliases>
+</configuration>
