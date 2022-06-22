@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.dao.BoardDAO;
 import com.example.kovengerss.domain.vo.BoardVO;
+import com.example.kovengerss.domain.vo.Criteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -17,7 +18,7 @@ public class BoardServiceImpl implements BoardService{
 
 
     @Override
-    public List<BoardVO> getList() {return boardDAO.getList();}
+    public List<BoardVO> getList(BoardVO boardVO, Criteria criteria) {return boardDAO.getList(boardVO, criteria);}
 
     @Override
     public void boardInsert(BoardVO boardVO) {boardDAO.boardInsert(boardVO);}
@@ -32,7 +33,7 @@ public class BoardServiceImpl implements BoardService{
     public boolean boardDelete(Integer boardNum) {return boardDAO.boardDelete(boardNum);}
 
     @Override
-    public int boardGetTotal() {return boardDAO.boardGetTotal();}
+    public int boardGetTotal(BoardVO boardVO) {return boardDAO.boardGetTotal(boardVO);}
 
     @Override
     public String boardGetField(Integer boardNum) {return boardDAO.boardGetField(boardNum);}

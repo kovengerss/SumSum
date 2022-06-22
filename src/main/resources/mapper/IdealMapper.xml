@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.kovengerss.mapper.IdealMapper">
+    <insert id="insert">
+        INSERT INTO TBL_IDEAL
+    (IDEAL_NUM, AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, IDEAL_CONTENT, SMOKE, JOB)
+    VALUES(SEQ_IDEAL.NEXTVAL, #{age}, #{gender}, #{hobby}, #{residence}, #{income}, #{mbti}, #{selfIntroduce}, #{houseExist}, #{idealContent}, #{smoke}, #{job})
+    </insert>
+    <select id="select" resultType="idealVO">
+        SELECT IDEAL_NUM, AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, USER_NUM, IDEAL_CONTENT, SMOKE, JOB
+        FROM TBL_IDEAL
+        WHERE IDEAL_NUM=#{idealNum}
+    </select>
+    <update id="update">
+        UPDATE TBL_IDEAL
+        SET AGE=#{age}, GENDER=#{gender}, HOBBY=#{hobby}, RESIDENCE=#{residence}, INCOME=#{income}, MBTI=#{mbti}, SELF_INTRODUCE=#{selfIntroduce}, HOUSE_EXIST=#{houseExist}, IDEAL_CONTENT=#{idealContent}, SMOKE=#{smoke}, JOB=#{job}
+        WHERE IDEAL_NUM=#{idealNum}
+    </update>
 
 </mapper>

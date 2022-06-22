@@ -15,48 +15,49 @@ import java.util.List;
 public class MessageServiceImpl implements MessageService{
     private final MessageDAO messageDAO;
 
+
     @Override
     public List<MessageVO> getList() {
-        return null;
+        return messageDAO.msgGetList();
     }
 
     @Override
     public void msgInsert(MessageVO messageVO) {
-
+        messageDAO.msgInsert(messageVO);
     }
 
     @Override
-    public void msgUpdate(MessageVO messageVO) {
-
+    public boolean msgUpdate(MessageVO messageVO) {
+        return messageDAO.msgUpdate(messageVO);
     }
 
     @Override
-    public void msgDelete(MessageVO messageVO) {
-
+    public boolean msgDelete(Integer messageNum) {
+        return messageDAO.msgDelete(messageNum);
     }
 
     @Override
-    public Integer msgGetTotal() {
-        return null;
+    public int msgGetTotal() {
+        return messageDAO.msgGetTotal();
     }
 
     @Override
-    public String msgGetSendDate() {
-        return null;
+    public String msgGetSendDate(int messageNum) {
+        return messageDAO.msgGetSendDate(messageNum);
     }
 
     @Override
-    public MessageVO msgSelectOne(Integer messageNum) {
-        return null;
+    public MessageVO msgSelectOne(int messageNum) {
+        return messageDAO.msgSelectOne(messageNum);
     }
 
     @Override
-    public String msgSelectTitle(MessageVO messageVO) {
-        return null;
+    public String msgSelectTitle(int messageNum) {
+        return messageDAO.msgSelectTitle(messageNum);
     }
 
     @Override
-    public String msgSelectContent(MessageVO messageVO) {
-        return null;
+    public String msgSelectContent(int messageNum) {
+        return messageDAO.msgSelectContent(messageNum);
     }
 }

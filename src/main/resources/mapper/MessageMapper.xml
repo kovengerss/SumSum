@@ -19,6 +19,11 @@
          SET MESSAGE_TITLE=#{messageTitle}, MESSAGE_CONTENT=#{messageContent}, MESSAGE_SEND_DATE=SYSDATE
          WHERE MESSAGE_NUM=#{messageNum}
     </update>
+    <!--메세지 삭제-->
+    <delete id="delete">
+        DELETE FROM TBL_MESSAGE
+        WHERE MESSAGE_NUM=#{messageNum}
+    </delete>
     <!--메세지 총 개수 가져오기-->
     <select id="getTotal" resultType="_int">
          SELECT COUNT(MESSAGE_NUM) FROM TBL_MESSAGE

@@ -10,9 +10,9 @@ public interface IdealService {
     //이상형 수정 작업 (delete -> insert);
     public void idealDelete(IdealVO idealVO);
     //이상형 update 수정작업
-    public void idealUpdate(IdealVO idealVO);
+    public boolean idealUpdate(IdealVO idealVO);
     //이상형  전제 정보 조회
-    public void idealSelect(IdealVO idealVO);
+    public IdealVO idealSelect(int idealNum);
     //AGE조회
     public void idealGetAge(IdealVO idealVO);
     //GENDER조회

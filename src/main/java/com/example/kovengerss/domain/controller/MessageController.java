@@ -26,6 +26,7 @@ public class MessageController {
     public RedirectView register(MessageVO messageVO, RedirectAttributes rttr){
         log.info("----------------------------");
         log.info("register............. : " + messageVO);
+        log.info("register............. : " + messageVO.getMessageNum());
         log.info("----------------------------");
 
         messageService.msgInsert(messageVO);
@@ -33,6 +34,11 @@ public class MessageController {
         return new RedirectView("/list");
     }
 
+
+    @GetMapping("letter")
+    public void letter(){
+        ;
+    }
 
     @GetMapping("list")
     public String getList(Model model){
@@ -44,13 +50,13 @@ public class MessageController {
         return "/letter";
     }
 
-    @PostMapping("remove")
-    public String remove(MessageVO messageVO,Model model){
+    @GetMapping("remove")
+    public String remove(Integer messageNum,Model model){
         log.info("----------------------------");
-        log.info("remove............. : ");
+        log.info("remove.............dsd : " + messageNum);
         log.info("----------------------------");
 
-        messageService.msgDelete(messageVO);
+        messageService.msgDelete(messageNum);
         return getList(model);
     }
 
