@@ -15,7 +15,9 @@ public interface UserService {
     //회원 탈퇴
     public boolean userDelete(int userNum);
     //아이디 중복검사
-    public void CheckId(String userId);
+    public boolean checkId(String userId);
+    //로그인
+    public UserVO login(String userId, String userPw);
     //아이디 가져오기
     public void userGetId(UserVO userVO);
     //현재 비밀번호 가져오기
@@ -30,4 +32,6 @@ public interface UserService {
     public void userGetGender(UserVO userVO);
     //해당 회원 이상형 번호(ideal_num)가져오기
     public void userGetIdealNum(UserVO userVO);
+
+    void userDeleteWithPw(String userPw);
 }

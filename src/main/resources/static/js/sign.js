@@ -1,35 +1,42 @@
 /**
  *
  */
+var count= false;
 function checkId() {
 
     if ($("#account-id").val() == '') {
         alert('아이디를 입력해주세요.')
         return false;
     }
+    var userId = $("#account-id").val();
+    console.log(userId);
+    var data = {userId: userId}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+
     $.ajax({
-        url: "/sign",
         type: "get",
-        async: false,
-        data: {userId: $("input[name='userId']").val()},
+        url: "/checkId",
+        data: data,
         success: function (result) {
-            if (result.check==1) {
+            if (result==true) {
+                console.log(result);
                 alert("이미 존재하는 아이디 입니다.");
                 idCheck.css("color","red");
                 idCheck.text("이미 존재하는 아이디입니다.");
                 $("#account-id").val("");
                 $("#account-id").focus();
+                count =false;
             } else {
+                console.log(result);
                 idCheck.css("color","rgb(99 193 76)");
                 idCheck.text("사용 가능한 아이디입니다.");
                 $('userId').attr("result", "success");
+                count = true;
             }
         }
-    });
+    }); // ajax 종료
 }
-
 //휴대폰 번호 인증
-let code2 = "";
+/*let code2 = "";
 function pushCode(){
     $.ajax({
         url:"/kovengerss/UserCheckPhoneOk.ul",
@@ -55,7 +62,7 @@ function pushCode(){
     else{
         alert("인증실패");
     }
-});
+});*/
 
 var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
 var codeCheck = RegExp(/^[0-9]{4,4}$/);
@@ -64,6 +71,7 @@ var passwdCheck = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+
 var nameCheck = RegExp(/^[가-힣]{2,6}$/);
 var emailCheck2 = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 var phoneNumCheck = RegExp(/^01[0179][0-9]{7,8}$/);
+var birthCheck = RegExp(/^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/);
 $(document).ready(function() {
     $("#cbx_chkAll").click(function() {
         if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
@@ -78,6 +86,8 @@ $(document).ready(function() {
         else $("#cbx_chkAll").prop("checked", true);
     });
 });
+
+
 
 /* 아이디 유효성 검사  */
 let idCheck = $(".account-id-error");
@@ -95,6 +105,7 @@ $id.on("keyup", function(){
         idCheck.text("아이디 형식에 맞지 않습니다.");
     }
 });
+
 let nameChecked = $(".account-name-error");
 let $name =$("#account-name");
 $name.on("keyup", function(){
@@ -185,6 +196,21 @@ $hp.on("keyup",function(){
     }
 });
 
+
+let $birth = $("#userBirth");
+let btCheck = $(".userBirth");
+$birth.on("keyup",function(){
+    if(birthCheck.test($birth.val())){
+        btCheck.css("color","rgb(99 193 76)");
+        btCheck.text("생년월일 입력완료.");
+    }else{
+        btCheck.css("color","red");
+        btCheck.text("생년월일을 다시입력해주세요.");
+        return false;
+    }
+});
+
+
 function checks(){
 
     //이메일 공백 확인
@@ -201,23 +227,6 @@ function checks(){
         $("#account-email").focus();
         return false;
     }
-
-    //이름의 유효성 검사
-    if(!nameCheck.test($("#account-name").val())){
-        alert("이름을 다시 입력해주세요");
-        $("#account-name").val("");
-        $("#account-name").focus();
-        return false;
-    }
-
-    //이름 유효성
-    if (!nameCheck.test($("#account-name").val())) {
-        alert("이름을 다시 입력해주세요.");
-        $("#account-name").val("");
-        $("#account-name").focus();
-        return false;
-    }
-
 
     //아이디 공백 확인
     if($("#account-id").val() == ""){
@@ -256,6 +265,42 @@ function checks(){
         return false;
     }
 
+    //이름의 유효성 검사
+    if(!nameCheck.test($("#account-name").val())){
+        alert("이름을 다시 입력해주세요");
+        $("#account-name").val("");
+        $("#account-name").focus();
+        return false;
+    }
+    //이름 유효성
+    if (!nameCheck.test($("#account-name").val())) {
+        alert("이름을 다시 입력해주세요.");
+        $("#account-name").val("");
+        $("#account-name").focus();
+        return false;
+    }
+    // 성별 확인
+    if($("#userGender").val() == ''){
+        alert("성별을 선택해주세요.");
+        $("#userGender").focus();
+        return false;
+    }
+
+    // 생일 확인
+    if($("#userBirth").val() == ''){
+        alert("생년월일을 입력해주세요.");
+        $("#userBirth").val("");
+        $("#userBirth").focus();
+        return false;
+    }
+    if(!birthCheck.test($("#userBirth").val())){
+        alert("생년월일을 다시 입력해주세요.");
+        $("#userBirth").val("");
+        $("#userBirth").focus();
+        return false;
+    }
+
+
     //핸드폰번호 확인
     if(!phoneNumCheck.test($("#account-hp").val())) {
         alert("핸드폰 번호를 확인해주세요.");
@@ -269,14 +314,6 @@ function checks(){
         $("#codeNum").val("");
         $("#codeNum").focus();
         return false;
-    }
-
-    // 성별 확인
-    if($("#userGender").val() == ''){
-        alert("성별을 선택해주세요.");
-        $("#userGender").focus();
-        return false;
-
     }
 
     if($("#checkList1").is(":checked")== 0){
@@ -294,24 +331,23 @@ function checks(){
         console.log("3");
         return false;
     }
-    if($("#checkList4").is(":checked")== 0){
-        alert("만 14세 이상 체크해주세요.");
-        console.log("4");
-        return false;
-    }
-    // 출생년도 확인
-    if($("#year").val() == ''){
-        alert("출생년도를 선택해주세요.");
-        $("#year").focus();
-        return false;
-    }
 
 
 
     if(checkId("#account-id")){
         alert("이미 존재하는 아이디 입니다.");
-        return ;
+        return false;
     }
+
+    if(count ==true){
+        return true;
+    }else if(count==false){
+        alert("중복 확인을 눌러주세요.")
+        $("#account-id").val("");
+        $("#account-id").focus();
+        return false;
+    }
+
     alert("회원가입이 완료되었습니다.");
 }
 

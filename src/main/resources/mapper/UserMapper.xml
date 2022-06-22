@@ -12,6 +12,19 @@
         FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </select>
+    <!--아이디 중복체크-->
+    <select id="checkId" resultType="boolean">
+        SELECT COuNT(USER_ID)
+        FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </select>
+    <!-- 로그인 -->
+    <select id="login" resultType="userVO">
+        SELECT
+        *
+        FROM TBL_USER
+        WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
+    </select>
     <!--ID 가져오기-->
     <select id="getId" resultType="userVO">
         SELECT USER_NUM, USER_NAME, USER_GENDER, USER_ID, USER_PW, USER_EMAIL, USER_PHONE_NUMBER, USER_BIRTH
@@ -22,5 +35,10 @@
     <delete id="delete">
         DELETE FROM TBL_USER
         WHERE USER_NUM = #{userNum}
+    </delete>
+
+    <delete id="deleteWithPw">
+        DELETE FROM TBL_USER
+        WHERE USER_PW = #{userPw}
     </delete>
 </mapper>

@@ -169,16 +169,6 @@ label.toggle-item:before {
 }
 
 
-.facebook-icon {
-    background-image: url("https://www.earlyadopter.co.kr/wp-content/uploads/2021/04/Facebook-logo-1024x717.png");
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 65px;
-    float: left;
-    height: 100%;
-    margin: 0 7px;
-    width: 30px;
-}
 
 .info {
     background-color: #f9f6f4;
