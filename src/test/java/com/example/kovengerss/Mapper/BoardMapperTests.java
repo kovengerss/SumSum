@@ -1,6 +1,7 @@
 package com.example.kovengerss.Mapper;
 
 import com.example.kovengerss.domain.vo.BoardVO;
+import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.mapper.BoardMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,9 @@ public class BoardMapperTests {
     private BoardMapper boardMapper;
 //    @Test
 //    public void getListTest(){
-//        boardMapper.getList().stream().map(BoardVO::toString).forEach(log::info);
+//        BoardVO boardVO = new BoardVO();
+//        boardVO.setBoardField("고민상담");
+//        boardMapper.getList(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
 //
 //    }
 
@@ -49,8 +52,10 @@ public class BoardMapperTests {
 //        log.info("DELETE COUNT : " + boardMapper.delete(6378));
 //    }
 
-//        @Test
-//    public void getTotalTest(){
-//        log.info("총 게시글 : " + boardMapper.getTotal());
-//    }
+        @Test
+    public void getTotalTest(){
+            BoardVO boardVO = new BoardVO();
+            boardVO.setBoardField("고민상담");
+        log.info("총 게시글 : " + boardMapper.getTotal(boardVO));
+    }
 }
