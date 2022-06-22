@@ -18,11 +18,11 @@ public class UserMapperTests {
     @Autowired
     private UserDAO userDAO;
 
-    @Test
+    /*@Test
     public void select(){
         log.info(userMapper.select(26).toString());
     }
-
+    */
     /*@Test
     public void insert(){
         UserVO userVO = new UserVO();
@@ -37,15 +37,28 @@ public class UserMapperTests {
     }*/
 
     /*@Test
-    private void check(){
+//    아이디 가져오기
+    public void getId(){
         UserVO userVO = new UserVO();
-        userDAO.userInsert(userVO.setUserEmail("whddla8923@naver.com"));
+        log.info(userMapper.getId("whddla1").toString());
     }*/
 
     /*@Test
-    public void getId(){
-        log.info(userMapper.getId("whddla2").toString());
+    public void checkId(){
+        userMapper.checkId("whddla123");
+    }*/
+    /*@Test
+    public void checkId(){
+        userDAO.CheckId("whddla1234");
     }*/
 
+    /*@Test
+    public void login(){
+        userMapper.login("whddla123", "1234");
+    }*/
 
+    /*@Test
+    public void login(){
+        userDAO.login("whddla123","1234");
+    }*/
 }

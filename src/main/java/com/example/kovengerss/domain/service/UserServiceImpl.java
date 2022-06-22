@@ -36,8 +36,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void CheckId(String userId) {
+    public boolean checkId(String userId) {
+        if(userDAO.CheckId(userId)){
+            return true;
+        }return false;
+    }
 
+    @Override
+    public UserVO login(String userId, String userPw){
+       return userDAO.login(userId, userPw);
     }
 
     @Override
@@ -73,5 +80,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public void userGetIdealNum(UserVO userVO) {
 
+    }
+
+    @Override
+    public void userDeleteWithPw(String userPw) {
+        userDAO.userDeleteWithPw(userPw);
     }
 }

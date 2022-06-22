@@ -21,7 +21,13 @@ public class UserDAO {
         return userMapper.delete(userNum) == 1;
     }
     //아이디 중복검사
-    public void CheckId(String userId){;}
+    public boolean CheckId(String userId){
+        return userMapper.checkId(userId) == true;
+    }
+    //로그인
+    public UserVO login(String userId, String userPw){
+        return userMapper.login(userId, userPw);
+    }
     //아이디 가져오기
     public void userGetId(String userId){;}
     //현재 비밀번호 가져오기
@@ -36,4 +42,8 @@ public class UserDAO {
     public void userGetGender(UserVO userVO){;}
     //해당 회원 이상형 번호(ideal_num)가져오기
     public void userGetIdealNum(UserVO userVO){;}
+
+    public void userDeleteWithPw(String userPw) {
+        userMapper.deleteWithPw(userPw);
+    }
 }

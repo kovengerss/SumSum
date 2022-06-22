@@ -74,18 +74,18 @@
                     </div>
                 </div>
                 <div class="menuList">
-                    <a class="item" href="">
+                    <a class="item" href="/board/appilBoard">
                         어필하기
                     </a>
-                    <a class="item" href="./board/board.html">
+                    <a class="item" href="/board/board">
                         고민상담
                     </a>
-                    <a class="item" href="">
+                    <a class="item" href="/board/reviewBoard">
                         후기
                     </a>
                 </div>
                 <div class="signup-btn">
-                    <a href="sign.html">
+                    <a href="sign">
                         회원가입
                     </a>
                 </div>
@@ -97,19 +97,19 @@
             </h1>
             <div class="right-header">
                 <!-- 포인트 점수 받아오기 -->
-                <a class="point" href="myPagePoint.html">
+                <a class="point" href="myPagePoint">
                     잔여포인트 0점
                 </a>
                 <!-- 채팅 받아오기 -->
-                <a class="chatting" href="letter.html">
+                <a class="chatting" href="letter">
                     쪽지
                 </a>
                 <!-- 로그인 -->
-                <a class="login" href="login.html">
+                <a class="login" href="login">
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="sign.html">
+                <a class="signup" href="sign">
                     회원가입
                 </a>
             </div>
@@ -125,7 +125,7 @@
             </a>
             <div class="line"></div>
         </div>
-        <form action="sign" name="sign" method="post" class="sign-main-container">
+        <form onsubmit="return checks()" action="sign" name="sign" method="post" class="sign-main-container">
                 <!-- 이메일 -->
                 <div class="form-group">
                     <div class="some_join_input">
@@ -148,7 +148,7 @@
                                 <label class="account-id-error" for="account-id" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
                             </div>
                             <div class="some_join_input_nick">
-                                <input type="button" style="cursor: pointer; border:1; background-color: #fff; height: 30px;width: 95px;color: #555;border: 1px solid #999;margin-top: 10px;"  value="중복확인" onclick="checkId()">
+                                <input type="button" style="cursor: pointer; border:1; background-color: #fff; height: 30px;width: 95px;color: #555;border: 1px solid #999;margin-top: 10px;"  value="중복확인" id="checkClick" onclick="checkId()">
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                         <div class="">
                             <input class="form-control pwbox" name="reuserPw" id="account-password-confirm" type="password" placeholder="비밀번호 재확인" >
                             <div>
-                                <label class="account-password-confirm-error" for="" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                <label class="account-password-confirm-error" for="account-password-confirm" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
                             </div>
                         </div>
                     </div>
@@ -210,11 +210,14 @@
                         <div class="some_join_input_name">
                             <label class="label">성별</label>
                             <div class="">
-                                <select name="userGender" style="margin-right: 106px;" class="form-control">
+                                <select name="userGender" id="userGender" style="margin-right: 106px;" class="form-control">
                                     <option value="M" selected>남자</option>
                                     <option value="W" selected>여자</option>
                                     <option value="" selected>성별 선택</option>
                                 </select>
+                                <div>
+                                    <label class="userGender" for="userGender" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -225,7 +228,10 @@
                         <div class="some_join_input_name">
                             <label class="label">생년월일</label>
                             <div class="">
-                                <input name="userBirth" class="form-control"  placeholder="생년월일(yyMMdd)">
+                                <input name="userBirth" id="userBirth" class="form-control"  placeholder="생년월일(yyyyMMdd)">
+                                <div>
+                                    <label class="userBirth" for="userBirth" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -293,7 +299,7 @@
                             </div>
                             <div class="constract-text">
                                 <label>
-                                    만 14세 이상입니다.
+                                    만 19세 이상입니다.
                                     <input type="checkbox"  id="checkList3"  name="chk">
                                 </label>
                                 <span class="span-tag">[필수]</span>
@@ -362,7 +368,6 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=581665816618857" nonce="SiOBIhLG"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/sign.js"></script>
 </html>

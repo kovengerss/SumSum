@@ -5,11 +5,14 @@ import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 //TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
 //관리자로그인	        adminLogin		        post		모든항목			      필요	    adminpage
@@ -40,6 +43,13 @@ public class UserController {
     @GetMapping("sign")
     public void signUpForm(){
     }
+    @GetMapping("checkId")
+    @ResponseBody
+    public boolean checkId(String userId){
+        if(userService.checkId(userId)){
+            return true;
+        }return false;
+    }
 
     @PostMapping("sign")
     public String userInsert(UserVO userVO){
@@ -47,20 +57,39 @@ public class UserController {
         log.info("Insert............. : " + userVO);
         log.info("----------------------------");
         userService.userInsert(userVO);
-        return "login";
+        return "redirect:/login";
     }
 
     //로그인
     @GetMapping("login")
-    public String loginForm(HttpServletRequest req){
+    public String loginForm(){
         return "login";
     }
 
     @PostMapping("login")
-    public String userLogin(){
-        return "main";
+    public RedirectView login(String userId, String userPw, RedirectAttributes rttr){
+        log.info("---------------------------userList-------------------------");
+        rttr.addFlashAttribute("userList",userService.login(userId, userPw));
+        log.info("-----------------------------return-----------------------");
+        return new RedirectView("/main");
     }
 
+    @GetMapping("main")
+    public String home(){
+        return "/main";
+    }
+    /*@PostMapping("login")
+    public String login(String userId, String userPw, HttpSession httpSession, Model model){
+        UserVO userVO = new UserVO();
+        log.info("--------------------------userService--------------------------");
+        userService.login(userId, userPw);
+        log.info("--------------------------userService--------------------------");
+        if(userVO == null){
+            return "login";
+        }
+        model.addAttribute("main", userVO);
+        return "redirect:/main";
+    }*/
     //마이페이지 전체정보
     @GetMapping("myPage")
     public void getMyPage(){
@@ -100,22 +129,12 @@ public class UserController {
     public void getMarry(){
 
     }
-//    //     탈퇴
-//    @GetMapping("myPage")
-//    public String deleteForm(Integer userNum){
-//        log.info("----------------------------");
-//        log.info("remove............. : " + userNum);
-//        log.info("----------------------------");
-//
-//        return "myPage";
-//    }
-//    @PostMapping("myPage")
-//    public String delete(int userNum){
-//        log.info("----------------------------");
-//        log.info("remove............. : " + 2);
-//        log.info("----------------------------");
-//        userService.userDelete(2);
-//        return "main";
-//    }
+    //회원 탈퇴
+    @PostMapping("myPage")
+    public String deleteUser(String userPw, Model model){
+        userService.userDeleteWithPw(userPw);
+        log.info("userPw : "  + userPw);
+        return "redirect:/main";
+    }
 
 }
