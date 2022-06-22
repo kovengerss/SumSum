@@ -42,9 +42,9 @@ public class MessageMapperTests {
     public void selectContent(){
         messageMapper.selectContent(3);
     }*/
-    @Test
+    /*@Test
     public void deleteTest(){
-        log.info("DELETE COUNT : " +messageMapper.delete(1));
-    }
+        log.info("DELETE COUNT : " +messageMapper.delete(116));
+    }*/
 
 }

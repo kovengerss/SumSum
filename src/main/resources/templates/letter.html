@@ -147,7 +147,7 @@ div#chat-wrap input:focus{
     <div class="letter-wrap">
         <div class="letter-header">
             <div class="letter-header1">
-                <img style="width: 120px; height:30px;" src="../static/img/sumsum_logo.png">
+                <img style="width: 120px; height:30px;" src="/img/sumsum_logo.png">
                 <span class="letter-font">쪽지함</span>
             </div>
         </div>
@@ -156,7 +156,7 @@ div#chat-wrap input:focus{
                 <button class="tabs active" onclick ="tabOpen(event, 'letter-content');" id="basic_content">
                         <span class="bullet">수신함</span>
                 </button>
-                <button  type ="button"class="tabs"><!--onclick="tabOpen(event, 'sendLetter');"-->
+                <button  type ="button"class="tabs"onclick="tabOpen(event, 'sendLetter');">
                         <span class="bullet">발신함</span>
                 </button>
             </div>
@@ -197,21 +197,23 @@ div#chat-wrap input:focus{
             </div>
         <!-- 발신함 -->
 
-        <th:block th:each="message:${messageList}">
-            <form action="/remove" method="post">
-            <div class="letter-content" id="sendLetter" style ="display: block;" th:object="${message}">
-                <div class="chat-wrap">
+
+
+
+        <div class="letter-content" id="sendLetter" style ="display: block;" >
+            <th:block th:each="message:${messageList}">
+                <div class="chat-wrap"th:object="${message}">
                     <div style="width: 100%;">
                         <div class="chat-header">
-                            <span th:text="*{messageNum}" ></span>
-                            <button type="button"class="check-btn" id="myCheck"th:text="*{messageTitle}"></button>
-                        <!-- 보내기 -->
-                          <!--  <form id="myContentCheck" name="myContentCheck" action="" style="display:none;">-->
-                                <div class="answer-content" id="myContentCheck" th:text="*{messageContent}">
+                            <span name="messageNum" th:field="*{messageNum}" ></span>
+                            <button type="button"class="check-btn myCheck" th:text="*{messageTitle}"></button>
+                            <!-- 보내기 -->
+                            <!--  <form id="myContentCheck" name="myContentCheck" action="" style="display:none;">-->
+                            <div class="answer-content myContentCheck"  th:text="*{messageContent}" style=" display:none;height: 47px;">
 
-                                </div>
-                          <!--  </form>-->
-                        <!-- 쪽지 내용 -->
+                            </div>
+                            <!--  </form>-->
+                            <!-- 쪽지 내용 -->
                         </div>
                         <div class="from-who">
                             <span class="who">
@@ -220,14 +222,14 @@ div#chat-wrap input:focus{
                             <span class="time" th:text="*{messageSendDate}">
 
                             </span>
-                            <button class="letter-btn" >삭제</button>
+                            <a class="letter-btn"th:href="@{/remove(messageNum=*{messageNum})}">삭제</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            </form>
-        </th:block>
-        </form>
+            </th:block>
+        </div>
+
+
     </div>
 
 </body>
@@ -251,9 +253,9 @@ $('#check').click(function(){
 
 /* 발신함 */
 $(function(){
-$('#myCheck').click(function(){
-    $("#myContentCheck").removeClass("on");
-    $('#myContentCheck').slideToggle();
+$('.myCheck').click(function(){
+    $(".myContentCheck").removeClass("on");
+    $(this).next().slideToggle();
   })
 })
     function tabOpen(evt, contentName){
