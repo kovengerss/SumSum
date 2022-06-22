@@ -10,18 +10,20 @@ import org.springframework.stereotype.Repository;
 public class UserDAO {
     private final UserMapper userMapper;
 
-    //회원 정보 조회
+    //회원 정보 조회ㅋ
     public void userSelect(Integer userNum){;}
     //회원가입
-    public void userInsert(UserVO userVO){;}
+    public void userInsert(UserVO userVO){userMapper.insert(userVO);}
     //회원 정보 수정
     public void userUpdate(Integer userNum){;}
     //회원 탈퇴
-    public void userDelete(UserVO userVO){;}
+    public boolean userDelete(int userNum){
+        return userMapper.delete(userNum) == 1;
+    }
     //아이디 중복검사
     public void CheckId(String userId){;}
     //아이디 가져오기
-    public void userGetId(UserVO userVO){;}
+    public void userGetId(String userId){;}
     //현재 비밀번호 가져오기
     public void userGetPw(UserVO userVO){;}
     //이메일 가져오기

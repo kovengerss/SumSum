@@ -470,6 +470,7 @@ optgroup{
 }
 
 .title-input{
+    font-size: 20px;
     border: 0;
     width: calc(100% - 55px);
     padding: 1rem 0;
@@ -492,7 +493,7 @@ input{
     position: absolute;
     font-size: .75rem;
     right: 0;
-    bottom: 2px;
+    bottom: 6px;
     color: #989898;
 }
 
@@ -809,7 +810,6 @@ img{
     .notice-content-wrap{
         z-index: 0;
         font-size: 14px;
-        padding: 15px 20px;
     }
 }
 

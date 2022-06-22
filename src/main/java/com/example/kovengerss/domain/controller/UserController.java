@@ -1,6 +1,7 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.UserService;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -8,21 +9,56 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
+//TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
+//관리자로그인	        adminLogin		        post		모든항목			      필요	    adminpage
+//로그인			        login			        post		모든항목			      필요	    main
+//회원가입		        sign			        post		모든 항목			  필요  	    choice
+//연애선택		        love		    	    post		모든 항목			  필요	    main
+//결혼선택		        marry			        post		모든 항목			  필요	    main
+//글작성			        /board/boardWrite		post		모든 항목			  필요	    /board/board
+//글목록			        /board/boardList		get		    boardNum,boardField   없음	    /board/boardList
+//어필목록		        /board/appilBoardList	get		    boardNum,boardField	  없음	    /board/appilBoardList
+//리뷰목록		        /board/reviewBoardList	get		    boardNum,boardField	  없음	    /board/reviewBoardList
+//쪽지보내기		        pick			        post		모든항목			      필요	    pick
+//쪽지발신함		        letter			        get		    letterToNum		      필요	    letter
+//쪽지수신목록		    letter			        get		    letterFromNum		  없음	    letter
+//마이페이지전체정보    	myPage			        get		    userNum			      없음	    myPage
+//마이페이지 글목록	    myPageText		        get		    boardNum		      없음	    myPageText
+//마이페이지 답장목록	    myPageAnswer		    get		    replyNum		      없음	    myPageAnswer
+//마이페이지 매칭인     	myPageMatching		    get			                      없음	    myPageMatching
+//마이페이지 포인트내역	myPagePoint		        get		    pointNum		      없음	    myPagePoint
+//포인트 결제		        myPagePoint		        post		모든항목			      필요	    myPagePoint
+//블랙리스트     		    adminpage               get         blackListNum          없음       adminpage
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
     //회원가입
-    @PostMapping("sign")
-    public void userInsert(){
+    @GetMapping("sign")
+    public void signUpForm(){
+    }
 
+    @PostMapping("sign")
+    public String userInsert(UserVO userVO){
+        log.info("----------------------------");
+        log.info("Insert............. : " + userVO);
+        log.info("----------------------------");
+        userService.userInsert(userVO);
+        return "login";
     }
 
     //로그인
-    @PostMapping("login")
-    public void userLogin(){
+    @GetMapping("login")
+    public String loginForm(HttpServletRequest req){
+        return "login";
+    }
 
+    @PostMapping("login")
+    public String userLogin(){
+        return "main";
     }
 
     //마이페이지 전체정보
@@ -64,6 +100,22 @@ public class UserController {
     public void getMarry(){
 
     }
-
+//    //     탈퇴
+//    @GetMapping("myPage")
+//    public String deleteForm(Integer userNum){
+//        log.info("----------------------------");
+//        log.info("remove............. : " + userNum);
+//        log.info("----------------------------");
+//
+//        return "myPage";
+//    }
+//    @PostMapping("myPage")
+//    public String delete(int userNum){
+//        log.info("----------------------------");
+//        log.info("remove............. : " + 2);
+//        log.info("----------------------------");
+//        userService.userDelete(2);
+//        return "main";
+//    }
 
 }

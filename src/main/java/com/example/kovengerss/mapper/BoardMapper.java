@@ -14,24 +14,24 @@ public interface BoardMapper {
     //게시글 추가
     public void insert(BoardVO boardVO);
     //게시글 한 개 가져오기
-    public BoardVO select(Integer boardNumber);
+    public BoardVO select(Integer boardNum);
     //게시글 수정
-    public void update(BoardVO boardVO);
+    public int update(BoardVO boardVO);
     //게시글 삭제
-    public void delete(BoardVO boardVO);
+    public int delete(Integer boardNum);
     //게시글 전체 개수
-    public void getTotal();
+    public int getTotal();
     //게시글 작성 시간 가져오기
-    public String getRegisterDate();
+    public String getRegisterDate(Integer boardNum);
     //게시글 수정 시간 가져오기
-    public String getUpdateDate();
+    public String getUpdateDate(Integer boardNum);
     //게시글 신고 횟수 가져오기
-    public Integer getWarningCount();
+    public int getWarningCount(Integer boardNum);
     //게시글 제목 가져오기
-    public String getTitle(BoardVO boardVO);
+    public String getTitle(Integer boardNum);
     //게시글 내용 가져오기
-    public String getContent(BoardVO boardVO);
+    public String getContent(Integer boardNum);
     //게시글 카테고리 가져오기
-    public String getField(BoardVO boardVO);
+    public String getField(Integer boardNum);
 
 }

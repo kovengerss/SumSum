@@ -17,8 +17,12 @@ public class BoardController {
     private final BoardService boardService;
     // 글 목록
     @GetMapping("boardList")
-    public void getList(){
-
+    public String getList(Model model){
+        log.info("----------------------------");
+        log.info("list.............");
+        log.info("----------------------------");
+        model.addAttribute("boardList", boardService.getList());
+        return "/board/boardList";
     }
     // 어필 목록
     @GetMapping("appilBoardList")

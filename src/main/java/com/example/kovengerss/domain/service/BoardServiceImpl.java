@@ -17,67 +17,24 @@ public class BoardServiceImpl implements BoardService{
 
 
     @Override
-    public List<BoardVO> getList() {
-        return null;
-    }
+    public List<BoardVO> getList() {return boardDAO.getList();}
 
     @Override
-    public void boardInsert(BoardVO boardVO) {
+    public void boardInsert(BoardVO boardVO) {boardDAO.boardInsert(boardVO);}
     //return 타입은 해당 DAO 보면서 참고 하세요. 6월17일 강의 1시간05분 참고.
-    }
+    @Override
+    public BoardVO boardSelectOne(Integer boardNum) {return boardDAO.boardSelectOne(boardNum);}
 
     @Override
-    public BoardVO boardSelectOne(Integer boardNumber) {
-
-        return null;
-    }
+    public boolean boardUpdate(BoardVO boardVO) {return boardDAO.boardUpdate(boardVO);}
 
     @Override
-    public void boardUpdate(BoardVO boardVO) {
-
-    }
+    public boolean boardDelete(Integer boardNum) {return boardDAO.boardDelete(boardNum);}
 
     @Override
-    public void boardDelete(BoardVO boardVO) {
-
-    }
+    public int boardGetTotal() {return boardDAO.boardGetTotal();}
 
     @Override
-    public void boardGetTotal() {
+    public String boardGetField(Integer boardNum) {return boardDAO.boardGetField(boardNum);}
 
-    }
-
-
-    @Override
-    public void boardGetTitle(BoardVO boardVO) {
-
-    }
-
-    @Override
-    public void boardGetContent(BoardVO boardVO) {
-
-    }
-
-    @Override
-    public void boardGetField(BoardVO boardVO) {
-
-    }
-
-    @Override
-    public String boardGetRegisterDate() {
-
-        return null;
-    }
-
-    @Override
-    public String boardGetUpdateDate() {
-
-        return null;
-    }
-
-    @Override
-    public Integer boardGetWarningCount() {
-
-        return null;
-    }
 }

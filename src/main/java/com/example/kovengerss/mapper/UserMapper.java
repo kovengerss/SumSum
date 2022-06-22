@@ -7,13 +7,13 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
     //회원 정보 조회
-    public UserVO select(Integer userNum);
+    public UserVO select(int userNum);
     //회원가입
     public void insert(UserVO userVO);
     //회원 정보 수정
-    public void update(Integer userNum);
+    public void update(int userNum);
     //회원 탈퇴
-    public void delete(UserVO userVO);
+    public int delete(int userNum);
     //아이디 중복검사
     public Boolean checkId(String userId);
     //아이디 가져오기
