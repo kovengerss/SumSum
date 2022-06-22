@@ -154,21 +154,12 @@ a {
                     소개요청
                 </a>
             </div>
-
+            <div class="text-center">
                 <a href="./board/boardlist">
                     <img src="/img/커뮤니티.png">
                     커뮤니티
                 </a>
             </div>
-            <th:block th:each="user:${userList}">
-                <tr class="tBody" th:object="${user}">
-                    <td class="boardNumber" th:text="*{userNum}"></td>
-                    <td class="boardTitle"><a th:text="*{userName}"</td>
-                    <td class="boardWriter" th:text="*{userId}"></td>
-                    <td class="boardRegisterDate" th:text="*{userPw}"></td>
-                    <td class="boardUpdateDate" th:text="*{userGender}"></td>
-                </tr>
-            </th:block>
             <div class="text-center">
                 <a href="/company">
                     <img src="/img/썸썸소개.png">
