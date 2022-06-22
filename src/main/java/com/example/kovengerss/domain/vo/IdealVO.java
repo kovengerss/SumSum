@@ -12,7 +12,7 @@ public class IdealVO {/*이상형*/
     private String hobby; //취미
     private String residence;//거주지
     private String mbti;//거주지
-    private Integer income; //수입
+    private String income; //수입
     private String selfIntroduce;//자기소개
     private String houseExist; //자가
     private Integer userNum;

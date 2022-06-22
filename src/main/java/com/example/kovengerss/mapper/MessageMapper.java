@@ -14,15 +14,15 @@ public interface MessageMapper {
     //메세지(쪽지) 수정
     public  int update(MessageVO messageVO);
     //메세지(쪽지) 삭제
-    public  int delete(MessageVO messageVO);
+    public  int delete(Integer messageNum);
     //메세지(쪽지) 전체수
     public int getTotal();
     //메세지(쪽지) 보낸 시간 가져오기
-    public String getSendDate(Integer messageNum);
+    public String getSendDate(int messageNum);
     //메세지(쪽지) 한개 가져오기
-    public MessageVO select(Integer messageNum);
+    public MessageVO select(int messageNum);
     //메세지(쪽지) 제목 가져오기
-    public String selectTitle(Integer messageNum);
+    public String selectTitle(int messageNum);
     //메세지(쪽지) 내용 가져오기
-    public String selectContent(Integer messageNum);
+    public String selectContent(int messageNum);
 }

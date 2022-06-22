@@ -15,7 +15,7 @@ public class IdealServiceImpl implements IdealService{
 
     @Override
     public void idealInsert(IdealVO idealVO) {
-
+        idealDAO.idealInsert(idealVO);
     }
 
     @Override
@@ -24,13 +24,13 @@ public class IdealServiceImpl implements IdealService{
     }
 
     @Override
-    public void idealUpdate(IdealVO idealVO) {
-
+    public boolean idealUpdate(IdealVO idealVO) {
+        return idealDAO.idealUpdate(idealVO);
     }
 
     @Override
-    public void idealSelect(IdealVO idealVO) {
-
+    public IdealVO idealSelect(int idealNum) {
+        return idealDAO.idealSelect(idealNum);
     }
 
     @Override
