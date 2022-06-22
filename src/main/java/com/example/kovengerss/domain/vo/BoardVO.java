@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class BoardVO {/*게시판*/
     private Integer boardNum;
     private String boardTitle;
-    private String boardContent;
+    private String content;
     private String boardField;
     private String boardRegisterDate;
     private String boardUpdateDate;

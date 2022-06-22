@@ -29,8 +29,30 @@ public class BoardDaoTests {
 //        log.info("추가된 게시글 번호 : " + boardVO.getBoardNum());
 //    }
 
+//    @Test
+//    public void selectTest(){
+//        log.info(boardDAO.boardSelectOne(6395).toString());
+//    }
+
+//    @Test
+//    public void updateTest(){
+//        BoardVO boardVO = boardDAO.boardSelectOne(6395);
+//        boardVO.setBoardTitle("수정된 게시글 제목");
+//        boardVO.setBoardContent("수정된 게시글 내용");
+//        boardVO.setBoardField("후기");
+//
+//        log.info("UPDATE : " + boardDAO.boardUpdate(boardVO));
+//    }
+
+//    @Test
+//    public void deleteTest(){
+//        log.info("DELETE : " + boardDAO.boardDelete(6395));
+//    }
+
     @Test
-    public void selectTest(){
-        log.info(boardDAO.boardSelectOne(6395).toString());
+    public void getTotalTest(){
+        BoardVO boardVO = new BoardVO();
+        boardVO.setBoardField("고민상담");
+        log.info("총 게시글 : " + boardDAO.boardGetTotal(boardVO));
     }
 }

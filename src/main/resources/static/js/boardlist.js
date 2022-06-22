@@ -1,5 +1,5 @@
 $(".popover_wrapper").on("click",function(){
-    $(".icon-active").toggleClass("icon-action");
+    $(this).find(".icon-active").toggleClass("icon-action");
 });
 
 let sort = $(document.querySelectorAll(".sort-button"));
