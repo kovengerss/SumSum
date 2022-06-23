@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.dao;
 
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.UserVO;
 import com.example.kovengerss.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,7 @@ public class BoardDAO {
     //게시글 추가
     public void boardInsert(BoardVO boardVO){boardMapper.insert(boardVO);}
     //게시글 한 개 가져오기
-    public BoardVO boardSelectOne(Integer boardNum){return boardMapper.select(boardNum);}
+    public BoardVO boardSelectOne(BoardVO boardVO){return boardMapper.select(boardVO);}
     //게시글 수정
     public boolean boardUpdate(BoardVO boardVO){return boardMapper.update(boardVO) == 1;}
     //게시글 삭제
@@ -26,6 +27,7 @@ public class BoardDAO {
     //게시글 전체 개수
     public int boardGetTotal(BoardVO boardVO){return boardMapper.getTotal(boardVO);}
     //게시글 카테고리 가져오기
-    public String boardGetField(Integer boardNum){return boardMapper.getField(boardNum);}
-
+    public String boardGetField(BoardVO boardVO){return boardMapper.getField(boardVO);}
+    //제목 가져오기
+    public BoardVO boardGetTitle(BoardVO boardVO){return boardMapper.getTitle(boardVO);}
 }

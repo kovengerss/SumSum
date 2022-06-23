@@ -17,7 +17,7 @@ public interface BoardMapper {
     //게시글 추가
     public void insert(BoardVO boardVO);
     //게시글 한 개 가져오기
-    public BoardVO select(Integer boardNum);
+    public BoardVO select(BoardVO boardVO);
     //게시글 수정
     public int update(BoardVO boardVO);
     //게시글 삭제
@@ -27,8 +27,9 @@ public interface BoardMapper {
     //게시글 작성 시간 가져오기
     public String getRegisterDate(Integer boardNum);
     //게시글 수정 시간 가져오기
-    public String getUpdateDate(Integer boardNum);
+    public String getUpdateDate(BoardVO boardVO);
     //게시글 카테고리 가져오기
-    public String getField(Integer boardNum);
-
+    public String getField(BoardVO boardVO);
+    //제목 가져오기 (DESC)
+    public BoardVO getTitle(BoardVO boardVO);
 }

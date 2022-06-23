@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService{
     public void boardInsert(BoardVO boardVO) {boardDAO.boardInsert(boardVO);}
     //return 타입은 해당 DAO 보면서 참고 하세요. 6월17일 강의 1시간05분 참고.
     @Override
-    public BoardVO boardSelectOne(Integer boardNum) {return boardDAO.boardSelectOne(boardNum);}
+    public BoardVO boardSelectOne(BoardVO boardVO) {return boardDAO.boardSelectOne(boardVO);}
 
     @Override
     public boolean boardUpdate(BoardVO boardVO) {return boardDAO.boardUpdate(boardVO);}
@@ -36,6 +36,8 @@ public class BoardServiceImpl implements BoardService{
     public int boardGetTotal(BoardVO boardVO) {return boardDAO.boardGetTotal(boardVO);}
 
     @Override
-    public String boardGetField(Integer boardNum) {return boardDAO.boardGetField(boardNum);}
+    public String boardGetField(BoardVO boardVO) {return boardDAO.boardGetField(boardVO);}
 
+    @Override
+    public BoardVO boardGetTitle(BoardVO boardVO){return boardDAO.boardGetTitle(boardVO);}
 }
