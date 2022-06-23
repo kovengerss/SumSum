@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 public class AdminController {
+    private static final String ADMIN_SESSION_KEY = "adminId";
     private final AdminService adminService;
     // 관리자 로그인
     @GetMapping("adminLogin")
@@ -25,11 +29,14 @@ public class AdminController {
     }
 
     @PostMapping("adminLogin")
-    public RedirectView login(String adminId, String adminPw, RedirectAttributes rttr){
-        log.info("---------------------------adminList-------------------------");
-        rttr.addFlashAttribute("adminList",adminService.adminLogin(adminId, adminPw));
-        log.info("-----------------------------return-----------------------");
-        return new RedirectView("/adminPage");
+    public String loginAdmin(String adminId,String adminPw, HttpSession httpSession){
+        AdminVO admin = adminService.adminLogin(adminId, adminPw);
+        log.info(admin.getAdminId());
+        log.info(admin.getAdminPw());
+        httpSession.setAttribute("adminId",adminId);
+        log.info((String)httpSession.getAttribute(adminId));
+
+        return "/adminPage";
     }
 
     /*@GetMapping("adminPage")
