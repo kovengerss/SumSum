@@ -33,5 +33,9 @@ public interface UserService {
     //해당 회원 이상형 번호(ideal_num)가져오기
     public void userGetIdealNum(UserVO userVO);
 
-    void userDeleteWithPw(String userPw);
+    boolean userDeleteByIdAndPw(String userId, String userPw);
+
+    void sendSms(String userPhoneNum);
+
+    void verifySms(String userPhoneNum, String authInput);
 }

@@ -31,14 +31,19 @@
         FROM TBL_USER
         WHERE USER_ID = #{userId}
     </select>
-    <!-- 회원 탈퇴  userId userPw 일치 시-->
+    <!-- 회원 탈퇴  userNum 일치 시-->
     <delete id="delete">
         DELETE FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </delete>
-
+    <!-- 회원 탈퇴  userPw 일치 시-->
     <delete id="deleteWithPw">
         DELETE FROM TBL_USER
         WHERE USER_PW = #{userPw}
     </delete>
+    <!-- 회원 탈퇴 할 때 세션 조회 userId userPw 일치 시-->
+    <select id="checkUserIdAndPw" resultType="userVO">
+        SELECT * FROM TBL_USER
+        WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
+    </select>
 </mapper>

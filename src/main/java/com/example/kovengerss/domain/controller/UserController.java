@@ -9,10 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 //TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
 //관리자로그인	        adminLogin		        post		모든항목			      필요	    adminpage
@@ -34,11 +36,14 @@ import javax.servlet.http.HttpSession;
 //마이페이지 포인트내역	myPagePoint		        get		    pointNum		      없음	    myPagePoint
 //포인트 결제		        myPagePoint		        post		모든항목			      필요	    myPagePoint
 //블랙리스트     		    adminpage               get         blackListNum          없음       adminpage
+//@RestController api 확인시 기존 Conroller 어노테이션 주석하고 이거 활성
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    // 공통적으로 사용하는 키는 static 으로 선언해준다.
+    private static final String USER_SESSION_KEY = "userId";
     //회원가입
     @GetMapping("sign")
     public void signUpForm(){
@@ -67,9 +72,11 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public RedirectView login(String userId, String userPw, RedirectAttributes rttr){
+    public RedirectView login(String userId, String userPw, RedirectAttributes rttr, HttpSession httpSession){
+        UserVO userVO = userService.login(userId, userPw);
         log.info("---------------------------userList-------------------------");
-        rttr.addFlashAttribute("userList",userService.login(userId, userPw));
+        rttr.addFlashAttribute("userList",userVO);
+        httpSession.setAttribute(USER_SESSION_KEY,userId);
         log.info("-----------------------------return-----------------------");
         return new RedirectView("/main");
     }
@@ -131,13 +138,24 @@ public class UserController {
     }
     //회원 탈퇴
     @PostMapping("myPage")
-    public String deleteUser(String userPw, Model model){
-        userService.userDeleteWithPw(userPw);
+    public String deleteUser(String userPw, HttpSession httpSession, Model model, RedirectAttributes rttp){
+        Map map = rttp.getFlashAttributes();
+        String userId = (String) httpSession.getAttribute(USER_SESSION_KEY);
+        boolean isSuccess = userService.userDeleteByIdAndPw(userId, userPw);
+        model.addAttribute("deleteSuccess",isSuccess);
         log.info("userPw : "  + userPw);
         return "redirect:/main";
     }
 
     //아이디 변경
+    @GetMapping("user/sms/send")
+    public void sendSms(String userPhoneNum){
+        userService.sendSms(userPhoneNum);
+    }
 
-
+    //
+    @PostMapping("user/sms/verify")
+    public void verify(String userPhoneNum,String authInput){
+        userService.verifySms(userPhoneNum, authInput);
+    }
 }
