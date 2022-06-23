@@ -32,10 +32,13 @@ public class BoardMapperTests {
 //        log.info("추가된 게시글 번호 : " + boardVO.getBoardNum());
 //    }
 
-//        @Test
-//    public void selectTest(){
-//        log.info(boardMapper.select(6378).toString());
-//    }
+        @Test
+    public void selectTest(){
+            BoardVO  boardVO = new BoardVO();
+            boardVO.setBoardField("고민상담");
+            boardVO.setBoardNum(6405);
+        log.info(boardMapper.select(boardVO).toString());
+    }
 
 //        @Test
 //    public void updateTest(){
@@ -52,10 +55,10 @@ public class BoardMapperTests {
 //        log.info("DELETE COUNT : " + boardMapper.delete(6378));
 //    }
 
-        @Test
-    public void getTotalTest(){
-            BoardVO boardVO = new BoardVO();
-            boardVO.setBoardField("고민상담");
-        log.info("총 게시글 : " + boardMapper.getTotal(boardVO));
-    }
+//        @Test
+//    public void getTotalTest(){
+//            BoardVO boardVO = new BoardVO();
+//            boardVO.setBoardField("고민상담");
+//        log.info("총 게시글 : " + boardMapper.getTotal(boardVO));
+//    }
 }
