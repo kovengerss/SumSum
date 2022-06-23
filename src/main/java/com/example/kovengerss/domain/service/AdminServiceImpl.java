@@ -21,6 +21,11 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public AdminVO adminLogin(String adminId, String adminPw){
+        return adminDAO.adminLogin(adminId, adminPw);
+    }
+
+    @Override
     public void adminDeleteBoard(BoardVO boardVO) {
 
     }

@@ -118,7 +118,7 @@ button {
 
 
 
-#board {
+#appilList, #all-list, #blackList, #boardList, #pointList, #reviewList {
     position: relative;
     left: 375px;
     top: 90px;
@@ -396,4 +396,16 @@ a {
     max-width: 520px;
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+}
+/*-----------------------------------------------*/
+.tabs{
+    border: none;
+    background-color: #fff;
+    margin-left: 8px;
+    margin-top: 5px;
+}
+
+.tab_box .active {
+    border: none;
+    color: #fff;
 }

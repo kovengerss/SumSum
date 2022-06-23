@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 public interface AdminService {
     //관리자 회원가입
     public void adminInsert(AdminVO adminVO);
+    //로그인
+    public AdminVO adminLogin(String adminId, String adminPw);
     //게시글 삭제
     public void adminDeleteBoard(BoardVO boardVO);
     //게시글 수정
