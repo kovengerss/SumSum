@@ -21,7 +21,7 @@ public class SmsServiceImpl implements SmsService {
         params.put("from", fromNumber);
         params.put("type", "sms");
         params.put("text", "[SumSum] 인증번호 "+authCode+" 를 입력하세요.");
-        //params.put("app_version", "test app 1.2"); // application name and version
+        params.put("app_version", "test app 1.2"); // application name and version
 
         try {
             JSONObject obj = coolsms.send(params);

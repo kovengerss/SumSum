@@ -46,4 +46,10 @@
         SELECT * FROM TBL_USER
         WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
     </select>
+    <!-- 유저 핸드폰 번호로 회원 찾기 -->
+    <select id="findUserByPhoneNum" resultType="userVO">
+        SELECT *
+        FROM TBL_USER
+        WHERE USER_PHONE_NUMBER = #{userPhoneNumber}
+    </select>
 </mapper>

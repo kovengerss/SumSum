@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+import java.util.Random;
+
 @Service
 @RequiredArgsConstructor
 @Qualifier("user") @Primary
@@ -96,11 +99,31 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void sendSms(String userPhoneNum) {
+    public void sendSms(Map<String, Object> map) {
+        String userPhoneNum = (String) map.get("userPhoneNum");
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < 4; i ++) {
+            stringBuilder.append(new Random().nextInt(10));
+        }
+
         // 4자리 인증코드 만들기
         // 인증코드로 smsService호출
-        String authCode = "1234"; // 4자리 난수 코드
-        smsService.sendMessage(authCode, userPhoneNum);
+        smsService.sendMessage(String.valueOf(stringBuilder), userPhoneNum);
+
+        map.put("authCode", stringBuilder);
+        map.put("res", true);
+    }
+
+    @Override
+    public void findIdSuccess(Map<String, Object> map) {
+        String userPhoneNum = (String) map.get("userPhoneNum");
+
+        UserVO userVO = userDAO.findUserByPhoneNum(userPhoneNum);
+
+        map.put("res", true);
+        map.put("id", userVO.getUserId());
+
     }
 
     @Override

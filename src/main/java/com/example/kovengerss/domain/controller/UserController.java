@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -147,10 +144,34 @@ public class UserController {
         return "redirect:/main";
     }
 
-    //아이디 변경
-    @GetMapping("user/sms/send")
-    public void sendSms(String userPhoneNum){
-        userService.sendSms(userPhoneNum);
+    //아이디 찾기
+    @GetMapping("find")
+    public String find(){
+        return "find";
+    }
+
+    //아이디 찾기
+    @PostMapping("user/sms/send")
+    @ResponseBody
+    public Object sendSms(@RequestBody Map<String, Object> map){
+        map.put("userPhoneNum", map.get("userPhoneNum"));
+
+        userService.sendSms(map);
+
+        return map;
+    }
+    //http://localhost:10030/user/sms/send?userPhoneNum=01072579003 포인트 차감 되요. 함부로 사용하시면
+    //때찌합니다.
+
+    //아이디 찾기
+    @PostMapping("find/id/success")
+    @ResponseBody
+    public Object findIdSuccess(@RequestBody Map<String, Object> map){
+        map.put("userPhoneNum", map.get("userPhoneNum"));
+
+        userService.findIdSuccess(map);
+
+        return map;
     }
 
     //
