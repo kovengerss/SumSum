@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -72,9 +73,12 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public String login(String userId, String userPw, HttpSession httpSession){
+    public String login(String userId, String userPw, HttpServletRequest req){
         UserVO userVO = userService.login(userId, userPw);
-        httpSession.setAttribute("userList",userVO);
+        HttpSession session = req.getSession();
+        Integer userNum = userVO.getUserNum();
+        session.setAttribute("userNum",userNum);
+        session.setAttribute("userList",userVO);
         return "redirect:/main";
     }
 
