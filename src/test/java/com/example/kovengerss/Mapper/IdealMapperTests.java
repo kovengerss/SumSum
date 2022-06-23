@@ -40,15 +40,15 @@ public class IdealMapperTests {
 //
 //    }
 
- /*   @Test
+    @Test
     public void updateTest(){
-        IdealVO idealVO = idealMapper.select(1);
-        idealVO.setAge(99);
-        idealVO.setGender("중성");
+        IdealVO idealVO = idealMapper.select(5);
+        idealVO.setAge(44);
+        idealVO.setGender("중성h");
         idealVO.setHobby("없음");
         idealVO.setResidence("제주도");
         idealVO.setMbti("infp");
-        idealVO.setIncome(12222222);
+        idealVO.setIncome("12222222");
         idealVO.setSelfIntroduce("a2323aaaa");
         idealVO.setHouseExist("sdfsd34f");
         idealVO.setIdealContent("sddsd");
@@ -56,5 +56,5 @@ public class IdealMapperTests {
         idealVO.setJob("개발자");
 
         log.info("업데이트 성공시 1 ---> "+ idealMapper.update(idealVO));
-    }*/
+    }
 }

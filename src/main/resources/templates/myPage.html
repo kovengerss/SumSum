@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -189,12 +189,12 @@
                                 </div>
                                 <div class="no-change">
                                     <label for="" class="labelTag">나이:
-                                        <span>정보 없음</span>
+                                        <span th:text="${idealVO.age}"></span>
                                     </label>
                                 </div>
                                 <div class="no-change">
                                     <label for="" class="labelTag">성별:
-                                        <span>정보 없음</span>
+                                        <span th:text="${idealVO.gender}"></span>
                                     </label>
                                 </div>
                             </div>
@@ -234,11 +234,22 @@
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
+                            <label for="" class="labelTag">거주지 :
+                                <span th:text="${idealVO.residence}"></span>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="myInfo">
+                        <div class="input-info">
                             <label for="" class="labelTag">직업:
-                                <span>정보 없음</span>
+                                <span th:text="${idealVO.job}"></span>
                             </label>
                             <button class="information-btn">수정</button>
-                            <select class="information" name="job">
+                         <!--   <div style="font-size: 21px;font-weight: 600;">
+                                <span>전문직</span>
+                            </div>-->
+                        <!--    <select class="information" name="job">
                                 <option value="" selected>직업 선택</option>
                                 <option value="pro">전문직</option>
                                 <option value="pubEnt">공기업</option>
@@ -248,28 +259,28 @@
                                 <option value="small">자영업</option>
                                 <option value="time">일용직</option>
                                 <option value="nothing">무직</option>
-                            </select>
+                            </select>-->
                         </div>
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">연봉:
-                                <span>정보 없음</span>
+                                <span th:text="${idealVO.income}"></span>
                             </label>
-                            <button class="information-btn">수정</button>
+                           <!-- <button class="information-btn">수정</button>
                             <select class="information" name="job">
                                 <option value="" selected>연봉 선택</option>
                                 <option value="thr">3천 미만</option>
                                 <option value="tf">3천~5천</option>
                                 <option value="fo">5천~1억</option>
                                 <option value="oneMillion">1억 이상</option>
-                            </select>
+                            </select>-->
                         </div>
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">취미:
-                                <span>정보 없음</span>
+                                <span th:text="${idealVO.hobby}"></span>
                             </label>
                             <button class="information-btn">수정</button>
                             <!--                                <select class="information" name="job">-->
@@ -286,28 +297,36 @@
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
-                            <label for="" class="labelTag">연애, 결혼:
-                                <span>정보 없음</span>
+                            <label for="" class="labelTag">MBTI :
+                                <span th:text="${idealVO.mbti}"></span>
                             </label>
-                            <button class="information-btn">수정</button>
+                            <!--<button class="information-btn">수정</button>
                             <select class="information" name="job">
                                 <option value="" selected>연애, 결혼 선택</option>
                                 <option value="meet">연애</option>
                                 <option value="marry">결혼</option>
-                            </select>
+                            </select>-->
                         </div>
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">흡연:
-                                <span>정보 없음</span>
+                                <span th:text="${idealVO.smoke}"></span>
                             </label>
-                            <button class="information-btn">수정</button>
+                         <!--   <button class="information-btn">수정</button>
                             <select class="information" name="job">
                                 <option value="" selected>흡연 선택</option>
                                 <option value="meet">흡연자</option>
                                 <option value="marry">비흡연자</option>
-                            </select>
+                            </select>-->
+                        </div>
+                    </div>
+                    <div class="myInfo">
+                        <div class="input-info">
+                            <label for="" class="labelTag">나의 이상형 :
+                                <span th:text="${idealVO.idealContent}"></span>
+                            </label>
+
                         </div>
                     </div>
                     <!--                        <div class="myInfo">-->
