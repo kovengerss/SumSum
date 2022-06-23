@@ -51,11 +51,9 @@
             </a>
             <!-- 회원가입 -->
             <div class="login">
-                <th:block th:each="admin:${adminList}">
-                    <tr class="tBody" th:object="${admin}">
-                        <td class="adminId" th:text="*{adminId} +'님 어서오세요.'"></td>
-                    </tr>
-                </th:block>
+
+                <h2 th:text="${session.adminId}"></h2>
+                <!--<h2 th:text="${#request.getSession().getAttribute('adminId')}"></h2>-->
             </div>
         </div>
     </div>
@@ -529,6 +527,8 @@
     </div>
 </footer>
 <script>
+    let id= sessionStorage.getItem("adminId");
+    console.log(id);
     function tabOpen(evt, contentName){
         var i, tabcontent, tab_btn;
 

@@ -72,13 +72,10 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public RedirectView login(String userId, String userPw, RedirectAttributes rttr, HttpSession httpSession){
+    public String login(String userId, String userPw, HttpSession httpSession){
         UserVO userVO = userService.login(userId, userPw);
-        log.info("---------------------------userList-------------------------");
-        rttr.addFlashAttribute("userList",userVO);
-        httpSession.setAttribute(USER_SESSION_KEY,userId);
-        log.info("-----------------------------return-----------------------");
-        return new RedirectView("/main");
+        httpSession.setAttribute("userList",userVO);
+        return "redirect:/main";
     }
 
     @GetMapping("main")

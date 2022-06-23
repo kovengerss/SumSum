@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +11,13 @@
     <link rel="stylesheet" href="/css/adminLogin.css">
 </head>
 <body>
-<form action="adminLogin" method="post" name="some_login">
+<form action="/adminLogin" method="post" name="some_login">
     <div class="somelogin_box">
         <a class="main_icon">
             <img src="/img/sumsum_logo.png">
         </a>
         <div class="line"></div>
         <div class="somelogin">
-            <form action="" method="post" onsubmit="adminLogin()">
                 <div class="somelogin_id">
                     <div class="somelogin_id_box">
                         <label class="label" for="id" >관리자 아이디</label>
@@ -35,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="somelogin_button">관리자 페이지 접속</button>
+                <button class="somelogin_button">관리자 페이지 접속</button>
                 <!-- <div class="somelogin_choice">
                     <a class="join" href="../join/join.html">이메일로 가입</a>
                     <a class="find" href="/find">아이디/비밀번호 찾기</a>
@@ -43,7 +42,6 @@
                 <div>
                     <a class="login" href="/login">회원 로그인 페이지</a>
                 </div>
-            </form>
         </div>
     </div>
 </form>
