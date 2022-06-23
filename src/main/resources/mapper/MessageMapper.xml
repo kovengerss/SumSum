@@ -3,7 +3,7 @@
 <mapper namespace="com.example.kovengerss.mapper.MessageMapper">
     <!---->
     <select id="getList" resultType="messageVO">
-        SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE, USER_NUM
+        SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM
         FROM TBL_MESSAGE
     </select>
     <insert id="insert">
@@ -11,8 +11,8 @@
             SELECT SEQ_MESSAGE.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_MESSAGE
-        (MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE)
-        VALUES(SEQ_MESSAGE.NEXTVAL,#{messageTitle} ,#{messageContent},SYSDATE)
+        (MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM)
+        VALUES(SEQ_MESSAGE.NEXTVAL,#{messageTitle} ,#{messageContent},SYSDATE,#{userNum})
     </insert>
     <update id="update">
          UPDATE TBL_MESSAGE

@@ -13,6 +13,8 @@ public interface IdealMapper {
     public int update(IdealVO idealVO);
     //이상형  전제 정보 조회
     public IdealVO select(int idealNum);
+    //전체조회
+
     //AGE조회
     public Integer getAge(IdealVO idealVO);
     //GENDER조회

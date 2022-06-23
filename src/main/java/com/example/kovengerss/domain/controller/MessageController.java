@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
@@ -23,11 +26,48 @@ public class MessageController {
         ;
     }
     @PostMapping("register")
-    public RedirectView register(MessageVO messageVO, RedirectAttributes rttr){
+    public RedirectView register(MessageVO messageVO, RedirectAttributes rttr, HttpServletRequest req){
         log.info("----------------------------");
         log.info("register............. : " + messageVO);
         log.info("register............. : " + messageVO.getMessageNum());
         log.info("----------------------------");
+        HttpSession session = req.getSession();
+        Integer userNum = (Integer)session.getAttribute("userNum");
+        messageVO.setUserNum(userNum);
+
+        messageService.msgInsert(messageVO);
+        rttr.addFlashAttribute("userNum", messageVO.getUserNum());
+        rttr.addFlashAttribute("messageNum", messageVO.getMessageNum());
+        return new RedirectView("/main");
+    }
+
+/*    @PostMapping("boardWrite")  // 종욱님 코드
+    public RedirectView boardInsert(BoardVO boardVO, RedirectAttributes rttr,HttpServletRequest req){
+        log.info("----------------------------");
+        log.info("write.............");
+        log.info("----------------------------");
+        HttpSession session = req.getSession();
+        Integer userNum = (Integer)session.getAttribute("userNum");
+
+        boardVO.setUserNum(userNum);
+        boardService.boardInsert(boardVO);
+
+        rttr.addFlashAttribute("userNum",boardVO.getUserNum());
+        rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
+        rttr.addFlashAttribute("boardField",boardVO.getBoardField());
+
+        return new RedirectView("/board/boardList");
+    }*/
+
+    @PostMapping("registerIn")
+    public RedirectView registerIn(MessageVO messageVO, RedirectAttributes rttr,HttpServletRequest req){
+        log.info("----------------------------");
+        log.info("register............. : " + messageVO);
+        log.info("register............. : " + messageVO.getMessageNum());
+        log.info("----------------------------");
+        HttpSession session = req.getSession();
+        Integer userNum = (Integer)session.getAttribute("userNum");
+        messageVO.setUserNum(userNum);
 
         messageService.msgInsert(messageVO);
         rttr.addFlashAttribute("messageNum", messageVO.getMessageNum() );
@@ -36,9 +76,7 @@ public class MessageController {
 
 
     @GetMapping("letter")
-    public void letter(){
-        ;
-    }
+    public void letter(){ ; }
 
     @GetMapping("list")
     public String getList(Model model){
@@ -47,6 +85,7 @@ public class MessageController {
         log.info("----------------------------");
 
         model.addAttribute("messageList", messageService.getList());
+        model.addAttribute("messageCount",messageService.msgGetTotal());
         return "/letter";
     }
 
