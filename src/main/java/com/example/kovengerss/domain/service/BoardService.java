@@ -13,7 +13,7 @@ public interface BoardService {
     //게시글 추가
     public void boardInsert(BoardVO boardVO);
     //게시글 한 개 가져오기
-    public BoardVO boardSelectOne(Integer boardNum);
+    public BoardVO boardSelectOne(BoardVO boardVO);
     //게시글 수정
     public boolean boardUpdate(BoardVO boardVO);
     //게시글 삭제
@@ -21,6 +21,7 @@ public interface BoardService {
     //게시글 전체 개수
     public int boardGetTotal(BoardVO boardVO);
     //게시글 카테고리 가져오기
-    public String boardGetField(Integer boardNum);
-
+    public String boardGetField(BoardVO boardVO);
+    //제목가져오기
+    public BoardVO boardGetTitle(BoardVO boardVO);
 }
