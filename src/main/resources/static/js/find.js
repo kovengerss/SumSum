@@ -5,6 +5,7 @@ $(".find_id_button").on("click", function(){
     $(".some_find_certify_num").show();
     $(".Find_id_ment").show();
     $(".find_pw").hide();
+    btnType = 'id';
 });
 
 $(".find_pw_button").on("click", function(){
@@ -12,4 +13,5 @@ $(".find_pw_button").on("click", function(){
     $(".some_find_certify_num").hide();
     $(".Find_id_ment").hide();
     $(".find_pw").show();
+    btnType = 'pw'
 });

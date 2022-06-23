@@ -3,6 +3,8 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.vo.UserVO;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public interface UserService {
 
@@ -35,7 +37,9 @@ public interface UserService {
 
     boolean userDeleteByIdAndPw(String userId, String userPw);
 
-    void sendSms(String userPhoneNum);
+    void sendSms(Map<String, Object> userPhoneNum);
+
+    void findIdSuccess(Map<String, Object> map);
 
     void verifySms(String userPhoneNum, String authInput);
 }

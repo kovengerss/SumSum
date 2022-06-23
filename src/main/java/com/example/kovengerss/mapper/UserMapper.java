@@ -36,4 +36,6 @@ public interface UserMapper {
     void deleteWithPw(String userPw);
     //아이디 비밀번호 세션
     UserVO checkUserIdAndPw(String userId, String userPw);
+
+    UserVO findUserByPhoneNum(String userPhoneNum);
 }

@@ -51,4 +51,8 @@ public class UserDAO {
        UserVO userVO = userMapper.checkUserIdAndPw(userId, userPw);
        return userVO == null ? false : true;
     }
+
+    public UserVO findUserByPhoneNum(String userPhoneNum) {
+        return userMapper.findUserByPhoneNum(userPhoneNum);
+    }
 }

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/find.css">
+    <link rel="stylesheet" href="/css/find.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <style>
@@ -110,23 +110,23 @@
     </div>
 </div>
 <div>
-    <form>
+<!--    <form>-->
         <div class="FindIdPw">
             <div class="some_find_main">
                 <div class="some_find_main_buttons">
                     <button type="button" class="find_id_button">아이디 찾기</button>
                     <button type="button" class="find_pw_button">비밀번호 찾기</button>
                 </div>
-                <form action="" method="post" onsubmit="findIdPw()">
+<!--                <form action="/user/sms/send" method="post" onsubmit="findIdPw()">-->
                     <div class="find_id_pw">
                         <!-- 아이디찾기 -->
                         <div class="some_find_id_phonenum_input_detail">
                             <div class="some_find_id_phonenum">
                                 <div class="some_find_id_phonenum_input">
-                                    <label class="label" for="account-hp">연락처</label>
+                                    <label class="label" for="userPhoneNum">연락처</label>
                                     <div class="some_find_phonenum_certify">
                                        <!--form으로 묶어주기-->
-                                        <input name="userPhoneNum" class="form-control" id="account-hp" type="tel"  placeholder="01012345678" maxlength="13" >
+                                        <input name="userPhoneNum" class="form-control" id="userPhoneNum" type="tel"  placeholder="01012345678" maxlength="13" >
 <!--                                        <div class="some_find_phonenum_input_detail">-->
 <!--                                            <select id="1st_num" class="">-->
 <!--                                                <option value="010">010</option>-->
@@ -139,7 +139,7 @@
 <!--                                        </div>-->
                                         <div class="some_join_phonenum_certify_button">
 
-                                            <button type="button">인증번호 발송</button>
+                                            <button type="button" onclick="btnFindId()">인증번호 발송</button>
                                             <p class="error-msg">인증번호가 발송되었습니다.</p>
                                             <p class="error-msg">연락처를 입력해주세요.</p>
                                             <p class="error-msg">연락처가 올바르지 않습니다.</p>
@@ -174,13 +174,13 @@
                             <span class="findpw_ment_footer">링크는 24시간 동안 유효하며, 이후에는 이메일을 다시 입력하셔야 합니다. (이메일이 오지 않는다면 스팸함을 확인해주세요.)</span></div>
                         <!-- 확인버튼 -->
                         <div class="find_button">
-                            <button type="button" class="" >확인</button>
+                            <button type="button" class="" onclick="btnSuccess()">확인</button>
                         </div>
                     </div>
-                </form>
+<!--                </form>-->
             </div>
         </div>
-    </form>
+<!--    </form>-->
 </div>
 <!-- 쪽지 -->
 <input class="channel-talk-button" onclick="showPopup();"/>
@@ -218,10 +218,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="../static/js/find.js"></script>
+<script src="/js/find.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    let authCode = null;
+    let btnType = 'id';
+
+    let userPhoneNum = null;
     /* 쪽지 팝업창 */
     function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 
@@ -245,6 +249,77 @@
         document.getElementById(contentName).style.display = "block";
         //class 생성 이벤트 발생
         evt.currentTarget.className += " active";
+    }
+
+    function btnFindId() {
+        let inputUserPhoneNum = $('#userPhoneNum');
+        userPhoneNum = inputUserPhoneNum.val().trim();
+        if (userPhoneNum === null || userPhoneNum === "") {
+            alert("연락처를 입력해 주세요.");
+            inputUserPhoneNum.focus();
+            return;
+        }
+
+        $.ajax({
+            url: 'user/sms/send',
+            method: 'post',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+                userPhoneNum: userPhoneNum
+            }),
+            dataType: 'json',
+            success: function (res) {
+                authCode = res.authCode;
+
+            }, error: function (err) {
+                alert(err.responseJSON.message());
+            }
+        })
+
+    }
+
+    function btnSuccess() {
+        if (btnType === 'id') {
+            let authInput = $('#authInput');
+            let auth = authInput.val().trim();
+            if (auth === null || auth === "") {
+                alert("인증번호를 입력해 주세요.");
+                authInput.focus();
+                return;
+            }
+            if (auth.length < 4) {
+                alert("인증번호를 4자리 입력해 주세요.");
+                authInput.focus();
+                return;
+            }
+            if (authCode === auth) {
+                $.ajax({
+                    url: 'find/id/success',
+                    method: 'post',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({
+                        userPhoneNum: userPhoneNum
+                    }),
+                    dataType: 'json',
+                    success: function (res) {
+                        alert(res.id);
+                    }, error: function (err) {
+                        alert(err.responseJSON.message());
+                    }
+                })
+
+
+
+
+            } else {
+                alert("인증번호가 틀렸습니다. 다시 입력해 주세요.")
+            }
+
+
+        } else {
+        //    비번 찾기
+        }
+
     }
 
 </script>
