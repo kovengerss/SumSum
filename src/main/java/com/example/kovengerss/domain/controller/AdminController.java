@@ -36,7 +36,7 @@ public class AdminController {
         httpSession.setAttribute("adminId",adminId);
         log.info((String)httpSession.getAttribute(adminId));
 
-        return "/adminPage";
+        return "redirect:/adminPage";
     }
 
     /*@GetMapping("adminPage")
