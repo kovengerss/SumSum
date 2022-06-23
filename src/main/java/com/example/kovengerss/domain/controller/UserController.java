@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @GetMapping("main")
-    public String home(){
+    public String home(UserVO userVO){
         return "/main";
     }
     /*@PostMapping("login")
