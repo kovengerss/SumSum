@@ -32,6 +32,8 @@ public interface UserMapper {
     public String getGender(UserVO userVO);
     //해당 회원 이상형 번호(ideal_num)가져오기
     public Integer getIdealNum(UserVO userVO);
-
+    //비밀번호 입력으로 회원 탈퇴시키기
     void deleteWithPw(String userPw);
+    //아이디 비밀번호 세션
+    UserVO checkUserIdAndPw(String userId, String userPw);
 }

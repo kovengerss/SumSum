@@ -46,4 +46,9 @@ public class UserDAO {
     public void userDeleteWithPw(String userPw) {
         userMapper.deleteWithPw(userPw);
     }
+
+    public boolean checkUserPw(String userId, String userPw){
+       UserVO userVO = userMapper.checkUserIdAndPw(userId, userPw);
+       return userVO == null ? false : true;
+    }
 }
