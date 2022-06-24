@@ -13,7 +13,7 @@ public interface AnswerMapper {
     //메세지 답장 작성
     public void insert(AnswerVO answerVO);
     //메세지  답장 한개 가져오기
-    public AnswerVO select(Integer answerNum);
+    public AnswerVO select(int answerNum);
     //메세지 답장 수정
     public int update(AnswerVO answerVO);
     //메세지 답장 삭제

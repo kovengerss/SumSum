@@ -76,15 +76,22 @@ public class IdealContoller {
 
     //이상형 수정 페이지로 가는 get방식
     @GetMapping("modifyIdeal")
-    public String modifyIdeal(int idealNum,Model model){
+    public String modifyIdeal(){
 
-        model.addAttribute("ideal",idealService.idealSelect(idealNum));
-        return "/marry";
+        return "/updateMarry";
     }
 
     @PostMapping("modifyIdeal")
-    public void modifyIdeal(IdealVO idealVO){
-        idealService.idealUpdate(idealVO);
+    public String modifyIdealTwo(IdealVO idealVO, RedirectAttributes rttr, HttpServletRequest req) {
+
+        HttpSession session = req.getSession();
+        Integer userNum = (Integer)session.getAttribute("userNum");
+        idealVO.setUserNum(userNum);
+
+        idealService.idealInsert(idealVO);
+        rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());
+        /*idealService.idealUpdate(idealVO);*/
+        return "/mypage";
     }
 
 
