@@ -180,7 +180,7 @@
                 <div class="profile-index">
                     <div style="width: 60%;">
                         <h4 class="profileCardTitle">기본 정보</h4>
-                        <div class="myInfo" style="width: 100%;">
+                        <div class="myInfo" style="width: 100%; margin-bottom: 53px;">
                             <div class="input-info">
                                 <div class="no-change">
                                     <label for="" class="labelTag">이름:
@@ -245,8 +245,10 @@
                             <label for="" class="labelTag">직업:
                                 <span th:text="${idealVO.job}"></span>
                             </label>
-                            <button class="information-btn">수정</button>
-                         <!--   <div style="font-size: 21px;font-weight: 600;">
+
+                            <a th:href="@{/modifyIdeal}" class="information-btn" style="position: relative;top: -151px;left: 25px;">나의 정보 수정하기</a>
+
+                                <!--   <div style="font-size: 21px;font-weight: 600;">
                                 <span>전문직</span>
                             </div>-->
                         <!--    <select class="information" name="job">

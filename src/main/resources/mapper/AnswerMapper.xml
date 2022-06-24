@@ -42,5 +42,9 @@
         FROM TBL_ANSWER
         WHERE ANSWER_NUM = #{answerNum}
     </select>
+    <!--메세지  답장 총 개수 가져오기-->
+    <select id="getTotal" resultType="_int">
+         SELECT COUNT(ANSWER_NUM) FROM TBL_ANSWER
+    </select>
 
 </mapper>
