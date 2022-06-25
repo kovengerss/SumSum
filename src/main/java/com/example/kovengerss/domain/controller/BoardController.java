@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -44,7 +45,7 @@ public class BoardController {
 
     // 글 작성
     @PostMapping("boardWrite")
-    public RedirectView boardInsert(BoardVO boardVO, RedirectAttributes rttr,HttpServletRequest req){
+    public RedirectView boardInsert( BoardVO boardVO, RedirectAttributes rttr, HttpServletRequest req){
         log.info("----------------------------");
         log.info("write.............");
         log.info("----------------------------");
@@ -60,32 +61,32 @@ public class BoardController {
         return new RedirectView("/board/boardList");
     }
 
-    @GetMapping("board")
-    public String boardSelectOne(BoardVO boardVO,Model model,Criteria criteria){
-        log.info("보드 넘버1 : " + boardVO.getBoardNum());
-        log.info("필드명1 : " + boardVO.getBoardField());
+    @GetMapping({"board","boardUpdate"})
+    public void boardSelectOne(BoardVO boardVO,Integer boardNum,Model model,HttpServletRequest req){
 
-        model.addAttribute("boardList", boardService.getList(boardVO,criteria));
-        model.addAttribute("board",boardService.boardSelectOne(boardVO));
-        return "/board/board";
+        log.info("----------------------------");
+        log.info(req.getRequestURI() + "............. : " + boardNum);
+        log.info("----------------------------");
+
+        boardService.boardSelectOne(boardNum);
+        model.addAttribute("board",boardService.boardSelectOne(boardNum));
     }
 
-    @GetMapping("boardUpdate")
-    public void boardUpdate(){;}
 
     //수정
     @PostMapping("boardUpdate")
-    public RedirectView boardUpdate(BoardVO boardVO, RedirectAttributes rttr){
+    public RedirectView boardUpdate(BoardVO boardVO, RedirectAttributes rttr,HttpServletRequest req){
         log.info("----------------------------");
-        log.info("modify............. : " + boardVO);
+        log.info("보드 넘버 " +boardVO.getBoardNum());
         log.info("----------------------------");
 
+        HttpSession session = req.getSession();
+        Integer userNum = (Integer) session.getAttribute("userNum");
+
+        boardVO.setUserNum(userNum);
         boardService.boardUpdate(boardVO);
-//        컨트롤러에서 다른 컨트롤러의 매개변수로 파라미터를 전달할 때에는
-//        addAttribute(), 쿼리스트링 방식으로 전달해야 받을 수 있다.
-//        Flash방식은 최종 응답 화면에서 사용될 파라미터를 전달할 때에만 사용하도록 한다.
         rttr.addAttribute("boardNum", boardVO.getBoardNum());
+        rttr.addAttribute("boardField",boardVO.getBoardField());
         return new RedirectView("/board/board");
     }
-
 }

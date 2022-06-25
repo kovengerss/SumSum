@@ -13,7 +13,7 @@ public interface BoardService {
     //게시글 추가
     public void boardInsert(BoardVO boardVO);
     //게시글 한 개 가져오기
-    public BoardVO boardSelectOne(BoardVO boardVO);
+    public BoardVO boardSelectOne(Integer boardNum);
     //게시글 수정
     public boolean boardUpdate(BoardVO boardVO);
     //게시글 삭제

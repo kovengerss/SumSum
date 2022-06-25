@@ -19,7 +19,7 @@ public class BoardDAO {
     //게시글 추가
     public void boardInsert(BoardVO boardVO){boardMapper.insert(boardVO);}
     //게시글 한 개 가져오기
-    public BoardVO boardSelectOne(BoardVO boardVO){return boardMapper.select(boardVO);}
+    public BoardVO boardSelectOne(Integer boardNum){return boardMapper.select(boardNum);}
     //게시글 수정
     public boolean boardUpdate(BoardVO boardVO){return boardMapper.update(boardVO) == 1;}
     //게시글 삭제
