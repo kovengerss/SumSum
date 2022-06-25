@@ -126,6 +126,15 @@
     <form action="/modifyIdeal" id="marry_form" method="post" ><!--onsubmit="marry"-->
         <div class="choice_love1">
             <div class="choice_love">
+                <!--이상형 번호-->
+                <div class="sumchoice">
+                    <div class="sumchoice_age" th:object="${ideal}">
+                        <label class="label" for="age" >나이</label>
+                        <div class="input">
+                            <input th:field="*{mbti}" type="number"  maxlength="2" min='20' max='40' step='1'placeholder="숫자만 입력해 주세요." required >
+                        </div>
+                    </div>
+                </div>
                 <!-- 나이 -->
                 <div class="sumchoice">
                     <div class="sumchoice_age">

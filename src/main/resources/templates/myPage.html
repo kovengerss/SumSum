@@ -176,7 +176,8 @@
                     </div>
                 </div>
             </aside>
-            <main class="profile-main">
+<form action="/updateMarry">
+            <main class="profile-main" style="width: 1059px;">
                 <div class="profile-index">
                     <div style="width: 60%;">
                         <h4 class="profileCardTitle">기본 정보</h4>
@@ -189,12 +190,14 @@
                                 </div>
                                 <div class="no-change">
                                     <label for="" class="labelTag">나이:
-                                        <span th:text="${idealVO.age}"></span>
+                                        <input type="text" th:field="${idealVO.age}"/>
+                                        <!--<span th:text="${idealVO.age}"></span>-->
                                     </label>
                                 </div>
                                 <div class="no-change">
                                     <label for="" class="labelTag">성별:
-                                        <span th:text="${idealVO.gender}"></span>
+                                        <input type="text" th:field="${idealVO.gender}"/>
+                                        <!--<span th:text="${idealVO.gender}"></span>-->
                                     </label>
                                 </div>
                             </div>
@@ -235,7 +238,8 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">거주지 :
-                                <span th:text="${idealVO.residence}"></span>
+                                <input type="text" th:field="${idealVO.residence}"/>
+                                <!--<span th:text="${idealVO.residence}"></span>-->
                             </label>
 
                         </div>
@@ -243,10 +247,11 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">직업:
-                                <span th:text="${idealVO.job}"></span>
+                                <input type="text" th:field="${idealVO.job}"/>
+                              <!--  <span th:text="${idealVO.job}"></span>-->
                             </label>
 
-                            <a th:href="@{/modifyIdeal}" class="information-btn" style="position: relative;top: -151px;left: 25px;">나의 정보 수정하기</a>
+                            <a th:href="@{/updateMarry(idealNum=${idealVO.idealNum})}" class="information-btn" style="position: relative;top: -151px;left: 25px;">나의 정보 수정하기</a>
 
                                 <!--   <div style="font-size: 21px;font-weight: 600;">
                                 <span>전문직</span>
@@ -267,7 +272,8 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">연봉:
-                                <span th:text="${idealVO.income}"></span>
+                                <input type="text" th:field="${idealVO.income}"/>
+<!--                                <span th:text="${idealVO.income}"></span>-->
                             </label>
                            <!-- <button class="information-btn">수정</button>
                             <select class="information" name="job">
@@ -282,9 +288,10 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">취미:
-                                <span th:text="${idealVO.hobby}"></span>
+                                <input type="text" th:field="${idealVO.hobby}"/>
+                               <!-- <span th:text="${idealVO.hobby}"></span>-->
                             </label>
-                            <button class="information-btn">수정</button>
+                       <!--     <button class="information-btn">수정</button>-->
                             <!--                                <select class="information" name="job">-->
                             <!--                                    <option value="" selected>취미 선택</option>-->
                             <!--                                    <option value="sing">노래</option>-->
@@ -300,7 +307,8 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">MBTI :
-                                <span th:text="${idealVO.mbti}"></span>
+                                <input type="text" th:field="${idealVO.mbti}"/>
+                           <!--     <span th:text="${idealVO.mbti}"></span>-->
                             </label>
                             <!--<button class="information-btn">수정</button>
                             <select class="information" name="job">
@@ -313,7 +321,8 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">흡연:
-                                <span th:text="${idealVO.smoke}"></span>
+                                <input type="text" th:field="${idealVO.smoke}"/>
+                                <!--<span th:text="${idealVO.smoke}"></span>-->
                             </label>
                          <!--   <button class="information-btn">수정</button>
                             <select class="information" name="job">
@@ -326,11 +335,41 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">나의 이상형 :
-                                <span th:text="${idealVO.idealContent}"></span>
+                                <input type="text" th:field="${idealVO.idealContent}"/>
+                            <!--    <span th:text="${idealVO.idealContent}"></span>-->
                             </label>
 
                         </div>
                     </div>
+                    <div class="myInfo">
+                        <div class="input-info">
+                            <label for="" class="labelTag">자가 :
+                                <input type="text" th:field="${idealVO.houseExist}"/>
+                                <!--    <span th:text="${idealVO.idealContent}"></span>-->
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="myInfo">
+                        <div class="input-info">
+                            <label for="" class="labelTag">자기소개 :
+                                <input type="text" th:field="${idealVO.selfIntroduce}"/>
+                                <!--    <span th:text="${idealVO.idealContent}"></span>-->
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="myInfo" ><!--style="display: none"-->
+                        <div class="input-info">
+                            <label for="" class="labelTag">Num :
+                            <!--    <input type="number" th:t="${idealNum}"/>-->
+                                 <span th:text="${idealVO.idealNum}"></span>
+                                <button type="button" onclick="goUpdate()"></button>
+                            </label>
+
+                        </div>
+                    </div>
+
                     <!--                        <div class="myInfo">-->
                     <!--                            <div class="input-info">-->
                     <!--                                <label for="" class="labelTag">음주:-->
@@ -347,6 +386,7 @@
                     <!--                        </div>-->
                 </div>
             </main>
+</form>
         </section>
     </div>
 </div>
@@ -416,9 +456,15 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<script th:inline="javascript">
     /* 쪽지 팝업창 */
     function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+
+    let idealNum = [[${idealVO.idealNum}]];
+    function goUpdate(){
+        location.href = "/updateMarry?idealNum=" + idealNum;
+        //location.hreg는 get방식이다.
+    }
 </script>
 
 <script>

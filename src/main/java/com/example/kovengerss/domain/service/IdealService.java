@@ -1,10 +1,15 @@
 package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.vo.IdealVO;
+import com.example.kovengerss.domain.vo.MessageVO;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface IdealService {
+    //메세지(쪽지) 목록
+    public List<IdealVO> getList();
     //이상형 작성
     public void idealInsert(IdealVO idealVO);
     //이상형 수정 작업 (delete -> insert);
@@ -12,7 +17,7 @@ public interface IdealService {
     //이상형 update 수정작업
     public boolean idealUpdate(IdealVO idealVO);
     //이상형  전제 정보 조회
-    public IdealVO idealSelect(int idealNum);
+    public IdealVO idealSelect(Integer idealNum);
     //AGE조회
     public void idealGetAge(IdealVO idealVO);
     //GENDER조회

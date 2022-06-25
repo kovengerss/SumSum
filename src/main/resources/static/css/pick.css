@@ -295,6 +295,8 @@ button {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    top: 86px;
 }
 .writeFormBoxBtn{
     border-radius: 9999px;

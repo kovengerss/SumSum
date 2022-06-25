@@ -1,15 +1,19 @@
 package com.example.kovengerss.domain.dao;
 
 import com.example.kovengerss.domain.vo.IdealVO;
+import com.example.kovengerss.domain.vo.MessageVO;
 import com.example.kovengerss.mapper.IdealMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class IdealDAO {
     private final IdealMapper idealMapper;
-
+    //메세지(쪽지) 목록
+    public List<IdealVO> getList(){ return idealMapper.getList();}
     //이상형 작성
     public void idealInsert(IdealVO idealVO){
         idealMapper.insert(idealVO);
@@ -22,7 +26,7 @@ public class IdealDAO {
         return idealMapper.update(idealVO)==1;
     }
     //이상형  전제 정보 조회
-    public IdealVO idealSelect(int idealNum){
+    public IdealVO idealSelect(Integer idealNum){
         return idealMapper.select(idealNum);
     }
     //AGE조회
