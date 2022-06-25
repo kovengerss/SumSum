@@ -32,15 +32,15 @@ public class IdealMapperTests {
 
     }*/
 
-//    @Test
-//    public void selectone(){
-//
-//        idealMapper.select(2);
-//        log.info(  idealMapper.select(2).toString());
-//
-//    }
+    /*@Test
+    public void selectone(){
 
-    @Test
+        idealMapper.select(57);
+        log.info(  idealMapper.select(57).toString());
+
+    }*/
+
+   /* @Test
     public void updateTest(){
         IdealVO idealVO = idealMapper.select(5);
         idealVO.setAge(44);
@@ -56,5 +56,9 @@ public class IdealMapperTests {
         idealVO.setJob("개발자");
 
         log.info("업데이트 성공시 1 ---> "+ idealMapper.update(idealVO));
+    }*/
+ @Test
+    public void getListTest(){
+        idealMapper.getList().stream().map(IdealVO::toString).forEach(log::info);
     }
 }

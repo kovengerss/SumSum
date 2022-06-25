@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -117,17 +117,18 @@
 
             <div class="felx-container">
                 <form name="WriteForm" action="/register" method="post">
-                <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
+                    <th:block th:each="ideal:${idealList}">
+                <div th:object="${ideal}" class="card" style="  width: 20rem;height: 562px;border: 3px solid rgba(0,0,0,.125); float: right;margin-right: 48px;" >
 
                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
                     <div class="card-body">
-                        <h5 class="card-title">손흥민 <span class="ageGen">31세/남자</span></h5>
+                        <h5 class="card-title">손흥민 <span class="ageGen"><span th:text="|*{age}세|"></span><span th:text="|/*{gender}|">/남자</span></span></h5>
                         </span>
 
                     </div>
                     <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white;">
-                        <li class="list-group-item">안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요</li>
+                        <li th:text="*{selfIntroduce}" class="list-group-item" style="height: 100px;"></li>
 
                     </ul>
                     <div class="card-body">
@@ -163,7 +164,7 @@
                                     <textarea name="messageContent" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
                                 </div>
                                 <div class="modal-footer">
-                                    <button  class="btn btn-danger">Send</button>
+                                    <button class="btn btn-danger">Send</button>
                                     <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
@@ -184,29 +185,29 @@
                                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
                                     <div class="card-body">
-                                        <h5 class="card-title">손흥민 <span class="ageGen inAgeGen">남자</span></h5>
+                                        <h5 class="card-title">손흥민 <span th:text="*{gender}"class="ageGen inAgeGen"></span></h5>
                                         </span>
 
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <span class="introduce">소개</span><br>
-                                            안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요
+                                            <span th:text="*{selfIntroduce}"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span>나이 :</span> <span>31세</span>
+                                            <span>나이 :</span> <span th:text="|*{age} 세|"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span>키 :</span> <span>180cm</span>
+                                            <span>MBTI :</span> <span th:text="|*{mbti}|"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span>거주지 :</span> <span>서울시 송파구 잠실</span>
+                                            <span>거주지 :</span> <span th:text="|*{residence}|"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span>취미 :</span> <span>영화감상</span>
+                                            <span>취미 :</span> <span th:text="|*{hobby}|"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span>이상형 :</span>제가 운동을 좋아해서 운동을 좋아하는 사람이 이상형입니다.그리고 웃을때 이쁜여자 목소리가 좋은여자가 제 이상형입니다 <span></span>
+                                            <span>이상형 :</span> <span th:text="|*{idealContent}|"></span>
                                         </li>
 
 
@@ -224,11 +225,12 @@
                     </div>
                     <!-- 모달 상세보기 끝 -->
                 </div>
+                    </th:block>
                 </form>
 
 
                 <!--  -->
-                <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
+              <!--  <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
 
                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
@@ -249,9 +251,9 @@
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
                             상세보기
                         </button>
-                        <!--   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> -->
+                        &lt;!&ndash;   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> &ndash;&gt;
                     </div>
-                    <!-- 쪽지보내기 모달창 -->
+                    &lt;!&ndash; 쪽지보내기 모달창 &ndash;&gt;
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -268,7 +270,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div>
-                                        <!-- 쪽지를 보내주세요 -->
+                                        &lt;!&ndash; 쪽지를 보내주세요 &ndash;&gt;
                                         <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
                                     </div>
                                     <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
@@ -280,8 +282,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 쪽지보내기 모달창 끝-->
-                    <!-- 모달 상세보기 시작 -->
+                    &lt;!&ndash; 쪽지보내기 모달창 끝&ndash;&gt;
+                    &lt;!&ndash; 모달 상세보기 시작 &ndash;&gt;
                     <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -327,15 +329,15 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    &lt;!&ndash; <button type="button" class="btn btn-primary">Save changes</button> &ndash;&gt;
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- 모달 상세보기 끝 -->
+                    &lt;!&ndash; 모달 상세보기 끝 &ndash;&gt;
                 </div>
 
-                <!--  -->
+                &lt;!&ndash;  &ndash;&gt;
                 <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
 
                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
@@ -357,9 +359,9 @@
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
                             상세보기
                         </button>
-                        <!--   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> -->
+                        &lt;!&ndash;   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> &ndash;&gt;
                     </div>
-                    <!-- 쪽지보내기 모달창 -->
+                    &lt;!&ndash; 쪽지보내기 모달창 &ndash;&gt;
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -376,7 +378,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div>
-                                        <!-- 쪽지를 보내주세요 -->
+                                        &lt;!&ndash; 쪽지를 보내주세요 &ndash;&gt;
                                         <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
                                     </div>
                                     <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
@@ -388,8 +390,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 쪽지보내기 모달창 끝-->
-                    <!-- 모달 상세보기 시작 -->
+                    &lt;!&ndash; 쪽지보내기 모달창 끝&ndash;&gt;
+                    &lt;!&ndash; 모달 상세보기 시작 &ndash;&gt;
                     <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -435,15 +437,15 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    &lt;!&ndash; <button type="button" class="btn btn-primary">Save changes</button> &ndash;&gt;
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- 모달 상세보기 끝 -->
+                    &lt;!&ndash; 모달 상세보기 끝 &ndash;&gt;
                 </div>
 
-
+-->
             </div>
 
 

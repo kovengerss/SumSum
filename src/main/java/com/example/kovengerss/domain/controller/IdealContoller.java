@@ -37,34 +37,27 @@ public class IdealContoller {
         idealVO.setUserNum(userNum);
 
         idealService.idealInsert(idealVO);
-        rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());
-       /* rttr.addFlashAttribute("ideal",idealService.idealSelect(idealVO.getIdealNum()));*/
+        Integer idealNum =idealVO.getIdealNum();
+        session.setAttribute("idealNum",idealNum);
+        /* rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());*/
+        /*  log.info(idealVO.getIdealNum().toString());*/
+        /* rttr.addFlashAttribute("ideal",idealService.idealSelect(idealVO.getIdealNum()));*/
 
         return "/mypage";
     }
 
-
-
-/*    @PostMapping("boardWrite")  // 종욱님 코드
-    public RedirectView boardInsert(BoardVO boardVO, RedirectAttributes rttr,HttpServletRequest req){
+    //insert시 상세보기 처럼 하는 컨트롤러
+   /* @GetMapping("myPage")
+    public void read(int idealNum,Model model){
         log.info("----------------------------");
-        log.info("write.............");
+        log.info("........아이딜 넘버..... : " + idealNum);
         log.info("----------------------------");
-        HttpSession session = req.getSession();
-        Integer userNum = (Integer)session.getAttribute("userNum");
-
-        boardVO.setUserNum(userNum);
-        boardService.boardInsert(boardVO);
-
-        rttr.addFlashAttribute("userNum",boardVO.getUserNum());
-        rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
-        rttr.addFlashAttribute("boardField",boardVO.getBoardField());
-
-        return new RedirectView("/board/boardList");
+        model.addAttribute("idealVO",idealService.idealSelect(idealNum));
     }*/
 
+
     @GetMapping("listideal")
-    public String getList(Model model){
+    public String getOne(Model model){
         log.info("----------------------------");
         log.info("list.............");
         log.info("----------------------------");
@@ -75,13 +68,41 @@ public class IdealContoller {
     }
 
     //이상형 수정 페이지로 가는 get방식
-    @GetMapping("modifyIdeal")
-    public String modifyIdeal(){
+    @GetMapping("/updateMarry")
+    public void getUpdate(Integer idealNum,Model model){
+        log.info("----------------------------");
+        log.info("......수정하기 들어옴 처음....... : " + idealNum);
+        log.info("----------------------------");
 
-        return "/updateMarry";
+      model.addAttribute("ideal",idealService.idealSelect(idealNum));
     }
 
+
     @PostMapping("modifyIdeal")
+    public String modifyIdeal(IdealVO idealVO){
+
+        idealService.idealUpdate(idealVO);
+
+        return "/myPage";
+    }
+
+
+
+    @GetMapping("idealList")
+    public String getList(Model model){
+        log.info("----------------------------");
+        log.info("list.............");
+        log.info("----------------------------");
+        model.addAttribute("idealList",idealService.getList());
+
+        return "/pick";
+    }
+
+
+
+
+
+ /*   @PostMapping("modifyIdeal")
     public String modifyIdealTwo(IdealVO idealVO, RedirectAttributes rttr, HttpServletRequest req) {
 
         HttpSession session = req.getSession();
@@ -90,9 +111,9 @@ public class IdealContoller {
 
         idealService.idealInsert(idealVO);
         rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());
-        /*idealService.idealUpdate(idealVO);*/
+        *//*idealService.idealUpdate(idealVO);*//*
         return "/mypage";
-    }
+    }*/
 
 
 

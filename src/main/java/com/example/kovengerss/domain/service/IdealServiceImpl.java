@@ -2,16 +2,24 @@ package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.dao.IdealDAO;
 import com.example.kovengerss.domain.vo.IdealVO;
+import com.example.kovengerss.domain.vo.MessageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Qualifier("ideal") @Primary
 public class IdealServiceImpl implements IdealService{
     private final IdealDAO idealDAO;
+    @Override
+    public List<IdealVO> getList() {
+        return idealDAO.getList();
+    }
+
 
     @Override
     public void idealInsert(IdealVO idealVO) {
@@ -29,7 +37,7 @@ public class IdealServiceImpl implements IdealService{
     }
 
     @Override
-    public IdealVO idealSelect(int idealNum) {
+    public IdealVO idealSelect(Integer idealNum) {
         return idealDAO.idealSelect(idealNum);
     }
 
