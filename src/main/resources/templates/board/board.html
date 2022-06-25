@@ -149,7 +149,7 @@
                                                 <div class="item-center">
                                                     <div class="userName">
                                                         <a href="/selectHuman.html">
-                                                            <span style="background-image: url('	https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');width: 18px; height: 18px;"></span>
+                                                            <span style="background-image: url('https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');width: 18px; height: 18px;"></span>
                                                         </a>
                                                         <div class="overflow-hidden justify-content">
                                                             <div class="item-center flex">
@@ -157,10 +157,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <span class="write-date" th:text="${board.boardRegisterDate}"></span>
+                                                    <span class="write-date" th:text="${board.boardUpdateDate}"></span>
                                                 </div>
                                                 <div>
-                                                    <a href="/board/boardUpdate">수정</a>
+                                                    <button type="button" onclick="goUpdate()">수정</button>
                                                     <button type="submit">삭제</button>
                                                 </div>
                                             </div>
@@ -322,4 +322,11 @@
 </script>
 <script src= "https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/board.js"></script>
+<script th:inline="javascript">
+    let boardNum = [[${board.boardNum}]];
+    let boardField =[[${board.boardField}]];
+    function goUpdate(){
+        location.href="/board/boardUpdate?boardNum="+ boardNum + "&boardField=" + boardField ;
+    }
+</script>
 </html>

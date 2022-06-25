@@ -32,13 +32,13 @@ public class BoardMapperTests {
 //        log.info("추가된 게시글 번호 : " + boardVO.getBoardNum());
 //    }
 
-        @Test
-    public void selectTest(){
-            BoardVO  boardVO = new BoardVO();
-            boardVO.setBoardField("고민상담");
-            boardVO.setBoardNum(6405);
-        log.info(boardMapper.select(boardVO).toString());
-    }
+//        @Test
+//    public void selectTest(){
+//            BoardVO  boardVO = new BoardVO();
+//            boardVO.setBoardField("고민상담");
+//            boardVO.setBoardNum(6405);
+//        log.info(boardMapper.select(boardNum).toString());
+//    }
 
 //        @Test
 //    public void updateTest(){
