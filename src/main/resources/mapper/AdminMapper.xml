@@ -8,9 +8,60 @@
         WHERE ADMIN_ID = #{adminId} AND ADMIN_PW = #{adminPw}
     </select>
     <select id="getList" resultType="boardVO">
-        SELECT  /*+ INDEX_DESC(TBL_BOARD PK_BOARD)*/
-        BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,BOARD_FIELD,BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
-        FROM TBL_BOARD
+        <![CDATA[
+            SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+            FROM
+            (
+                SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */
+                ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+            )
+
+            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+         ]]>
+    </select>
+    <select id="getFieldAppil" resultType="boardVO">
+        <![CDATA[
+            SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+            FROM
+            (
+                SELECT
+                ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+                WHERE ROWNUM <= #{criteria3.pageNum} * #{criteria3.amount}
+            )
+
+            WHERE RN > (#{criteria3.pageNum} - 1) * #{criteria3.amount} AND BOARD_FIELD =#{boardVO.boardField}
+         ]]>
+    </select>
+    <select id="getFieldBoard" resultType="boardVO">
+        <![CDATA[
+            SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+            FROM
+            (
+                SELECT
+                ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+                WHERE ROWNUM <= #{criteria2.pageNum} * #{criteria2.amount}
+            )
+
+            WHERE RN > (#{criteria2.pageNum} - 1) * #{criteria2.amount} AND BOARD_FIELD =#{boardVO.boardField}
+         ]]>
+    </select>
+    <select id="getFieldReview" resultType="boardVO">
+        <![CDATA[
+            SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+            FROM
+            (
+                SELECT
+                ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+                WHERE ROWNUM <= #{criteria1.pageNum} * #{criteria1.amount}
+            )
+
+            WHERE RN > (#{criteria1.pageNum} - 1) * #{criteria1.amount} AND BOARD_FIELD =#{boardVO.boardField}
+         ]]>
     </select>
     <select id="select">
         SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,BOARD_FIELD,BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
@@ -33,6 +84,17 @@
         SELECT WARNING_COUNT
         FROM TBL_BOARD
         WHERE BOARD_NUM = #{boardNum}
+    </select>
+    <!--총갯수-->
+    <select id="getTotal" parameterType="boardVO" resultType="_int">
+        SELECT COUNT(BOARD_NUM)
+        FROM TBL_BOARD
+    </select>
+    <!--필드개수-->
+    <select id="getTotalField" parameterType="boardVO" resultType="int">
+        SELECT COUNT(BOARD_NUM)
+        FROM TBL_BOARD
+        WHERE BOARD_FIELD = #{boardField}
     </select>
     <select id="getUserId" resultType="String">
         SELECT USER_ID

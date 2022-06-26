@@ -58,8 +58,39 @@ public class AdminMapperTests {
         adminMapper.getUserId(47);
     }*/
 
-    @Test
+    /*@Test
     public void test7(){
         adminDAO.getUserId(47);
+    }*/
+
+    /*@Test
+    public void test8(){
+        BoardVO boardVO = new BoardVO();
+        adminMapper.getTotal(boardVO);
+    }*/
+    /*@Test
+    public void getListTest(){
+        BoardVO boardVO = new BoardVO();
+        adminMapper.getList(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+
+    }*/
+   /* @Test
+    public void getListTest(){
+        BoardVO boardVO = new BoardVO();
+        boardVO.setBoardField("어필하기");
+        adminMapper.getField(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+    }*/
+    /*@Test
+    public void getList(){
+        BoardVO boardVO = new BoardVO();
+//        boardVO.setBoardField("후기");
+        log.info("------------------------------------"+boardVO.getBoardField()+"-----------------------");
+        adminDAO.getField(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+    }*/
+    @Test
+    public void test(){
+        BoardVO boardVO = new BoardVO();
+        boardVO.setBoardField("고민상담");
+        adminMapper.getTotalField(boardVO);
     }
 }

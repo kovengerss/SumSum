@@ -238,7 +238,9 @@ a {
     margin-left: 70px;
 }
 
-
+.list-group >button {
+    border: none;
+}
 
 
 .board_list_body div.tit {

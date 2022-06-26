@@ -1,9 +1,6 @@
 package com.example.kovengerss.domain.service;
 
-import com.example.kovengerss.domain.vo.AdminVO;
-import com.example.kovengerss.domain.vo.BoardVO;
-import com.example.kovengerss.domain.vo.Criteria;
-import com.example.kovengerss.domain.vo.UserVO;
+import com.example.kovengerss.domain.vo.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +14,13 @@ public interface AdminService {
     //유저아이디
     public String getUserId(int userNum);
     //게시글 목록
-    public List<BoardVO> getList(Criteria criteria);
+    public List<BoardVO> getList(BoardVO boardVO, Criteria criteria);
+    public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3);
+    public List<BoardVO> getFieldBoard(BoardVO boardVO, Criteria2 criteria2);
+    public List<BoardVO> getFieldReview(BoardVO boardVO, Criteria1 criteria1);
+    //게시글 전체 개수
+    public int boardGetTotal(BoardVO boardVO);
+    public int boardGetTotalField(BoardVO boardVO);
     //게시글 삭제
     public boolean remove(int boardNum);
     //게시글 수정
