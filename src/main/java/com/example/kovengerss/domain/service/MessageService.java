@@ -9,7 +9,7 @@ import java.util.List;
 public interface MessageService {
 
     //메세지(쪽지) 목록
-    public List<MessageVO> getList();
+    public List<MessageVO> getList(Integer userNum);
     //메세지(쪽지) 입력
     public  void msgInsert(MessageVO messageVO);
     //메세지(쪽지) 수정
@@ -17,7 +17,7 @@ public interface MessageService {
     //메세지(쪽지) 삭제
     public   boolean msgDelete(Integer messageNum);
     //메세지(쪽지) 전체수
-    public int msgGetTotal();
+    public int msgGetTotal(Integer userNum);
     //메세지(쪽지) 보낸 시간 가져오기
     public String msgGetSendDate(int messageNum);
     //메세지(쪽지) 한개 가져오기

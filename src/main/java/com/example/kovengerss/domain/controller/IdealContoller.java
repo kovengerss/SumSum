@@ -38,6 +38,7 @@ public class IdealContoller {
 
         idealService.idealInsert(idealVO);
         Integer idealNum =idealVO.getIdealNum();
+        session.setAttribute("idealVO",idealVO);//
         session.setAttribute("idealNum",idealNum);
         /* rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());*/
         /*  log.info(idealVO.getIdealNum().toString());*/
