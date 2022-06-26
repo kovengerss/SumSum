@@ -52,4 +52,18 @@
         FROM TBL_USER
         WHERE USER_PHONE_NUMBER = #{userPhoneNumber}
     </select>
+
+    <!--이용자 수-->
+    <select id="countUser" resultType="int">
+        SELECT count(*)
+        FROM TBL_USER
+    </select>
+
+    <!-- 유저 이메일로 회원 찾기 -->
+    <select id="findUserByEmail" resultType="userVO">
+        SELECT *
+        FROM TBL_USER
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
+
 </mapper>

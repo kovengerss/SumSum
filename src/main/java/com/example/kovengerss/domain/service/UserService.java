@@ -41,5 +41,7 @@ public interface UserService {
 
     void findIdSuccess(Map<String, Object> map);
 
-    void verifySms(String userPhoneNum, String authInput);
+    int getUserTotalCount();
+
+    void sendEmail(Map<String, Object> map);
 }
