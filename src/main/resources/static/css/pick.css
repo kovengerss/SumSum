@@ -206,7 +206,7 @@ button {
 }
 .felx-container{
     width: 100%;
-    height:553px;
+    height: 708px; /*여기 높이*/
     display: flex;
     justify-content: space-around;
 

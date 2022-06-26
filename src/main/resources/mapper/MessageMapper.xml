@@ -3,7 +3,8 @@
 <mapper namespace="com.example.kovengerss.mapper.MessageMapper">
     <!---->
     <select id="getList" resultType="messageVO">
-        SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM
+        SELECT /*+ INDEX_DESC(TBL_MESSAGE PK_MESSAGE_NUM) */
+        MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM
         FROM TBL_MESSAGE
     </select>
     <insert id="insert">

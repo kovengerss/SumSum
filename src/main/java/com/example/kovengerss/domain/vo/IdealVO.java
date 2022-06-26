@@ -23,5 +23,5 @@ public class IdealVO {/*이상형*/
     private String smoke;//`
     //직업
     private String job;//`
-
+    private String userName;
 }
