@@ -152,7 +152,7 @@
                         </li>
 
                     </ul>
-                    <div class="card-body"  style="position: relative;top: -17px;">
+                    <div class="card-body"  style="position: relative;top: -36px;">
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
                             ♥ 쪽지 보내기
                         </button>
@@ -521,8 +521,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-<script>
+<script src="/js/jquery.min.js"></script>
+<script th:inline="javascript">
+
+    let Name = [[${ideal.userName}]]
+
+
     /* 쪽지 팝업창 */
     function showPopup() { window.open("/list", "a", "width=400, height=600, left=3000, top=500"); }
+
+    function userDelete(){
+        alert("회원이 탈퇴")
+    }
+
 </script>
 </html>
