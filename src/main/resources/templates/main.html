@@ -198,8 +198,8 @@ a {
         </div>
         <div class="user-count">
             <div class="circle">
-                <strong class="conuter1">0</strong>
-                <span>명</span>
+<!--                <strong class="conuter1">0</strong>-->
+                <span th:text="${count + ' 명'}">명</span>
                 <br>
                 <span>이용자 수</span>
             </div>
@@ -505,5 +505,31 @@ for (var i = 0; i < btns.length; i++){
     btns[i].addEventListener('mouseout', dbclickMenuHandler);
     /*   btns[i].addEventListener('mouseout', clickMenuHandler); */
 }
+
+
+    $.ajax({ /*이용자수 호출 하기*/
+        url: 'user/total',
+        method: 'get',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (res) {
+            userCount = res.count;
+
+        }, error: function (err) {
+            alert(err.responseJSON.message());
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </html>

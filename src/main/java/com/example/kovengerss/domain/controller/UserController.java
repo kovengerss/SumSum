@@ -6,12 +6,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 //TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
@@ -74,27 +77,22 @@ public class UserController {
         UserVO userVO = userService.login(userId, userPw);
         HttpSession session = req.getSession();
         Integer userNum = userVO.getUserNum();
+        String userName = userVO.getUserName();
         session.setAttribute("userNum",userNum);
         session.setAttribute("userList",userVO);
+        session.setAttribute("userName",userName);
         return "redirect:/main";
     }
 
+    // 메인페이지 이동(종임님) + 이용자 수(재원님)
     @GetMapping("main")
-    public String home(UserVO userVO){
+    public String home(Model model){
+        String userCount = String.valueOf(userService.getUserTotalCount());
+        model.addAttribute("count", userCount);
+        log.info("총 이용자수 : " + "count");
         return "/main";
     }
-    /*@PostMapping("login")
-    public String login(String userId, String userPw, HttpSession httpSession, Model model){
-        UserVO userVO = new UserVO();
-        log.info("--------------------------userService--------------------------");
-        userService.login(userId, userPw);
-        log.info("--------------------------userService--------------------------");
-        if(userVO == null){
-            return "login";
-        }
-        model.addAttribute("main", userVO);
-        return "redirect:/main";
-    }*/
+
     //마이페이지 전체정보
     @GetMapping("myPage")
     public void getMyPage(){
@@ -134,16 +132,17 @@ public class UserController {
     public void getMarry(){
 
     }
+
     //회원 탈퇴
     @PostMapping("myPage")
     public String deleteUser(String userPw, HttpSession httpSession, Model model, RedirectAttributes rttp){
-        Map map = rttp.getFlashAttributes();
-        String userId = (String) httpSession.getAttribute(USER_SESSION_KEY);
-        boolean isSuccess = userService.userDeleteByIdAndPw(userId, userPw);
+        UserVO userVO = (UserVO) httpSession.getAttribute("userList");
+        log.info("deleteUser : " + userPw + userVO.getUserId());
+        boolean isSuccess = userService.userDeleteByIdAndPw(userVO.getUserId(), userPw);
         model.addAttribute("deleteSuccess",isSuccess);
-        log.info("userPw : "  + userPw);
         return "redirect:/main";
     }
+
 
     //아이디 찾기
     @GetMapping("find")
@@ -156,28 +155,42 @@ public class UserController {
     @ResponseBody
     public Object sendSms(@RequestBody Map<String, Object> map){
         map.put("userPhoneNum", map.get("userPhoneNum"));
-
         userService.sendSms(map);
-
         return map;
     }
-    //http://localhost:10030/user/sms/send?userPhoneNum=01072579003 포인트 차감 되요. 함부로 사용하시면
-    //때찌합니다.
 
     //아이디 찾기
     @PostMapping("find/id/success")
     @ResponseBody
     public Object findIdSuccess(@RequestBody Map<String, Object> map){
         map.put("userPhoneNum", map.get("userPhoneNum"));
-
         userService.findIdSuccess(map);
-
         return map;
     }
 
-    //
-    @PostMapping("user/sms/verify")
-    public void verify(String userPhoneNum,String authInput){
-        userService.verifySms(userPhoneNum, authInput);
+    // 이용자 수
+    @GetMapping("user/total")
+    @ResponseBody
+    public Map getUserTotal(Model model){
+       Map<String, String> map = new HashMap<>();
+       map.put("count" , String.valueOf(userService.getUserTotalCount())); //이용자 수
+       map.put("date", LocalDateTime.now().toString()); // 현재 시간
+       model.addAttribute("count",map.get("count"));
+       log.info("총 이용자수1 : " + map.get("count"));
+       log.info("총 이용자수2 : " + "count");
+       return map;
     }
+
+    // 비밀번호 찾기 이메일 인증
+    @PostMapping("user/email/send")
+    @ResponseBody
+    public Object sendEmail(@RequestBody Map<String, Object> map){
+        map.put("email", map.get("email"));
+        userService.sendEmail(map);
+        return map;
+    }
+
+
+
+
 }

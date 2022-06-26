@@ -166,7 +166,7 @@
                             <div class="InputNew__FormGroupContainer-jcpp79-0 OwLoL">
                                 <div class="form-group form-group">
                                     <div class="find_pw_id">
-                                        <input placeholder="example@somesome.com" type="text" id="" class="" value="">
+                                        <input id="input_email" placeholder="example@somesome.com" type="text" class="" value="">
                                         <p class="error-msg">이메일을 입력해 주세요</p>
                                     </div>
                                 </div>
@@ -317,7 +317,37 @@
 
 
         } else {
-        //    비번 찾기
+            //    비번 찾기
+            let inputEmail = $('#input_email');
+            let email = inputEmail.val().trim();
+            if (email === null || email === '') {
+                alert("이메일을 입력해 주세요.");
+                inputEmail.focus();
+                return;
+            }
+            $.ajax({
+                url: 'user/email/send',
+                method: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    email: email
+                }),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.result) {
+                        // 성공이 됐을 때
+                        alert("메일이 정상적으로 발신되었습니다.");
+                    } else {
+                        alert("가입된 회원이 아닙니다.");
+                    }
+                }, error: function (err) {
+                    alert(err.responseJSON.message());
+                }
+            })
+
+
+
+
         }
 
     }

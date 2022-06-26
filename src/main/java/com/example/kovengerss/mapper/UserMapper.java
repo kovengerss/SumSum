@@ -38,4 +38,8 @@ public interface UserMapper {
     UserVO checkUserIdAndPw(String userId, String userPw);
 
     UserVO findUserByPhoneNum(String userPhoneNum);
+    // 이용자 수
+    int countUser();
+    // 이메일로 찾기
+    UserVO findUserByEmail(String userEmail);
 }
