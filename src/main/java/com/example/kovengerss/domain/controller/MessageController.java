@@ -26,7 +26,7 @@ public class MessageController {
         ;
     }
     @PostMapping("register")
-    public RedirectView register(MessageVO messageVO, RedirectAttributes rttr, HttpServletRequest req){
+    public RedirectView register(MessageVO messageVO, RedirectAttributes rttr, HttpServletRequest req,Model model){
         log.info("----------------------------");
         log.info("register............. : " + messageVO);
         log.info("register............. : " + messageVO.getMessageNum());
@@ -38,6 +38,8 @@ public class MessageController {
         messageService.msgInsert(messageVO);
         rttr.addFlashAttribute("userNum", messageVO.getUserNum());
         rttr.addFlashAttribute("messageNum", messageVO.getMessageNum());
+        rttr.addAttribute("messageSendDate",messageVO.getMessageSendDate());
+      /*  model.addAttribute("messageSendDate",messageVO.get)*/
         return new RedirectView("/main");
     }
 
@@ -71,6 +73,7 @@ public class MessageController {
 
         messageService.msgInsert(messageVO);
         rttr.addFlashAttribute("messageNum", messageVO.getMessageNum() );
+
         return new RedirectView("/list");
     }
 
