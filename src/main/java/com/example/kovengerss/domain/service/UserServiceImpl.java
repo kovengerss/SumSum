@@ -105,6 +105,7 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
     // 아이디 찾기 핸드폰 인증 번호
     @Override
     public void sendSms(Map<String, Object> map) {
@@ -139,12 +140,16 @@ public class UserServiceImpl implements UserService {
         return userDAO.countUser();
     }
 
+    // 게시글 메인에 뿌려주기
+
+
+    // 입력한 이메일이 가입했는지 검사
     @Override
     public void sendEmail(Map<String, Object> map) {
         String userEmail = (String) map.get("email");
         boolean isFindEmail = false;
 
-        // 입력한 이메일이 가입했는지 검사
+
         UserVO findUserVO = userDAO.findUserByEmail(userEmail);
 
         if (findUserVO != null) {

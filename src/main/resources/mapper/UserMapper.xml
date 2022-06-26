@@ -59,11 +59,22 @@
         FROM TBL_USER
     </select>
 
+    <!--게시글 메인에 뿌려주기 위한 조회-->
+    <select id="viewBoard" resultType="boardVO">
+        SELECT BOARD_CONTENT
+        FROM TBL_Board
+        WHERE BOARD_FIELD = '어필하기'
+        ORDER BY 1 DESC
+    </select>
+
     <!-- 유저 이메일로 회원 찾기 -->
     <select id="findUserByEmail" resultType="userVO">
         SELECT *
         FROM TBL_USER
         WHERE USER_EMAIL = #{userEmail}
     </select>
+
+
+
 
 </mapper>
