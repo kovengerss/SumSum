@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -55,10 +52,21 @@ public class BoardController {
         boardVO.setUserNum(userNum);
         boardService.boardInsert(boardVO);
 
-        rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
-        rttr.addFlashAttribute("boardField",boardVO.getBoardField());
+            if (boardVO.getBoardField().equals("고민상담")) {
+                rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
+                rttr.addFlashAttribute("boardField", boardVO.getBoardField());
+                return new RedirectView("/board/boardList");
+            } else if (boardVO.getBoardField().equals("어필하기")) {
+                rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
+                rttr.addFlashAttribute("boardField", boardVO.getBoardField());
+                return new RedirectView("/board/appilBoardList");
+            } else if (boardVO.getBoardField().equals("후기")) {
+                rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
+                rttr.addFlashAttribute("boardField", boardVO.getBoardField());
+                return new RedirectView("/board/reviewBoardList");
+            }
 
-        return new RedirectView("/board/boardList");
+        return null;
     }
 
     @GetMapping({"board","boardUpdate"})
@@ -88,5 +96,16 @@ public class BoardController {
         rttr.addAttribute("boardNum", boardVO.getBoardNum());
         rttr.addAttribute("boardField",boardVO.getBoardField());
         return new RedirectView("/board/board");
+    }
+
+    //    삭제
+    @PostMapping("boardDelete")
+    public String boardDelete(Integer boardNum, Criteria criteria, Model model,BoardVO boardVO){
+        log.info("----------------------------");
+        log.info("remove............. : " + boardNum);
+        log.info("----------------------------");
+
+        boardService.boardDelete(boardNum);
+        return getList(boardVO, criteria, model);
     }
 }

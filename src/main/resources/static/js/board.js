@@ -35,27 +35,68 @@ $(".declaration-button").on("click",function () {
         $(".commentWrapper").fadeToggle("middle");
     });
 
-let commentSubmit = $(".comment-submit");
-let comment = $(".comment");
+//0-00
 
-    comment.on("keyup",function(){
-        if(comment.val().length != 0){
-            commentSubmit.css("background-color","#40a0ff");
-            commentSubmit.css("border-color","#90c8ff");
-        }else{
-            commentSubmit.css("background-color","#1fc7c1");
-            commentSubmit.css("border-color","#8ddbd7");
+// var replyService = (function () {
+//     function add(reply, callback){
+//         console.log("add reply ...........");
+//
+//         $.ajax({
+//             url:"/reply/new",
+//             type: "post",
+//             contentType : "application/json; charset=utf-8",
+//             dataType:"json",
+//             data: JSON.stringify({
+//                 "boardNum": boardNum,
+//                 "replyContent" : $("#comment").val(),
+//                 "userNum" : userNum
+//             }),
+//             success : function (xhr, status, result) {
+//                     if(error){
+//                         error(er);
+//                     }
+//             }
+//         });
+//     }
+//     return {
+//         add : add
+//     };
+// });
+//
+// function getList(param,callback,error) {
+//     var bno = param.boardNum;
+//     var page = param.page || 1;
+//
+//     $.getJSON("/reply/list/" + bno + "/" + page + ".json",function(data){
+//        if(callback){
+//            callback(data);
+//        }
+//     }).fail(function (xhr, status, err) {
+//         if(error){
+//             error();
+//         }
+//     });
+// }
+
+
+/*// 댓글 등록
+function register(){
+    console.log("들어옴?");
+    $.ajax({
+        url:"/reply/new",
+        type: "post",
+        contentType : "application/json",
+        dataType:"json",
+        data: JSON.stringify({
+            "boardNum": boardNum,
+            "replyContent" : $("#comment").val(),
+            "userNum" : userNum
+        }),
+        success: function (result) {
         }
     });
-
-commentSubmit.on("click",function () {
-    if(comment.val().length == 0) {
-        alert("댓글을 입력해주세요");
-    }else{
-        alert("댓글 등록완료");
-    }
-});
-
+}
+console.log("등록 나옴");*/
 
 
 
