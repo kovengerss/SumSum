@@ -118,20 +118,41 @@
             <div class="felx-container">
                 <form name="WriteForm" action="/register" method="post">
                     <th:block th:each="ideal:${idealList}">
-                <div th:object="${ideal}" class="card" style="  width: 20rem;height: 562px;border: 3px solid rgba(0,0,0,.125); float: right;margin-right: 48px;" >
+                <div th:object="${ideal}" class="card" style="  width: 20rem;height: 756px;border: 3px solid rgba(0,0,0,.125); float: right;margin-right: 48px;" >
 
                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
                     <div class="card-body">
-                        <h5 class="card-title">손흥민 <span class="ageGen"><span th:text="|*{age}세|"></span><span th:text="|/*{gender}|">/남자</span></span></h5>
-                        </span>
+                        <h5 class="card-title" th:text="*{userName}"></h5>
+
+                            <span class="ageGen" style="position: relative;top: -31px;left: 61px;color: chocolate;"><span th:text="|*{age}세|"></span><span th:text="|/*{gender}|"></span></span>
+
+
 
                     </div>
-                    <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white;">
-                        <li th:text="*{selfIntroduce}" class="list-group-item" style="height: 100px;"></li>
+                    <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white; position: relative;top: -25px;">
+                        <li class="list-group-item">
+                            <span class="introduce">소개</span><br>
+                            <span th:text="*{selfIntroduce}"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>나이 :</span> <span th:text="|*{age} 세|"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>MBTI :</span> <span th:text="|*{mbti}|"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>거주지 :</span> <span th:text="|*{residence}|"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>취미 :</span> <span th:text="|*{hobby}|"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>이상형 :</span> <span th:text="|*{idealContent}|"></span>
+                        </li>
 
                     </ul>
-                    <div class="card-body">
+                    <div class="card-body"  style="position: relative;top: -17px;">
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
                             ♥ 쪽지 보내기
                         </button>
@@ -158,7 +179,6 @@
                                 </div>
                                 <div class="modal-body">
                                     <div>
-                                        <!-- 쪽지를 보내주세요 -->
                                         <input type="text" name="messageTitle" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
                                     </div>
                                     <textarea name="messageContent" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
@@ -185,8 +205,8 @@
                                     <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
                                     <div class="card-body">
-                                        <h5 class="card-title">손흥민 <span th:text="*{gender}"class="ageGen inAgeGen"></span></h5>
-                                        </span>
+                                        <h5 class="card-title"th:text="*{userName}"> </h5>
+                                        <span th:text="*{gender}"class="ageGen inAgeGen" style="position: relative;left: 56px;top: -45px;"></span>
 
                                     </div>
                                     <ul class="list-group list-group-flush">

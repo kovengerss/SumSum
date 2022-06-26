@@ -185,18 +185,18 @@
                             <div class="input-info">
                                 <div class="no-change">
                                     <label for="" class="labelTag">이름:
-                                        <span>정보 없음</span>
+                                        <input type="text" th:field="${idealVO.userName}" readonly/>
                                     </label>
                                 </div>
                                 <div class="no-change">
                                     <label for="" class="labelTag">나이:
-                                        <input type="text" th:field="${idealVO.age}"/>
+                                        <input type="text" th:field="${idealVO.age}" readonly/>
                                         <!--<span th:text="${idealVO.age}"></span>-->
                                     </label>
                                 </div>
                                 <div class="no-change">
                                     <label for="" class="labelTag">성별:
-                                        <input type="text" th:field="${idealVO.gender}"/>
+                                        <input type="text" th:field="${idealVO.gender}" readonly/>
                                         <!--<span th:text="${idealVO.gender}"></span>-->
                                     </label>
                                 </div>
@@ -238,7 +238,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">거주지 :
-                                <input type="text" th:field="${idealVO.residence}"/>
+                                <input type="text" th:field="${idealVO.residence}" readonly/>
                                 <!--<span th:text="${idealVO.residence}"></span>-->
                             </label>
 
@@ -247,10 +247,11 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">직업:
-                                <input type="text" th:field="${idealVO.job}"/>
+                                <input type="text" th:field="${idealVO.job}" readonly/>
                               <!--  <span th:text="${idealVO.job}"></span>-->
                             </label>
 
+                            <!--아직 구현안한 곳-->
                             <a th:href="@{/updateMarry(idealNum=${idealVO.idealNum})}" class="information-btn" style="position: relative;top: -151px;left: 25px;">나의 정보 수정하기</a>
 
                                 <!--   <div style="font-size: 21px;font-weight: 600;">
@@ -272,7 +273,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">연봉:
-                                <input type="text" th:field="${idealVO.income}"/>
+                                <input type="text" th:field="${idealVO.income}" readonly/>
 <!--                                <span th:text="${idealVO.income}"></span>-->
                             </label>
                            <!-- <button class="information-btn">수정</button>
@@ -288,7 +289,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">취미:
-                                <input type="text" th:field="${idealVO.hobby}"/>
+                                <input type="text" th:field="${idealVO.hobby}" readonly/>
                                <!-- <span th:text="${idealVO.hobby}"></span>-->
                             </label>
                        <!--     <button class="information-btn">수정</button>-->
@@ -307,7 +308,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">MBTI :
-                                <input type="text" th:field="${idealVO.mbti}"/>
+                                <input type="text" th:field="${idealVO.mbti}" readonly/>
                            <!--     <span th:text="${idealVO.mbti}"></span>-->
                             </label>
                             <!--<button class="information-btn">수정</button>
@@ -321,7 +322,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">흡연:
-                                <input type="text" th:field="${idealVO.smoke}"/>
+                                <input type="text" th:field="${idealVO.smoke}" readonly/>
                                 <!--<span th:text="${idealVO.smoke}"></span>-->
                             </label>
                          <!--   <button class="information-btn">수정</button>
@@ -335,7 +336,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">나의 이상형 :
-                                <input type="text" th:field="${idealVO.idealContent}"/>
+                                <input type="text" th:field="${idealVO.idealContent}" readonly/>
                             <!--    <span th:text="${idealVO.idealContent}"></span>-->
                             </label>
 
@@ -344,7 +345,7 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">자가 :
-                                <input type="text" th:field="${idealVO.houseExist}"/>
+                                <input type="text" th:field="${idealVO.houseExist}" readonly/>
                                 <!--    <span th:text="${idealVO.idealContent}"></span>-->
                             </label>
 
@@ -353,13 +354,13 @@
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">자기소개 :
-                                <input type="text" th:field="${idealVO.selfIntroduce}"/>
+                                <input type="text" th:field="${idealVO.selfIntroduce}" readonly/>
                                 <!--    <span th:text="${idealVO.idealContent}"></span>-->
                             </label>
 
                         </div>
                     </div>
-                    <div class="myInfo" ><!--style="display: none"-->
+                    <div class="myInfo" style="display: none"><!--style="display: none"-->
                         <div class="input-info">
                             <label for="" class="labelTag">Num :
                             <!--    <input type="number" th:t="${idealNum}"/>-->
@@ -458,7 +459,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
     /* 쪽지 팝업창 */
-    function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+    function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
 
     let idealNum = [[${idealVO.idealNum}]];
     function goUpdate(){

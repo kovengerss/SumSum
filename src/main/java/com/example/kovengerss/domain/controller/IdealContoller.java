@@ -75,6 +75,7 @@ public class IdealContoller {
         log.info("----------------------------");
 
       model.addAttribute("ideal",idealService.idealSelect(idealNum));
+      log.info(idealService.idealSelect(idealNum).toString());
     }
 
 
@@ -89,10 +90,13 @@ public class IdealContoller {
 
 
     @GetMapping("idealList")
-    public String getList(Model model){
+    public String getList(Model model,HttpServletRequest req){
         log.info("----------------------------");
         log.info("list.............");
         log.info("----------------------------");
+        /*HttpSession session =   req.getSession();
+        String userName = (String)session.getAttribute("userName");*/
+
         model.addAttribute("idealList",idealService.getList());
 
         return "/pick";

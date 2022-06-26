@@ -131,7 +131,7 @@
                     <div class="sumchoice_age" th:object="${ideal}">
                         <label class="label" for="age" >나이</label>
                         <div class="input">
-                            <input th:field="*{mbti}" type="number"  maxlength="2" min='20' max='40' step='1'placeholder="숫자만 입력해 주세요." required >
+                            <input th:value="*{mbti}" name="mbti" type="text"  maxlength="2" min='20' max='40' step='1'placeholder="숫자만 입력해 주세요." required >
                         </div>
                     </div>
                 </div>

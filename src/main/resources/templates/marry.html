@@ -90,7 +90,7 @@
         </div>
         <h1 class="main-logo">
             <a href="main.html">
-                <img src="../static/img/sumsum_logo.png">
+                <img src="/img/sumsum_logo.png">
             </a>
         </h1>
         <div class="right-header">
@@ -114,8 +114,8 @@
     </div>
 </div>
 <div class="choice_love_box">
-    <div class="choice_ment">
-        <span>결혼 질문 작성하기</span>
+    <div class="choice_ment"style="text-align: center;">
+        <span >썸썸 이상형 질문 작성하기</span>
     </div>
     <div class="choice_ment_p" style="text-align: center;">
         <p>내 짝은 어디에 있을까?</p>
@@ -125,7 +125,16 @@
 
     <form action="/idealRegister" id="marry_form" method="post" ><!--onsubmit="marry"-->
         <div class="choice_love1">
-            <div class="choice_love">
+            <div class="choice_love" style="position: relative;left: -54px;">
+                <!-- 이름 -->
+                <div class="sumchoice">
+                    <div class="sumchoice_age">
+                        <label class="label" for="age" >이름</label>
+                        <div class="input">
+                            <input type="text" name="userName" id="userName" th:value="${session.userName}" readonly >
+                        </div>
+                    </div>
+                </div>
                 <!-- 나이 -->
                 <div class="sumchoice">
                     <div class="sumchoice_age">
@@ -289,7 +298,7 @@
                     <div class="sumchoice_age">
                         <label class="label"  >자기소개</label>
                         <div class="input">
-                            <textarea name="selfIntroduce"type="text" minlength="30"placeholder="30자 이상 작성 부탁드립니다."  required ></textarea>
+                            <textarea  name="selfIntroduce"type="text" minlength="30"placeholder="30자 이상 작성 부탁드립니다."  required ></textarea>
                         </div>
                     </div>
                 </div>
@@ -315,7 +324,7 @@
     <div class="footer-container">
         <div class="footer-logo">
             <a href="main.html">
-                <img src="../static/img/sumsum_logo.png">
+                <img src="/img/sumsum_logo.png">
             </a>
         </div>
         <div>
@@ -345,7 +354,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     /* 쪽지 팝업창 */
-    function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+    function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
 
     function tabOpen(evt, contentName){
         var i, tabcontent, tab_btn;
@@ -369,8 +378,21 @@
         evt.currentTarget.className += " active";
     }
 
+
+
+
+
+
+
+
+
+
+
     function btn(){
         alert('썸썸 이상형 매칭 설문을 작성완료하셨습니다');
     }
+
+
+
 </script>
 </html>
