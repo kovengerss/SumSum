@@ -10,7 +10,7 @@
     VALUES(SEQ_IDEAL.NEXTVAL, #{age}, #{gender}, #{hobby}, #{residence}, #{income}, #{mbti}, #{selfIntroduce}, #{houseExist},#{userNum}, #{idealContent}, #{smoke}, #{job},#{userName})
     </insert>
     <select id="select" resultType="idealVO">
-        SELECT IDEAL_NUM, AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, USER_NUM, IDEAL_CONTENT, SMOKE, JOB,USER_NAME
+        SELECT IDEAL_NUM,AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, USER_NUM, IDEAL_CONTENT, SMOKE, JOB,USER_NAME
         FROM TBL_IDEAL
         WHERE IDEAL_NUM = #{idealNum}
     </select>

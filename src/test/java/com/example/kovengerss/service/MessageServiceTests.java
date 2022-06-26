@@ -25,11 +25,10 @@ public class MessageServiceTests {
     public void setUp(){
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
-    @Autowired
-    private IdealService idealService;
+
 
     @Test
     public void readTest() throws Exception{
-        log.info(mockMvc.perform(MockMvcRequestBuilders.get("/updateMarry").param("idealNum", "2601")).andReturn().getModelAndView().getModelMap().toString());
+        log.info(mockMvc.perform(MockMvcRequestBuilders.get("/getMyIdeal").param("idealNum", "167")).andReturn().getModelAndView().getModelMap().toString());
     }
 }
