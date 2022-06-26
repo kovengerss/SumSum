@@ -138,6 +138,8 @@
                                         </button>
                                     </aside>
                                     <div class="main-content-layout">
+                                        <form action="/board/boardDelete" method="post">
+                                            <input type="text" style="display: none;" th:field="${board.boardNum}">
                                         <header class="main-content-header">
                                             <h1 class="main-content-title">
                                             <span>
@@ -161,10 +163,11 @@
                                                 </div>
                                                 <div>
                                                     <button type="button" onclick="goUpdate()">수정</button>
-                                                    <button type="submit">삭제</button>
+                                                    <button type="submit" >삭제</button>
                                                 </div>
                                             </div>
                                         </header>
+                                        </form>
                                         <div class="main-content">
                                             <div class="content">
                                                 <p th:text="${board.boardContent}"></p>
@@ -191,41 +194,16 @@
                                                         <div class="commentEditor-input relative">
                                                             <div class="editor">
                                                                 <div class="editor-content editor-comment" >
-                                                                    <input class="comment" type="text" placeholder="댓글을 입력하세요.">
+                                                                    <input id="comment" class="comment" type="text" placeholder="댓글을 입력하세요.">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div style="text-align: right;">
-                                                            <button class="comment-submit board-button" style="font-size: .875rem; width: 6rem;">등록</button>
+                                                            <button class="comment-submit board-button" style="font-size: .875rem; width: 6rem;" onclick="register()">등록</button>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <div style="border-bottom-width: 1px;">
-                                                            <div style="padding-top: 0.75rem;">
-                                                                <div style="padding-left: 0.5rem;">
-                                                                    <div style="align-items: center; display: flex;">
-                                                                        <div class="userName">
-                                                                            <a href="/selectHuman.html">
-                                                                                <span style="background-image: url('	https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');width: 18px; height: 18px;"></span>
-                                                                            </a>
-                                                                            <div class="justify-content overflow-hidden flex" style="flex-direction: column;">
-                                                                                <div class="item-center flex">
-                                                                                    <a>ID</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="write-date" style="font-size: .75rem;">2022. 06. 06. 06:41</span>
-                                                                        <button class="change">수정</button>
-                                                                        <button class="delete">삭제</button>
-                                                                    </div>
-                                                                    <div class="comment-content">
-                                                                        <p>댓글작성글</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <form action="#" id="replies" class="reply-list" on="showList()">
+                                                    </form>
                                                 </div>
                                             </div>
                                         </footer>
@@ -238,8 +216,7 @@
                                 <div class="mt-0 order a-card mb-2" style="border: 1px solid #e3e3e3;">
                                     <header class="a-card-header">
                                         <h5>다른 게시글도 확인해보세요!</h5>
-                                        <div class="flex a-card-header-tag label">
-                                            <span>AI 추천</span>
+                                        <div class="flex a-card-header-tag label">                                            <span>AI 추천</span>
                                         </div>
                                     </header>
                                     <div class="a-card-content">
@@ -325,8 +302,21 @@
 <script th:inline="javascript">
     let boardNum = [[${board.boardNum}]];
     let boardField =[[${board.boardField}]];
+    let userNum = [[${session.userNum}]];
+
     function goUpdate(){
         location.href="/board/boardUpdate?boardNum="+ boardNum + "&boardField=" + boardField ;
     }
+</script>
+<script type="text/javascript" src="/js/reply.js"></script>
+<script type="text/javascript">
+    console.log("=======")
+    console.log("JS TEST");
+
+    replyService.getReplyList({bno:boardNum,page:1},function (list) {
+        for(var i = 0, len=list.length ||0; i<len; i++){
+            console.log(list[i]);
+        }
+    });
 </script>
 </html>

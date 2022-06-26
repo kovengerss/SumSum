@@ -1,29 +1,40 @@
 package com.example.kovengerss.domain.dao;
 
+import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.ReplyVO;
 import com.example.kovengerss.mapper.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class ReplyDAO {
     private final ReplyMapper replyMapper;
 
-    //게시글 답글 작성
-    public void replyInsert(ReplyVO replyVO){;}
-    //게시글  답글 한개 가져오기
-    public void replySelectOne(Integer replyNum){;}
-    //게시글 답글 수정
-    public void replyUpdate(ReplyVO replyVO){;}
-    //게시글 답글 삭제
-    public void replyDelete(ReplyVO replyVO){;}
-    //답글 시간 가져오기
-    public void replyGetRegisterDate(){;}
-    //게시글 수정 시간 가져오기
-    public void replyGetUpdateDate(){;}
-    //게시글에 달린 총 답글 갯수
-    public void replyGetTotal(){;}
-    //게시글 답글 내용 가져오기
-    public void replyGetContent(ReplyVO replyVO){;}
+    //    댓글 등록
+    public void register(ReplyVO replyVO){
+        replyMapper.insert(replyVO);
+    }
+    //    댓글 1개 조회
+    public ReplyVO read(Integer replyNum){
+        return replyMapper.select(replyNum);
+    }
+    //    댓글 삭제
+    public void remove(Integer replyNum){
+        replyMapper.delete(replyNum);
+    }
+    //    댓글 수정
+    public void modify(ReplyVO replyVO){
+        replyMapper.update(replyVO);
+    }
+    //    댓글 목록
+    public List<ReplyVO> getReplyList(Criteria criteria, Integer boardNum){
+        return replyMapper.getReplyList(criteria, boardNum);
+    }
+    //    댓글 개수
+    public int getTotal(Integer boardNum){
+        return replyMapper.getTotal(boardNum);
+    }
 }
