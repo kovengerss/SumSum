@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BlackListController {
     private final BlackListService blackListService;
 
-    @GetMapping("adminPage")
+    /*@GetMapping("adminPage")
     public void blackListNum(){
 
-    }
+    }*/
 
 
 }
