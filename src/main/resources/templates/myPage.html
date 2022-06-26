@@ -178,7 +178,7 @@
             </aside>
 <form action="/updateMarry">
             <main class="profile-main" style="width: 1059px;">
-                <div class="profile-index">
+                <div class="profile-index" th:if="${idealVO != null}">
                     <div style="width: 60%;">
                         <h4 class="profileCardTitle">기본 정보</h4>
                         <div class="myInfo" style="width: 100%; margin-bottom: 53px;">
@@ -252,7 +252,7 @@
                             </label>
 
                             <!--아직 구현안한 곳-->
-                            <a th:href="@{/updateMarry(idealNum=${idealVO.idealNum})}" class="information-btn" style="position: relative;top: -151px;left: 25px;width: 157px;text-align: center;font-weight: bolder;">나의 정보 수정하기</a>
+                            <a th:href="@{/updateMarry(idealNum=${idealVO.idealNum})}" class="information-btn" style="position: relative;top: -151px;left: 25px;">나의 정보 수정하기</a>
 
                                 <!--   <div style="font-size: 21px;font-weight: 600;">
                                 <span>전문직</span>
@@ -367,7 +367,6 @@
                                  <span th:text="${idealVO.idealNum}"></span>
                                 <button type="button" onclick="goUpdate()"></button>
                             </label>
-
                         </div>
                     </div>
 
@@ -430,7 +429,7 @@
 <div class="modal fade" id="delete_member_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="/myPage" method="post">
+            <form action="/user/delete" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel" style="font-size: 22px; font-weight: bolder; color: #0d6efd">SUMSUM에서 회원탈퇴를 원하십니까?</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -461,7 +460,7 @@
     /* 쪽지 팝업창 */
     function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
 
-    let idealNum = [[${idealVO.idealNum}]];
+    let idealNum = /*[[${idealVO?.idealNum}]]*/'';
     function goUpdate(){
         location.href = "/updateMarry?idealNum=" + idealNum;
         //location.hreg는 get방식이다.

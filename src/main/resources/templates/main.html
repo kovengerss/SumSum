@@ -88,7 +88,7 @@ a {
                         </div>
                     </div>
                     <div class="menuList">
-                        <a class="item" href="/pick">
+                        <a class="item" href="/idealList">
                             이상형 찾기
                         </a>
                         <a class="item" href="/marry">
@@ -404,7 +404,12 @@ a {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<script th:inline="javascript">
+    let messageNum = [[${messageNum}]];
+    if(messageNum!=null){
+
+        alert("쪽지를 전송하였습니다.")
+    }
 /* 쪽지 팝업창 */
 function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
 

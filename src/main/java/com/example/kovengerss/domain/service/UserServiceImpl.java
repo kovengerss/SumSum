@@ -160,7 +160,7 @@ public class UserServiceImpl implements UserService {
 
             // account Id, Password
             String username = "fhfkfk789@naver.com";            // 실제 네이버 이메일
-            String password = "dlwodnjs456";                    // 실제 네이버 비밀번호  #commit 시 항상 지워주고 보내주세요.
+            String password = "%%%%%%%%%%%%%%%%%";              // 실제 네이버 비밀번호  #commit 시 항상 지워주고 보내주세요.
 
             java.util.Properties props = System.getProperties();                                   // SMTP 서버 정보 설정
             props.put("mail.smtp.host", host);
@@ -189,8 +189,9 @@ public class UserServiceImpl implements UserService {
                 mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
                 mimeMessage.setSubject(subject); //제목
                 mimeMessage.setContent("안녕하세요 SUMSUM을 이용해주셔서 감사합니다. 회원님이 요청하신 비밀번호 발송해드렸습니다."
-                        + "<br>"+
-                        "회원님의 비밀번호 : "+ findUserVO.getUserPw(), "text/html; charset=UTF-8"); //내용
+                        + "<br>" +
+                        "회원님의 비밀번호 : " + findUserVO.getUserPw()
+                        + "<br>" + "바로 접속하기 : <a>http://localhost:10030/login</a>", "text/html; charset=UTF-8"); //내용
                 Transport.send(mimeMessage);
             } catch (javax.mail.MessagingException e) {
                 e.printStackTrace();

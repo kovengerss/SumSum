@@ -134,7 +134,7 @@ public class UserController {
     }
 
     //회원 탈퇴
-    @PostMapping("myPage")
+    @PostMapping("/user/delete")
     public String deleteUser(String userPw, HttpSession httpSession, Model model, RedirectAttributes rttp){
         UserVO userVO = (UserVO) httpSession.getAttribute("userList");
         log.info("deleteUser : " + userPw + userVO.getUserId());
