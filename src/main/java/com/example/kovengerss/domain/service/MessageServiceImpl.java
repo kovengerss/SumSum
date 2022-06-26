@@ -17,8 +17,8 @@ public class MessageServiceImpl implements MessageService{
 
 
     @Override
-    public List<MessageVO> getList() {
-        return messageDAO.msgGetList();
+    public List<MessageVO> getList(Integer userNum) {
+        return messageDAO.msgGetList(userNum);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
-    public int msgGetTotal() {
-        return messageDAO.msgGetTotal();
+    public int msgGetTotal(Integer userNum) {
+        return messageDAO.msgGetTotal(userNum);
     }
 
     @Override

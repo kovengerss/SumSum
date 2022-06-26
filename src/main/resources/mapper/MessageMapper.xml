@@ -6,6 +6,7 @@
         SELECT /*+ INDEX_DESC(TBL_MESSAGE PK_MESSAGE_NUM) */
         MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM
         FROM TBL_MESSAGE
+        WHERE USER_NUM =#{userNum}
     </select>
     <insert id="insert">
         <selectKey keyProperty="messageNum" order="BEFORE" resultType="_int">
@@ -27,7 +28,7 @@
     </delete>
     <!--메세지 총 개수 가져오기-->
     <select id="getTotal" resultType="_int">
-         SELECT COUNT(MESSAGE_NUM) FROM TBL_MESSAGE
+         SELECT COUNT(MESSAGE_NUM) FROM TBL_MESSAGE WHERE USER_NUM =#{userNum}
     </select>
     <!--메세지 보낸 시간 가져오기-->
     <select id="getSendDate" resultType="string">

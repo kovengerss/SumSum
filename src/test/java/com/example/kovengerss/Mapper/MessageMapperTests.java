@@ -15,10 +15,10 @@ public class MessageMapperTests {
     @Autowired
     private MessageMapper messageMapper;
 
-   /* @Test
+    @Test
     public void getListTest(){
-        messageMapper.getList().stream().map(MessageVO::toString).forEach(log::info);
-    }*/
+        messageMapper.getList(22).stream().map(MessageVO::toString).forEach(log::info);
+    }
 
 
   /*  @Test

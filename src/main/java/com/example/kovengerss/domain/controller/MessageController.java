@@ -82,24 +82,28 @@ public class MessageController {
     public void letter(){ ; }
 
     @GetMapping("list")
-    public String getList(Model model){
+    public String getList(Model model,HttpServletRequest req){
         log.info("----------------------------");
         log.info("list.............");
         log.info("----------------------------");
 
-        model.addAttribute("messageList", messageService.getList());
-        model.addAttribute("messageCount",messageService.msgGetTotal());
+        HttpSession session = req.getSession();
+        Integer userNum = (Integer)session.getAttribute("userNum");
+
+
+        model.addAttribute("messageList", messageService.getList(userNum));
+        model.addAttribute("messageCount",messageService.msgGetTotal(userNum));
         return "/letter";
     }
 
     @GetMapping("remove")
-    public String remove(Integer messageNum,Model model){
+    public String remove(Integer messageNum,Integer userNum,Model model,HttpServletRequest req){
         log.info("----------------------------");
         log.info("remove.............dsd : " + messageNum);
         log.info("----------------------------");
 
         messageService.msgDelete(messageNum);
-        return getList(model);
+        return getList(model,req);
     }
 
 /*

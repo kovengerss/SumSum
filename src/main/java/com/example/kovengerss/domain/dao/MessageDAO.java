@@ -13,7 +13,7 @@ public class MessageDAO {
     private final MessageMapper messageMapper;
 
     //메세지(쪽지) 목록
-    public List<MessageVO> msgGetList(){ return messageMapper.getList();}
+    public List<MessageVO> msgGetList(Integer userNum){ return messageMapper.getList(userNum);}
     //메세지(쪽지) 입력
     public  void msgInsert(MessageVO messageVO){messageMapper.insert(messageVO);}
     //메세지(쪽지) 수정
@@ -21,7 +21,7 @@ public class MessageDAO {
     //메세지(쪽지) 삭제
     public  boolean msgDelete(Integer messageNum){ return messageMapper.delete(messageNum) ==1;}
     //메세지(쪽지) 전체수
-    public int msgGetTotal(){ return messageMapper.getTotal();}
+    public int msgGetTotal(Integer userNum){ return messageMapper.getTotal(userNum);}
     //메세지(쪽지) 보낸 시간 가져오기
     public String msgGetSendDate(int messageNum){ return messageMapper.getSendDate(messageNum);}
     //메세지(쪽지) 한개 가져오기
