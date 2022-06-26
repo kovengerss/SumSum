@@ -130,7 +130,7 @@
                         </th:block>
                         <a class="changePage" th:if="${pageDTO.next}" th:href="${pageDTO.endPage + 1}"><code>&gt;</code></a>
                     </div>
-                    <form action="/adminpage" th:object="${criteria}" name="pageForm">
+                    <form action="/adminPointField" th:object="${criteria}" name="pageForm">
                         <input type="hidden" th:field="*{pageNum}">
                         <input type="hidden" th:field="*{amount}">
                     </form>

@@ -99,7 +99,7 @@
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
-                            <th:block th:each="board:${boardList}">
+                            <th:block th:each="board:${reviewList}">
                                 <div class="item">
                                 <tr class="tBody" th:object="${board}">
                                     <div class="boardNum"><td th:text="*{boardNum}"></td></div>
@@ -125,12 +125,12 @@
                     <div style="text-align: center; margin-top: 40px;font-size: 23px;margin-bottom: 20px;">
                         <a class="changePage" th:if="${pageDTO.prev}" th:href="${pageDTO.startPage - 1}"><code>&lt;</code></a>
                         <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
-                            <code th:text="${num}" th:if="${pageDTO.criteria.pageNum == num}" style="margin-right: 15px; width: 26px;height: 26px;"></code>
-                            <a class="changePage" th:unless="${pageDTO.criteria.pageNum == num}" th:href="${num}"><code th:text="${num}"style="margin-right: 15px; width: 26px;height: 26px;"></code></a>
+                            <code th:text="${num}" th:if="${pageDTO.criteria1.pageNum == num}" style="margin-right: 15px; width: 26px;height: 26px;"></code>
+                            <a class="changePage" th:unless="${pageDTO.criteria1.pageNum == num}" th:href="${num}"><code th:text="${num}"style="margin-right: 15px; width: 26px;height: 26px;"></code></a>
                         </th:block>
                         <a class="changePage" th:if="${pageDTO.next}" th:href="${pageDTO.endPage + 1}"><code>&gt;</code></a>
                     </div>
-                    <form action="/adminpage" th:object="${criteria}" name="pageForm">
+                    <form action="/adminReviewField" th:object="${criteria1}" name="pageForm">
                         <input type="hidden" th:field="*{pageNum}">
                         <input type="hidden" th:field="*{amount}">
                     </form>

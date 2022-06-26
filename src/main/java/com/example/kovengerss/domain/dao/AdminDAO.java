@@ -1,11 +1,9 @@
 package com.example.kovengerss.domain.dao;
 
-import com.example.kovengerss.domain.vo.AdminVO;
-import com.example.kovengerss.domain.vo.BoardVO;
-import com.example.kovengerss.domain.vo.Criteria;
-import com.example.kovengerss.domain.vo.UserVO;
+import com.example.kovengerss.domain.vo.*;
 import com.example.kovengerss.mapper.AdminMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,9 +25,14 @@ public class AdminDAO {
         return adminMapper.getUserId(userNum);
     }
     //게시글 목록
-    public List<BoardVO> getList(Criteria criteria){
-        return adminMapper.getList(criteria);
-    }
+    public List<BoardVO> getList(BoardVO boardVO, Criteria criteria){return adminMapper.getList(boardVO, criteria);}
+    public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3){return adminMapper.getFieldAppil(boardVO, criteria3);}
+    public List<BoardVO> getFieldBoard(BoardVO boardVO, Criteria2 criteria2){return adminMapper.getFieldBoard(boardVO, criteria2);}
+    public List<BoardVO> getFieldReview(BoardVO boardVO, Criteria1 criteria1){return adminMapper.getFieldReview(boardVO, criteria1);}
+
+    //게시글 전체 개수
+    public int boardGetTotal(BoardVO boardVO){return adminMapper.getTotal(boardVO);}
+    public int boardGetTotalField(BoardVO boardVO){return adminMapper.getTotalField(boardVO);}
 
     //게시글 삭제
     public boolean remove(int boardNum){
