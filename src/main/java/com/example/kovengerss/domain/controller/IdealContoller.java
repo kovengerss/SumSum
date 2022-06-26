@@ -27,7 +27,7 @@ public class IdealContoller {
     }
 
     @PostMapping("idealRegister")
-    public String idealRegister(IdealVO idealVO, RedirectAttributes rttr, HttpServletRequest req){
+    public String idealRegister(IdealVO idealVO, RedirectAttributes rttr, HttpServletRequest req,Model model){
         log.info("----------------------------");
         log.info("register............. : " + idealVO);
         log.info("register............. : ");
@@ -43,48 +43,42 @@ public class IdealContoller {
         /*  log.info(idealVO.getIdealNum().toString());*/
         /* rttr.addFlashAttribute("ideal",idealService.idealSelect(idealVO.getIdealNum()));*/
 
-        return "/mypage";
+        return getOne(idealNum,model,req);
     }
 
-    //insert시 상세보기 처럼 하는 컨트롤러
-   /* @GetMapping("myPage")
-    public void read(int idealNum,Model model){
-        log.info("----------------------------");
-        log.info("........아이딜 넘버..... : " + idealNum);
-        log.info("----------------------------");
-        model.addAttribute("idealVO",idealService.idealSelect(idealNum));
-    }*/
 
-
-    @GetMapping("listideal")
-    public String getOne(Model model){
+    @GetMapping("getMyIdeal")
+    public String getOne(Integer idealNum, Model model,HttpServletRequest req){
         log.info("----------------------------");
-        log.info("list.............");
+        log.info("list............."+idealNum);
         log.info("----------------------------");
+        HttpSession session =   req.getSession();
+        Integer idealNums = (Integer)session.getAttribute("idealNum");
 
-
-        /*model.addAttribute("ideal", idealService.idealSelect(idealVO.getIdealNum()));*/
+                                                                            //여기서 디비버의 sequence연동에 문제가 생김
+        model.addAttribute("idealVO", idealService.idealSelect(idealNums+1));
         return "/myPage";
     }
 
     //이상형 수정 페이지로 가는 get방식
     @GetMapping("/updateMarry")
     public void getUpdate(Integer idealNum,Model model){
-        log.info("----------------------------");
+    /*    log.info("----------------------------");
         log.info("......수정하기 들어옴 처음....... : " + idealNum);
-        log.info("----------------------------");
+        log.info("----------------------------");*/
 
       model.addAttribute("ideal",idealService.idealSelect(idealNum));
-      log.info(idealService.idealSelect(idealNum).toString());
+/*      log.info(idealService.idealSelect(idealNum).toString());*/
     }
 
 
     @PostMapping("modifyIdeal")
-    public String modifyIdeal(IdealVO idealVO){
+    public String modifyIdeal(IdealVO idealVO,Model model,HttpServletRequest req){
 
+         Integer idealNum = idealVO.getIdealNum();
         idealService.idealUpdate(idealVO);
 
-        return "/myPage";
+        return getOne(idealNum,model,req);
     }
 
 
