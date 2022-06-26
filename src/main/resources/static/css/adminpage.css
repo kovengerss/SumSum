@@ -145,7 +145,6 @@ a {
 .board_list_head,
 .board_list_body .item {
     padding: 15px 0;
-    font-size: 0;
 }
 
 .board_list_head {
@@ -162,6 +161,7 @@ a {
     display: inline-block;
     text-align: center;
     font-size: 14px;
+    margin-top: -10px;
 }
 
 .board_list_head > div {
@@ -170,12 +170,24 @@ a {
 
 .board_list .num {  /* 게시판 번호 */
     width: 100px;
+    font-weight: bolder;
+}
+.board_list .boardNum {  /* 게시판 번호 */
+    width: 100px;
+    font-weight: bolder;
 }
 .board_list .cate {  /* 카테고리 */
     width: 150px;
 }
+.board_list .boardField {  /* 카테고리 */
+    width: 150px;
+    font-weight: bolder;
+}
 
 .board_list .tit {      /* 제목 */
+    width: 400px;
+}
+.board_list .boardTitle {      /* 제목 */
     width: 400px;
 }
 
@@ -183,19 +195,39 @@ a {
     width: 100px;
     margin-left: 30px;
 }
+.board_list .userNum {       /* 작성자 */
+    width: 100px;
+    font-weight: bolder;
+    margin-left: 30px;
+}
 
 .board_list .date {     /* 작성일 */
     width: 150px;
     margin-left: 30px;
+    font-weight: bolder;
+}
+.board_list .boardUpdateDate {     /* 작성일 */
+    width: 150px;
+    margin-left: 30px;
+    font-weight: bolder;
 }
 
 .board_list .view {     /* 신고누적 */
     width: 150px;
 }
+.board_list .warningCount {     /* 신고누적 */
+    width: 150px;
+    font-weight: bolder;
+}
 
 .board_list .regist_date {     /* 가입날짜 */
     width: 100px;
     margin-left: 20px;
+}
+.board_list .boardRegisterDate {     /* 가입날짜 */
+    width: 100px;
+    margin-left: 20px;
+    font-weight: bolder;
 }
 .board_list .dele {     /* 기능 */
     width: 30px;

@@ -7,4 +7,37 @@
         FROM TBL_ADMIN
         WHERE ADMIN_ID = #{adminId} AND ADMIN_PW = #{adminPw}
     </select>
+    <select id="getList" resultType="boardVO">
+        SELECT  /*+ INDEX_DESC(TBL_BOARD PK_BOARD)*/
+        BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,BOARD_FIELD,BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+        FROM TBL_BOARD
+    </select>
+    <select id="select">
+        SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,BOARD_FIELD,BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+        FROM TBL_BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+    <delete id="delete">
+        DELETE FROM TBL_BOARD
+        WHERE BOARD_NUM =#{boardNum}
+    </delete>
+    <update id="update">
+        UPDATE TBL_BOARD
+        SET BOARD_TITLE = #{boardTitle} ,  BOARD_CONTENT = #{boardContent}, BOARD_UPDATE_DATE = SYSDATE
+    </update>
+    <delete id="deleteUser">
+        DELETE FROM TBL_USER
+        WHERE USER_NUM = #{userNum}
+    </delete>
+    <select id="getWarningCount" resultType="int">
+        SELECT WARNING_COUNT
+        FROM TBL_BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+    <select id="getUserId" resultType="String">
+        SELECT USER_ID
+        FROM TBL_USER
+        WHERE USER_NUM = #{userNum}
+    </select>
+
 </mapper>

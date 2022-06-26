@@ -3,6 +3,9 @@ package com.example.kovengerss.domain.controller;
 import com.example.kovengerss.domain.service.AdminService;
 import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.vo.AdminVO;
+import com.example.kovengerss.domain.vo.BoardVO;
+import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -36,15 +39,29 @@ public class AdminController {
         httpSession.setAttribute("adminId",adminId);
         log.info((String)httpSession.getAttribute(adminId));
 
-        return "redirect:/adminPage";
+        return "redirect:/adminpage";
+    }
+    @GetMapping("adminpage")
+    public String getList(Criteria criteria, Model model){
+        log.info("----------------------------");
+        log.info("list............. : " + criteria);
+        log.info("----------------------------");
+        model.addAttribute("boardList", adminService.getList(criteria));
+        log.info("---------------완료-----------------");
+//        model.addAttribute("pageDTO", new PageDTO(criteria, boardService.getTotal(criteria)));
+        return "/adminpage";
     }
 
-    /*@GetMapping("adminPage")
-    public String adminPage(AdminVO adminVO){
-        return "/adminPage";
+/*
+    @PostMapping("adminpage")
+    public String remove(int boardNum, Criteria criteria, Model model){
+        log.info("----------------------------");
+        log.info("remove............. : " + boardNum);
+        log.info("----------------------------");
+
+        adminService.remove(boardNum);
+        return getList(criteria, model);
     }*/
-
-
 
 
 }
