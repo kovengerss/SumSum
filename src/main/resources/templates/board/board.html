@@ -34,10 +34,10 @@
                 </div>
                 <div class="sidebar-body">
                     <div class="profile">
-                        <a href="/login.html">
+                        <a href="/main">
                             <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
                         </a>
-                        <a class="user-info" href="/login.html">
+                        <a class="user-info" href="/login">
                             로그인하기 >
                         </a>
                     </div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <h1 class="main-logo">
-                <a href="../main.html">
+                <a href="/main">
                     <img src="/img/sumsum_logo.png">
                 </a>
             </h1>
@@ -96,7 +96,7 @@
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="/sign.html">
+                <a class="signup" href="/sign">
                     회원가입
                 </a>
             </div>
@@ -170,13 +170,13 @@
                                         </form>
                                         <div class="main-content">
                                             <div class="content">
-                                                <p th:text="${board.boardContent}"></p>
+                                                <p th:utext="${board.boardContent}"></p>
                                             </div>
                                         </div>
                                         <footer class="main-content-footer">
                                             <div>
                                             <span class="float-none">
-                                                <button class="curious board-button question-button button-outline button-all" onclick="color()">궁금해요 40</button>
+                                                <button class="curious board-button question-button button-outline button-all" onclick="color()">좋아요 40</button>
                                                 <button class="question-button declaration-button button-outline" onclick="declaration()" style="margin-left: 0.75rem;">
                                                     <i class="declaration">🚨</i>
                                                     <span class="declaration-text">신고</span>
@@ -202,8 +202,9 @@
                                                             <button class="comment-submit board-button" style="font-size: .875rem; width: 6rem;" onclick="register()">등록</button>
                                                         </div>
                                                     </div>
-                                                    <form action="#" id="replies" class="reply-list" on="showList()">
-                                                    </form>
+                                                    <div class="reply_list">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </footer>
@@ -298,6 +299,7 @@
     function showPopup() { window.open("/letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
 <script src= "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--<script src="/js/reply.js"></script>-->
 <script src="/js/board.js"></script>
 <script th:inline="javascript">
     let boardNum = [[${board.boardNum}]];
@@ -307,16 +309,5 @@
     function goUpdate(){
         location.href="/board/boardUpdate?boardNum="+ boardNum + "&boardField=" + boardField ;
     }
-</script>
-<script type="text/javascript" src="/js/reply.js"></script>
-<script type="text/javascript">
-    console.log("=======")
-    console.log("JS TEST");
-
-    replyService.getReplyList({bno:boardNum,page:1},function (list) {
-        for(var i = 0, len=list.length ||0; i<len; i++){
-            console.log(list[i]);
-        }
-    });
 </script>
 </html>

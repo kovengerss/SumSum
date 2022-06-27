@@ -170,7 +170,7 @@
                                             </form>
                                             <div class="main-content">
                                                 <div class="content">
-                                                    <p th:text="${appilBoard.boardContent}"></p>
+                                                    <p th:utext="${appilBoard.boardContent}"></p>
                                                 </div>
                                             </div>
                                             <footer class="main-content-footer">
@@ -275,7 +275,7 @@
                                     </div>
                                 </div>
                                 <button class="question-action button-action">
-                                    <span><a href="boardWrite.html" style="color: #fff;">어필하러 가기</a><span>
+                                    <span><a href="/board/boardWrite" style="color: #fff;">어필하러 가기</a><span>
                                 </button>
                             </div>
                         </aside>

@@ -21,36 +21,36 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/board/*")
-public class AppilBoardController {
+public class ReviewBoardController {
     private final BoardService boardService;
 
     //     글 목록
-    @GetMapping("appilBoardList")
+    @GetMapping("reviewBoardList")
     public String getList(BoardVO boardVO, Criteria criteria, Model model){
         log.info("----------------------------");
         log.info("list.............");
         log.info("----------------------------");
-        boardVO.setBoardField("어필하기");
-        model.addAttribute("appilBoardList", boardService.getList(boardVO,criteria));
+        boardVO.setBoardField("후기");
+        model.addAttribute("reviewBoardList", boardService.getList(boardVO,criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, boardService.boardGetTotal(boardVO)));
-        return "/board/appilBoardList";
+        return "/board/reviewBoardList";
     }
 
-    @GetMapping({"appilBoard","appilBoardUpdate"})
-    public void boardSelectOne(BoardVO boardVO,Integer boardNum,Model model,HttpServletRequest req){
+    @GetMapping({"reviewBoard","reviewBoardUpdate"})
+    public void boardSelectOne(BoardVO boardVO, Integer boardNum, Model model, HttpServletRequest req){
 
         log.info("----------------------------");
         log.info(req.getRequestURI() + "............. : " + boardNum);
         log.info("----------------------------");
 
         boardService.boardSelectOne(boardNum);
-        model.addAttribute("appilBoard",boardService.boardSelectOne(boardNum));
+        model.addAttribute("reviewBoard",boardService.boardSelectOne(boardNum));
     }
 
 
     //수정
-    @PostMapping("appilBoardUpdate")
-    public RedirectView boardUpdate(BoardVO boardVO, RedirectAttributes rttr,HttpServletRequest req){
+    @PostMapping("reviewBoardUpdate")
+    public RedirectView boardUpdate(BoardVO boardVO, RedirectAttributes rttr, HttpServletRequest req){
 
         log.info("-----------");
         log.info("보드 넘버" + boardVO.getBoardNum());
@@ -62,11 +62,11 @@ public class AppilBoardController {
         boardService.boardUpdate(boardVO);
         rttr.addAttribute("boardNum", boardVO.getBoardNum());
         rttr.addAttribute("boardField",boardVO.getBoardField());
-        return new RedirectView("/board/appilBoard");
+        return new RedirectView("/board/reviewBoard");
     }
 
     //    삭제
-    @PostMapping("appilBoardDelete")
+    @PostMapping("reviewBoardDelete")
     public String boardDelete(Integer boardNum, Criteria criteria, Model model,BoardVO boardVO){
         log.info("----------------------------");
         log.info("remove............. : " + boardNum);
@@ -75,5 +75,5 @@ public class AppilBoardController {
         boardService.boardDelete(boardNum);
         return getList(boardVO, criteria, model);
     }
-}
 
+}

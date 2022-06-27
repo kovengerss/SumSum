@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.kovengerss.mapper.LikeMapper">
-<!--     <update id="like_check" parameterType="HashMap">-->
-<!--         UPDATE TBL_LIKE    -->
-<!--         SET LIKE_CHECK = LIKE_CHECK + 1  -->
-<!--         WHERE USER_NUM=#{userNum} AND BOARD_NUM=#{boardNum} -->
-<!--     </update>-->
+    <insert id="insert" parameterType="likeVO">
+        INSERT INTO TBL_LIKE
+        VALUES(0, #{boardNum},#{userNum},#{likeCheck})
+    </insert>
 
-<!--     <update id="like_check_cancel" parameterType="HashMap">-->
-<!--        UPDATE TBL_LIKE    -->
-<!--        SET LIKE_CHECK = 0    -->
-<!--        WHERE USER_NUM=#{userNum} AND BOARD_NUM=#{boardNum} -->
-<!--    </update>-->
+    <update id="heartUp" parameterType="boardVO">
+        UPDATE TBL_BOARD
+        SET GOOD_COUNT = GOOD_COUNT + 1
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+
+    <delete id="delete" parameterType="likeVO">
+        DELETE FROM TBL_LIKE
+        WHERE likeNum =#{likeNum} AND USER_NUM=#{userNum}
+    </delete>
+    <update id="heartDown" parameterType="boardVO">
+        UPDATE TBL_BOARD
+        SET GOOD_COUNT = GOOD_COUNT -1
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+    <select id="select" parameterType="boardVO" resultType="boardVO">
+        SELECT GOOD_COUNT
+        FROM TBL_BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+
+
 </mapper>

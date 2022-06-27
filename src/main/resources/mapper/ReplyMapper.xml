@@ -12,13 +12,13 @@
     </select>
 
     <delete id="delete">
-        DELETE FROM TBL_REPLY WHERE REPLY_NUM = #{replyNum}
+        DELETE FROM TBL_REPLY WHERE REPLY_NUM = #{replyNum} AND USER_NUM=#{userNum}
     </delete>
 
     <update id="update">
         UPDATE TBL_REPLY
         SET REPLY_CONTENT = #{replyContent}, REPLY_UPDATE_DATE = SYSDATE
-        WHERE REPLY_NUM = #{replyNum}
+        WHERE REPLY_NUM = #{replyNum} AND USER_NUM=#{userNum}
     </update>
 
     <select id="getList" resultType="replyVO">
