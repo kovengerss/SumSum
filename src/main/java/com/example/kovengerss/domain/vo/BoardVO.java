@@ -14,4 +14,5 @@ public class BoardVO {/*게시판*/
     private String boardUpdateDate;
     private Integer userNum;
     private Integer warningCount;
+    private Integer goodCount;
 }

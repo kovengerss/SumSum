@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -6,19 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="styleSheet" href="/css/board.css">
+    <link rel="styleSheet" href="/css/boardWrite.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title>Document</title>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
 <div class="base">
-    <!-- 상단 고정 바 -->
     <div class="top-header">
         <div class="top-header-wrap">
             <button class="menuBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="slidebutton">
-                <span class="a-alarmBadge" style="top: 11px; right: 9px;"></span>
+                <span class="a-alarmBadge" style="top: 6px; right: 0px;"></span>
                 <span class="menuBar"></span>
                 <span class="menuBar" style="width:19px; height: 4px;"></span>
                 <span class="menuBar"></span>
@@ -67,7 +75,7 @@
                     <a class="item" href="board.html">
                         고민상담
                     </a>
-                    <a class="item" href=reviewBoard.html"">
+                    <a class="item" href="reviewBoard.html">
                         후기
                     </a>
                 </div>
@@ -103,182 +111,91 @@
         </div>
     </div>
     <!--상단바  -->
-    <div class="page">
-        <header class="header-default header">
-            <div class="banner" style="background: #edacb1;">
-                <div class="container reative">
-                    <div class="image-wrap md-2">
-                        <img class="cate-image"src="/img/후기배너.png" style="bottom:7px; right: 18px;">
-                    </div>
-                    <div class="title-wrap text-color z-10" style="display: flex; align-items: center;">
-                        <div>
-                            <div class="title-margin">
-                                <span class="title">후기</span>
-                            </div>
-                            <div class="title-margin">
-                                <small>홈페이지를 이용한 후기를 작성해주세요.</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <section class="a-container no-padding-xs" style="width: 100%;">
-            <div class="row" >
-                <main class="main-board-layout" style="width: 95%;">
-                    <div class="main-board-detail">
-                        <div class="main-board">
-                            <h3><a href="/board/reviewBoardList" class="button small">목록 보기</a></h3>
-                            <section style=" border: 1px solid #e3e3e3;" >
-                                <article class="board">
-                                    <aside class="board-side">
-                                        <button class="board-side-badge board-button badge" onclick="color()">
-                                            <i class=" icon good-button" onclick="color()">♥</i>
-                                            <p style="margin-top:12px;"class="number">1</p>
-                                        </button>
-                                    </aside>
-                                    <div class="main-content-layout">
-                                        <form action="/board/reviewBoardDelete" method="post">
-                                            <input type="text" style="display: none;" th:field="${reviewBoard.boardNum}">
-                                            <header class="main-content-header">
-                                                <h1 class="main-content-title">
-                                            <span>
-                                                <i class="icon" style="font-size: 29px; font-weight: 700;">Q.</i>
-                                            </span>
-                                                    <span style="color:black;" th:text="${reviewBoard.boardTitle}"></span>
-                                                </h1>
-                                                <div class="justify-content">
-                                                    <div class="item-center">
-                                                        <div class="userName">
-                                                            <a href="/selectHuman.html">
-                                                                <span style="background-image: url('https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');width: 18px; height: 18px;"></span>
-                                                            </a>
-                                                            <div class="overflow-hidden justify-content">
-                                                                <div class="item-center flex">
-                                                                    <a ></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <span class="write-date" th:text="${reviewBoard.boardUpdateDate}"></span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" onclick="goUpdate()">수정</button>
-                                                        <button type="submit" >삭제</button>
-                                                    </div>
-                                                </div>
-                                            </header>
-                                        </form>
-                                        <div class="main-content">
-                                            <div class="content">
-                                                <p th:utext="${reviewBoard.boardContent}"></p>
-                                            </div>
-                                        </div>
-                                        <footer class="main-content-footer">
-                                            <div>
-                                            <span class="float-none">
-                                                <button class="curious board-button question-button button-outline button-all" onclick="color()">채택 40</button>
-                                                <button class="question-button declaration-button button-outline" onclick="declaration()" style="margin-left: 0.75rem;">
-                                                    <i class="declaration">🚨</i>
-                                                    <span class="declaration-text">신고</span>
-                                                </button>
-                                            </span>
-                                                <button class="board-button button-comment button-none comment-button">
-                                                    <i>💬</i>
-                                                    <span style="font-size:18px;">0</span>
-                                                </button>
-                                            </div>
-                                            <div class="commentWrapper" style="display: none;">
-                                                <div class="commentList">
-                                                    <div class="commentEditor" >
-                                                        <span class="profile-image"style="background-image: url('https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');width: 23px; height: 23px; margin-top: 12px;"></span>
-                                                        <div class="commentEditor-input relative">
-                                                            <div class="editor">
-                                                                <div class="editor-content editor-comment" >
-                                                                    <input class="comment" type="text" placeholder="댓글을 입력하세요.">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div style="text-align: right;">
-                                                            <button class="comment-submit board-button" style="font-size: .875rem; width: 6rem;">등록</button>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div style="border-bottom-width: 1px;">
-                                                            <div style="padding-top: 0.75rem;">
-                                                                <div style="padding-left: 0.5rem;">
-                                                                    <div style="align-items: center; display: flex;">
-                                                                        <div class="userName">
-                                                                            <a href="../selectHuman.html">
-                                                                                <span style="background-image: url('	https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');width: 18px; height: 18px;"></span>
-                                                                            </a>
-                                                                            <div class="justify-content overflow-hidden flex" style="flex-direction: column;">
-                                                                                <div class="item-center flex">
-                                                                                    <a>임종욱123</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="write-date" style="font-size: .75rem;">2022. 06. 06. 06:41</span>
-                                                                        <button class="change">수정</button>
-                                                                        <button class="delete">삭제</button>
-                                                                    </div>
-                                                                    <div class="comment-content">
-                                                                        <p>댓글작성글</p>
-                                                                    </div>
-                                                                </div>
+    <div class="page-container page">
+        <section class="all-container">
+            <div class="justify-center flex row">
+                <main class="main-layout">
+                    <div class="row">
+                        <div class="md-8">
+                                <div class="sub-title">
+                                    <label class="sub-title-label" style="font-size: 13px">글 수정</label>
+                                    <form class="question-title-form" method="post" action="/board/boardUpdate">
+                                    <select style="outline: none;"class="categorySelector" name="boardField">
+                                                    <option selected="seleted" disabled="disabled">카테고리 선택하세요.</option>
+                                                    <optgroup label="정규 카테고리">
+                                                        <option value="고민상담">고민 상담</option>
+                                                        <option value="어필하기">어필 하기</option>
+                                                        <option value="후기">후기</option>
+                                                    </optgroup>
+                                                </select>
+                                </div>
+                                <div class="px-4 content-layout" style="border:1px solid #e3e3e3;">
+                                    <div class="question-editor">
+                                       <div class="question-title">
+                                           <header>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </footer>
-                                    </div>
-                                </article>
-                            </section>
-                        </div>
-                        <aside class="side-bar flex">
-                            <div class="sticky block side-bar-layout flex" style="top:84px">
-                                <div class="mt-0 order a-card mb-2" style="border: 1px solid #e3e3e3;">
-                                    <header class="a-card-header">
-                                        <h5>아래 후기도 확인해보세요!</h5>
-                                        <div class="flex a-card-header-tag label">
-                                            <span>AI 추천</span>
+                                                    <span>
+                                                        <i class="icon" style="font-size:20px; font-weight: 700; color:#989898; ">Q.</i>
+                                                    </span>
+                                                     <input th:field="${board.boardTitle}" class="title-input" type="text" maxlength="60" placeholder="제목을 입력해주세요." style="padding-left: 5px;" >
+                                                <span class="title-check"></span>
+                                               <input type="text" th:field="${board.boardNum}" style="display: none;">
+                                            </header>
                                         </div>
-                                    </header>
-                                    <div class="a-card-content">
-                                        <ul class="list-none">
-                                            <li class="listItem">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심하고 간이 작은 성격 고칠 수 있나요??
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격도 괜찮나요? 고칠 수는 없을까요?
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격을 변화할 수 있을까요~~
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격 어떻게 고칠수 있나요?
-                                                </a>
-                                            </li>
+                                    </div>
+                                </div>
+                                <div class="editor-content"  style="margin-top:10px;">
+                                                        <textarea id="summernote" class="content content-length" th:field="*{board.boardContent}" placeholder="글을 입력해주세요." onclick="length()">
+                                                        </textarea>
+                                </div>
+
+                            <div class="form-footer form-edit-footer">
+                                <button type="submit" class="footer-button-css btn123" style="border:1px solid #e3e3e3">고민 등록</button>
+                            </div>
+                            </form>
+                        </div>
+
+                        <div class="md-4">
+                            <div>
+                                <div class="notice-box no-padding">
+                                    <div class="notice-title font-midium">
+                                        <img src="https://www.a-ha.io/_nuxt/img/electric-light-bulb.209ee00.png">
+                                        <span>글 작성시 이런글 NO!</span>
+                                    </div>
+                                    <div class="notice-content-wrap">
+                                        <div style="margin-bottom: 0.5rem;">
+                                            아래와 같은 게시글은
+                                            <span><strong>신고를 받을 수 있으니</strong></span>
+                                            신중하게 글을 작성해주세요.
+                                        </div>
+                                        <ul class="notice-content">
+                                            <li>고민상담 목적이 아닌 질문</li>
+                                            <li><strong>욕설</strong> 및 <strong>비방</strong>이 목적인 질문</li>
+                                            <li><strong>성적</strong> 관련 질문</li>
+                                            <li>꿈해몽, 사주팔자와 관련된 질문</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <button class="question-action button-action" >
-                                    <span><a href="/board/boardWrite" style="color:#fff";>후기작성하러 가기</a><span>
-                                </button>
                             </div>
-                        </aside>
+                            <div class="no-padding content-guide write-rule">
+                                <div class="content-guide-title font-midium">
+                                    <img src="/img/하트.png" style="height: 20px;margin-right: 7px;margin-top: 4px; ">
+                                    <span style="vertical-align: middle;">썸썸 질문 작성 규칙</span>
+                                </div>
+                                <div class="content-guide-content">
+                                    <ul class="pl-4">
+                                        <li style="margin-bottom: 0.5rem;">
+                                            <a>
+                                                주의사항
+                                            </a>
+                                        </li>
+                                        <li style="margin-bottom: 0.5rem;"><strong>구체적</strong>이고 <strong>명료</strong>한질문</li>
+                                        <li style="margin-bottom: 0.5rem;"><strong>개인정보</strong>(성명,주민번호,연락처 등) 노출은 NO</li>
+                                        <li style="margin-bottom: 0.5rem;">의미 있는 <strong>글</strong> 작성</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </main>
             </div>
@@ -317,20 +234,29 @@
         </div>
     </div>
 </footer>
+<script>
+    $('#summernote').summernote({
+        height: 300,                 // 에디터 높이
+        minHeight: 300,             // 최소 높이
+        maxHeight: 300,             // 최대 높이
+        focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+        lang: "ko-KR",					// 한글 설정
+        placeholder: '글을 작성해주세요.',	//placeholder 설정
+        toolbar:[
+            ['fontsize', ['fontsize']],
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['color', ['forecolor','color']],
+            ['insert',['picture']],
+            ['para', ['ul', 'ol', 'paragraph']],
+        ],
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script>
     /* 쪽지 팝업창 */
     function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
-<script th:inline="javascript">
-    let boardNum = [[${reviewBoard.boardNum}]];
-    let boardField =[[${reviewBoard.boardField}]];
-
-    function goUpdate(){
-        location.href="/board/appilBoardUpdate?boardNum="+ boardNum + "&boardField=" + boardField;
-    }
-</script>
-<script src= "https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/reviewBoard.js"></script>
+<script src="/js/boardWrite.js"></script>
 </html>
