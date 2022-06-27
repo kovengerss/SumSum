@@ -115,358 +115,372 @@
                 </span>
         </h1>
 
-            <div class="felx-container">
-                <form name="WriteForm" action="/register" method="post">
-                    <th:block th:each="ideal:${idealList}">
-                <div th:object="${ideal}" class="card" style="  width: 20rem;height: 756px;border: 3px solid rgba(0,0,0,.125); float: right;margin-right: 48px;" >
+        <div class="felx-container">
 
-                    <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
+                <th:block th:each="ideal:${idealList}" >
+                    <form name="WriteForm" action="/register" method="post">
+                    <div th:object="${ideal}" class="card" style="  width: 20rem;height: 756px;border: 3px solid rgba(0,0,0,.125); float: right;margin-right: 48px;" >
 
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="*{userName}"></h5>
+                        <img  src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
+
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="*{userName}"></h5>
 
                             <span class="ageGen" style="position: relative;top: -31px;left: 61px;color: chocolate;"><span th:text="|*{age}세|"></span><span th:text="|/*{gender}|"></span></span>
 
 
 
-                    </div>
-                    <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white; position: relative;top: -25px;">
-                        <li class="list-group-item">
-                            <span class="introduce">소개</span><br>
-                            <span th:text="*{selfIntroduce}"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>나이 :</span> <span th:text="|*{age} 세|"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>MBTI :</span> <span th:text="|*{mbti}|"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>거주지 :</span> <span th:text="|*{residence}|"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>취미 :</span> <span th:text="|*{hobby}|"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <span>이상형 :</span> <span th:text="|*{idealContent}|"></span>
-                        </li>
+                        </div>
+                        <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white; position: relative;top: -25px;">
+                            <li class="list-group-item">
+                                <a th:text="|*{userName}님에게 매칭신청하기|"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="introduce">소개</span><br>
+                                <span th:text="*{selfIntroduce}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>나이 :</span> <span th:text="|*{age} 세|"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>MBTI :</span> <span th:text="|*{mbti}|"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>거주지 :</span> <span th:text="|*{residence}|"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>취미 :</span> <span th:text="|*{hobby}|"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>이상형 :</span> <span th:text="|*{idealContent}|"></span>
+                            </li>
 
-                    </ul>
-                    <div class="card-body"  style="position: relative;top: -36px;">
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
-                            ♥ 쪽지 보내기
-                        </button>
+                        </ul>
+                        <div class="card-body"  style="position: relative;top: -36px;">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
+                                ♥ 쪽지 보내기
+                            </button>
 
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
-                            상세보기
-                        </button>
-                        <!--   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> -->
-                    </div>
-                    <!-- 쪽지보내기 모달창 -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        <div style="color:#ef5350;font-weight: bold;font-size: larger;">
-                                            <img src="/img/하트.JPG"/>
-                                            <span class="send">
+                            <button  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=".exampleModalTwo" id="profileBtn">
+                                상세보기
+                            </button>
+                            <!--   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> -->
+                        </div>
+                        <!-- 쪽지보내기 모달창 -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            <div style="color:#ef5350;font-weight: bold;font-size: larger;">
+                                                <img src="/img/하트.JPG"/>
+                                                <span class="send">
                                  쪽지보내기
                                 </span>
+                                            </div>
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <input type="text" name="messageTitle" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
                                         </div>
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="messageTitle" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
+                                        <textarea name="messageContent" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
                                     </div>
-                                    <textarea name="messageContent" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-danger">Send</button>
-                                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-danger">Send</button>
+                                        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 쪽지보내기 모달창 끝-->
-                    <!-- 모달 상세보기 시작 -->
-                    <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title profileTitle" id="exampleModalLabel">프로필 상세보기</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title"th:text="*{userName}"> </h5>
-                                        <span th:text="*{gender}"class="ageGen inAgeGen" style="position: relative;left: 56px;top: -45px;"></span>
-
+                        <!-- 쪽지보내기 모달창 끝-->
+                        <!-- 모달 상세보기 시작 -->
+                        <div  class="exampleModalTwo modal fade "  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title profileTitle" id="exampleModalLabel">프로필 상세보기</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <span class="introduce">소개</span><br>
-                                            <span th:text="*{selfIntroduce}"></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>나이 :</span> <span th:text="|*{age} 세|"></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>MBTI :</span> <span th:text="|*{mbti}|"></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>거주지 :</span> <span th:text="|*{residence}|"></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>취미 :</span> <span th:text="|*{hobby}|"></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>이상형 :</span> <span th:text="|*{idealContent}|"></span>
-                                        </li>
+                                    <div class="modal-body">
 
+                                        <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
+                                        <div class="card-body" style="height: 52px;">
+                                            <h5 class="card-title"th:text="*{userName}"> </h5>
+                                            <span th:text="*{gender}"class="ageGen inAgeGen" style="position: relative;left: 56px;top: -45px;"></span>
 
-                                    </ul>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 모달 상세보기 끝 -->
-                </div>
-                    </th:block>
-                </form>
-
-
-                <!--  -->
-              <!--  <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
-
-                    <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
-
-                    <div class="card-body">
-                        <h5 class="card-title">손흥민 <span class="ageGen">31세/남자</span></h5>
-                        </span>
-
-                    </div>
-                    <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white;">
-                        <li class="list-group-item">안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요</li>
-
-                    </ul>
-                    <div class="card-body">
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
-                            ♥ 쪽지 보내기
-                        </button>
-
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
-                            상세보기
-                        </button>
-                        &lt;!&ndash;   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> &ndash;&gt;
-                    </div>
-                    &lt;!&ndash; 쪽지보내기 모달창 &ndash;&gt;
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        <div style="color:#ef5350;font-weight: bold;font-size: larger;">
-                                            <img src="/img/하트.JPG"/>
-                                            <span class="send">
-                                 쪽지보내기
-                                </span>
                                         </div>
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        &lt;!&ndash; 쪽지를 보내주세요 &ndash;&gt;
-                                        <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <span class="introduce">소개</span><br>
+                                                <span th:text="*{selfIntroduce}"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>나이 :</span> <span th:text="|*{age} 세|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>직업 :</span> <span th:text="|*{job}|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>MBTI :</span> <span th:text="|*{mbti}|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>거주지 :</span> <span th:text="|*{residence}|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>취미 :</span> <span th:text="|*{hobby}|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>자가 유무 :</span> <span th:text="|*{houseExist}|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>흡연 유무 :</span> <span th:text="|*{smoke}|"></span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>이상형 :</span> <span th:text="|*{idealContent}|"></span>
+                                            </li>
+
+
+
+                                        </ul>
+
+
                                     </div>
-                                    <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger">Send</button>
-                                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- 모달 상세보기 끝 -->
                     </div>
-                    &lt;!&ndash; 쪽지보내기 모달창 끝&ndash;&gt;
-                    &lt;!&ndash; 모달 상세보기 시작 &ndash;&gt;
-                    <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title profileTitle" id="exampleModalLabel">프로필 상세보기</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">손흥민 <span class="ageGen inAgeGen">남자</span></h5>
-                                        </span>
-
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <span class="introduce">소개</span><br>
-                                            안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>나이 :</span> <span>31세</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>키 :</span> <span>180cm</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>거주지 :</span> <span>서울시 송파구 잠실</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>취미 :</span> <span>영화감상</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>이상형 :</span>제가 운동을 좋아해서 운동을 좋아하는 사람이 이상형입니다.그리고 웃을때 이쁜여자 목소리가 좋은여자가 제 이상형입니다 <span></span>
-                                        </li>
+                    </form>
+                </th:block>
 
 
 
-                                    </ul>
+            <!--  -->
+            <!--  <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
 
+                  <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    &lt;!&ndash; <button type="button" class="btn btn-primary">Save changes</button> &ndash;&gt;
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    &lt;!&ndash; 모달 상세보기 끝 &ndash;&gt;
-                </div>
+                  <div class="card-body">
+                      <h5 class="card-title">손흥민 <span class="ageGen">31세/남자</span></h5>
+                      </span>
 
-                &lt;!&ndash;  &ndash;&gt;
-                <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
+                  </div>
+                  <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white;">
+                      <li class="list-group-item">안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요</li>
 
-                    <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
+                  </ul>
+                  <div class="card-body">
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
+                          ♥ 쪽지 보내기
+                      </button>
 
-                    <div class="card-body">
-                        <h5 class="card-title">손흥민 <span class="ageGen">31세/남자</span></h5>
-                        </span>
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
+                          상세보기
+                      </button>
+                      &lt;!&ndash;   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> &ndash;&gt;
+                  </div>
+                  &lt;!&ndash; 쪽지보내기 모달창 &ndash;&gt;
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">
+                                      <div style="color:#ef5350;font-weight: bold;font-size: larger;">
+                                          <img src="/img/하트.JPG"/>
+                                          <span class="send">
+                               쪽지보내기
+                              </span>
+                                      </div>
+                                  </h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <div>
+                                      &lt;!&ndash; 쪽지를 보내주세요 &ndash;&gt;
+                                      <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
+                                  </div>
+                                  <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger">Send</button>
+                                  <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  &lt;!&ndash; 쪽지보내기 모달창 끝&ndash;&gt;
+                  &lt;!&ndash; 모달 상세보기 시작 &ndash;&gt;
+                  <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title profileTitle" id="exampleModalLabel">프로필 상세보기</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
 
-                    </div>
-                    <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white;">
-                        <li class="list-group-item">안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요</li>
+                                  <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
 
-                    </ul>
-                    <div class="card-body">
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
-                            ♥ 쪽지 보내기
-                        </button>
+                                  <div class="card-body">
+                                      <h5 class="card-title">손흥민 <span class="ageGen inAgeGen">남자</span></h5>
+                                      </span>
 
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
-                            상세보기
-                        </button>
-                        &lt;!&ndash;   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> &ndash;&gt;
-                    </div>
-                    &lt;!&ndash; 쪽지보내기 모달창 &ndash;&gt;
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        <div style="color:#ef5350;font-weight: bold;font-size: larger;">
-                                            <img src="/img/하트.JPG"/>
-                                            <span class="send">
-                                 쪽지보내기
-                                </span>
-                                        </div>
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        &lt;!&ndash; 쪽지를 보내주세요 &ndash;&gt;
-                                        <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
-                                    </div>
-                                    <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger">Send</button>
-                                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    &lt;!&ndash; 쪽지보내기 모달창 끝&ndash;&gt;
-                    &lt;!&ndash; 모달 상세보기 시작 &ndash;&gt;
-                    <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title profileTitle" id="exampleModalLabel">프로필 상세보기</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">손흥민 <span class="ageGen inAgeGen">남자</span></h5>
-                                        </span>
-
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <span class="introduce">소개</span><br>
-                                            안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>나이 :</span> <span>31세</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>키 :</span> <span>180cm</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>거주지 :</span> <span>서울시 송파구 잠실</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>취미 :</span> <span>영화감상</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span>이상형 :</span>제가 운동을 좋아해서 운동을 좋아하는 사람이 이상형입니다.그리고 웃을때 이쁜여자 목소리가 좋은여자가 제 이상형입니다 <span></span>
-                                        </li>
+                                  </div>
+                                  <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">
+                                          <span class="introduce">소개</span><br>
+                                          안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>나이 :</span> <span>31세</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>키 :</span> <span>180cm</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>거주지 :</span> <span>서울시 송파구 잠실</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>취미 :</span> <span>영화감상</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>이상형 :</span>제가 운동을 좋아해서 운동을 좋아하는 사람이 이상형입니다.그리고 웃을때 이쁜여자 목소리가 좋은여자가 제 이상형입니다 <span></span>
+                                      </li>
 
 
 
-                                    </ul>
+                                  </ul>
 
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    &lt;!&ndash; <button type="button" class="btn btn-primary">Save changes</button> &ndash;&gt;
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    &lt;!&ndash; 모달 상세보기 끝 &ndash;&gt;
-                </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                  &lt;!&ndash; <button type="button" class="btn btn-primary">Save changes</button> &ndash;&gt;
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  &lt;!&ndash; 모달 상세보기 끝 &ndash;&gt;
+              </div>
+
+              &lt;!&ndash;  &ndash;&gt;
+              <div class="card" style="  width: 20rem;height: 517px;border: 3px solid rgba(0,0,0,.125);">
+
+                  <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
+
+                  <div class="card-body">
+                      <h5 class="card-title">손흥민 <span class="ageGen">31세/남자</span></h5>
+                      </span>
+
+                  </div>
+                  <ul class="list-group list-group-flush" style=" border-top: white;border-bottom: white;">
+                      <li class="list-group-item">안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요</li>
+
+                  </ul>
+                  <div class="card-body">
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:relative;left: 16px;">
+                          ♥ 쪽지 보내기
+                      </button>
+
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalTwo" id="profileBtn">
+                          상세보기
+                      </button>
+                      &lt;!&ndash;   <button type="button" class="btn btn-secondary myb"  style="position:relative;left: 30px;">상세보기</button> &ndash;&gt;
+                  </div>
+                  &lt;!&ndash; 쪽지보내기 모달창 &ndash;&gt;
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">
+                                      <div style="color:#ef5350;font-weight: bold;font-size: larger;">
+                                          <img src="/img/하트.JPG"/>
+                                          <span class="send">
+                               쪽지보내기
+                              </span>
+                                      </div>
+                                  </h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <div>
+                                      &lt;!&ndash; 쪽지를 보내주세요 &ndash;&gt;
+                                      <input type="text" name="title" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
+                                  </div>
+                                  <textarea name="content" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀"></textarea>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger">Send</button>
+                                  <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  &lt;!&ndash; 쪽지보내기 모달창 끝&ndash;&gt;
+                  &lt;!&ndash; 모달 상세보기 시작 &ndash;&gt;
+                  <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title profileTitle" id="exampleModalLabel">프로필 상세보기</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+
+                                  <img src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
+
+                                  <div class="card-body">
+                                      <h5 class="card-title">손흥민 <span class="ageGen inAgeGen">남자</span></h5>
+                                      </span>
+
+                                  </div>
+                                  <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">
+                                          <span class="introduce">소개</span><br>
+                                          안녕하세요!저는 영국 런던에 거주하고있어요.친하게 잘지내봐요
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>나이 :</span> <span>31세</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>키 :</span> <span>180cm</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>거주지 :</span> <span>서울시 송파구 잠실</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>취미 :</span> <span>영화감상</span>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <span>이상형 :</span>제가 운동을 좋아해서 운동을 좋아하는 사람이 이상형입니다.그리고 웃을때 이쁜여자 목소리가 좋은여자가 제 이상형입니다 <span></span>
+                                      </li>
+
+
+
+                                  </ul>
+
+
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                  &lt;!&ndash; <button type="button" class="btn btn-primary">Save changes</button> &ndash;&gt;
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  &lt;!&ndash; 모달 상세보기 끝 &ndash;&gt;
+              </div>
 
 -->
-            </div>
+        </div>
 
 
         <div class="writeFormBox"  style=" background-image: url('/img/buttonbox.png' );">

@@ -18,6 +18,8 @@ public interface IdealMapper {
 
     //이상형 목록 조회
     public List<IdealVO> getList();
+    //매칭 신청
+    public String match(Integer idealNum);
     //AGE조회
     public Integer getAge(IdealVO idealVO);
     //GENDER조회

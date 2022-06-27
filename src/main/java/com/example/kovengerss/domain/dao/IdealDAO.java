@@ -19,8 +19,7 @@ public class IdealDAO {
         idealMapper.insert(idealVO);
     }
     //이상형 수정 작업 (delete -> insert);
-    public void idealDelete(IdealVO idealVO){
-        ;}
+    public void idealDelete(IdealVO idealVO){ ;}
     //이상형 update 수정작업
     public boolean idealUpdate(IdealVO idealVO){
         return idealMapper.update(idealVO)==1;
@@ -28,6 +27,10 @@ public class IdealDAO {
     //이상형  전제 정보 조회
     public IdealVO idealSelect(Integer idealNum){
         return idealMapper.select(idealNum);
+    }
+    //이상형 매칭 선택하기
+    public String match(Integer idealNum){
+        return idealMapper.match(idealNum);
     }
     //AGE조회
     public void idealGetAge(IdealVO idealVO){;}

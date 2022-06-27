@@ -42,6 +42,11 @@ public class IdealServiceImpl implements IdealService{
     }
 
     @Override
+    public String match(Integer idealNum){
+        return idealDAO.match(idealNum);
+    }
+
+    @Override
     public void idealGetAge(IdealVO idealVO) {
 
     }
