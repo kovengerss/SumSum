@@ -18,6 +18,8 @@ public interface IdealService {
     public boolean idealUpdate(IdealVO idealVO);
     //이상형  전제 정보 조회
     public IdealVO idealSelect(Integer idealNum);
+    //이상형 매칭 신청 하기
+    public String match(Integer idealNum);
     //AGE조회
     public void idealGetAge(IdealVO idealVO);
     //GENDER조회

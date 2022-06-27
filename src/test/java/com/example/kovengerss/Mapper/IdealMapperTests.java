@@ -57,8 +57,16 @@ public class IdealMapperTests {
 
         log.info("업데이트 성공시 1 ---> "+ idealMapper.update(idealVO));
     }*/
- @Test
+/* @Test
     public void getListTest(){
         idealMapper.getList().stream().map(IdealVO::toString).forEach(log::info);
+    }*/
+
+    @Test
+    public void match(){
+        
+            idealMapper.match(28);
+
     }
+
 }

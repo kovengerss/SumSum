@@ -24,4 +24,12 @@
         SELECT IDEAL_NUM, AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, USER_NUM, IDEAL_CONTENT, SMOKE, JOB,USER_NAME
         FROM TBL_IDEAL
     </select>
+    <select id="match" resultType="string">
+        SELECT USER_NAME FROM TBL_IDEAL WHERE IDEAL_NUM=#{idealNum}
+    </select>
+
+
+   <!-- <select id="match" resultType="_int">
+         SELECT COUNT(IDEAL_NUM) FROM TBL_IDEAL WHERE USER_Name =#{userName}
+    </select>-->
 </mapper>

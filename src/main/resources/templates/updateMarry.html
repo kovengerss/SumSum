@@ -163,7 +163,7 @@
                         <label class="label" >거주지</label>
                         <div class="love_choice_option">
                             <select name ="residence"id="residence" class="" required>
-                                <option value="" th:text="|기존에 거주하시던 곳은 *{residence}군요.|"></option>
+                                <option value="" th:text="|기존에 거주하시던 곳은 *{residence}이시군요.|"></option>
                                 <option value="서울">서울</option>
                                 <option value="경기">경기</option>
                                 <option value="강원">강원</option>
@@ -210,7 +210,7 @@
                         <label class="label" >흡연</label>
                         <div class="love_choice_option">
                             <select name="smoke"id="smoke" class="" required>
-                                <option value="" th:text="|원래는 *{smoke}|" >흡연 유무를 체크해주세요</option>
+                                <option value="" th:text="|원래는 *{smoke}이셨군요|" >흡연 유무를 체크해주세요</option>
                                 <option value="흡연자">흡연자</option>
                                 <option value="비흡연자">비흡연자</option>
                             </select>
@@ -223,7 +223,7 @@
                         <label class="label" >직장</label>
                         <div class="love_choice_option">
                             <select  name ="job" id="job" class="">
-                                <option value=""  th:text="*{job}"selected>직업을 선택해 주세요</option>
+                                <option value=""  th:text="|*{job}|"selected>직업을 선택해 주세요</option>
                                 <option value="전문직">전문직</option>
                                 <option value="공기업">공기업</option>
                                 <option value="공무원">공무원</option>
@@ -299,6 +299,7 @@
                         <label class="label"  >자기소개</label>
                         <div class="input">
                             <textarea th:text="*{selfIntroduce}" name="selfIntroduce"type="text" minlength="30"placeholder="30자 이상 작성 부탁드립니다."  required ></textarea>
+                            <div id="test_cnt">(0 / 70)</div>
                         </div>
                     </div>
                 </div>
@@ -378,5 +379,17 @@
         evt.currentTarget.className += " active";
     }
 
+
+    //글자 수 제한 자기소개부분
+    $(document).ready(function() {
+        $('#test').on('keyup', function() {
+            $('#test_cnt').html("("+$(this).val().length+" / 70)");
+
+            if($(this).val().length > 70) {
+                $(this).val($(this).val().substring(0, 70));
+                $('#test_cnt').html("(70 / 70)");
+            }
+        });
+    });
 </script>
 </html>
