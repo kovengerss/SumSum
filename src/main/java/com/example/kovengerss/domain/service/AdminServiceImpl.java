@@ -21,8 +21,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public boolean remove(int boardNum) {
-        return adminDAO.remove(boardNum);
+    public boolean boardDelete(Long boardNum) {
+        return adminDAO.boardDelete(boardNum);
     }
 
     @Override
@@ -31,11 +31,17 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public BoardVO get(Long boardNum) {
+        return adminDAO.findByBoardNumber(boardNum);
+    }
+
+    @Override
     public List<BoardVO> getList(BoardVO boardVO,Criteria criteria) {
         return adminDAO.getList(boardVO, criteria);
     }
     @Override
     public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3) {
+        boardVO.setBoardField("어필하기");
         return adminDAO.getFieldAppil(boardVO, criteria3);
     }
     @Override
@@ -46,16 +52,22 @@ public class AdminServiceImpl implements AdminService{
     public List<BoardVO> getFieldReview(BoardVO boardVO,Criteria1 criteria1) {
         return adminDAO.getFieldReview(boardVO, criteria1);
     }
+    @Override
+    public List<BoardVO> getCount(BoardVO boardVO,Criteria criteria) {
+        return adminDAO.getCount(boardVO, criteria);
+    }
 
     @Override
     public int boardGetTotal(BoardVO boardVO) {return adminDAO.boardGetTotal(boardVO);}
     @Override
     public int boardGetTotalField(BoardVO boardVO) {return adminDAO.boardGetTotalField(boardVO);}
-
     @Override
-    public int getCount(int boardNum) {
-        return adminDAO.getCount(boardNum);
-    }
+    public int boardGetWarning(BoardVO boardVO) {return adminDAO.boardGetWarning(boardVO);}
+
+//    @Override
+//    public int getCount(int boardNum) {
+//        return adminDAO.getCount(boardNum);
+//    }
 
     @Override
     public boolean deleteUser(int userNum) {

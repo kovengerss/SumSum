@@ -1,6 +1,7 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.UserService;
+import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -32,15 +32,21 @@ public class AdminDAO {
 
     //게시글 전체 개수
     public int boardGetTotal(BoardVO boardVO){return adminMapper.getTotal(boardVO);}
+
     public int boardGetTotalField(BoardVO boardVO){return adminMapper.getTotalField(boardVO);}
 
+    public int boardGetWarning(BoardVO boardVO){return adminMapper.getWarning(boardVO);}
+    //게시글 한 개 가져오기
+    public BoardVO findByBoardNumber(Long boardNum){
+        return adminMapper.select(boardNum);
+    }
     //게시글 삭제
-    public boolean remove(int boardNum){
-        return adminMapper.delete(boardNum) == 1;
+    public boolean boardDelete(Long boardNum){
+        return adminMapper.delete(boardNum) ==1;
     }
     //게시글 신고 횟수 조회
-    public int getCount(int boardNum){
-        return adminMapper.getWarningCount(boardNum);
+    public List<BoardVO> getCount(BoardVO boardVO, Criteria criteria){
+        return adminMapper.getWarningCount(boardVO, criteria);
     }
     //회원 탈퇴
     public boolean deleteUser(int userNum){

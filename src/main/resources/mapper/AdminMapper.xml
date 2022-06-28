@@ -30,6 +30,7 @@
                 ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
                 FROM TBL_BOARD
                 WHERE ROWNUM <= #{criteria3.pageNum} * #{criteria3.amount}
+                ORDER BY BOARD_FIELD ASC
             )
 
             WHERE RN > (#{criteria3.pageNum} - 1) * #{criteria3.amount} AND BOARD_FIELD =#{boardVO.boardField}
@@ -44,9 +45,11 @@
                 ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
                 FROM TBL_BOARD
                 WHERE ROWNUM <= #{criteria2.pageNum} * #{criteria2.amount}
+                ORDER BY BOARD_FIELD ASC
             )
 
             WHERE RN > (#{criteria2.pageNum} - 1) * #{criteria2.amount} AND BOARD_FIELD =#{boardVO.boardField}
+
          ]]>
     </select>
     <select id="getFieldReview" resultType="boardVO">
@@ -58,12 +61,13 @@
                 ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
                 FROM TBL_BOARD
                 WHERE ROWNUM <= #{criteria1.pageNum} * #{criteria1.amount}
+                ORDER BY BOARD_FIELD ASC
             )
 
             WHERE RN > (#{criteria1.pageNum} - 1) * #{criteria1.amount} AND BOARD_FIELD =#{boardVO.boardField}
          ]]>
     </select>
-    <select id="select">
+    <select id="select" resultType="boardVO">
         SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,BOARD_FIELD,BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
         FROM TBL_BOARD
         WHERE BOARD_NUM = #{boardNum}
@@ -77,13 +81,22 @@
         SET BOARD_TITLE = #{boardTitle} ,  BOARD_CONTENT = #{boardContent}, BOARD_UPDATE_DATE = SYSDATE
     </update>
     <delete id="deleteUser">
-        DELETE FROM TBL_USER
+        DELETE CASCADE FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </delete>
-    <select id="getWarningCount" resultType="int">
-        SELECT WARNING_COUNT
-        FROM TBL_BOARD
-        WHERE BOARD_NUM = #{boardNum}
+    <select id="getWarningCount" resultType="boardVO">
+        <![CDATA[
+            SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+            FROM
+            (
+                SELECT
+                ROWNUM RN, BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+            )
+
+            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount} AND WARNING_COUNT >= 1
+         ]]>
     </select>
     <!--총갯수-->
     <select id="getTotal" parameterType="boardVO" resultType="_int">
@@ -95,6 +108,11 @@
         SELECT COUNT(BOARD_NUM)
         FROM TBL_BOARD
         WHERE BOARD_FIELD = #{boardField}
+    </select>
+    <select id="getWarning" parameterType="boardVO" resultType="int">
+        SELECT COUNT(BOARD_NUM)
+        FROM TBL_BOARD
+        WHERE WARNING_COUNT >= 5
     </select>
     <select id="getUserId" resultType="String">
         SELECT USER_ID

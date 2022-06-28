@@ -3,6 +3,8 @@ package com.example.kovengerss.Mapper;
 import com.example.kovengerss.domain.dao.AdminDAO;
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.Criteria2;
+import com.example.kovengerss.domain.vo.Criteria3;
 import com.example.kovengerss.mapper.AdminMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -74,23 +76,38 @@ public class AdminMapperTests {
         adminMapper.getList(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
 
     }*/
-   /* @Test
+    /*@Test
     public void getListTest(){
         BoardVO boardVO = new BoardVO();
-        boardVO.setBoardField("어필하기");
-        adminMapper.getField(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+        boardVO.setBoardField("고민상담");
+        adminMapper.getFieldBoard(boardVO,new Criteria2()).stream().map(BoardVO::toString).forEach(log::info);
     }*/
     /*@Test
     public void getList(){
         BoardVO boardVO = new BoardVO();
 //        boardVO.setBoardField("후기");
         log.info("------------------------------------"+boardVO.getBoardField()+"-----------------------");
-        adminDAO.getField(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+        adminDAO.getCount(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
     }*/
-    @Test
+    /*@Test
     public void test(){
         BoardVO boardVO = new BoardVO();
         boardVO.setBoardField("고민상담");
         adminMapper.getTotalField(boardVO);
+    }*/
+    /*@Test
+    public void test(){
+        BoardVO boardVO = new BoardVO();
+        adminMapper.getWarningCount(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+    }*/
+
+//    @Test void test(){
+//        BoardVO boardVO = new BoardVO();
+//        adminDAO.boardDelete(57);
+//    }
+
+    /*@Test void test(){
+        adminMapper.select(1);
     }
+*/
 }
