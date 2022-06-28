@@ -298,8 +298,8 @@
                     <div class="sumchoice_age">
                         <label class="label"  >자기소개</label>
                         <div class="input">
-                            <textarea th:text="*{selfIntroduce}" name="selfIntroduce"type="text" minlength="30"placeholder="30자 이상 작성 부탁드립니다."  required ></textarea>
-                            <div id="test_cnt">(0 / 70)</div>
+                            <textarea th:text="*{selfIntroduce}" name="selfIntroduce"type="text" minlength="30"placeholder="40자 이상 작성 부탁드립니다."  required ></textarea>
+                            <div id="test_cnt">(0 / 40)</div>
                         </div>
                     </div>
                 </div>
@@ -383,11 +383,11 @@
     //글자 수 제한 자기소개부분
     $(document).ready(function() {
         $('#test').on('keyup', function() {
-            $('#test_cnt').html("("+$(this).val().length+" / 70)");
+            $('#test_cnt').html("("+$(this).val().length+" / 40)");
 
-            if($(this).val().length > 70) {
-                $(this).val($(this).val().substring(0, 70));
-                $('#test_cnt').html("(70 / 70)");
+            if($(this).val().length > 40) {
+                $(this).val($(this).val().substring(0, 40));
+                $('#test_cnt').html("(40 / 40)");
             }
         });
     });

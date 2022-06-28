@@ -132,6 +132,8 @@ button {
     position: relative;
     margin: 0px 0px 0px 317px;
     z-index: 7;
+    position: relative;
+    right: 65px;
 }
 
 .right-header {
