@@ -1,14 +1,21 @@
 package com.example.kovengerss.domain.controller;
 
+import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.vo.BoardVO;
+import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.PageDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @Slf4j
@@ -27,4 +34,12 @@ public class MainController {
         log.info("글 전체 LIST : " + boardVOList);
         log.info("글 내용 : "+ boardVO.getBoardContent());
     }
+
+
+
+
+
+
+
+
 }

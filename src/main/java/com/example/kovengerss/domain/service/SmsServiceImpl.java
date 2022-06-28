@@ -10,9 +10,9 @@ import java.util.HashMap;
 public class SmsServiceImpl implements SmsService {
     @Override
     public void sendMessage(String authCode, String userPhoneNum) {
-        String apiKey = "NCSFCT12EY55TQ0Q";
-        String apiSecret = "XCB7CQF1A1VCCHWX5BYXTBLPVSBCSMXD";
-        String fromNumber = "01072579003";
+        String apiKey = "NCSYPPQD8TYXSMOK";
+        String apiSecret = "4EYFTOQXSKT8RAFHH2ERU1ECUS7NMIYC";
+        String fromNumber = "01050118912";
 
         Message coolsms = new Message(apiKey, apiSecret);
 

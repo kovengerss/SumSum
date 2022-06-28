@@ -1,6 +1,10 @@
 package com.example.kovengerss.domain.controller;
 
+import com.example.kovengerss.domain.dao.BoardDAO;
+import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.service.UserService;
+import com.example.kovengerss.domain.vo.BoardVO;
+import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +48,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final BoardService boardService;
     // 공통적으로 사용하는 키는 static 으로 선언해준다.
     private static final String USER_SESSION_KEY = "userId";
     //회원가입
@@ -72,7 +77,6 @@ public class UserController {
     public String loginForm(){
         return "login";
     }
-
     @PostMapping("login")
     public String login(String userId, String userPw, HttpServletRequest req){
         UserVO userVO = userService.login(userId, userPw);
@@ -82,15 +86,30 @@ public class UserController {
         session.setAttribute("userNum",userNum);
         session.setAttribute("userList",userVO);
         session.setAttribute("userName",userName);
+
         return "redirect:/main";
     }
 
     // 메인페이지 이동(종임님) + 이용자 수(재원님)
     @GetMapping("main")
-    public String home(Model model){
+    public String home(Model model, HttpSession session){
         String userCount = String.valueOf(userService.getUserTotalCount());
+
+        // 후기 리스트 가져오기
+        BoardVO reviewBoardVO = new BoardVO();
+        reviewBoardVO.setBoardField("후기");
+        Criteria criteria= new Criteria();
+        model.addAttribute("reviewBoardList", boardService.getList(reviewBoardVO,criteria));
+
+        // 어필하기 리스트 가져오기
+        BoardVO applicationBoardVO = new BoardVO();
+        applicationBoardVO.setBoardField("어필하기");
+        model.addAttribute("appilcationBoardList", boardService.getList(applicationBoardVO,criteria));
+
         model.addAttribute("count", userCount);
+        model.addAttribute("session", session);
         log.info("총 이용자수 : " + "count");
+
         return "/main";
     }
 
@@ -189,5 +208,12 @@ public class UserController {
         map.put("email", map.get("email"));
         userService.sendEmail(map);
         return map;
+    }
+
+    // 회원 로그아웃
+    @GetMapping("user/logout")
+    public String userLogout(HttpSession httpSession){
+        httpSession.invalidate();
+        return "redirect:/main";
     }
 }
