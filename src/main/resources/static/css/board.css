@@ -246,7 +246,7 @@ a {
 
 .page{
     padding-top: 1rem;
-    padding-bottom: 60px;
+    padding-bottom: 90px;
 }
 
 @media(min-width:992px){
@@ -904,6 +904,14 @@ h1{
     font-size: .75rem;
 }
 
+.finish{
+    --text-opacity: 1;
+    color: #7d7d7d;
+    color: rgba(125,125,125,var(--text-opacity));
+    margin-left: 0.75rem;
+    font-size: .75rem;
+}
+
 .delete{
     --text-opacity: 1;
     color: #7d7d7d;
@@ -1150,5 +1158,11 @@ ul{
 
 .icon-changeAppil{
     color: #ff4040;
+}
+
+.profile-image{
+    background-image: url('https://www.a-ha.io/_nuxt/img/default_profile.f6f75b2.svg');
+    width: 18px;
+    height: 18px;
 }
 

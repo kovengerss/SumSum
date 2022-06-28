@@ -1,5 +1,6 @@
 package com.example.kovengerss.domain.dao;
 
+import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.UserVO;
@@ -30,4 +31,6 @@ public class BoardDAO {
     public String boardGetField(BoardVO boardVO){return boardMapper.getField(boardVO);}
     //제목 가져오기
     public BoardVO boardGetTitle(BoardVO boardVO){return boardMapper.getTitle(boardVO);}
+    //전체게시글가져오기
+    public List<BoardVO> getListAll(BoardVO boardVO){return boardMapper.getListAll(boardVO);}
 }

@@ -40,4 +40,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public BoardVO boardGetTitle(BoardVO boardVO){return boardDAO.boardGetTitle(boardVO);}
+
+    @Override
+    public List<BoardVO> getListAll(BoardVO boardVO){return boardDAO.getListAll(boardVO);}
 }
