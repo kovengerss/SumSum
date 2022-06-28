@@ -3,8 +3,10 @@ package com.example.kovengerss.domain.controller;
 import com.example.kovengerss.domain.service.IdealService;
 import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.MessageVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,19 +29,25 @@ public class IdealContoller {
     }
 
     @PostMapping("idealRegister")
-    public String idealRegister(IdealVO idealVO, RedirectAttributes rttr, HttpServletRequest req,Model model){
+    public String idealRegister(IdealVO idealVO, RedirectAttributes rttr,HttpServletRequest req,Model model){
         log.info("----------------------------");
         log.info("register............. : " + idealVO);
         log.info("register............. : ");
         log.info("----------------------------");
         HttpSession session = req.getSession();
         Integer userNum = (Integer)session.getAttribute("userNum");
+        UserVO uservo = (UserVO)session.getAttribute("userList");
         idealVO.setUserNum(userNum);
-
         idealService.idealInsert(idealVO);
+
         Integer idealNum =idealVO.getIdealNum();
+        log.info("첫-----"+idealNum);
         session.setAttribute("idealVO",idealVO);//
         session.setAttribute("idealNum",idealNum);
+
+        uservo.setIdealNum(idealNum);
+        log.info("둘-----"+idealNum);
+        log.info(uservo.toString());
         /* rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());*/
         /*  log.info(idealVO.getIdealNum().toString());*/
         /* rttr.addFlashAttribute("ideal",idealService.idealSelect(idealVO.getIdealNum()));*/
@@ -56,7 +64,7 @@ public class IdealContoller {
         HttpSession session =   req.getSession();
         Integer idealNums = (Integer)session.getAttribute("idealNum");
 
-                                                                            //여기서 디비버의 sequence연동에 문제가 생김
+                                //여기서 디비버의 sequence연동에 문제가 생김
         model.addAttribute("idealVO", idealService.idealSelect(idealNums+1));
         return "/myPage";
     }
@@ -101,31 +109,7 @@ public class IdealContoller {
 
 
 
- /*   @PostMapping("modifyIdeal")
-    public String modifyIdealTwo(IdealVO idealVO, RedirectAttributes rttr, HttpServletRequest req) {
 
-        HttpSession session = req.getSession();
-        Integer userNum = (Integer)session.getAttribute("userNum");
-        idealVO.setUserNum(userNum);
-
-        idealService.idealInsert(idealVO);
-        rttr.addFlashAttribute("idealNum",idealVO.getIdealNum());
-        *//*idealService.idealUpdate(idealVO);*//*
-        return "/mypage";
-    }*/
-
-
-
-    /*public RedirectView register(MessageVO messageVO, RedirectAttributes rttr){
-        log.info("----------------------------");
-        log.info("register............. : " + messageVO);
-        log.info("register............. : " + messageVO.getMessageNum());
-        log.info("----------------------------");
-
-        messageService.msgInsert(messageVO);
-        rttr.addFlashAttribute("messageNum", messageVO.getMessageNum() );
-        return new RedirectView("/list");
-    }*/
 
 
 }
