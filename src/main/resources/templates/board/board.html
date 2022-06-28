@@ -133,8 +133,8 @@
                                 <article class="board">
                                     <aside class="board-side">
                                         <button class="board-side-badge board-button badge" onclick="color()">
-                                            <i class="icon question-mark"></i>
-                                            <p class="number">1</p>
+                                            <i class=" icon good-button" onclick="color()">♥</i>
+                                            <p style="margin-top:12px;"class="number">1</p>
                                         </button>
                                     </aside>
                                     <div class="main-content-layout">
@@ -194,7 +194,7 @@
                                                         <div class="commentEditor-input relative">
                                                             <div class="editor">
                                                                 <div class="editor-content editor-comment" >
-                                                                    <input id="comment" class="comment" type="text" placeholder="댓글을 입력하세요.">
+                                                                    <input id="comment" class="comment" type="text" name="comment" placeholder="댓글을 입력하세요.">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -222,30 +222,13 @@
                                     </header>
                                     <div class="a-card-content">
                                         <ul class="list-none">
-                                            <li class="listItem">
+                                            <li class="listItem" >
                                                 <a>
                                                     <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심하고 간이 작은 성격 고칠 수 있나요??
+                                                    <span>일담로</span>
                                                 </a>
                                             </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격도 괜찮나요? 고칠 수는 없을까요?
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격을 변화할 수 있을까요~~
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격 어떻게 고칠수 있나요?
-                                                </a>
-                                            </li>
+                                            <th:block>
                                         </ul>
                                     </div>
                                 </div>
@@ -299,12 +282,104 @@
     function showPopup() { window.open("/letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
 <script src= "https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!--<script src="/js/reply.js"></script>-->
 <script src="/js/board.js"></script>
+<script src="/js/reply.js"></script>
 <script th:inline="javascript">
     let boardNum = [[${board.boardNum}]];
     let boardField =[[${board.boardField}]];
     let userNum = [[${session.userNum}]];
+    let userName =[[${session.userName}]]
+
+    let pageNum = 1;
+    let replyList =$(".reply_list");
+
+    showList(pageNum);
+
+    function showList(page){
+        replyService.getList({
+            boardNum: boardNum,
+            page: page
+        }, function(list){
+            let text = "";
+            if(list == null || list.length == 0){
+                replyList.html("<p>등록된 댓글이 없습니다.</p>");
+                return;
+            }
+
+            $.each(list, function(i, reply){
+                text += "<div style='border-bottom-width: 1px;'>"
+                text += "<div style='padding-top: 0.75rem;'>"
+                text += "<div style='padding-left: 0.5rem;'>"
+                text += "<div style='align-items: center; display: flex;'>"
+                text += "<div class='userName'>"
+                text += "<a>"//사진이랑 사람선택하는 페이지로 링크걸기
+                text += "<span class='profile-image'></span>"
+                text += "</a>"
+                text += "<div class='justify-content overflow-hidden flex' style='flex-direction: column;'>"
+                text += "<div class='item-center flex'>"
+                text += "<span>"+userName+"</span>"
+                text += "</div>"
+                text += "</div>"
+                text += "</div>"
+                text +="<span style='margin-left:8px; font-size:10px; padding-top:5px;color:#aaa;'>"+reply.replyUpdateDate+"</span>"//등록날짜
+                text += "<button class='change'" + reply.replyNum + ">수정</button>"
+                // text += "<button class='finish'" + reply.replyNum + "style='display: none; cursor: pointer;'>수정완료</button>"
+                text += "<button class='delete'" + reply.replyNum + ">삭제</button>"
+                text += "</div>"
+                text += "<div class='comment-content'>"
+                text += "<p"+reply.replyNum+">"+reply.replyContent+"</p>"
+                text += "</div>"
+                text +="</div>"
+                text +="</div>"
+                text +="</div>"
+            });
+
+            replyList.html(text);
+        });
+
+        getTotal(boardNum);
+
+        function getTotal(boardNum) {
+            replyService.getTotal(boardNum);
+        }
+    }
+
+    $(".comment-submit").on("click",function(e){
+        e.preventDefault();
+        const replyComment = $("input[name='comment']").val();
+
+        if(!replyComment){
+            alert("내용을 입력해주세요");
+            return;
+        }
+        replyService.add({
+            boardNum: boardNum,
+            replyContent: replyComment,
+            userNum : userNum
+
+        }, function(result){
+            $("input[name='comment']").val();
+             showList(1);
+            });
+    });
+
+    // $(".change").on("click",function (e) {
+    //     e.preventDefault();
+    //
+    //     let replyNum = this.classList[1];
+    //     let str ="";
+    //
+    //     $("button." + replyNum).show();
+    //     $(this).hide();
+    //
+    //     str += "<textarea class='" + replyNum + "' style='resize: none'>";
+    //     str += $("p." + replyNum).text();
+    //     str += "</textarea>";
+    //
+    //     $("p." + replyNum).replaceWith(str);
+    // });
+
+
 
     function goUpdate(){
         location.href="/board/boardUpdate?boardNum="+ boardNum + "&boardField=" + boardField ;

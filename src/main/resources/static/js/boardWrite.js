@@ -45,6 +45,6 @@ let btnSuccess = $(".btnSuccess");
         }else if(title.val() == null){
             alert("제목을 입력해주세요.")
         }
-        return "/board/boardWrite";
+        return;
     });
 

@@ -16,6 +16,12 @@
             WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount} AND BOARD_FIELD = #{boardVO.boardField}
          ]]>
     </select>
+    <!--리스트전부 가져오기-->
+    <select id="getListAll" resultType="boardVO">
+                SELECT /*+ INDEX_DESC(TBL_BOARD PK_BNO) */
+                BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,GOOD_COUNT,BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+    </select>
     <!--제목 가져오기-->
     <select id="getTitle" resultType="boardVO">
             SELECT BOARD_TITLE

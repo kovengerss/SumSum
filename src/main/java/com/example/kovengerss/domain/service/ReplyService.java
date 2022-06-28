@@ -33,8 +33,8 @@ public class ReplyService {
         replyDAO.modify(replyVO);
     }
     //    댓글 목록
-    public List<ReplyVO> getReplyList(Criteria criteria, Integer boardNum){
-        return replyDAO.getReplyList(criteria, boardNum);
+    public List<ReplyVO> getList(Criteria criteria, Integer boardNum){
+        return replyDAO.getList(criteria, boardNum);
     }
     //    댓글 개수
     public Integer getTotal(Integer boardNum){

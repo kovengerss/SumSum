@@ -1,6 +1,7 @@
 package com.example.kovengerss.mapper;
 
 
+import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +29,6 @@ public interface BoardMapper {
     public String getField(BoardVO boardVO);
     //제목 가져오기 (DESC)
     public BoardVO getTitle(BoardVO boardVO);
+//    전체게시글 가져오기
+    public List<BoardVO> getListAll(BoardVO boardVO);
 }

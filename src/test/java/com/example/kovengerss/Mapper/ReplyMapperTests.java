@@ -17,6 +17,11 @@ public class ReplyMapperTests {
     private ReplyMapper replyMapper;
 
 //    @Test
+//    public void getUserNameTest(){
+//        replyMapper.getUserName(2);
+//    }
+
+//    @Test
 //    public void insertTest(){
 //            ReplyVO replyVO = new ReplyVO();
 //

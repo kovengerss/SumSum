@@ -24,4 +24,6 @@ public interface BoardService {
     public String boardGetField(BoardVO boardVO);
     //제목가져오기
     public BoardVO boardGetTitle(BoardVO boardVO);
+    //게시글 전부가져오기
+    public List<BoardVO> getListAll(BoardVO boardVO);
 }

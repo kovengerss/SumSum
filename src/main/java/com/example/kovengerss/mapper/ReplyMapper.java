@@ -18,8 +18,10 @@ public interface ReplyMapper {
     //    댓글 수정
     public void update(ReplyVO replyVO);
     //    댓글 목록
-    public List<ReplyVO> getReplyList(@Param("criteria") Criteria criteria, @Param("boardNum") Integer boardNum);
+    public List<ReplyVO> getList(@Param("criteria") Criteria criteria, @Param("boardNum") Integer boardNum);
     //    댓글 개수
-    public int getTotal(Integer replyNum);
+    public int getTotal(Integer boardNum);
+//    이름가져오기
+    public void getUserName(Integer userNum);
 
 }

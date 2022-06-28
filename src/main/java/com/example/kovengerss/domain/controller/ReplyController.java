@@ -1,6 +1,5 @@
 package com.example.kovengerss.domain.controller;
 
-import com.example.kovengerss.domain.dao.ReplyDAO;
 import com.example.kovengerss.domain.service.ReplyService;
 import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.ReplyVO;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -35,8 +35,8 @@ public class ReplyController {
     }
 
     @GetMapping("/list/{boardNum}/{page}")
-    public List<ReplyVO> getReplyList(@PathVariable("page") Integer pageNum, @PathVariable("boardNum") Integer boardNum){
-        return replyService.getReplyList(new Criteria(pageNum, 10),boardNum);
+    public List<ReplyVO> getList(@PathVariable("page") Integer pageNum, @PathVariable("boardNum") Integer boardNum){
+        return replyService.getList(new Criteria(pageNum, 10),boardNum);
     }
 
     @DeleteMapping("/{replyNum}")
@@ -56,5 +56,10 @@ public class ReplyController {
         return replyService.read(replyNum) == null ? "댓글 수정 실패" : "댓글 수정 성공";
     }
 
+    @GetMapping("/total/{boardNum}")
+    public Integer getTotal(@PathVariable("boardNum") Integer boardNum){
+        replyService.getTotal(boardNum);
+        return replyService.getTotal(boardNum);
+    }
 
 }

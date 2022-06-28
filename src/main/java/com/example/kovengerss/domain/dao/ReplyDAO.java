@@ -30,8 +30,8 @@ public class ReplyDAO {
         replyMapper.update(replyVO);
     }
     //    댓글 목록
-    public List<ReplyVO> getReplyList(Criteria criteria, Integer boardNum){
-        return replyMapper.getReplyList(criteria, boardNum);
+    public List<ReplyVO> getList(Criteria criteria, Integer boardNum){
+        return replyMapper.getList(criteria, boardNum);
     }
     //    댓글 개수
     public int getTotal(Integer boardNum){
