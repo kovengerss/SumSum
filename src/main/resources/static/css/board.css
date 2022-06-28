@@ -896,7 +896,7 @@ h1{
     margin-left: 0.5rem;
 }
 
-.change{
+.change,.changeOk{
     --text-opacity: 1;
     color: #7d7d7d;
     color: rgba(125,125,125,var(--text-opacity));
@@ -904,15 +904,7 @@ h1{
     font-size: .75rem;
 }
 
-.finish{
-    --text-opacity: 1;
-    color: #7d7d7d;
-    color: rgba(125,125,125,var(--text-opacity));
-    margin-left: 0.75rem;
-    font-size: .75rem;
-}
-
-.delete{
+.delete,.cancel{
     --text-opacity: 1;
     color: #7d7d7d;
     color: rgba(125,125,125,var(--text-opacity));

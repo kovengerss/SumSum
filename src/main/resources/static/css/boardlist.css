@@ -771,7 +771,7 @@ hr {
     display: block;
     margin-top: -20px;
     width: 45px;
-    height: 68px;
+    height: 102px;
     text-align: center;
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
@@ -789,7 +789,7 @@ hr {
 @media (min-width: 768px){
     .aside-badge{
         margin-top: -0.75rem;
-        padding-top: 0.75rem;
+        padding-top: 17px;
         padding-bottom: 0.75rem;
         font-size: .875rem;
     }
@@ -807,7 +807,7 @@ hr {
 
 @media (min-width: 768px){
     .icon{
-        font-size: 18px;
+        font-size: 25px;
     }
 }
 
@@ -819,8 +819,9 @@ hr {
     color:red;
 }
 
-p{
-    margin: 0 0 12.5px;
+.aside-badge p{
+    font-size: 17px;
+    margin-top: 3px;
 }
 
 .a-card-main{

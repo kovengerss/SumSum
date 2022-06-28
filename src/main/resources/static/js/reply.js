@@ -20,9 +20,9 @@ let replyService = (function(){
         let boardNum = param.boardNum;
         let page = param.page || 1;
 
-        $.getJSON("/reply/list/" + boardNum + "/" + page, function(list){
+        $.getJSON("/reply/list/" + boardNum + "/" + page, function(replyPageDTO){
             if(callback){
-                callback(list);
+                callback(replyPageDTO.list, replyPageDTO.total);
             }
         });
     }
@@ -71,3 +71,4 @@ let replyService = (function(){
 
     return {add: add, getList: getList, read: read, remove: remove, modify: modify,getTotal:getTotal};
 })();
+
