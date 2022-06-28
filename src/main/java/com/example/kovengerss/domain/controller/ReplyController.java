@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.ReplyService;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.ReplyPageDTO;
 import com.example.kovengerss.domain.vo.ReplyVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +36,8 @@ public class ReplyController {
     }
 
     @GetMapping("/list/{boardNum}/{page}")
-    public List<ReplyVO> getList(@PathVariable("page") Integer pageNum, @PathVariable("boardNum") Integer boardNum){
-        return replyService.getList(new Criteria(pageNum, 10),boardNum);
+    public ReplyPageDTO getList(@PathVariable("page") Integer pageNum, @PathVariable("boardNum") Integer boardNum){
+        return new ReplyPageDTO(replyService.getList(new Criteria(pageNum, 5), boardNum), replyService.getTotal(boardNum));
     }
 
     @DeleteMapping("/{replyNum}")

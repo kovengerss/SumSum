@@ -184,7 +184,7 @@
                                             </span>
                                                 <button class="board-button button-comment button-none comment-button">
                                                     <i>💬</i>
-                                                    <span style="font-size:18px;">0</span>
+                                                    <span style="font-size:18px;" class="reply-total">0</span>
                                                 </button>
                                             </div>
                                             <div class="commentWrapper" style="display: none;">
@@ -203,8 +203,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="reply_list">
-
+                                                                    <!--댓글 목록들-->
                                                     </div>
+                                                    <div class="paging" style="text-align: center; font-size: 17px; margin-top: 10px;"></div>
                                                 </div>
                                             </div>
                                         </footer>
@@ -290,23 +291,35 @@
     let userNum = [[${session.userNum}]];
     let userName =[[${session.userName}]]
 
+    function register(){
+        $(".comment-submit").on("click",function () {
+            if(userNum == null){
+                alert("로그인을 하셔야합니다.")
+                return location.href="/login";
+            }
+        })
+    }
+
+
+
+
     let pageNum = 1;
     let replyList =$(".reply_list");
 
     showList(pageNum);
 
-    function showList(page){
+    function showList(page) {
         replyService.getList({
             boardNum: boardNum,
             page: page
-        }, function(list){
+        }, function (list, total) {
             let text = "";
-            if(list == null || list.length == 0){
-                replyList.html("<p>등록된 댓글이 없습니다.</p>");
+            if (list == null || list.length == 0) {
+                replyList.html("<p style='margin: 0; padding:5px 41px; font-size: 13px; '>등록된 댓글이 없습니다.</p>");
                 return;
             }
 
-            $.each(list, function(i, reply){
+            $.each(list, function (i, reply) {
                 text += "<div style='border-bottom-width: 1px;'>"
                 text += "<div style='padding-top: 0.75rem;'>"
                 text += "<div style='padding-left: 0.5rem;'>"
@@ -317,32 +330,62 @@
                 text += "</a>"
                 text += "<div class='justify-content overflow-hidden flex' style='flex-direction: column;'>"
                 text += "<div class='item-center flex'>"
-                text += "<span>"+userName+"</span>"
+                text += "<span>" + userName + "</span>"
                 text += "</div>"
                 text += "</div>"
                 text += "</div>"
-                text +="<span style='margin-left:8px; font-size:10px; padding-top:5px;color:#aaa;'>"+reply.replyUpdateDate+"</span>"//등록날짜
-                text += "<button class='change'" + reply.replyNum + ">수정</button>"
-                // text += "<button class='finish'" + reply.replyNum + "style='display: none; cursor: pointer;'>수정완료</button>"
-                text += "<button class='delete'" + reply.replyNum + ">삭제</button>"
+                text += "<span style='margin-left:8px; font-size:10px; padding-top:5px;color:#aaa;'>" + reply.replyUpdateDate + "</span>"//등록날짜
+                text += "<div>"
+                text += "<a class='change " + reply.replyNum + "' style='cursor: pointer; '>수정</a>"
+                text += "<a class='delete " + reply.replyNum + "' style='cursor: pointer; '>삭제</a>"
+                text += "<a class='changeOk " + reply.replyNum + "'style='display: none; cursor: pointer;'>수정완료</a>"
+                text += "<a class='cancel " + reply.replyNum + "'style='display: none; cursor: pointer;'>취소</a>"
+                text += "</div>"
                 text += "</div>"
                 text += "<div class='comment-content'>"
-                text += "<p"+reply.replyNum+">"+reply.replyContent+"</p>"
+                text += "<p class='" + reply.replyNum + "' style='padding-left:24px; padding-top: 5px;'>" + reply.replyContent + "</p>"
                 text += "</div>"
-                text +="</div>"
-                text +="</div>"
-                text +="</div>"
+                text += "</div>"
+                text += "</div>"
+                text += "</div>"
             });
 
             replyList.html(text);
+            showReplyPage(total);
+        });
+    }
+        function showReplyPage(total){
+            const $paging = $("div.paging");
+            let text = "";
+            let endPage = Math.ceil(pageNum / 5.0) * 5;
+            let startPage = endPage - 4;
+            let realEnd = Math.ceil(total / 5.0);
+
+            if(endPage > realEnd){endPage = realEnd;}
+
+            let next = endPage * 5 < total;
+            let prev = startPage > 1;
+
+            if(prev){
+                text += "<a class='changePage' href='" + (startPage - 1) +"'><code>&lt;</code></a>";
+            }
+            for(let i=startPage; i<=endPage; i++){
+                text += pageNum == i ? "<code style='padding: 0 10px;'>" + i + "</code>" : "<a class='changePage' href='" + i + "'><code style='padding:0 10px;'>" + i + "</code></a>";
+            }
+
+            if(next){
+                text += "<a class='changePage' href='" + (endPage + 1) +"'><code>&gt;</code></a>";
+
+            }
+            $paging.html(text);
+        }
+
+        $(".paging").on("click", "a.changePage", function(e){
+            e.preventDefault();
+            pageNum = $(this).attr("href");
+            showList(pageNum);
         });
 
-        getTotal(boardNum);
-
-        function getTotal(boardNum) {
-            replyService.getTotal(boardNum);
-        }
-    }
 
     $(".comment-submit").on("click",function(e){
         e.preventDefault();
@@ -358,28 +401,71 @@
             userNum : userNum
 
         }, function(result){
-            $("input[name='comment']").val();
+            $("input[name='comment']").val("");
              showList(1);
             });
     });
 
-    // $(".change").on("click",function (e) {
-    //     e.preventDefault();
-    //
-    //     let replyNum = this.classList[1];
-    //     let str ="";
-    //
-    //     $("button." + replyNum).show();
-    //     $(this).hide();
-    //
-    //     str += "<textarea class='" + replyNum + "' style='resize: none'>";
-    //     str += $("p." + replyNum).text();
-    //     str += "</textarea>";
-    //
-    //     $("p." + replyNum).replaceWith(str);
-    // });
+    let contentOriginal = "";
+    let modifyCheck = false;
+    $("div.reply_list").on("click","div a.change",function (e) {
+        e.preventDefault();
 
+        if(modifyCheck){
+            alert("이미 수정중인 댓글이 있습니다.");
+            return;
+        }
+        modifyCheck = true;
+        let text = "";
+        let replyNum = this.classList[1];
+        contentOriginal = $("p." + replyNum).text();
 
+        console.log($("a." + replyNum));
+        $("a." + replyNum).show();
+        $(this).hide();
+        $(this).next().hide();
+
+        text += "<textarea class='" + replyNum + "' style='resize: none;height: 35px; outline: none;border: 1px solid #e3e3e3;border-radius: 13px;padding: 5px 23px;'>";
+        text += $("p." + replyNum).text();
+        text += "</textarea>";
+
+        $("p." + replyNum).replaceWith(text);
+        $("textarea." + replyNum).css("width", "90%");
+    });
+
+    $("div.reply_list").on("click", "div a.cancel", function(e){
+        e.preventDefault();
+        modifyCheck = false;
+        let text = "";
+        let replyNum = this.classList[1];
+
+        $("a." + replyNum).show();
+        $(this).hide();
+        $(this).prev().hide();
+
+        text += "<p class='" + replyNum + "'>";
+        text += contentOriginal;
+        text += "</p>";
+
+        $("textarea." + replyNum).replaceWith(text);
+    });
+
+    $("div.reply_list").on("click", "div a.delete", function(e){
+        replyService.remove(this.classList[1], function(result){
+            showList(pageNum);
+        });
+    });
+
+    $("div.reply_list").on("click", "div a.changeOk", function(e){
+        let replyNum = this.classList[1];
+        replyService.modify({
+            replyNum: replyNum,
+            replyContent: $("textarea." + replyNum).val()
+        }, function(result){
+            showList(pageNum);
+            modifyCheck = false;
+        });
+    });
 
     function goUpdate(){
         location.href="/board/boardUpdate?boardNum="+ boardNum + "&boardField=" + boardField ;

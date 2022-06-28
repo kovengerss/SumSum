@@ -36,15 +36,5 @@ title.on("keyup",function () {
 
     });
 
-let btnSuccess = $(".btnSuccess");
-    btnSuccess.on("click",function () {
-        if(contentSub.text().length <= 80){
-            alert("80글자이상 작성해주세요.");
-        }else if($(".categorySelector").val() == null){
-            alert("게시 카테고리를 선택해주세요.")
-        }else if(title.val() == null){
-            alert("제목을 입력해주세요.")
-        }
-        return;
-    });
+
 

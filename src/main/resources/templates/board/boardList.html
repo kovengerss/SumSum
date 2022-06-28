@@ -147,14 +147,14 @@
                                     <article class="a-card a-card-list" style="margin-bottom: 10px;" th:object="${board}">
                                         <aside class="a-card-aside">
                                             <div class="popover_wrapper full" style="cursor: pointer;">
-                                                <div class="aside-badge">
+                                                <div class="aside-badge" style="margin-top: -20px;">
                                                     <i class="icon icon-active">❤</i>
                                                     <p>0</p>
                                                 </div>
                                             </div>
                                         </aside>
                                         <div class="a-card-main">
-                                            <header class="a-card-header">
+                                            <header class="a-card-header" style=" padding-top: 4px;">
                                                 <a th:href="@{/board/board(boardNum=*{boardNum},boardField=*{boardField})}">
                                                     <h1 class="a-card-header-title" th:text="*{boardTitle}"></h1>
                                                     <span class="a-card-header-time" th:text="*{boardRegisterDate}"></span>
