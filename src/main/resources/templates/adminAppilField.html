@@ -103,7 +103,7 @@
                             <th:block th:each="board:${appilList}">
                                 <div class="item">
                                 <tr class="tBody" th:object="${board}">
-                                    <div class="boardNum"><td th:text="*{boardNum}"></td></div>
+                                    <div class="boardNum" id="boardNum"><td th:text="*{boardNum}"></td></div>
                                     <div class="boardField"><td th:text="*{boardField}"></td></div>
                                     <div class="boardTitle"><td><a id="goRead" th:text="*{boardTitle}" th:href="*{boardNum}"></a></td></div>
                                     <div class="userNum"><td th:text="*{userNum}"></td></div>
@@ -115,7 +115,7 @@
                                             <button class="update-btn" id="purge-btn">정 지</button>
                                         </div>
                                         <div style="width: 60px;">
-                                            <button class="delete-btn" id="delete-btn">삭 제</button>
+                                            <button type="submit" class="delete-btn" id="delete-btn">삭 제</button>
                                         </div>
                                     </div>
                                 </tr>
@@ -192,8 +192,7 @@ $("a.changePage").on("click", function(e){
 </script>
 <script>
     $(".delete-btn").on('click', function(e) {
-        let boardNum = document.getElementById("boardNum");
-        boardNum = boardNum.innerText;
+        let boardNum = document.getElementById("boardNum").innerText;
         console.log(boardNum);
         if (confirm("정말 삭제하시겠습니까 ?")) {
             $.ajax({
