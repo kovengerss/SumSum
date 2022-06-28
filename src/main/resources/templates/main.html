@@ -128,12 +128,15 @@ a {
                     쪽지
                 </a>
                 <!-- 로그인 -->
-                <a class="login" href="/login">
+                <a th:if="${session.userList == null}" class="login" href="/login">
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="/sign">
+                <a th:if="${session.userList == null}" class="signup" href="/sign">
                     회원가입
+                </a>
+                <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                    로그아웃
                 </a>
             </div>
         </div>
@@ -234,12 +237,12 @@ a {
                 <h4 class="homeSection-title">커플 매칭 성공 후기</h4>
                 <div class="success">
                     <!-- flex -->
-                    <div class="success-items">
+                    <div class="success-items" th:each="review : ${reviewBoardList}">
                         <div class="card-list">
                             <a href="">
                                 <div class="text-back">
                                     <img class="q-img" src="/img/Q.png"></img>
-                                    <span>소개받아서 잘 만나고 있습니다.</span>
+                                    <span th:text="${review.getBoardTitle()}">소개받아서 잘 만나고 있습니다.</span>
                                 </div> 
                             </a>
                             <div class="card-bottom">
@@ -249,54 +252,7 @@ a {
                             </div>
                         </div>
                     </div>
-                    <!-- flex -->
-                    <div class="success-items">
-                        <div class="card-list">
-                            <a href="">
-                                <div class="text-back">
-                                    <img class="q-img" src="/img/Q.png"></img>
-                                    <span>소개받아서 잘 만나고 있습니다.</span>
-                                </div> 
-                            </a>
-                            <div class="card-bottom">
-                                <span>연애</span>
-                                <span>답변수</span>
-                                <span style="float: right;">조회수</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- flex -->
-                    <div class="success-items">
-                        <div class="card-list">
-                            <a href="">
-                                <div class="text-back">
-                                    <img class="q-img" src="/img/Q.png"></img>
-                                    <span>소개받아서 잘 만나고 있습니다.</span>
-                                </div> 
-                            </a>
-                            <div class="card-bottom">
-                                <span>연애</span>
-                                <span>답변수</span>
-                                <span style="float: right;">조회수</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- flex -->
-                    <div class="success-items">
-                        <div class="card-list">
-                            <a href="">
-                                <div class="text-back">
-                                    <img class="q-img" src="/img/Q.png"></img>
-                                    <span>소개받아서 잘 만나고 있습니다.</span>
-                                </div> 
-                            </a>
-                            <div class="card-bottom">
-                                <span>연애</span>
-                                <span>답변수</span>
-                                <span style="float: right;">조회수</span>
-                            </div>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash>-->
                 </div>
             </section>
         </form>
@@ -307,61 +263,19 @@ a {
                 <div class="community-wrap">
                     <div class="community">
                         <form action="" class ="joinform">
-                            <section class="join1_box on">
+
+                            <section class="join1_box on" th:each="app : ${appilcationBoardList}">
                                 <input type="checkbox" id="agre0">
                                 <div class ="community-title">
                                     <span>
                                         <img class="q-img" src="/img/Q.png">
-                                        <span>저도 연애하고 싶어요.</span>
+                                        <span th:text="${app.getBoardTitle()}">저도 연애하고 싶어요.</span>
                                     </span>
                                     <span class="view"><i class="material-icons">expand_more</i></span></div>
                                 <div class="con" style="display:none"><img data-v-1fe26c93="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjYxNjk1IDMuNDc3NDJMOS4yNTYxMSA4Ljk1ODc0SDQuMzgzODJMNi42MTY5NSAzLjQ3NzQyWk0xMS43MTkyIDE0LjA3NDNMMTAuNDE5NiAxMS4zNzUySDMuMzk5MzJMMi4zMjc1MiAxNC4wMDZDMi4wNzU3NSAxNC42MjQgMS4zNzA2OCAxNC45MjA5IDAuNzUyNzAxIDE0LjY2OTFDMC4xMzQ3MiAxNC40MTczIC0wLjE2MjE1MiAxMy43MTIyIDAuMDg5NjE3OSAxMy4wOTQzTDQuOTk1MTcgMS4wNTMzNkM1LjU0ODQ0IC0wLjMwNDY2OSA3LjQ0OTY1IC0wLjM2MzQ3OCA4LjA4NTggMC45NTc3NTZMMTMuODk2NCAxMy4wMjZDMTQuMTg1OSAxMy42MjcyIDEzLjkzMzIgMTQuMzQ5MyAxMy4zMzE5IDE0LjYzODhDMTIuNzMwNyAxNC45MjgzIDEyLjAwODYgMTQuNjc1NSAxMS43MTkyIDE0LjA3NDNaTTE3LjE1NzQgMTQuOTk5OUMxNy45NTgyIDE0Ljk5OTkgMTguNjA3MyAxNC4zNTA4IDE4LjYwNzMgMTMuNTVDMTguNjA3MyAxMi43NDkyIDE3Ljk1ODIgMTIuMTAwMSAxNy4xNTc0IDEyLjEwMDFDMTYuMzU2NyAxMi4xMDAxIDE1LjcwNzUgMTIuNzQ5MiAxNS43MDc1IDEzLjU1QzE1LjcwNzUgMTQuMzUwOCAxNi4zNTY3IDE0Ljk5OTkgMTcuMTU3NCAxNC45OTk5WiIgZmlsbD0iI0E5QUZCMyIvPgo8L3N2Zz4K" 
-                                    alt="answer-icon" class="FAQ-card__answer__icon"> <span class="answer-content" th:text="${boardContent + '.'}"></span> </div>
+                                    alt="answer-icon" class="FAQ-card__answer__icon"> <span class="answer-content" th:text="${app.getBoardContent() + '.'}"></span> </div>
                             </section>
-                            <section class="join1_box on">
-                                <input type="checkbox" id="agre0">
-                                <div class ="community-title">
-                                    <span>
-                                        <img class="q-img" src="../static/img/Q.png">
-                                        <span>저도 연애하고 싶어요.</span>
-                                    </span>
-                                    <span class="view"><i class="material-icons">expand_more</i></span></div>
-                                <div class="con" style="display:none"><img data-v-1fe26c93="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjYxNjk1IDMuNDc3NDJMOS4yNTYxMSA4Ljk1ODc0SDQuMzgzODJMNi42MTY5NSAzLjQ3NzQyWk0xMS43MTkyIDE0LjA3NDNMMTAuNDE5NiAxMS4zNzUySDMuMzk5MzJMMi4zMjc1MiAxNC4wMDZDMi4wNzU3NSAxNC42MjQgMS4zNzA2OCAxNC45MjA5IDAuNzUyNzAxIDE0LjY2OTFDMC4xMzQ3MiAxNC40MTczIC0wLjE2MjE1MiAxMy43MTIyIDAuMDg5NjE3OSAxMy4wOTQzTDQuOTk1MTcgMS4wNTMzNkM1LjU0ODQ0IC0wLjMwNDY2OSA3LjQ0OTY1IC0wLjM2MzQ3OCA4LjA4NTggMC45NTc3NTZMMTMuODk2NCAxMy4wMjZDMTQuMTg1OSAxMy42MjcyIDEzLjkzMzIgMTQuMzQ5MyAxMy4zMzE5IDE0LjYzODhDMTIuNzMwNyAxNC45MjgzIDEyLjAwODYgMTQuNjc1NSAxMS43MTkyIDE0LjA3NDNaTTE3LjE1NzQgMTQuOTk5OUMxNy45NTgyIDE0Ljk5OTkgMTguNjA3MyAxNC4zNTA4IDE4LjYwNzMgMTMuNTVDMTguNjA3MyAxMi43NDkyIDE3Ljk1ODIgMTIuMTAwMSAxNy4xNTc0IDEyLjEwMDFDMTYuMzU2NyAxMi4xMDAxIDE1LjcwNzUgMTIuNzQ5MiAxNS43MDc1IDEzLjU1QzE1LjcwNzUgMTQuMzUwOCAxNi4zNTY3IDE0Ljk5OTkgMTcuMTU3NCAxNC45OTk5WiIgZmlsbD0iI0E5QUZCMyIvPgo8L3N2Zz4K" 
-                                    alt="answer-icon" class="FAQ-card__answer__icon"> <span class="answer-content">그럼 썸썸을 이용해주시면 됩니다!</span> </div>
-                            </section>
-                            <section class="join1_box on">
-                                <input type="checkbox" id="agre0">
-                                <div class ="community-title">
-                                    <span>
-                                        <img class="q-img" src="/img/Q.png">
-                                        <span>저도 연애하고 싶어요.</span>
-                                    </span>
-                                    <span class="view"><i class="material-icons">expand_more</i></span></div>
-                                <div class="con" style="display:none"><img data-v-1fe26c93="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjYxNjk1IDMuNDc3NDJMOS4yNTYxMSA4Ljk1ODc0SDQuMzgzODJMNi42MTY5NSAzLjQ3NzQyWk0xMS43MTkyIDE0LjA3NDNMMTAuNDE5NiAxMS4zNzUySDMuMzk5MzJMMi4zMjc1MiAxNC4wMDZDMi4wNzU3NSAxNC42MjQgMS4zNzA2OCAxNC45MjA5IDAuNzUyNzAxIDE0LjY2OTFDMC4xMzQ3MiAxNC40MTczIC0wLjE2MjE1MiAxMy43MTIyIDAuMDg5NjE3OSAxMy4wOTQzTDQuOTk1MTcgMS4wNTMzNkM1LjU0ODQ0IC0wLjMwNDY2OSA3LjQ0OTY1IC0wLjM2MzQ3OCA4LjA4NTggMC45NTc3NTZMMTMuODk2NCAxMy4wMjZDMTQuMTg1OSAxMy42MjcyIDEzLjkzMzIgMTQuMzQ5MyAxMy4zMzE5IDE0LjYzODhDMTIuNzMwNyAxNC45MjgzIDEyLjAwODYgMTQuNjc1NSAxMS43MTkyIDE0LjA3NDNaTTE3LjE1NzQgMTQuOTk5OUMxNy45NTgyIDE0Ljk5OTkgMTguNjA3MyAxNC4zNTA4IDE4LjYwNzMgMTMuNTVDMTguNjA3MyAxMi43NDkyIDE3Ljk1ODIgMTIuMTAwMSAxNy4xNTc0IDEyLjEwMDFDMTYuMzU2NyAxMi4xMDAxIDE1LjcwNzUgMTIuNzQ5MiAxNS43MDc1IDEzLjU1QzE1LjcwNzUgMTQuMzUwOCAxNi4zNTY3IDE0Ljk5OTkgMTcuMTU3NCAxNC45OTk5WiIgZmlsbD0iI0E5QUZCMyIvPgo8L3N2Zz4K" 
-                                    alt="answer-icon" class="FAQ-card__answer__icon"> <span class="answer-content">그럼 썸썸을 이용해주시면 됩니다!</span> </div>
-                            </section>
-                            <section class="join1_box on">
-                                <input type="checkbox" id="agre0">
-                                <div class ="community-title">
-                                    <span>
-                                        <img class="q-img" src="/img/Q.png">
-                                        <span>저도 연애하고 싶어요.</span>
-                                    </span>
-                                    <span class="view"><i class="material-icons">expand_more</i></span></div>
-                                <div class="con" style="display:none"><img data-v-1fe26c93="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjYxNjk1IDMuNDc3NDJMOS4yNTYxMSA4Ljk1ODc0SDQuMzgzODJMNi42MTY5NSAzLjQ3NzQyWk0xMS43MTkyIDE0LjA3NDNMMTAuNDE5NiAxMS4zNzUySDMuMzk5MzJMMi4zMjc1MiAxNC4wMDZDMi4wNzU3NSAxNC42MjQgMS4zNzA2OCAxNC45MjA5IDAuNzUyNzAxIDE0LjY2OTFDMC4xMzQ3MiAxNC40MTczIC0wLjE2MjE1MiAxMy43MTIyIDAuMDg5NjE3OSAxMy4wOTQzTDQuOTk1MTcgMS4wNTMzNkM1LjU0ODQ0IC0wLjMwNDY2OSA3LjQ0OTY1IC0wLjM2MzQ3OCA4LjA4NTggMC45NTc3NTZMMTMuODk2NCAxMy4wMjZDMTQuMTg1OSAxMy42MjcyIDEzLjkzMzIgMTQuMzQ5MyAxMy4zMzE5IDE0LjYzODhDMTIuNzMwNyAxNC45MjgzIDEyLjAwODYgMTQuNjc1NSAxMS43MTkyIDE0LjA3NDNaTTE3LjE1NzQgMTQuOTk5OUMxNy45NTgyIDE0Ljk5OTkgMTguNjA3MyAxNC4zNTA4IDE4LjYwNzMgMTMuNTVDMTguNjA3MyAxMi43NDkyIDE3Ljk1ODIgMTIuMTAwMSAxNy4xNTc0IDEyLjEwMDFDMTYuMzU2NyAxMi4xMDAxIDE1LjcwNzUgMTIuNzQ5MiAxNS43MDc1IDEzLjU1QzE1LjcwNzUgMTQuMzUwOCAxNi4zNTY3IDE0Ljk5OTkgMTcuMTU3NCAxNC45OTk5WiIgZmlsbD0iI0E5QUZCMyIvPgo8L3N2Zz4K" 
-                                    alt="answer-icon" class="FAQ-card__answer__icon"> <span class="answer-content">그럼 썸썸을 이용해주시면 됩니다!</span> </div>
-                            </section>
-                            <section class="join1_box on">
-                                <input type="checkbox" id="agre0">
-                                <div class ="community-title">
-                                    <span>
-                                        <img class="q-img" src="/img/Q.png">
-                                        <span>저도 연애하고 싶어요.</span>
-                                    </span>
-                                    <span class="view"><i class="material-icons">expand_more</i></span></div>
-                                <div class="con" style="display:none"><img data-v-1fe26c93="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjYxNjk1IDMuNDc3NDJMOS4yNTYxMSA4Ljk1ODc0SDQuMzgzODJMNi42MTY5NSAzLjQ3NzQyWk0xMS43MTkyIDE0LjA3NDNMMTAuNDE5NiAxMS4zNzUySDMuMzk5MzJMMi4zMjc1MiAxNC4wMDZDMi4wNzU3NSAxNC42MjQgMS4zNzA2OCAxNC45MjA5IDAuNzUyNzAxIDE0LjY2OTFDMC4xMzQ3MiAxNC40MTczIC0wLjE2MjE1MiAxMy43MTIyIDAuMDg5NjE3OSAxMy4wOTQzTDQuOTk1MTcgMS4wNTMzNkM1LjU0ODQ0IC0wLjMwNDY2OSA3LjQ0OTY1IC0wLjM2MzQ3OCA4LjA4NTggMC45NTc3NTZMMTMuODk2NCAxMy4wMjZDMTQuMTg1OSAxMy42MjcyIDEzLjkzMzIgMTQuMzQ5MyAxMy4zMzE5IDE0LjYzODhDMTIuNzMwNyAxNC45MjgzIDEyLjAwODYgMTQuNjc1NSAxMS43MTkyIDE0LjA3NDNaTTE3LjE1NzQgMTQuOTk5OUMxNy45NTgyIDE0Ljk5OTkgMTguNjA3MyAxNC4zNTA4IDE4LjYwNzMgMTMuNTVDMTguNjA3MyAxMi43NDkyIDE3Ljk1ODIgMTIuMTAwMSAxNy4xNTc0IDEyLjEwMDFDMTYuMzU2NyAxMi4xMDAxIDE1LjcwNzUgMTIuNzQ5MiAxNS43MDc1IDEzLjU1QzE1LjcwNzUgMTQuMzUwOCAxNi4zNTY3IDE0Ljk5OTkgMTcuMTU3NCAxNC45OTk5WiIgZmlsbD0iI0E5QUZCMyIvPgo8L3N2Zz4K" 
-                                    alt="answer-icon" class="FAQ-card__answer__icon"> <span class="answer-content">그럼 썸썸을 이용해주시면 됩니다!</span> </div>
-                            </section>
+
                         </form>
                     </div>
                 </div>
