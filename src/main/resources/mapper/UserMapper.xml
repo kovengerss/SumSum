@@ -8,7 +8,7 @@
     </insert>
     <!--userNum으로 정보가져오기-->
     <select id="select" resultType="userVO">
-        SELECT USER_NUM, USER_NAME, USER_GENDER, USER_ID, USER_PW, USER_EMAIL, USER_PHONE_NUMBER, USER_BIRTH
+        SELECT USER_NUM, USER_NAME, USER_GENDER, USER_ID, USER_PW, USER_EMAIL, USER_PHONE_NUMBER, USER_BIRTH,IDEAL_NUM
         FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </select>

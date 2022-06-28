@@ -1,17 +1,13 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.AdminService;
-import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,7 +35,7 @@ public class AdminController {
         return "redirect:/adminpage";
     }
     @GetMapping("adminpage")
-    public String getList(Criteria criteria, Model model, BoardVO boardVO, HttpSession httpSession, AdminVO adminVO){
+    public String getList(Criteria criteria, Model model, BoardVO boardVO){
         log.info("----------------------------");
         log.info("list............. : " + criteria);
         log.info("----------------------------");
@@ -91,19 +87,37 @@ public class AdminController {
     }
     @GetMapping("adminBlackList")
     public String getBlackList(Criteria criteria, Model model, BoardVO boardVO){
+        log.info("----------------------------");
+        log.info("list............. : " + criteria);
+        log.info("----------------------------");
+        model.addAttribute("blackList", adminService.getCount(boardVO,criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, adminService.boardGetWarning(boardVO)));
+        log.info("---------------완료-----------------");
         return "/adminBlackList";
     }
 
-/*
-    @PostMapping("adminpage")
-    public String remove(int boardNum, Criteria criteria, Model model){
+    //    게시글 상세보기
+    @GetMapping("adminRead")
+    public void read(Long boardNum, HttpServletRequest req, Model model){
         log.info("----------------------------");
-        log.info("remove............. : " + boardNum);
+        log.info(req.getRequestURI() + "............. : " + boardNum);
         log.info("----------------------------");
+        adminService.get(boardNum);
+        model.addAttribute("board", adminService.get(boardNum));
+    }
 
-        adminService.remove(boardNum);
-        return getList(criteria, model);
-    }*/
+    @GetMapping("delete")
+    @ResponseBody
+    public String delete(Long boardNum, Criteria criteria, Model model, BoardVO boardVO){
+        log.info("--------들어옴----------");
+        log.info(String.valueOf(adminService.boardDelete(boardNum)));
+        adminService.boardDelete(boardNum);
+        return "/adminpage";
+    }
 
-
+    @GetMapping("logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
+        return "redirect:/adminLogin";
+    }
 }

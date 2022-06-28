@@ -53,6 +53,7 @@
             <div class="login">
 
                 <span th:text="${session.adminId}+'님 어서오세요.'"></span>
+                <span style="font-weight: bold;"><a href="/logout">로그아웃</a></span>
                 <!--<h2 th:text="${#request.getSession().getAttribute('adminId')}"></h2>-->
             </div>
         </div>
@@ -99,7 +100,7 @@
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
-                            <th:block th:each="board:${boardList}">
+                            <th:block th:each="board:${blackList}">
                                 <div class="item">
                                 <tr class="tBody" th:object="${board}">
                                     <div class="boardNum"><td th:text="*{boardNum}"></td></div>
@@ -111,10 +112,10 @@
                                     <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
                                     <div class="dele" style="display: -webkit-inline-box;">
                                         <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
-                                            <button class="update-btn">정 지</button>
+                                            <button class="update-btn" id="purge-btn">정 지</button>
                                         </div>
                                         <div style="width: 60px;">
-                                            <button class="delete-btn">삭 제</button>
+                                            <button class="delete-btn" id="delete-btn">삭 제</button>
                                         </div>
                                     </div>
                                 </tr>
@@ -188,6 +189,26 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+</script>
+<script>
+    $(".delete-btn").on('click', function(e) {
+        let boardNum = document.getElementById("boardNum");
+        boardNum = boardNum.innerText;
+        console.log(boardNum);
+        if (confirm("정말 삭제하시겠습니까 ?")) {
+            $.ajax({
+                url : "/delete",
+                type : "get",
+                data : {
+                    boardNum : boardNum
+                },
+                success : function(res){
+                    alert('삭제 완료');
+                    location.href="/adminBlackList";
+                }
+            })
+        }
+    });
 </script>
 <!--<script>
     let id= sessionStorage.getItem("adminId");
