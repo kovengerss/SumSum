@@ -184,7 +184,7 @@
                                             </span>
                                                 <button class="board-button button-comment button-none comment-button">
                                                     <i>💬</i>
-                                                    <span style="font-size:18px;">0</span>
+                                                    <span style="font-size:18px;" class="reply-total"></span>
                                                 </button>
                                             </div>
                                             <div class="commentWrapper" style="display: none;">
@@ -306,8 +306,8 @@
 <script th:inline="javascript">
     let boardNum = [[${reviewBoard.boardNum}]];
     let boardField =[[${reviewBoard.boardField}]];
-    let userNum = [[${session.userNum}]];
     let userName =[[${session.userName}]]
+    let userNum = [[${session.userNum}]];
 
     function register(){
         $(".comment-submit").on("click",function () {
@@ -320,6 +320,7 @@
 
     let pageNum = 1;
     let replyList =$(".reply_list");
+    let replyTotal =$(".reply-total");
 
     showList(pageNum);
 
@@ -367,6 +368,7 @@
 
             replyList.html(text);
             showReplyPage(total);
+            replyTotal.text(total);
         });
     }
     function showReplyPage(total){

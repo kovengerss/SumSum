@@ -184,7 +184,7 @@
                                             </span>
                                                 <button class="board-button button-comment button-none comment-button">
                                                     <i>💬</i>
-                                                    <span style="font-size:18px;" class="reply-total">0</span>
+                                                    <span style="font-size:18px;" class="reply-total"></span>
                                                 </button>
                                             </div>
                                             <div class="commentWrapper" style="display: none;">
@@ -288,8 +288,8 @@
 <script th:inline="javascript">
     let boardNum = [[${board.boardNum}]];
     let boardField =[[${board.boardField}]];
+    let userName =[[${session.userName}]];
     let userNum = [[${session.userNum}]];
-    let userName =[[${session.userName}]]
 
     function register(){
         $(".comment-submit").on("click",function () {
@@ -305,6 +305,7 @@
 
     let pageNum = 1;
     let replyList =$(".reply_list");
+    let replyTotal =$(".reply-total");
 
     showList(pageNum);
 
@@ -336,6 +337,7 @@
                 text += "</div>"
                 text += "<span style='margin-left:8px; font-size:10px; padding-top:5px;color:#aaa;'>" + reply.replyUpdateDate + "</span>"//등록날짜
                 text += "<div>"
+                text += "<span th:text='${board.boardTitle}'></span>"
                 text += "<a class='change " + reply.replyNum + "' style='cursor: pointer; '>수정</a>"
                 text += "<a class='delete " + reply.replyNum + "' style='cursor: pointer; '>삭제</a>"
                 text += "<a class='changeOk " + reply.replyNum + "'style='display: none; cursor: pointer;'>수정완료</a>"
@@ -352,6 +354,7 @@
 
             replyList.html(text);
             showReplyPage(total);
+            replyTotal.text(total);
         });
     }
         function showReplyPage(total){
