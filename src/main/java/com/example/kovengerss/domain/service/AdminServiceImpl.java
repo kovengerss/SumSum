@@ -58,11 +58,18 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public List<PointVO> getPointList(PointVO pointVO,Criteria criteria) {
+        return adminDAO.getPointList(pointVO, criteria);
+    }
+
+    @Override
     public int boardGetTotal(BoardVO boardVO) {return adminDAO.boardGetTotal(boardVO);}
     @Override
     public int boardGetTotalField(BoardVO boardVO) {return adminDAO.boardGetTotalField(boardVO);}
     @Override
     public int boardGetWarning(BoardVO boardVO) {return adminDAO.boardGetWarning(boardVO);}
+    @Override
+    public int getPointTotal(PointVO pointVO) {return adminDAO.getPointTotal(pointVO);}
 
 //    @Override
 //    public int getCount(int boardNum) {
@@ -73,4 +80,7 @@ public class AdminServiceImpl implements AdminService{
     public boolean deleteUser(int userNum) {
         return adminDAO.deleteUser(userNum);
     }
+
+    @Override
+    public int getPoint(int remainPoint, int userNum){return adminDAO.getPoint(remainPoint, userNum);}
 }

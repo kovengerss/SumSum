@@ -29,6 +29,7 @@ public class AdminDAO {
     public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3){return adminMapper.getFieldAppil(boardVO, criteria3);}
     public List<BoardVO> getFieldBoard(BoardVO boardVO, Criteria2 criteria2){return adminMapper.getFieldBoard(boardVO, criteria2);}
     public List<BoardVO> getFieldReview(BoardVO boardVO, Criteria1 criteria1){return adminMapper.getFieldReview(boardVO, criteria1);}
+    public List<PointVO> getPointList(PointVO pointVO, Criteria criteria){return adminMapper.getPointList(pointVO, criteria);}
 
     //게시글 전체 개수
     public int boardGetTotal(BoardVO boardVO){return adminMapper.getTotal(boardVO);}
@@ -36,6 +37,8 @@ public class AdminDAO {
     public int boardGetTotalField(BoardVO boardVO){return adminMapper.getTotalField(boardVO);}
 
     public int boardGetWarning(BoardVO boardVO){return adminMapper.getWarning(boardVO);}
+    //포인트 개수
+    public int getPointTotal(PointVO pointVO){return adminMapper.getPointTotal(pointVO);}
     //게시글 한 개 가져오기
     public BoardVO findByBoardNumber(Long boardNum){
         return adminMapper.select(boardNum);
@@ -52,4 +55,6 @@ public class AdminDAO {
     public boolean deleteUser(int userNum){
         return adminMapper.deleteUser(userNum) == 1;
     }
+    //포인트 충전
+    public int getPoint(int remainPoint, int userNum){return adminMapper.remainPoint(remainPoint, userNum);}
 }

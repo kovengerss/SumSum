@@ -82,9 +82,17 @@ public class AdminController {
         return "/adminReviewField";
     }
     @GetMapping("adminPointField")
-    public String getPoint(){
+    public String getPoint(Criteria criteria, Model model, PointVO pointVO){
+        log.info("----------------------------");
+        log.info("list............. : " + criteria);
+        log.info("----------------------------");
+        model.addAttribute("pointList", adminService.getPointList(pointVO, criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, adminService.getPointTotal(pointVO)));
+        log.info("---------------완료-----------------");
         return "/adminPointField";
     }
+
+
     @GetMapping("adminBlackList")
     public String getBlackList(Criteria criteria, Model model, BoardVO boardVO){
         log.info("----------------------------");
@@ -113,6 +121,15 @@ public class AdminController {
         log.info(String.valueOf(adminService.boardDelete(boardNum)));
         adminService.boardDelete(boardNum);
         return "/adminpage";
+    }
+
+    @GetMapping("point")
+    @ResponseBody
+    public String point(PointVO pointVO, int pointRemain, int userNum){
+        log.info("--------들어옴----------");
+        int remainPoint = pointRemain+pointVO.getPointRemain();
+        adminService.getPoint(remainPoint, userNum);
+        return "/adminPointField";
     }
 
     @GetMapping("logout")

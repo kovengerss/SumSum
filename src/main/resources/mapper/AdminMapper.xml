@@ -103,21 +103,48 @@
         SELECT COUNT(BOARD_NUM)
         FROM TBL_BOARD
     </select>
+    <!--포인트 총갯수-->
+    <select id="getPointTotal" parameterType="pointVO" resultType="_int">
+        SELECT COUNT(POINT_NUM)
+        FROM TBL_POINT
+    </select>
     <!--필드개수-->
     <select id="getTotalField" parameterType="boardVO" resultType="int">
         SELECT COUNT(BOARD_NUM)
         FROM TBL_BOARD
         WHERE BOARD_FIELD = #{boardField}
     </select>
+    <!--신고조회-->
     <select id="getWarning" parameterType="boardVO" resultType="int">
         SELECT COUNT(BOARD_NUM)
         FROM TBL_BOARD
         WHERE WARNING_COUNT >= 5
     </select>
+    <!--유저아이디-->
     <select id="getUserId" resultType="String">
         SELECT USER_ID
         FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </select>
+    <!--포인트 조회-->
+    <select id="getPointList" resultType="pointVO">
+        <![CDATA[
+            SELECT POINT_NUM, POINT_PRICE, POINT_WAY, POINT_USE, POINT_REMAIN, POINT_DATE, USER_NUM
+            FROM
+            (
+                SELECT /*+ INDEX_DESC(TBL_POINT PK_POINT_NUM) */
+                ROWNUM RN, POINT_NUM, POINT_PRICE, POINT_WAY, POINT_USE, POINT_REMAIN, POINT_DATE, USER_NUM
+                FROM TBL_POINT
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+            )
+
+            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+         ]]>
+    </select>
+    <update id="remainPoint">
+        UPDATE TBL_POINT
+        SET POINT_REMAIN = #{pointRemain}
+        WHERE USER_NUM =#{userNum}
+    </update>
 
 </mapper>

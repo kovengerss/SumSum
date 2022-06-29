@@ -1,10 +1,7 @@
 package com.example.kovengerss.Mapper;
 
 import com.example.kovengerss.domain.dao.AdminDAO;
-import com.example.kovengerss.domain.vo.BoardVO;
-import com.example.kovengerss.domain.vo.Criteria;
-import com.example.kovengerss.domain.vo.Criteria2;
-import com.example.kovengerss.domain.vo.Criteria3;
+import com.example.kovengerss.domain.vo.*;
 import com.example.kovengerss.mapper.AdminMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -110,4 +107,15 @@ public class AdminMapperTests {
         adminMapper.select(1);
     }
 */
+    /*@Test
+    public void test(){
+        PointVO pointVO = new PointVO();
+        adminMapper.getPointList(pointVO ,new Criteria()).stream().map(PointVO::toString).forEach(log::info);
+    }*/
+
+    @Test
+    public void test(){
+        PointVO pointVO =new PointVO();
+        adminMapper.remainPoint(50000, 54);
+    }
 }
