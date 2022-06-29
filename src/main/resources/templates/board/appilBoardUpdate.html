@@ -137,7 +137,7 @@
                                                     <span>
                                                         <i class="icon" style="font-size:20px; font-weight: 700; color:#989898; ">Q.</i>
                                                     </span>
-                                                     <input th:field="${appilBoard.boardTitle}" class="title-input" type="text" maxlength="60" placeholder="제목을 입력해주세요." style="padding-left: 5px;" >
+                                                     <input th:field="${appilBoard.boardTitle}" class="title-input title-chk" type="text" maxlength="60" placeholder="제목을 입력해주세요." style="padding-left: 5px;" >
                                                 <span class="title-check"></span>
                                                <input type="text" th:field="${appilBoard.boardNum}" style="display: none;">
                                             </header>
@@ -145,8 +145,8 @@
                                     </div>
                                 </div>
                                 <div class="editor-content"  style="margin-top:10px;">
-                                                        <textarea id="summernote" class="content content-length" th:field="*{appilBoard.boardContent}" placeholder="글을 입력해주세요." onclick="length()">
-                                                        </textarea>
+                                    <textarea id="summernote" class="content content-length" th:field="*{appilBoard.boardContent}" placeholder="글을 입력해주세요." onclick="length()">
+                                    </textarea>
                                 </div>
 
                             <div class="form-footer form-edit-footer">
@@ -265,6 +265,9 @@
             return false;
         } else if ($(".categorySelector").val() == null) {
             alert("게시 카테고리를 선택해주세요.")
+            return false;
+        } else if($(".title-chk").val().length == 0){
+            alert("제목을 입력해주세요.")
             return false;
         }
         console.log("1 : " + title.text());

@@ -13,13 +13,28 @@ public class LikeMapperTests {
     @Autowired
     private LikeMapper likeMapper;
 
-    @Test
-    public void heartUpTests(){
-        LikeVO likeVO = new LikeVO();
-        likeVO.setBoardNum(6523);
-        likeVO.setUserNum(2);
-        likeVO.setLikeCheck(0);
+//    @Test
+//    public void insertTest(){
+//        LikeVO likeVO = new LikeVO();
+//
+//        likeVO.setUserNum(2);
+//        likeVO.setBoardNum(6627);
+//
+//        likeMapper.likeInsert(likeVO);
+//    }
 
-        likeMapper.insert(likeVO);
-    }
+//    @Test
+//    public void CountTest(){
+//        likeMapper.likeCount(6627);
+//    }
+
+//    @Test
+//    public void DelteTest(){
+//        LikeVO likeVO = new LikeVO();
+//        likeVO.setBoardNum(6627);
+//        likeVO.setUserNum(2);
+//        likeMapper.likeDown(likeVO);
+//    }
+
+
 }
