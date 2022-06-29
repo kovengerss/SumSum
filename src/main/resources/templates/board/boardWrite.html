@@ -149,7 +149,7 @@
                                 </div>
 
                             <div class="form-footer form-edit-footer">
-                                <button class="footer-button-css btn123 btnSuccess" style="border:1px solid #e3e3e3" onclick="registerbutton()">고민 등록</button>
+                                <button class="footer-button-css btn123 btnSuccess" style="border:1px solid #e3e3e3">고민 등록</button>
                             </div>
                             </form>
                         </div>
@@ -257,7 +257,6 @@
     let userNum = [[${session.userNum}]];
 
     let btnSuccess = $(".btnSuccess");
-    let form = $(".question-title-form");
 
     btnSuccess.on("click", function () {
         if (contentSub.text().length <= 80) {
@@ -266,10 +265,8 @@
         } else if ($(".categorySelector").val() == null) {
             alert("게시 카테고리를 선택해주세요.")
             return false;
-        } else if (title.val() == null) {
-            alert("제목을 입력해주세요.")
-            return false;
         }
+        console.log("1 : " + title.text());
         return true;
     });
 
