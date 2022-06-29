@@ -25,6 +25,7 @@ public interface AdminMapper {
     public int getTotal(BoardVO boardVO);
     public int getTotalField(BoardVO boardVO);
     public int getWarning(BoardVO boardVO);
+    public int getPointTotal(PointVO pointVO);
     //게시글 삭제
     public int delete(Long boardNum);
     //게시글 수정
@@ -35,4 +36,8 @@ public interface AdminMapper {
     public List<BoardVO> getWarningCount(@Param("boardVO")BoardVO boardVO, @Param("criteria")Criteria criteria);
     //회원 탈퇴
     public int deleteUser(int userNum);
+    //포인트 조회
+    public List<PointVO> getPointList(@Param("PointVO")PointVO pointVO, @Param("criteria")Criteria criteria);
+    //포인트 충전
+    public int remainPoint(int pointRemain, int userNum);
 }
