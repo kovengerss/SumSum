@@ -48,9 +48,14 @@ public class BoardController {
         log.info("----------------------------");
         HttpSession session = req.getSession();
         Integer userNum = (Integer)session.getAttribute("userNum");
+        if(userNum == null){
+            rttr.addFlashAttribute("loginX",true);
+            return new RedirectView("/login");
+        }
 
         boardVO.setUserNum(userNum);
         boardService.boardInsert(boardVO);
+
 
             if (boardVO.getBoardField().equals("고민상담")) {
                 rttr.addFlashAttribute("boardNum", boardVO.getBoardNum());
