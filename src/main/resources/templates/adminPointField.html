@@ -91,36 +91,42 @@
                 <div class="board_list" style="width: 1440px;">
                     <div class="board_list_head">
                         <div class="num">번호</div>
-                        <div class="cate">카테고리</div>
-                        <div class="tit">제목</div>
-                        <div class="writer">회원 ID</div>
-                        <div class="date">작성 날짜</div>
-                        <div class="view">신고누적</div>
-                        <div class="regist_date">가입 날짜</div>
+                        <div class="cate">충전금액</div>
+                        <div class="tit">충전방법</div>
+                        <div class="writer">포인트 사용</div>
+                        <div class="date">포인트 잔액</div>
+                        <div class="view">충전 날짜</div>
+                        <div class="regist_date">유저 번호</div>
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
-                            <th:block th:each="board:${boardList}">
-                                <div class="item">
-                                <tr class="tBody" th:object="${board}">
-                                    <div class="boardNum"><td th:text="*{boardNum}"></td></div>
-                                    <div class="boardField"><td th:text="*{boardField}"></td></div>
-                                    <div class="boardTitle"><td><a id="goRead" th:text="*{boardTitle}" th:href="*{boardNum}"></a></td></div>
-                                    <div class="userNum"><td th:text="*{userNum}"></td></div>
-                                    <div class="boardUpdateDate"><td th:text="*{boardUpdateDate}"></td></div>
-                                    <div class="warningCount"><td th:text="*{warningCount}"></td></div>
-                                    <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
-                                    <div class="dele" style="display: -webkit-inline-box;">
-                                        <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
-                                            <button class="update-btn">정 지</button>
-                                        </div>
-                                        <div style="width: 60px;">
-                                            <button class="delete-btn">삭 제</button>
-                                        </div>
+                                <th:block th:each="point:${pointList}">
+                                    <div class="item">
+                                        <tr class="tBody" th:object="${point}">
+                                            <div class="boardNum"><td th:text="*{pointNum}"></td></div>
+                                            <div class="boardField"><td th:text="*{pointPrice}"></td></div>
+                                            <div class="boardTitle"><td th:text="*{pointWay}" ></td></div>
+                                            <div class="userNum"><td th:text="*{pointUse}"></td></div>
+                                            <div class="boardUpdateDate" id="pointRemain"><td th:text="*{pointRemain}"></td></div>
+                                            <div class="warningCount"><td th:text="*{pointDate}"></td></div>
+                                            <div class="boardRegisterDate" id="userNum"><td th:text="*{userNum}"></td></div>
+                                            <div class="dele" style="display: -webkit-inline-box;">
+                                                <div>
+                                                    <select style="width: 80px; margin-left: -36px;" class="update-btn">
+                                                        <option class="charge" value="3000">3000</option>
+                                                        <option class="charge" value="5000">5000</option>
+                                                        <option class="charge" value="10000">10000</option>
+                                                        <option class="charge" value="30000">30000</option>
+                                                        <option class="charge" value="50000">50000</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="delete-btn" id="charge_point">충 전</button>
+                                                </div>
+                                            </div>
+                                        </tr>
                                     </div>
-                                </tr>
-                                </div>
-                            </th:block>
+                                </th:block>
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 40px;font-size: 23px;margin-bottom: 20px;">
@@ -182,13 +188,40 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">;
+let boardNum = [[${boardNum}]];
 let $pageForm = $(pageForm);
+let params = [[${pageDTO.criteria.listLink}]];
 
 $("a.changePage").on("click", function(e){
     e.preventDefault();
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
+</script>
+<script>
+
+
+    $(".delete-btn").on('click', function(e) {
+        let userNum = document.getElementsByClassName("boardRegisterDate").item(this);
+        console.log(userNum);
+        let point = document.getElementsByClassName("charge").item(this);
+        console.log(point);
+        if (confirm("충전하시겠습니까 ?")) {
+            $.ajax({
+                url : "/point",
+                type : "get",
+                data : {
+                    userNum : userNum,
+                    pointRemain : point
+                },
+                success : function(res){
+                    alert('충전 완료');
+                    location.href="/adminPointField"
+                }
+            })
+        }
+    });
 </script>
 <!--<script>
     let id= sessionStorage.getItem("adminId");
