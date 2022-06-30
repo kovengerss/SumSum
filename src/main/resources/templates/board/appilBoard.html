@@ -224,30 +224,16 @@
                                     </header>
                                     <div class="a-card-content">
                                         <ul class="list-none">
-                                            <li class="listItem">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심하고 간이 작은 성격 고칠 수 있나요??
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격도 괜찮나요? 고칠 수는 없을까요?
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격을 변화할 수 있을까요~~
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격 어떻게 고칠수 있나요?
-                                                </a>
-                                            </li>
+                                            <th:block th:each="board,num:${boardList}">
+                                                <th:block th:if="${num.index <= 3}">
+                                                    <li class="listItem" th:object="${board}" style="margin-bottom: 10px;">
+                                                        <a th:href="@{/board/board(boardNum=*{boardNum},boardField=*{boardField})}">
+                                                            <i class="list-icon list-icon-tag">Q.</i>
+                                                            <span th:text="*{boardTitle}"></span>
+                                                        </a>
+                                                    </li>
+                                                 <th:block>
+                                            <th:block>
                                         </ul>
                                     </div>
                                 </div>

@@ -218,17 +218,21 @@
                                 <div class="mt-0 order a-card mb-2" style="border: 1px solid #e3e3e3;">
                                     <header class="a-card-header">
                                         <h5>다른 게시글도 확인해보세요!</h5>
-                                        <div class="flex a-card-header-tag label">                                            <span>AI 추천</span>
+                                        <div class="flex a-card-header-tag label">
+                                            <span>AI 추천</span>
                                         </div>
                                     </header>
                                     <div class="a-card-content">
                                         <ul class="list-none">
-                                            <li class="listItem" >
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    <span>일담로</span>
-                                                </a>
-                                            </li>
+                                            <th:block th:each="board,num:${boardList}">
+                                                <th:block th:if="${num.index <= 3}">
+                                                   <li class="listItem" th:object="${board}" style="margin-bottom: 10px;">
+                                                      <a th:href="@{/board/board(boardNum=*{boardNum},boardField=*{boardField})}">
+                                                         <i class="list-icon list-icon-tag">Q.</i>
+                                                         <span th:text="*{boardTitle}"></span>
+                                                      </a>
+                                                   </li>
+                                                <th:block>
                                             <th:block>
                                         </ul>
                                     </div>

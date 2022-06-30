@@ -165,7 +165,7 @@
                                                         <span class="float-right">
                                                             <span class="answer">
                                                                 <i class="icon answer-icon">🗨</i>
-                                                                3
+                                                                0
                                                             </span>
                                                             <span class="question-total">좋아요 56</span>
                                                         </span>
@@ -247,6 +247,9 @@
     function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
 <script th:inline="javascript">;
+
+let boardList = [[${boardList}]];
+
 let $pageForm = $(pageForm);
 
 $("a.changePage").on("click", function(e){
@@ -254,5 +257,6 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
 </script>
 </html>
