@@ -311,6 +311,10 @@
         return true;
     }
 
+    /*/////////*/
+
+
+    /*/////////*/
     $("#upload").on("click", function(e){
         let formData = new FormData();
         let input = $("input[name='files']");
@@ -337,13 +341,22 @@
     function showUploadFile(fileList){
         let str = "";
         $.each(fileList, function(i, file){
-            str += "<li><a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>";
+
+            str += "<li data-name='" + file.fileName + "' data-original='" + file.originalFileName + "' data-directory='" + file.uploadDirectory + "' data-image='" + file.image + "'>";
+            str += "<span data-name='" + file.originalFileName + "' data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='cursor: pointer;'>사진 삭제하기</span>";
+            str += "<a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>"
+            str += file.image ? "<img src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
+                : "<img src='/images/attach.png' width='100'>";
+            str += "</a><p>" + file.originalFileName + "</p>";
+            str += "</li>";
+
+          /*  str += "<li><a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>";
             str += file.image ? "<img style='position: relative; top:41px ;border-radius: 70%;' src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
                 : "<img class ='myimg' src='/images/attach.png' width='100'>";
             str += "</a>"
             str += "<span data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='display:block;cursor: pointer;font-size: 21px;position: relative;top: 51px;color: coral;\n" +
                 "    font-weight: 600;'>사진 삭제하기</span>"
-            str += "</li>";
+            str += "</li>";*/
         });
 
         result.append(str);
