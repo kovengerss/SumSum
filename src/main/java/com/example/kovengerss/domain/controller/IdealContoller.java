@@ -59,7 +59,7 @@ public class IdealContoller {
     @GetMapping("getMyIdeal")
     public String getOne(Integer idealNum, Model model,HttpServletRequest req){
         log.info("----------------------------");
-        log.info("list............."+idealNum);
+        log.info("getMyIdeal............."+idealNum);
         log.info("----------------------------");
         HttpSession session =   req.getSession();
         Integer idealNums = (Integer)session.getAttribute("idealNum");
@@ -68,6 +68,19 @@ public class IdealContoller {
         model.addAttribute("idealVO", idealService.idealSelect(idealNums+1));
         return "/myPage";
     }
+
+
+    @GetMapping("moreSearch")
+    public void getMore(Integer idealNum,Model model,HttpServletRequest req){
+        log.info("----------------------------");
+        log.info("moreSearch............."+idealNum);
+        log.info("----------------------------");
+
+        model.addAttribute("idealVO", idealService.idealSelect(idealNum));
+
+    }
+
+
 
     //이상형 수정 페이지로 가는 get방식
     @GetMapping("/updateMarry")
