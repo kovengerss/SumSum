@@ -9,5 +9,4 @@ public class LikeVO {/*좋아요*/
     private Integer likeNum;
     private Integer boardNum;
     private Integer userNum;
-    private Integer likeCheck;
 }

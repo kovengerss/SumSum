@@ -52,14 +52,30 @@ public class ReviewBoardController {
     @PostMapping("reviewBoardUpdate")
     public RedirectView boardUpdate(BoardVO boardVO, RedirectAttributes rttr, HttpServletRequest req){
 
-        log.info("-----------");
-        log.info("보드 넘버" + boardVO.getBoardNum());
-
         HttpSession session = req.getSession();
         Integer userNum = (Integer) session.getAttribute("userNum");
+        if(userNum == null){
+            rttr.addFlashAttribute("loginX",true);
+            return new RedirectView("/login");
+        }
 
         boardVO.setUserNum(userNum);
         boardService.boardUpdate(boardVO);
+
+        if (boardVO.getBoardField().equals("고민상담")) {
+            rttr.addAttribute("boardNum", boardVO.getBoardNum());
+            rttr.addAttribute("boardField", boardVO.getBoardField());
+            return new RedirectView("/board/board");
+        } else if (boardVO.getBoardField().equals("어필하기")) {
+            rttr.addAttribute("boardNum", boardVO.getBoardNum());
+            rttr.addAttribute("boardField", boardVO.getBoardField());
+            return new RedirectView("/board/appilBoard");
+        } else if (boardVO.getBoardField().equals("후기")) {
+            rttr.addAttribute("boardNum", boardVO.getBoardNum());
+            rttr.addAttribute("boardField", boardVO.getBoardField());
+            return new RedirectView("/board/reviewBoard");
+        }
+
         rttr.addAttribute("boardNum", boardVO.getBoardNum());
         rttr.addAttribute("boardField",boardVO.getBoardField());
         return new RedirectView("/board/reviewBoard");
