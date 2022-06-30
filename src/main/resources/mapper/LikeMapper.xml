@@ -20,9 +20,15 @@
     </delete>
     <!--누른 게시판 -->
     <select id="likeCheck" resultType="_int">
-        SELECT COUNT(TBL_NUM)
+        SELECT COUNT(LIKE_NUM)
         FROM TBL_LIKE
         WHERE BOARD_NUM = #{boardNum} AND USER_NUM = #{userNum}
     </select>
 
+    <!--눌럿는지 안 눌럿지 확인-->
+    <select id="userCheck" resultType="_int">
+        SELECT USER_NUM
+        FROM TBL_LIKE
+        WHERE USER_NUM = #{userNum}
+    </select>
 </mapper>

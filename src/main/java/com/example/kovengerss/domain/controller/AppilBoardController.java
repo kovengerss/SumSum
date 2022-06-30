@@ -37,13 +37,16 @@ public class AppilBoardController {
     }
 
     @GetMapping({"appilBoard","appilBoardUpdate"})
-    public void boardSelectOne(BoardVO boardVO,Integer boardNum,Model model,HttpServletRequest req){
+    public void boardSelectOne(BoardVO boardVO,Integer boardNum,Model model,Criteria criteria,HttpServletRequest req){
 
         log.info("----------------------------");
         log.info(req.getRequestURI() + "............. : " + boardNum);
         log.info("----------------------------");
 
+        boardVO.setBoardField("어필하기");
+
         boardService.boardSelectOne(boardNum);
+        model.addAttribute("boardList", boardService.getList(boardVO,criteria));;
         model.addAttribute("appilBoard",boardService.boardSelectOne(boardNum));
     }
 

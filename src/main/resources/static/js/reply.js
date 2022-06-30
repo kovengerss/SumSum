@@ -62,7 +62,7 @@ let replyService = (function(){
     }
 
     function getTotal(boardNum,callback) {
-        $.get("/reply/total" + boardNum, function(total){
+        $.get("/reply/total/" + boardNum, function(total){
             if(callback){
                 callback(total);
             }

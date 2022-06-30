@@ -75,13 +75,16 @@ public class BoardController {
     }
 
     @GetMapping({"board","boardUpdate"})
-    public void boardSelectOne(BoardVO boardVO,Integer boardNum,Model model,HttpServletRequest req){
+    public void boardSelectOne(BoardVO boardVO,Integer boardNum,Model model, Criteria criteria, HttpServletRequest req){
 
         log.info("----------------------------");
         log.info(req.getRequestURI() + "............. : " + boardNum);
         log.info("----------------------------");
 
+        boardVO.setBoardField("고민상담");
+
         boardService.boardSelectOne(boardNum);
+        model.addAttribute("boardList", boardService.getList(boardVO,criteria));;
         model.addAttribute("board",boardService.boardSelectOne(boardNum));
     }
 
