@@ -4,7 +4,7 @@
     <!---->
     <select id="getList" resultType="messageVO">
         SELECT /*+ INDEX_DESC(TBL_MESSAGE PK_MESSAGE_NUM) */
-        MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM
+        MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM,USER_NAME
         FROM TBL_MESSAGE
         WHERE USER_NUM =#{userNum}
     </select>
@@ -13,9 +13,10 @@
             SELECT SEQ_MESSAGE.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_MESSAGE
-        (MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM)
-        VALUES(SEQ_MESSAGE.NEXTVAL,#{messageTitle} ,#{messageContent},SYSDATE,#{userNum})
+        (MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM,USER_NAME)
+        VALUES(SEQ_MESSAGE.NEXTVAL,#{messageTitle} ,#{messageContent},SYSDATE,#{userNum},#{userName})
     </insert>
+
     <update id="update">
          UPDATE TBL_MESSAGE
          SET MESSAGE_TITLE=#{messageTitle}, MESSAGE_CONTENT=#{messageContent}, MESSAGE_SEND_DATE=SYSDATE
@@ -38,7 +39,7 @@
     </select>
     <!--메세지 한개 가져오기-->
     <select id="select" resultType="messageVO">
-         SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE, USER_NUM
+         SELECT MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE, USER_NUM,USER_NAME
          FROM TBL_MESSAGE
          WHERE MESSAGE_NUM=#{messageNum}
     </select>

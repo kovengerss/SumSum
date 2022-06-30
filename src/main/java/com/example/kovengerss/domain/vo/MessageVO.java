@@ -11,4 +11,5 @@ public class MessageVO {/*쪽지*/
     private String messageContent;
     private String messageSendDate;
     private Integer userNum;
+    private String userName;
 }
