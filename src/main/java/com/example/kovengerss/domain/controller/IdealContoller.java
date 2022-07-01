@@ -40,7 +40,14 @@ public class IdealContoller {
         idealVO.setUserNum(userNum);
         idealService.idealInsert(idealVO);
 
+        log.info("--------------파일등록할때--------------");
+        idealVO.getFileList().stream().map(file -> file.getFileName()).forEach(log::info);
+        log.info("----------------------------");
+        log.info("---------------아이딜넘버나오냐-------------");
+        log.info(idealVO.getIdealNum().toString());
+        log.info("----------------------------");
         Integer idealNum =idealVO.getIdealNum();
+
         log.info("첫-----"+idealNum);
         session.setAttribute("idealVO",idealVO);//
         session.setAttribute("idealNum",idealNum);
@@ -61,11 +68,11 @@ public class IdealContoller {
         log.info("----------------------------");
         log.info("getMyIdeal............."+idealNum);
         log.info("----------------------------");
-        HttpSession session =   req.getSession();
+        HttpSession session =  req.getSession();
         Integer idealNums = (Integer)session.getAttribute("idealNum");
 
                                 //여기서 디비버의 sequence연동에 문제가 생김
-        model.addAttribute("idealVO", idealService.idealSelect(idealNums+1));
+        model.addAttribute("idealVO", idealService.idealSelect(idealNums));
         return "/myPage";
     }
 

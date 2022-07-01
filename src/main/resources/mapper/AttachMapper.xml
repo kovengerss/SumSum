@@ -3,18 +3,18 @@
 <mapper namespace="com.example.kovengerss.mapper.AttachMapper">
     <insert id="insert">
         INSERT INTO TBL_ATTACH
-        (FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, IMAGE, BOARD_NUMBER)
-        VALUES(#{fileName}, #{originalFileName}, #{uploadDirectory}, #{image}, #{boardVO.boardNumber})
+        (FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, IMAGE, IDEAL_NUM)
+        VALUES(#{fileName}, #{originalFileName}, #{uploadDirectory}, #{image}, #{idealVO.idealNum})
     </insert>
 
     <select id="select" resultType="attachVO">
         SELECT FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, IMAGE
         FROM TBL_ATTACH
-        WHERE BOARD_NUMBER = #{boardNumber}
+        WHERE  IDEAL_NUM= #{idealNum}
     </select>
 
     <delete id="delete">
         DELETE FROM TBL_ATTACH
-        WHERE BOARD_NUMBER = #{boardNumber}
+        WHERE IDEAL_NUM = #{idealNum}
     </delete>
 </mapper>

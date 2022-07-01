@@ -274,6 +274,9 @@
                     <div style="    text-align: center;">
                         <img  style="height: 291px; width: 51%;"src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
                     </div>
+                    <div style="position: relative;top: -299px;left: 92px;color: darksalmon;">
+                        <span th:text="${idealVO.gender}"></span>
+                    </div>
 
                     <div class="body-titlebox">
                         <h4>나이</h4>
@@ -304,6 +307,10 @@
                         <div class="lineBottom"><span th:text="${idealVO.houseExist}"></span></div>
                     </div>
                     <div class="body-titlebox">
+                        <h4>연봉</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.income}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
                     <h4>이상형</h4>
                     <div class="lineBottom"><span th:text="${idealVO.idealContent}"></span></div>
                      </div>
@@ -319,7 +326,7 @@
                <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".exampleModal" style="position:relative;left: 16px;">
                     ♥ 쪽지 보내기
                 </button>-->
-                <button id="upload" class="btn-hover color-10" style="top:-1px"><a th:href="@{/idealList}" style="font-size: 18px;color: white;">썸썸 이상형 찾기</a></button>
+                <button id="upload" class="btn-hover color-10" style="top:-1px"><a th:href="@{/idealList}" style="font-size: 18px;color: white;display: inline-block;width: 100%;padding: 14px;">썸썸 이상형 찾기</a></button>
                 <!--<button id="upload">Submit</button>-->
             </div>
             <div class="modal fade exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
