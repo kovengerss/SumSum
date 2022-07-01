@@ -10,4 +10,6 @@ public class AttachFileVO {
     private String originalFileName;
     private String uploadDirectory;
     private boolean image;
+
+    private IdealVO idealVO;
 }
