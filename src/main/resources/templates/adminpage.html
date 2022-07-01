@@ -51,8 +51,7 @@
             </a>
             <!-- 회원가입 -->
             <div class="login">
-
-                <span th:text="${session.adminId}+'님 어서오세요.'"></span>
+                <span id="adminId" th:text="${session.adminId}+'님 어서오세요.'"></span>
                 <span style="font-weight: bold;"><a href="/logout">로그아웃</a></span>
                 <!--<h2 th:text="${#request.getSession().getAttribute('adminId')}"></h2>-->
             </div>
@@ -106,16 +105,16 @@
                                     <div class="boardNum" id="boardNum"><td th:text="*{boardNum}"></td></div>
                                     <div class="boardField"><td th:text="*{boardField}"></td></div>
                                     <div class="boardTitle"><td><a id="goRead" th:text="*{boardTitle}" th:href="*{boardNum}"></a></td></div>
-                                    <div class="userNum"><td th:text="*{userNum}"></td></div>
+                                    <div class="userNum" id="userNum"><td th:text="*{userNum}"></td></div>
                                     <div class="boardUpdateDate"><td th:text="*{boardUpdateDate}"></td></div>
                                     <div class="warningCount"><td th:text="*{warningCount}"></td></div>
                                     <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
                                     <div class="dele" style="display: -webkit-inline-box;">
-                                        <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
-                                            <button class="update-btn" id="purge-btn">정 지</button>
+                                        <div style="width: 46px; margin-left: -26px;">
+                                            <a class="update-btn" th:href="@{/deleteUser(userNum=*{userNum})}">탈 퇴</a>
                                         </div>
-                                        <div style="width: 60px;">
-                                            <button type="submit" class="delete-btn" id="delete-btn">삭제</button>
+                                        <div style="width: 60px; margin-left: -15px;">
+                                            <a class="delete-btn" th:href="@{/delete(boardNum=*{boardNum})}">삭 제</a>
                                         </div>
                                     </div>
                                 </tr>
@@ -181,30 +180,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(".delete-btn").on('click', function(e) {
-        let boardNum = document.getElementById("boardNum").innerText;
-        console.log(boardNum);
-        if (confirm("정말 삭제하시겠습니까 ?")) {
-            $.ajax({
-                url : "/delete",
-                type : "get",
-                data : {
-                    boardNum : boardNum
-                },
-                success : function(res){
-                    alert('삭제 완료');
-                    location.href="/adminpage"
-                }
-            })
-        }
-    });
-</script>
 <script th:inline="javascript">;
 let boardNum = [[${boardNum}]];
 let $pageForm = $(pageForm);
 let params = [[${pageDTO.criteria.listLink}]];
-
 $("a#goRead").on("click", function(e){
     e.preventDefault();
     location.href = "/adminRead" + params + "&boardNum=" + $(this).attr("href");
@@ -215,6 +194,27 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
+</script>
+<script>
+    let adminId = document.getElementById('adminId');
+    console.log(adminId);
+    if(adminId ==null){
+        location.href = "/adminLogin"
+    }
+
+    $(".delete-btn").on('click', function(e) {
+        if (confirm("정말 삭제하시겠습니까 ?")) {
+            alert('삭제 완료');
+        }
+    });
+
+    $(".update-btn").on('click', function(e) {
+        if (confirm("정말 탈퇴하시겠습니까 ?")) {
+            alert('탈퇴 완료');
+        }
+    });
+
 
 </script>
 </html>

@@ -63,6 +63,15 @@ public class UserController {
         }return false;
     }
 
+    @PostMapping("sendCode")
+    @ResponseBody
+    public Object sendCode(@RequestBody Map<String, Object> map){
+        map.put("userPhoneNum", map.get("userPhoneNum"));
+        userService.sendSms(map);
+        return map;
+    }
+
+
     @PostMapping("sign")
     public String userInsert(UserVO userVO){
         log.info("----------------------------");

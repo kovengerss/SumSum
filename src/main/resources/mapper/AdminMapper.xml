@@ -80,8 +80,9 @@
         UPDATE TBL_BOARD
         SET BOARD_TITLE = #{boardTitle} ,  BOARD_CONTENT = #{boardContent}, BOARD_UPDATE_DATE = SYSDATE
     </update>
+    <!-- 회원 탈퇴  userNum 일치 시-->
     <delete id="deleteUser">
-        DELETE CASCADE FROM TBL_USER
+        DELETE FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </delete>
     <select id="getWarningCount" resultType="boardVO">
@@ -146,5 +147,4 @@
         SET POINT_REMAIN = #{pointRemain}
         WHERE USER_NUM =#{userNum}
     </update>
-
 </mapper>

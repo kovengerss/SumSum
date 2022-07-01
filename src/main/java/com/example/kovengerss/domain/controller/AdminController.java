@@ -81,6 +81,7 @@ public class AdminController {
         log.info("---------------완료-----------------");
         return "/adminReviewField";
     }
+
     @GetMapping("adminPointField")
     public String getPoint(Criteria criteria, Model model, PointVO pointVO){
         log.info("----------------------------");
@@ -115,20 +116,55 @@ public class AdminController {
     }
 
     @GetMapping("delete")
-    @ResponseBody
-    public String delete(Long boardNum, Criteria criteria, Model model, BoardVO boardVO){
+    public String delete(Long boardNum){
         log.info("--------들어옴----------");
         log.info(String.valueOf(adminService.boardDelete(boardNum)));
         adminService.boardDelete(boardNum);
-        return "/adminpage";
+        return "redirect:/adminpage";
+    }
+    @GetMapping("deleteAppil")
+    public String deleteAppil(Long boardNum){
+        log.info("--------들어옴----------");
+        log.info(String.valueOf(adminService.boardDelete(boardNum)));
+        adminService.boardDelete(boardNum);
+        return "redirect:/adminAppilField";
+    }
+    @GetMapping("deleteBoard")
+    public String deleteBoard(Long boardNum){
+        log.info("--------들어옴----------");
+        log.info(String.valueOf(adminService.boardDelete(boardNum)));
+        adminService.boardDelete(boardNum);
+        return "redirect:/adminBoardField";
+    }
+    @GetMapping("deleteReview")
+    public String deleteReview(Long boardNum){
+        log.info("--------들어옴----------");
+        log.info(String.valueOf(adminService.boardDelete(boardNum)));
+        adminService.boardDelete(boardNum);
+        return "redirect:/adminReviewField";
+    }
+    @GetMapping("deleteBlackList")
+    public String deleteBlackList(Long boardNum){
+        log.info("--------들어옴----------");
+        log.info(String.valueOf(adminService.boardDelete(boardNum)));
+        adminService.boardDelete(boardNum);
+        return "redirect:/adminBlackList";
+    }
+
+    @GetMapping("deleteUser")
+    public String deleteUser(int userNum, Criteria criteria, Model model, BoardVO boardVO){
+        log.info("--------들어옴----------");
+        log.info(String.valueOf(adminService.deleteUser(userNum)));
+        adminService.deleteUser(userNum);
+        return "redirect:/adminpage";
     }
 
     @GetMapping("point")
-    @ResponseBody
-    public String point(PointVO pointVO, int pointRemain, int userNum){
+    public String point(PointVO pointVO, int pointRemain, int userNum, Model model){
         log.info("--------들어옴----------");
         int remainPoint = pointRemain+pointVO.getPointRemain();
-        adminService.getPoint(remainPoint, userNum);
+        log.info(remainPoint+ " =" + pointRemain + " + "+pointVO.getPointRemain());
+        model.addAttribute(adminService.getPoint(remainPoint, userNum));
         return "/adminPointField";
     }
 
