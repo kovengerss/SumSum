@@ -14,8 +14,6 @@ public class ReplyService {
 
     private final ReplyDAO replyDAO;
 
-    private final ReplyDAO replyDao;
-
     //    댓글 등록
     public void register(ReplyVO replyVO){
         replyDAO.register(replyVO);
