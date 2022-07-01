@@ -16,11 +16,11 @@ public class AttachDAO {
         attachMapper.insert(attachFileVO);
     }
 
-    public List<AttachFileVO> findByBoardNumber(Long boardNumber){
-        return attachMapper.select(boardNumber);
+    public List<AttachFileVO> findByBoardNumber(int idealNum){
+        return attachMapper.select(idealNum);
     }
 
-    public void remove(Long boardNumber){
-        attachMapper.delete(boardNumber);
+    public void remove(int idealNum){
+        attachMapper.delete(idealNum);
     }
 }

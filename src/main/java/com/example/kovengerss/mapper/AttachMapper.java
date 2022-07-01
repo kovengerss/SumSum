@@ -8,6 +8,6 @@ import java.util.List;
 @Mapper
 public interface AttachMapper {
     public void insert(AttachFileVO attachFileVO);
-    public List<AttachFileVO> select(Long boardNumber);
-    public void delete(Long boardNumber);
+    public List<AttachFileVO> select(int idealNum);
+    public void delete(int idealNum);
 }

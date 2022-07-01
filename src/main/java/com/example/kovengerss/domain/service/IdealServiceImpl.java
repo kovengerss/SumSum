@@ -1,5 +1,6 @@
 package com.example.kovengerss.domain.service;
 
+import com.example.kovengerss.domain.dao.AttachDAO;
 import com.example.kovengerss.domain.dao.IdealDAO;
 import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.MessageVO;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
 @Qualifier("ideal") @Primary
 public class IdealServiceImpl implements IdealService{
     private final IdealDAO idealDAO;
+    private  final AttachDAO attachDAO;
     @Override
     public List<IdealVO> getList() {
         return idealDAO.getList();
@@ -22,8 +25,15 @@ public class IdealServiceImpl implements IdealService{
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void idealInsert(IdealVO idealVO) {
         idealDAO.idealInsert(idealVO);
+        if(idealVO.getFileList() != null){
+            idealVO.getFileList().forEach(fileVO -> {
+                fileVO.setIdealVO(idealVO);
+                attachDAO.save(fileVO);
+            });
+        }
     }
 
     @Override
