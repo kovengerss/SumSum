@@ -1,6 +1,7 @@
 package com.example.kovengerss.domain.dao;
 
 import com.example.kovengerss.domain.vo.PointVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import com.example.kovengerss.mapper.PointMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,4 +25,9 @@ public class PointDAO {
     public void pointGetDate(PointVO pointVO){;}
     //포인트 결제 수단 조회
     public void pointGetWay(PointVO pointVO){;}
+
+    public boolean updateUserPoint(Integer userNum, int point) {
+
+        return pointMapper.updateUserPoint(userNum, point) == 1;
+    }
 }

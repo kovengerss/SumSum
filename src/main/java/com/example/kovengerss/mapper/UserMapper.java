@@ -42,4 +42,6 @@ public interface UserMapper {
     int countUser();
     // 이메일로 찾기
     UserVO findUserByEmail(String userEmail);
+
+    Integer findUserPoint(Integer userNum);
 }

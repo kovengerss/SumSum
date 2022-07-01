@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,7 +97,7 @@ a {
                 </h1>
                 <div class="right-header">
                     <!-- 포인트 점수 받아오기 -->
-                    <a class="point" href="myPagePoint.html">
+                    <a class="point" href="myPagePoint.html" th:text="${'잔여포인트 ' + point + '원'}">
                         잔여포인트 0점 
                     </a>
                     <!-- 채팅 받아오기 -->
@@ -105,12 +105,15 @@ a {
                         쪽지
                     </a>
                     <!-- 로그인 -->
-                    <a class="login" href="login.html">
+                    <a  th:if="${session.userList == null}"  class="login" href="/login">
                         로그인
                     </a>
                     <!-- 회원가입 -->
-                    <a class="signup" href="sign.html">
-                        회원가입
+                    <a th:if="${session.userList == null}" class="signup" href="/sign">
+                        회원가입네
+                    </a>
+                    <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                        로그아웃
                     </a>
                 </div>
             </div>
@@ -232,12 +235,12 @@ a {
                                             </d1>
                                             <ul class="rateInfoRow1">
                                                 <li>
-                                                    <select class="rateSelect" id="selItem">
-                                                        <option id="money">1000원</option>
-                                                        <option id="money">5000원</option>
-                                                        <option id="money">10000원</option>
-                                                        <option id="money">30000원</option>
-                                                        <option id="money">50000원</option>
+                                                    <select class="rateSelect" id="selItem" onchange="selectRate()">
+                                                        <option value="1000">1000원</option>
+                                                        <option value="5000">5000원</option>
+                                                        <option value="10000">10000원</option>
+                                                        <option value="30000">30000원</option>
+                                                        <option value="50000">50000원</option>
                                                     </select>
                                                 </li>
     <!--                                            <li>-->
@@ -282,7 +285,7 @@ a {
                                             <p>회원 본인은 결제에 동의합니다.</p>
                                         </div>
                                         <div class="sendBtnArea">
-                                            <button type="submit" id="payBtn" class="pay-btn">결제하기</button>
+                                            <button type="button" id="payBtn" class="pay-btn" onclick="requestPay()">결제하기</button>
                                         </div>
                                     </div>
                                 </div>
@@ -328,9 +331,17 @@ a {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-/* 쪽지 팝업창 */
-function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<script th:inline="javascript">
+    var IMP = window.IMP;
+    IMP.init("imp30553073");
+
+    let selectPoint = 1000;
+
+    const userVO = [[${userVO}]];
+
+    /* 쪽지 팝업창 */
+    function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 
     function tabOpen(evt, contentName){
 			var i, tabcontent, tab_btn;
@@ -353,6 +364,55 @@ function showPopup() { window.open("letter.html", "a", "width=400, height=600, l
 				//class 생성 이벤트 발생
 				evt.currentTarget.className += " active"; 
 		}
-	
+
+		function selectRate() {
+            selectPoint = $('#selItem').val();
+            $('#selTotalAmount').text(selectPoint);
+        }
+
+        function requestPay() {
+            // IMP.request_pay(param, callback) 결제창 호출
+            IMP.request_pay({ // param
+                pg: "toss",
+                pay_method: "card",
+                merchant_uid: uuidv4(),
+                name: "썸썸 포인트 결제",
+                amount: selectPoint,
+                buyer_email: userVO.userEmail,
+                buyer_name: userVO.userName,
+                buyer_tel: userVO.userPhoneNumber,
+                buyer_addr: "",
+                buyer_postcode: ""
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    let data = {
+                        userNum: userVO.userNum,
+                        point: parseInt(selectPoint)
+                    }
+                    $.ajax({
+                        url: 'point/success',
+                        method: 'post',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        success: function (res) {
+                            alert("포인트 충전이 완료되었습니다.");
+                            location.reload();
+                        }, error: function (err) {
+                            alert(err.responseJSON.message());
+                        }
+                    })
+
+                }
+            });
+        }
+
+    function uuidv4() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+    }
+
+
 </script>
 </html>

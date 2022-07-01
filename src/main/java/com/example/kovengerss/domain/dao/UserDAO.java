@@ -43,24 +43,32 @@ public class UserDAO {
     //해당 회원 이상형 번호(ideal_num)가져오기
     public void userGetIdealNum(UserVO userVO){;}
 
+    // 회원 탈퇴
     public void userDeleteWithPw(String userPw) {
         userMapper.deleteWithPw(userPw);
     }
-
+    // 회원 비밀번호 확인
     public boolean checkUserPw(String userId, String userPw){
        UserVO userVO = userMapper.checkUserIdAndPw(userId, userPw);
        return userVO == null ? false : true;
     }
 
+    // 회원 폰 번호 확인
     public UserVO findUserByPhoneNum(String userPhoneNum) {
         return userMapper.findUserByPhoneNum(userPhoneNum);
     }
+
     // 이용자수
     public int countUser() {
         return userMapper.countUser();
     }
-
+    // 회원 이메일 확인
     public UserVO findUserByEmail(String userEmail) {
         return userMapper.findUserByEmail(userEmail);
+    }
+
+    // 회원 포인트 확인
+    public Integer findUserPoint(Integer userNum) {
+        return userMapper.findUserPoint(userNum);
     }
 }

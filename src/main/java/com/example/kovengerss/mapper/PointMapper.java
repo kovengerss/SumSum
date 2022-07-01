@@ -20,4 +20,5 @@ public interface PointMapper {
     //포인트 결제 수단 조회
     public String getWay(PointVO pointVO);
 
+    int updateUserPoint(Integer userNum, int point);
 }
