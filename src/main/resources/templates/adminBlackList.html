@@ -111,11 +111,11 @@
                                     <div class="warningCount"><td th:text="*{warningCount}"></td></div>
                                     <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
                                     <div class="dele" style="display: -webkit-inline-box;">
-                                        <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
-                                            <button class="update-btn" id="purge-btn">정 지</button>
+                                        <div style="width: 46px; margin-left: -26px;">
+                                            <a class="update-btn" th:href="@{/deleteUser(userNum=*{userNum})}">탈 퇴</a>
                                         </div>
-                                        <div style="width: 60px;">
-                                            <button class="delete-btn" id="delete-btn">삭 제</button>
+                                        <div style="width: 60px; margin-left: -15px;">
+                                            <a class="delete-btn" th:href="@{/deleteBlackList(boardNum=*{boardNum})}">삭 제</a>
                                         </div>
                                     </div>
                                 </tr>
@@ -192,21 +192,14 @@ $("a.changePage").on("click", function(e){
 </script>
 <script>
     $(".delete-btn").on('click', function(e) {
-        let boardNum = document.getElementById("boardNum");
-        boardNum = boardNum.innerText;
-        console.log(boardNum);
         if (confirm("정말 삭제하시겠습니까 ?")) {
-            $.ajax({
-                url : "/delete",
-                type : "get",
-                data : {
-                    boardNum : boardNum
-                },
-                success : function(res){
-                    alert('삭제 완료');
-                    location.href="/adminBlackList";
-                }
-            })
+            alert('삭제 완료');
+        }
+    });
+
+    $(".update-btn").on('click', function(e) {
+        if (confirm("정말 탈퇴하시겠습니까 ?")) {
+            alert('탈퇴 완료');
         }
     });
 </script>

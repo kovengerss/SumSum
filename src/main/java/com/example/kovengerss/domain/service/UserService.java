@@ -3,6 +3,7 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.vo.UserVO;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -44,4 +45,5 @@ public interface UserService {
     int getUserTotalCount();
 
     void sendEmail(Map<String, Object> map);
+
 }

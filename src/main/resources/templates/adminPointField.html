@@ -100,6 +100,7 @@
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
+                            <form name="pointForm" action="/point" method="get">
                                 <th:block th:each="point:${pointList}">
                                     <div class="item">
                                         <tr class="tBody" th:object="${point}">
@@ -107,26 +108,24 @@
                                             <div class="boardField"><td th:text="*{pointPrice}"></td></div>
                                             <div class="boardTitle"><td th:text="*{pointWay}" ></td></div>
                                             <div class="userNum"><td th:text="*{pointUse}"></td></div>
-                                            <div class="boardUpdateDate" id="pointRemain"><td th:text="*{pointRemain}"></td></div>
+                                            <div class="boardUpdateDate"><td th:text="*{pointRemain}"></td></div>
                                             <div class="warningCount"><td th:text="*{pointDate}"></td></div>
-                                            <div class="boardRegisterDate" id="userNum"><td th:text="*{userNum}"></td></div>
+                                            <div class="boardRegisterDate" ><td th:text="*{userNum}"></td></div>
                                             <div class="dele" style="display: -webkit-inline-box;">
-                                                <div>
-                                                    <select style="width: 80px; margin-left: -36px;" class="update-btn">
-                                                        <option class="charge" value="3000">3000</option>
-                                                        <option class="charge" value="5000">5000</option>
-                                                        <option class="charge" value="10000">10000</option>
-                                                        <option class="charge" value="30000">30000</option>
-                                                        <option class="charge" value="50000">50000</option>
+                                                    <select name="pointRemain" id="pointRemain" class="update-btn">
+                                                        <option value="">포인트</option>
+                                                        <option value="3000">3000P</option>
+                                                        <option value="5000">5000P</option>
+                                                        <option value="10000">10000P</option>
+                                                        <option value="30000">30000P</option>
+                                                        <option value="50000">50000P</option>
                                                     </select>
-                                                </div>
-                                                <div>
-                                                    <button type="submit" class="delete-btn" id="charge_point">충 전</button>
-                                                </div>
+                                                    <a th:href="@{/point(userNum=*{userNum},pointRemain=*{pointRemain})}" class="delete-btn">충 전</a>
                                             </div>
                                         </tr>
                                     </div>
                                 </th:block>
+                            </form>
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 40px;font-size: 23px;margin-bottom: 20px;">
@@ -203,23 +202,8 @@ $("a.changePage").on("click", function(e){
 
 
     $(".delete-btn").on('click', function(e) {
-        let userNum = document.getElementsByClassName("boardRegisterDate").item(this);
-        console.log(userNum);
-        let point = document.getElementsByClassName("charge").item(this);
-        console.log(point);
         if (confirm("충전하시겠습니까 ?")) {
-            $.ajax({
-                url : "/point",
-                type : "get",
-                data : {
-                    userNum : userNum,
-                    pointRemain : point
-                },
-                success : function(res){
-                    alert('충전 완료');
-                    location.href="/adminPointField"
-                }
-            })
+            alert('충전 완료');
         }
     });
 </script>

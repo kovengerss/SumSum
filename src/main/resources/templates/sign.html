@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,13 +74,22 @@
                     </div>
                 </div>
                 <div class="menuList">
-                    <a class="item" href="/board/appilBoard">
+                    <a class="item" href="/idealList">
+                        이상형 찾기
+                    </a>
+                    <a class="item" href="/marry">
+                        나의 결혼이상형
+                    </a>
+                    <a class="item" href="/love">
+                        나의 연애이상형
+                    </a>
+                    <a class="item" href="/board/appilBoardList">
                         어필하기
                     </a>
-                    <a class="item" href="/board/board">
+                    <a class="item" href="/board/boardList">
                         고민상담
                     </a>
-                    <a class="item" href="/board/reviewBoard">
+                    <a class="item" href="/board/reviewBoardList">
                         후기
                     </a>
                 </div>
@@ -105,12 +114,15 @@
                     쪽지
                 </a>
                 <!-- 로그인 -->
-                <a class="login" href="login">
+                <a th:if="${session.userList == null}" class="login" href="/login">
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="sign">
+                <a th:if="${session.userList == null}" class="signup" href="/sign">
                     회원가입
+                </a>
+                <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                    로그아웃
                 </a>
             </div>
         </div>
@@ -127,7 +139,7 @@
         </div>
         <form onsubmit="return checks()" action="sign" name="sign" method="post" class="sign-main-container">
                 <!-- 이메일 -->
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 15px;">
                     <div class="some_join_input">
                         <label class="label" for="account-email">이메일</label>
                         <div class="">
@@ -154,7 +166,7 @@
                     </div>
                 </div>
                 <!-- 비밀번호 -->
-                <div class="form-group" style="position: relative;top: 11px;">
+                <div class="form-group" style="position: relative;">
                     <div class="some_join_input">
                         <label class="label" for="account-password">비밀번호</label>
                         <div class="">
@@ -251,7 +263,7 @@
                         </div>
                     </div>
                 <div class="some_join_input_button">
-                    <button type="button" onclick="pushCode()" class="code-button"  id="sendPhoneNumber">인증번호 발송</button>
+                    <button type="button" onclick="pushCode()" class="code-button"  id="userPhoneNum">인증번호 발송</button>
                 </div>
                 <!-- 인증번호 -->
                 <div class="form-group">
@@ -259,8 +271,8 @@
                         <div class="some_join_input_codeNum">
                             <label class="label" >인증번호</label>
                             <div>
-                                <label class="codeLabel" for="codeNum" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
-                                <input class="form-control" id="codeNum" type="text" placeholder="인증번호" name="codeNum" >
+                                <label class="codeLabel" for="authInput" style="font-size: 13px; font-weight: 400;   color: #757575;"></label>
+                                <input class="form-control" id="authInput" type="text" placeholder="인증번호" name="codeNum" >
                             </div>
                         </div>
                     </div>
@@ -370,4 +382,47 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/sign.js"></script>
+<script>
+    //휴대폰 번호 인증
+    function pushCode() {
+        let inputUserPhoneNum = $('#account-hp');
+        userPhoneNum = inputUserPhoneNum.val().trim();
+        if (userPhoneNum === null || userPhoneNum === "") {
+            alert("연락처를 입력해 주세요.");
+            inputUserPhoneNum.focus();
+            return;
+        }
+
+        $.ajax({
+            url: 'sendCode',
+            method: 'post',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+                userPhoneNum: userPhoneNum
+            }),
+            dataType: 'json',
+            success: function (res) {
+                authCode = res.authCode;
+                alert("인증번호 발송 완료");
+
+            }, error: function (err) {
+                alert(err.responseJSON.message());
+            }
+        })
+
+    }
+
+    $("#checkButton").on("click",function(){
+        console.log(authCode);
+        console.log($("input[name=codeNum]").val());
+        if($("input[name=codeNum]").val()==""){
+            alert("인증번호를 입력하세요.");
+        }else if($("input[name=codeNum]").val() == authCode){
+            alert("인증성공");
+        }
+        else{
+            alert("인증실패");
+        }
+    });
+</script>
 </html>

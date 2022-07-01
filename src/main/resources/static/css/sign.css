@@ -19,6 +19,10 @@ span{
 
 }
 
+.form-group{
+    margin-top: 5px;
+}
+
 .background-wrap {
     width: 100%;
 }
@@ -224,10 +228,10 @@ div.some_join_input_button button{
 /*    padding: 10px 0;*/
 /*}*/
 
-.form-group {
-    margin-top: 30px;
-    position: relative;
+.form-control {
+    width: 212px;
 }
+
 
 label {
     align-items: center;
@@ -383,7 +387,7 @@ div.some_join_input{
 div.some_join_input_codeNum{
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 47px;
 
 }
 div.some_join_input_name{
@@ -586,7 +590,7 @@ input[type=checkbox] {
     color: #fff;
     height: 35px;
     width: 86px;
-    line-height: 2.2;
+    line-height: 2.7;
     border-radius: 12px;
 }
 /* 쪽지 */
