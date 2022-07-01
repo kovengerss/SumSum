@@ -1,15 +1,21 @@
 *{
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
+    font-size: 21px;
 }
 
 body{
     background-color: rgb(147, 124, 202);
 }
+h4{
+    font-weight: bold;
+}
+.body-content{
+    font-weight: bold;
+}
 
 div.choice{
     position: absolute;
-    top: 25%;
+    top: 8%;
     text-align: center;
     width: 100%;
     height: 100%;

@@ -94,6 +94,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    // 회원탈퇴
     @Override
     public boolean userDeleteByIdAndPw(String userId, String userPw) {
         if (userDAO.checkUserPw(userId, userPw)) {
@@ -124,6 +125,7 @@ public class UserServiceImpl implements UserService {
         map.put("res", true);
     }
 
+    // 아이디 찾기
     @Override
     public void findIdSuccess(Map<String, Object> map) {
         String userPhoneNum = (String) map.get("userPhoneNum");
@@ -139,8 +141,6 @@ public class UserServiceImpl implements UserService {
     public int getUserTotalCount() {
         return userDAO.countUser();
     }
-
-    // 게시글 메인에 뿌려주기
 
 
     // 입력한 이메일이 가입했는지 검사
@@ -199,6 +199,14 @@ public class UserServiceImpl implements UserService {
         }
 
         map.put("result", isFindEmail);
+    }
+
+    // 유저 포인트 가져오기
+    @Override
+    public Integer getUserPoint(Integer userNum) {
+        Integer userPoint = userDAO.findUserPoint(userNum);
+
+        return userPoint;
     }
 
 

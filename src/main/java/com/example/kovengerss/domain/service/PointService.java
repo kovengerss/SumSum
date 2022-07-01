@@ -3,6 +3,8 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.vo.PointVO;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public interface PointService {
     //포인트 결제
@@ -19,4 +21,6 @@ public interface PointService {
     public void pointGetDate(PointVO pointVO);
     //포인트 결제 수단 조회
     public void pointGetWay(PointVO pointVO);
+
+    void pointSuccess(Map<String, Object> map);
 }

@@ -1,28 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="styleSheet" href="/css/boardWrite.css">
+    <title>썸썸</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <title>Document</title>
-    <!-- include libraries(jQuery, bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/choice.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
+<style>
+    a {
+        text-decoration: none;
+        color:#333;
+    }
+    body{
+        background-color: unset;
+    }
+    .filebox input[type="file"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0;
+    }
+
+    .filebox label {
+        display: inline-block;
+        padding: 0.5em 0.75em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: peachpuff;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: 0.25em;
+        width: 113px;
+    }
+
+    /* named upload */
+    .filebox .upload-name {
+        display: inline-block;
+        padding: .5em .75em;  /* label의 패딩값과 일치 */
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #f5f5f5;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+        width: 203px;
+    }
+    .btn-hover {
+        width: 200px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        margin: 20px;
+        height: 55px;
+        text-align:center;
+        border: none;
+        background-size: 300% 100%;
+
+        border-radius: 50px;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:hover {
+        background-position: 100% 0;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:focus {
+        outline: none;
+    }
+    .btn-hover.color-10 {
+        background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+        box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        width: 319px;
+        position: relative;
+        top: 46px;
+    }
+    .result{
+
+    }
+</style>
 <body>
-<div class="base">
+<div class="choice_main">
     <!-- 상단 고정 바 -->
     <div class="top-header">
         <div class="top-header-wrap">
@@ -46,7 +132,7 @@
                         <a href="../login.html">
                             <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
                         </a>
-                        <a class="user-info" href="/login">
+                        <a class="user-info" href="../login.html">
                             로그인하기 >
                         </a>
                     </div>
@@ -70,24 +156,24 @@
                     </div>
                 </div>
                 <div class="menuList">
-                    <a class="item" href="/board/appilBoardList">
-                        어필하기
+                    <a  th:href="@{/getMyIdeal}" class="item" href="">
+                        마이페이지
                     </a>
-                    <a class="item" href="/board/boardList">
+                    <a class="item" href="../board/board.html">
                         고민상담
                     </a>
-                    <a class="item" href="/board/reviewBoardList">
+                    <a class="item" href="">
                         후기
                     </a>
                 </div>
                 <div class="signup-btn">
-                    <a href="/sign">
+                    <a href="../sign.html">
                         회원가입
                     </a>
                 </div>
             </div>
             <h1 class="main-logo">
-                <a href="../main.html">
+                <a href="main.html">
                     <img src="/img/sumsum_logo.png">
                 </a>
             </h1>
@@ -98,130 +184,94 @@
                 </a>
                 <!-- 채팅 받아오기 -->
                 <a class="chatting" href="../letter.html">
-                    채팅
+                    쪽지
                 </a>
-                <a th:if="${session.userList == null}" class="login" href="/login">
-                    로그인
+                <!-- 로그인 -->
+                <a class="login" href="../login.html">
+                    마이페이지
                 </a>
                 <!-- 회원가입 -->
-                <a th:if="${session.userList == null}" class="signup" href="/sign">
-                    회원가입
-                </a>
-                <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                <a class="signup" href="../sign.html">
                     로그아웃
                 </a>
             </div>
         </div>
     </div>
-    <!--상단바  -->
-    <div class="page-container page">
-        <section class="all-container">
-            <div class="justify-center flex row">
-                <main class="main-layout">
-                    <div class="row">
-                        <div class="md-8">
-                                <div class="sub-title">
-                                    <label class="sub-title-label" style="font-size: 13px">글 수정</label>
-                                    <form class="question-title-form" method="post" action="/board/boardUpdate">
-                                    <select style="outline: none;"class="categorySelector" name="boardField">
-                                                    <option selected="seleted" disabled="disabled">카테고리 선택하세요.</option>
-                                                    <optgroup label="정규 카테고리">
-                                                        <option value="고민상담">고민 상담</option>
-                                                        <option value="어필하기">어필 하기</option>
-                                                        <option value="후기">후기</option>
-                                                    </optgroup>
-                                                </select>
-                                </div>
-                                <div class="px-4 content-layout" style="border:1px solid #e3e3e3;">
-                                    <div class="question-editor">
-                                       <div class="question-title">
-                                           <header>
+    <div class="choice_1">
 
-                                                    <span>
-                                                        <i class="icon" style="font-size:20px; font-weight: 700; color:#989898; ">Q.</i>
-                                                    </span>
-                                                     <input th:field="${board.boardTitle}" class="title-input title-chk" type="text" maxlength="60" placeholder="제목을 입력해주세요." style="padding-left: 5px;" >
-                                                <span class="title-check"></span>
-                                               <input type="text" th:field="${board.boardNum}" style="display: none;">
-                                            </header>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="editor-content"  style="margin-top:10px;">
-                                                        <textarea id="summernote" class="content content-length" th:field="*{board.boardContent}" placeholder="글을 입력해주세요." onclick="length()">
-                                                        </textarea>
-                                </div>
+            <div class="choice">
+                <div class="choice_ment">
+                    <span>썸썸 사진 추가하기</span>
+                </div>
+                <div class="choice_ment_p">
+                    <p>썸썸에서 사용하실</p>
+                    <p>당신의 사진을 올려주세요</p>
 
-                            <div class="form-footer form-edit-footer">
-                                <button type="submit" class="footer-button-css btn123 btnSuccess" style="border:1px solid #e3e3e3">고민 등록</button>
-                            </div>
-                            </form>
+                </div>
+
+                <!---->
+                <div>
+                    <div class="upload">
+                        <div class="filebox">
+                            <input class="upload-name" value="썸썸에 당신의 사진을 올려주세요" disabled="disabled">
+
+                            <label for="ex_filename">업로드</label>
+                            <input type="file" name="files" multiple  id="ex_filename" class="upload-hidden">
                         </div>
 
-                        <div class="md-4">
-                            <div>
-                                <div class="notice-box no-padding">
-                                    <div class="notice-title font-midium">
-                                        <img src="https://www.a-ha.io/_nuxt/img/electric-light-bulb.209ee00.png">
-                                        <span>글 작성시 이런글 NO!</span>
-                                    </div>
-                                    <div class="notice-content-wrap">
-                                        <div style="margin-bottom: 0.5rem;">
-                                            아래와 같은 게시글은
-                                            <span><strong>신고를 받을 수 있으니</strong></span>
-                                            신중하게 글을 작성해주세요.
-                                        </div>
-                                        <ul class="notice-content">
-                                            <li>고민상담 목적이 아닌 질문</li>
-                                            <li><strong>욕설</strong> 및 <strong>비방</strong>이 목적인 질문</li>
-                                            <li><strong>성적</strong> 관련 질문</li>
-                                            <li>꿈해몽, 사주팔자와 관련된 질문</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                       <!-- <input class="btn btn-primary" type="file" name="files" multiple >-->
+                      <!--  <input type="file" name="files" multiple>-->
+                    </div>
+
+                    <div class="result">
+                        <ul></ul>
+                    </div>
+
+                    <button id="upload" class="btn-hover color-10">사진을 올리셨다면 여기를 눌러주세요</button>
+                    <!--<button id="upload">Submit</button>-->
+                </div>
+                <!---->
+               <!-- <div class="choice_box_all">
+                    <div class="choice_box">
+
+                        <div class="img">
+                            <img src="/img/love.jpg" style="height: 200px;">
+                        </div>
+                        <a href="../love.html" id="love" style="color:rgb(244 64 64 /82%);">연애</a>
+
+                    </div>
+                    <div>
+                        <div class="choice_box_empty"></div>
+                        <div class="choice_box">
+                            <div class="img">
+                                <img src="/img/marry.jpg " style="height: 200px;">
                             </div>
-                            <div class="no-padding content-guide write-rule">
-                                <div class="content-guide-title font-midium">
-                                    <img src="/img/하트.png" style="height: 20px;margin-right: 7px;margin-top: 4px; ">
-                                    <span style="vertical-align: middle;">썸썸 질문 작성 규칙</span>
-                                </div>
-                                <div class="content-guide-content">
-                                    <ul class="pl-4">
-                                        <li style="margin-bottom: 0.5rem;">
-                                            <a>
-                                                주의사항
-                                            </a>
-                                        </li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>구체적</strong>이고 <strong>명료</strong>한질문</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>개인정보</strong>(성명,주민번호,연락처 등) 노출은 NO</li>
-                                        <li style="margin-bottom: 0.5rem;">의미 있는 <strong>글</strong> 작성</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <a href="../marry.html" style="color: rgb(249 161 162);">결혼</a>
                         </div>
                     </div>
-                </main>
+                </div>-->
             </div>
-        </section>
-    </div>
+        </div>
 </div>
+
+
 <!-- 쪽지 -->
 <input class="channel-talk-button" onclick="showPopup();"/>
 <!-- 쪽지 -->
 <!-- footer -->
-<footer class="footer">
+<!--<footer class="footer">
     <div class="footer-container">
         <div class="footer-logo">
             <a href="../main.html">
                 <img src="/img/sumsum_logo.png">
             </a>
         </div>
-        <div style="margin-left: 38px;">
+        <div>
             <ul class="footer-list">
-                <li class="ft">썸썸소개</li>
+                <li class="ft"><a href="../company.html">썸썸소개</a></li>
                 <li class="ft">이용약관</li>
                 <li class="ft">개인정보처리방침</li>
-                <li class="ft">자주 묻는 질문(FAQ)</li>
+                <li class="ft"><a href="../question.html">자주 묻는 질문(FAQ)</a></li>
                 <li class="ft">문의하기</li>
             </ul>
             <ul class="footer-info">
@@ -236,51 +286,143 @@
             </div>
         </div>
     </div>
-</footer>
-<script>
-    $('#summernote').summernote({
-        height: 300,                 // 에디터 높이
-        minHeight: 300,             // 최소 높이
-        maxHeight: 300,             // 최대 높이
-        focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-        lang: "ko-KR",					// 한글 설정
-        placeholder: '글을 작성해주세요.',	//placeholder 설정
-        toolbar:[
-            ['fontsize', ['fontsize']],
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['color', ['forecolor','color']],
-            ['insert',['picture']],
-            ['para', ['ul', 'ol', 'paragraph']],
-        ],
-        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
-    });
-</script>
+</footer>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-<script th:inline="javascript">
-    let userNum = [[${session.userNum}]];
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
-    let btnSuccess = $(".btnSuccess");
 
-    btnSuccess.on("click", function () {
-        if (contentSub.text().length <= 80) {
-            alert("80글자이상 작성해주세요.");
-            return false;
-        } else if ($(".categorySelector").val() == null) {
-            alert("게시 카테고리를 선택해주세요.")
-            return false;
-        }else if($(".title-chk").val().length == 0){
-            alert("제목을 입력해주세요.")
+    let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+    let maxSize = 5242880; // 5MB
+    const result = $("div.result ul");
+
+    function checkExtension(fileName, fileSize){
+        if(regex.test(fileName)){
+            alert("(" + fileName + ")업로드 할 수 없는 파일의 형식입니다.")
             return false;
         }
-        console.log("1 : " + title.text());
+
+        if(fileSize >= maxSize){
+            alert("(" + fileName + ")파일 사이즈 초과")
+            return false;
+        }
+
         return true;
+    }
+
+    /*/////////*/
+
+
+    /*/////////*/
+    $("#upload").on("click", function(e){
+        let formData = new FormData();
+        let input = $("input[name='files']");
+        let files = input[0].files;
+        // console.log(files);
+        for(let i=0; i<files.length; i++){
+            if(checkExtension(files[i].name, files[i].size)){
+                formData.append("files", files[i]);
+            }
+        }
+
+        $.ajax({
+            url: "uploadAjax",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(fileList){
+                showUploadFile(fileList);
+            }
+        });
     });
 
-</script>
-<script>
+    function showUploadFile(fileList){
+        let str = "";
+        $.each(fileList, function(i, file){
+
+            str += "<li data-name='" + file.fileName + "' data-original='" + file.originalFileName + "' data-directory='" + file.uploadDirectory + "' data-image='" + file.image + "'>";
+            str += "<span data-name='" + file.originalFileName + "' data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='cursor: pointer;'>사진 삭제하기</span>";
+            str += "<a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>"
+            str += file.image ? "<img src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
+                : "<img src='/images/attach.png' width='100'>";
+            str += "</a><p>" + file.originalFileName + "</p>";
+            str += "</li>";
+
+          /*  str += "<li><a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>";
+            str += file.image ? "<img style='position: relative; top:41px ;border-radius: 70%;' src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
+                : "<img class ='myimg' src='/images/attach.png' width='100'>";
+            str += "</a>"
+            str += "<span data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='display:block;cursor: pointer;font-size: 21px;position: relative;top: 51px;color: coral;\n" +
+                "    font-weight: 600;'>사진 삭제하기</span>"
+            str += "</li>";*/
+        });
+
+        result.append(str);
+    }
+
+    $(".result").on("click", "span", function(e){
+        let path = $(this).data("path");
+        let li = $(this).closest("li");
+        $.ajax({
+            url: "delete",
+            type: "delete",
+            data: {path: path},
+            success: function(){
+                li.remove();
+            }
+        });
+    });
+
+
+    $(document).ready(function(){
+        var fileTarget = $('.filebox .upload-hidden');
+
+        fileTarget.on('change', function(){  // 값이 변경되면
+            if(window.FileReader){  // modern browser
+                var filename = $(this)[0].files[0].name;
+            }
+            else {  // old IE
+                var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+            }
+
+            // 추출한 파일명 삽입
+            $(this).siblings('.upload-name').val(filename);
+        });
+    });
+
+
+
+
+
+
+
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
     /* 쪽지 팝업창 */
-    function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+    function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+
+    function tabOpen(evt, contentName){
+        var i, tabcontent, tab_btn;
+
+        tabcontent = document.getElementsByClassName("myInfo");
+        for(i = 0; i<tabcontent.length; i++){ //내용을 나열
+            tabcontent[i].style.display = "none";
+        }
+
+        tab_btn = document.getElementsByClassName("tabs");
+        for(i = 0; i<tab_btn.length; i++){ // 탭 버튼 나열
+
+            //탭 버튼을 눌렀을 때 기존 탭 class 삭제
+            tab_btn[i].className = tab_btn[i].className.replace(" active","");
+
+
+        }
+        //탭을 눌렀을 때 해당 id의 내용을 출력
+        document.getElementById(contentName).style.display = "block";
+        //class 생성 이벤트 발생
+        evt.currentTarget.className += " active";
+    }
+
 </script>
-<script src="/js/boardWrite.js"></script>
 </html>

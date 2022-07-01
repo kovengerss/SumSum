@@ -74,6 +74,12 @@
         WHERE USER_EMAIL = #{userEmail}
     </select>
 
+    <!-- 유저 Num으로 포인트 조회 -->
+    <select id="findUserPoint" resultType="Integer">
+        SELECT USER_POINT
+        FROM TBL_USER
+        WHERE USER_NUM = #{userNum}
+    </select>
 
 
 

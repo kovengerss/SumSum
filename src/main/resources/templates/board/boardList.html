@@ -37,7 +37,7 @@
                         <a href="../login.html">
                             <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
                         </a>
-                        <a class="user-info" href="../login.html">
+                        <a class="user-info" href="/login">
                             로그인하기 >
                         </a>
                     </div>
@@ -61,18 +61,18 @@
                     </div>
                 </div>
                 <div class="menuList">
-                    <a class="item" href="appilBoard.html">
+                    <a class="item" href="/board/appilBoardList">
                         어필하기
                     </a>
-                    <a class="item" href="board.html">
+                    <a class="item" href="/board/boardList">
                         고민상담
                     </a>
-                    <a class="item" href="reviewBoard.html">
+                    <a class="item" href="/board/reviewBoardList">
                         후기
                     </a>
                 </div>
                 <div class="signup-btn">
-                    <a href="../sign.html">
+                    <a href="/sign">
                         회원가입
                     </a>
                 </div>
@@ -91,13 +91,15 @@
                 <a class="chatting" href="../letter.html">
                     채팅
                 </a>
-                <!-- 로그인 -->
-                <a class="login" href="../login.html">
+                <a th:if="${session.userList == null}" class="login" href="/login">
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="../sign.html">
+                <a th:if="${session.userList == null}" class="signup" href="/sign">
                     회원가입
+                </a>
+                <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                    로그아웃
                 </a>
             </div>
         </div>
@@ -165,7 +167,7 @@
                                                         <span class="float-right">
                                                             <span class="answer">
                                                                 <i class="icon answer-icon">🗨</i>
-                                                                3
+                                                                0
                                                             </span>
                                                             <span class="question-total">좋아요 56</span>
                                                         </span>
@@ -247,6 +249,9 @@
     function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
 <script th:inline="javascript">;
+
+let boardList = [[${boardList}]];
+
 let $pageForm = $(pageForm);
 
 $("a.changePage").on("click", function(e){
@@ -254,5 +259,6 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
 </script>
 </html>

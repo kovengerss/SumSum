@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>썸썸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/moresearch.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<style>
+    a {
+        text-decoration: none;
+        color:#333;
+    }
+    body{
+        background-color: unset;
+    }
+    .filebox input[type="file"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0;
+    }
+
+    .filebox label {
+        display: inline-block;
+        padding: 0.5em 0.75em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: peachpuff;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: 0.25em;
+        width: 113px;
+    }
+
+    /* named upload */
+    .filebox .upload-name {
+        display: inline-block;
+        padding: .5em .75em;  /* label의 패딩값과 일치 */
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #f5f5f5;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+        width: 203px;
+    }
+    .btn-hover {
+        width: 200px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        margin: 20px;
+        height: 55px;
+        text-align:center;
+        border: none;
+        background-size: 300% 100%;
+
+        border-radius: 50px;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:hover {
+        background-position: 100% 0;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:focus {
+        outline: none;
+    }
+    .btn-hover.color-10 {
+        background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+        box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        width: 319px;
+        position: relative;
+        top: 46px;
+    }
+    .result{
+
+    }
+    .popup-body{
+        width:100%;
+        background-color:#ffffff;
+    }
+    .body-content{
+        width:100%;
+        padding:30px;
+    }
+    .body-titlebox{
+
+        width:100%;
+        height:64px;
+        margin-bottom: 29px;
+    }
+    .body-contentbox{
+        word-break:break-word;
+        overflow-y:auto;
+        min-height:100px;
+        max-height:200px;
+    }
+    .popup-foot{
+        width:100%;
+        height:50px;
+    }
+    .pop-btn{
+        display:inline-flex;
+        width:50%;
+        height:100%;
+        float:left;
+        justify-content:center;
+        align-items:center;
+        color:#ffffff;
+        cursor:pointer;
+    }
+    .pop-btn.confirm{
+        border-right:1px solid #3b5fbf;
+    }
+    .lineBottom{
+
+        PADDING-BOTTOM: 9PX;
+    }
+    /*직접 수정*/
+    .body-content{
+        border: 1px solid;
+        width: 35%;
+        margin: 0 auto;
+    }
+
+    h4{
+        font-weight: bold;
+    }
+    .choice{
+        position: relative;
+        top: 133px;
+    }
+    .btn-hover.color-11 {
+        background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+    }
+</style>
+<body>
+<div class="choice_main">
+    <!-- 상단 고정 바 -->
+    <div class="top-header">
+        <div class="top-header-wrap">
+            <button class="menuBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="slidebutton">
+                <span class="a-alarmBadge" style="top: 11px; right: 9px;"></span>
+                <span class="menuBar"></span>
+                <span class="menuBar" style="width:19px; height: 4px;"></span>
+                <span class="menuBar"></span>
+            </button>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                        <div class = "sidebar-title">
+                            <strong>썸썸</strong>
+                        </div>
+                    </h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="sidebar-body">
+                    <div class="profile">
+                        <a href="../login.html">
+                            <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
+                        </a>
+                        <a class="user-info" href="../login.html">
+                            로그인하기 >
+                        </a>
+                    </div>
+                    <div class="main-link">
+                        <a href="../myPagePoint.html">
+                            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtMzA0Ljk2IDE4Ni40OWMtMzcuODQ0IDAtNzIuMTQ4IDcuNDM3NS05Ny44MjQgMjAuMjczLTI1LjY3NiAxMi44NDQtNDQuMjUgMzEuOTk2LTQ0LjI1IDU1LjY0OHYyMjcuMzJjMCAyMy40MzQgMTguMzcxIDQyLjQ5MiA0NC4xMDIgNTUuMzUyIDI1LjczIDEyLjg1OSA2MC4wODYgMjAuNDIyIDk3Ljk3MyAyMC40MjIgMzEuODQ0IDAgNjEuMTQ1LTUuNDM3NSA4NC45NDktMTQuODAxIDE4LjYwNSA5LjQyOTcgMzkuNjEzIDE0LjgwMSA2MS44NjMgMTQuODAxIDc1LjczOCAwIDEzNy4zNC02MS42MDIgMTM3LjM0LTEzNy4zNHMtNjEuNjAyLTEzNy4zNC0xMzcuMzQtMTM3LjM0Yy0xLjYyODkgMC0zLjI2OTUgMC4wODk4NDQtNC44ODI4IDAuMTQ4NDR2LTI4LjU2MmMwLTIzLjY1Ni0xOC40MjYtNDIuODA5LTQ0LjEwMi01NS42NDUtMjUuNjc2LTEyLjgzNi01OS45OC0yMC4yNzMtOTcuODI0LTIwLjI3M3ptMCAxOS4wOWMzNS4zOTEgMCA2Ny4zNjcgNy4zMzk4IDg5LjY4NCAxOC41IDIyLjMxNiAxMS4xNiAzMy41OTQgMjUuMzY3IDMzLjU5NCAzOC4zMzItNC40MDIzIDIwLjExMy0xOS4xMzcgMzEuMTgtMzMuNTk0IDM4LjE4NC0yMi4zMTYgMTEuMTYtNTQuMjkzIDE4LjUtODkuNjg0IDE4LjVzLTY3LjM2Ny03LjMzOTgtODkuNjg0LTE4LjVjLTE2LjUzMS04LjU2NjQtMzEuNTgyLTIxLjYyMS0zMy41OTQtMzguMTg0IDAtMTIuOTYxIDExLjI3Ny0yNy4xNzIgMzMuNTk0LTM4LjMzMiAyMi4zMTYtMTEuMTU2IDU0LjI4OS0xOC40OTYgODkuNjg0LTE4LjQ5NnptLTEyMy4xMyA5NS4zMTJjNy4wMTU2IDYuNDY0OCAxNS42OCAxMi4yMDcgMjUuMzA5IDE3LjAyIDI1LjY3NiAxMi44MzYgNTkuOTggMjAuMjczIDk3LjgyNCAyMC4yNzMgMTYuNDE0IDAgMzIuMTAyLTEuNTA3OCA0Ni43NjYtNC4xNDQ1LTExLjE3MiAxMS44NjctMjAuMjI3IDI1Ljc1NC0yNi42NDEgNDAuOTk2LTYuNTUwOCAwLjU3NDIyLTEzLjI1NCAxLjAzNTItMjAuMTI5IDEuMDM1Mi0zNS4zMzYgMC02Ny4yNjYtNy4zNjMzLTg5LjUzNS0xOC41LTIyLjI3LTExLjEzMy0zMy41OTQtMjUuMTM3LTMzLjU5NC0zOC4zMjh6bTI2OS45NCA4Ljg3ODljNjUuNSAwIDExOC4zOSA1Mi44OTUgMTE4LjM5IDExOC4zOXMtNTIuODk1IDExOC4zOS0xMTguMzkgMTE4LjM5LTExOC4zOS01Mi44OTUtMTE4LjM5LTExOC4zOSA1Mi44OTUtMTE4LjM5IDExOC4zOS0xMTguMzl6bS0yNjkuOTQgNDcuOTQ5YzYuOTcyNyA2LjQxNDEgMTUuNTgyIDEyLjA4MiAyNS4xNiAxNi44NzEgMjUuNzE5IDEyLjg1OSA2MC4wNzQgMjAuNDIyIDk3Ljk3MyAyMC40MjIgNC42Mjg5IDAgOS4xMTMzLTAuMjE0ODQgMTMuNjE3LTAuNDQ1MzEtMi43MDcgMTAuNzQyLTQuMTQ0NSAyMi4wMjMtNC4xNDQ1IDMzLjU5NCAwIDEuNTI3MyAwLjA5NzY1NiAzLjA3MDMgMC4xNDg0NCA0LjU4OTgtMy4xNzU4IDAuMTI1LTYuMzU5NCAwLjE0ODQ0LTkuNjIxMSAwLjE0ODQ0LTM1LjMzNiAwLTY3LjI2Ni03LjM2MzMtODkuNTM1LTE4LjUtMjIuMjczLTExLjEzMy0zMy41OTgtMjUuMTM3LTMzLjU5OC0zOC4zMjh6bTAgNTYuODI4YzYuOTcyNyA2LjQxNDEgMTUuNTgyIDEyLjA4MiAyNS4xNiAxNi44NzEgMjUuNzE5IDEyLjg1OSA2MC4wNzQgMjAuNDIyIDk3Ljk3MyAyMC40MjIgMy44ODY3IDAgNy43NS0wLjExMzI4IDExLjU0My0wLjI5Mjk3IDIuMjUgMTMuMDQ3IDYuMzI0MiAyNS40OCAxMS45ODggMzctNy42MzY3IDAuNzYxNzItMTUuNDQ5IDEuMTgzNi0yMy41MzEgMS4xODM2LTM1LjMzNiAwLTY3LjI2Ni03LjM2MzMtODkuNTM1LTE4LjUtMjIuMjczLTExLjEzNy0zMy41OTgtMjUuMTQxLTMzLjU5OC0zOC4zMjh6bTAgNTYuODI4YzYuOTcyNyA2LjQxNDEgMTUuNTgyIDEyLjA4MiAyNS4xNiAxNi44NzEgMjUuNzE5IDEyLjg1OSA2MC4wNzQgMjAuNDIyIDk3Ljk3MyAyMC40MjIgMTEuNzkzIDAgMjMuMjQ2LTAuNjY3OTcgMzQuMTg4LTIuMDcwMyA4LjMyNDIgMTEuOTMgMTguNDQ5IDIyLjMyIDMwLjA0MyAzMS4wNzgtMTguNjggNS40OTIyLTQwLjY3MiA4Ljg3ODktNjQuMjMgOC44Nzg5LTM1LjMyOCAwLTY3LjI1LTcuMzYzMy04OS41MzUtMTguNS0yMi4yODktMTEuMTI5LTMzLjU5OC0yNS4xNDEtMzMuNTk4LTM4LjMyNHoiLz4KPC9zdmc+Cg==">
+                            포인트 내역
+                        </a>
+                        <a href="../letter.html">
+                            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtNTYwLjI1IDU0MS44NWgtMzY3Ljg2Yy0xOS43MDMgMC0zNS43MDMtMTcuOTQ1LTM1LjcwMy00MC4wNTF2LTI1MC44NWMwLTIyLjEwNSAxNi00MC4wNTEgMzUuNzAzLTQwLjA1MWgzNjcuOTVjOS43MTA5IDAgMTguNzc3IDQuMzQ3NyAyNS41MjcgMTIuMTE3IDYuNTY2NCA3LjQ5MjIgMTAuMTc2IDE3LjQ4IDEwLjE3NiAyNy45MzR2MjUwLjg1YzAuMDAzOTA2IDIyLjAxMi0xNi4wOSA0MC4wNTEtMzUuNzkzIDQwLjA1MXptLTM2Ny44Ni0zMTcuMDhjLTEyLjAyMyAwLTIxLjgyOCAxMS43NDYtMjEuODI4IDI2LjE3NnYyNTAuODVjMCAxNC40MyA5LjgwNDcgMjYuMTc2IDIxLjgyOCAyNi4xNzZoMzY3Ljk1YzEyLjAyMyAwIDIxLjgyOC0xMS43NDYgMjEuODI4LTI2LjE3NmwwLjAwMzkwNi0yNTAuODVjMC03LjEyMTEtMi40MDYyLTEzLjc4MS02Ljc1MzktMTguODcxLTQuMDcwMy00LjcxODgtOS40MzM2LTcuMzA4Ni0xNS4wNzgtNy4zMDg2em0xNy4yOTcgMjYxLjk1Yy0xLjY2NDEgMC0zLjMyODEtMC41NTQ2OS00LjYyNS0xLjc1NzgtMi44NjcyLTIuNTg5OC0zLjE0NDUtNi45Mzc1LTAuNTU0NjktOS44MDQ3bDEwNS43Mi0xMTguODYtMTA5LjA1LTg1LjM3MWMtMy4wNTA4LTIuNDA2Mi0zLjUxNTYtNi43NTM5LTEuMjAzMS05LjcxMDkgMi40MDYyLTMuMDUwOCA2Ljc1MzktMy41MTU2IDkuNzEwOS0xLjIwMzFsMTY2LjU5IDEzMC41MSA0OC43NDYtMzguMTk5YzAuMDkzNzUtMC4wOTM3NSAwLjE4MzU5LTAuMDkzNzUgMC4yNzczNC0wLjE4MzU5bDExNy41Ni05Mi4wMzVjMy4wNTA4LTIuNDA2MiA3LjM5ODQtMS44NTE2IDkuNzEwOSAxLjIwMzEgMi40MDYyIDMuMDUwOCAxLjg1MTYgNy4zOTg0LTEuMjAzMSA5LjcxMDlsLTExMS42NCA4Ny40MDYgMTAxLjU2IDEwOS4wNWMyLjU4OTggMi43NzM0IDIuNDk2MSA3LjIxNDgtMC4zNzEwOSA5LjgwNDctMi43NzM0IDIuNTg5OC03LjIxNDggMi40OTYxLTkuODA0Ny0wLjM3MTA5bC0xMDIuMzktMTA5Ljg5LTQ4LjA5OCAzNy43NDJjLTIuNDk2MSAxLjk0MTQtNi4wMTE3IDEuOTQxNC04LjYwMTYgMGwtNTAuODcxLTM5Ljg2Ny0xMDYuMzcgMTE5LjVjLTEuMjk2OSAxLjU3NDItMy4xNDQ1IDIuMzEyNS01LjA4OTggMi4zMTI1eiIvPgo8L3N2Zz4K">
+                            쪽지
+                        </a>
+                        <a href="../company.html">
+                            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8Zz4KICA8cGF0aCBkPSJtNDk2LjExIDE4Mi4wN2MtMjguMDI3LTMuMzE2NC01Ni43ODEgMy41NTA4LTgwLjk3MyAxOS4zNC0xNi40NDkgMTAuNzM0LTI5Ljc4OSAyNS4xNzItMzkuMTg4IDQyLjA0My05LjQwMjMtMTYuODc1LTIyLjc0Mi0zMS4zMDUtMzkuMTg4LTQyLjA0My0yNC4xOTEtMTUuNzg5LTUyLjk0OS0yMi42NTYtODAuOTczLTE5LjM0LTI3LjI2MiAzLjIyMjctNTEuNzE1IDE2LjI2Mi02OC44NjMgMzYuNzA3LTE5LjE1NiAyMi44MzYtMjkuMjgxIDU0LjcxNS0yOS4yODEgOTIuMjA3IDAgMTI0LjAyIDIwMy4wMiAyNTYuNzkgMjExLjY3IDI2Mi4zOCAyLjExMzMgMS4zNjcyIDQuNDg0NCAyLjAyMzQgNi44MjgxIDIuMDIzNCAwLjE0MDYyIDAgMC4yODEyNS0wLjAyMzQzOCAwLjQyMTg4LTAuMDIzNDM4IDAuMTM2NzIgMC4wMDM5MDcgMC4yNzM0NCAwLjAyMzQzOCAwLjQxNzk3IDAuMDIzNDM4IDIuMzU1NSAwIDQuNzM0NC0wLjY2MDE2IDYuODU5NC0yLjA0MyA4LjU4OTgtNS41OTM4IDIxMC40Mi0xMzguMzcgMjEwLjQyLTI2Mi4zNiAwLTM3LjQ4NC0xMC4xMjUtNjkuMzcxLTI5LjI3Ny05Mi4yMDctMTcuMTY0LTIwLjQ0NS00MS42MTctMzMuNDg0LTY4Ljg3NS0zNi43MDd6bS0yNS4xNjQgMjg5Ljg2Yy0zOS4zNTUgMzcuMDU1LTc5LjE5NSA2NS40OTYtOTQuNDEgNzUuOTUzLTE1LjIzOC0xMC40MDYtNTUuMTQ4LTM4LjcxNS05NC43MzgtNzUuNzI3LTQ1LjE0OC00Mi4yMTUtOTguOTY1LTEwNC40NC05OC45NjUtMTYxLjE4IDAtMzEuNDg4IDguMDg5OC01Ny43NzcgMjMuMzkxLTc2LjAxNiAxMy4xOTktMTUuNzM4IDMxLjM1OS0yNS4zNzkgNTIuNTIzLTI3Ljg3OSA0MS4xMDItNC44NjMzIDkxLjc4OSAxOS4xMTMgMTA0Ljc1IDczLjEyNSAxLjM3ODkgNS43NDYxIDYuNDkyMiA5LjYwNTUgMTIuMTQ4IDkuNjQwNiAwLjA5NzY1NyAwLjAwMzkwNyAwLjE5OTIyIDAuMDAzOTA3IDAuMjk2ODggMC4wMDM5MDcgMC4xMDU0NyAwIDAuMjA3MDMgMCAwLjMxMjUtMC4wMDM5MDcgNS42NTYyLTAuMDQyOTY4IDEwLjc2Ni0zLjkwMjMgMTIuMTQ1LTkuNjQwNiAxMi45NjEtNTQuMDEyIDYzLjY2NC03Ny45ODggMTA0Ljc1LTczLjEyNSAyMS4xNiAyLjUwMzkgMzkuMzIgMTIuMTQ1IDUyLjUyMyAyNy44NzkgMTUuMzAxIDE4LjI0MiAyMy4zOTEgNDQuNTI3IDIzLjM5MSA3Ni4wMTYgMCA1Ni42NzYtNTMuMzU1IDExOC44LTk4LjExNyAxNjAuOTV6Ii8+CiAgPHBhdGggZD0ibTQ2Ny43NSAyMzUuMDFjLTYuOTU3IDAuMDc0MjE5LTEyLjUzNSA1Ljc3MzQtMTIuNDYxIDEyLjczIDAuMDc0MjE5IDYuOTEwMiA1LjY5NTMgMTIuNDYxIDEyLjU5NCAxMi40NjFoMC4xMzY3MmMxMi4wMTItMC4xMTcxOSAyMi45MSA0LjEwOTQgMzAuODIgMTEuOTM4IDkuODMyIDkuNzI2NiAxNS4wMjcgMjQuODgzIDE1LjAyNyA0My44MjggMCA2Ljk1NyA1LjY0MDYgMTIuNTk4IDEyLjU5OCAxMi41OTggNi45NTcgMCAxMi41OTgtNS42NDA2IDEyLjU5OC0xMi41OTggMC0zMi42MjUtMTIuMjM4LTUxLjU3OC0yMi41LTYxLjczNC0xMi43MzgtMTIuNTk4LTMwLjA1NS0xOS40MjYtNDguODEyLTE5LjIyM3oiLz4KIDwvZz4KPC9zdmc+Cg==">
+                            썸썸 소개
+                        </a>
+                        <a href="../myPage.html">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
+                            계정 설정
+                        </a>
+                    </div>
+                </div>
+                <div class="menuList">
+                    <a  th:href="@{/getMyIdeal}" class="item" href="">
+                        마이페이지
+                    </a>
+                    <a class="item" href="../board/board.html">
+                        고민상담
+                    </a>
+                    <a class="item" href="">
+                        후기
+                    </a>
+                </div>
+                <div class="signup-btn">
+                    <a href="../sign.html">
+                        회원가입
+                    </a>
+                </div>
+            </div>
+            <h1 class="main-logo" style="  top: -16px;">
+                <a href="main.html">
+                    <img src="/img/sumsum_logo.png">
+                </a>
+            </h1>
+            <div class="right-header">
+                <!-- 포인트 점수 받아오기 -->
+                <a class="point" href="../myPagePoint.html">
+                    잔여포인트 0점
+                </a>
+                <!-- 채팅 받아오기 -->
+                <a class="chatting" href="../letter.html">
+                    쪽지
+                </a>
+                <!-- 로그인 -->
+                <a class="login" href="../login.html">
+                    마이페이지
+                </a>
+                <!-- 회원가입 -->
+                <a class="signup" href="../sign.html">
+                    로그아웃
+                </a>
+            </div>
+        </div>
+    </div>
+    <form name="WriteForm" action="/register" method="post">
+    <div class="choice_1">
+
+        <div class="choice">
+
+            <div class="choice_ment">
+                <span th:text="|${idealVO.userName}님의 프로필|"></span>
+            </div>
+            <div class="choice_ment_p">
+                <p>썸썸에서 사용하실</p>
+                <p>당신의 사진을 올려주세요</p>
+
+            </div>
+            <div class="popup-body">
+                <div class="body-content">
+                    <div style="    text-align: center;">
+                        <img  style="height: 291px; width: 51%;"src="https://profilepicture7.com/img/img_shouhui/1/-1686280499.jpg" class="card-img-top" alt="...">
+                    </div>
+
+                    <div class="body-titlebox">
+                        <h4>나이</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.age}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                        <h4>직업</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.job}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                        <h4>MBTI</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.mbti}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                        <h4>거주지</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.residence}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                        <h4>취미 </h4>
+                        <div class="lineBottom"><span th:text="${idealVO.hobby}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                        <h4>흡연</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.smoke}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                        <h4>자가 유무</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.houseExist}"></span></div>
+                    </div>
+                    <div class="body-titlebox">
+                    <h4>이상형</h4>
+                    <div class="lineBottom"><span th:text="${idealVO.idealContent}"></span></div>
+                     </div>
+                    <div class="body-titlebox">
+                        <h4>소개</h4>
+                        <div class="lineBottom"><span th:text="${idealVO.selfIntroduce}"></span></div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div>
+                <button  th:text="|${idealVO.userName}님에게 쪽지보내기|" type="button" class="btn-hover color-11"data-bs-toggle="modal" data-bs-target=".exampleModal" style="pposition: relative;left: 16px;width: 306px;top: 5px;font-size: 20px;color: white;font-weight: bold;">쪽지 보내기</button>
+               <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".exampleModal" style="position:relative;left: 16px;">
+                    ♥ 쪽지 보내기
+                </button>-->
+                <button id="upload" class="btn-hover color-10" style="top:-1px"><a th:href="@{/idealList}" style="font-size: 18px;color: white;">썸썸 이상형 찾기</a></button>
+                <!--<button id="upload">Submit</button>-->
+            </div>
+            <div class="modal fade exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                <div style="color:#ef5350;font-weight: bold;font-size: larger;">
+                                    <img src="/img/하트.JPG"/>
+                                    <span class="send">
+                                 쪽지보내기
+                                </span>
+                                </div>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="display: none">
+                                <input type="text" name="userName" th:value="${idealVO.userName}" style="border: 0;width: 100%;height: 38px;"/>
+                            </div>
+                            <div>
+                                <input type="text" name="messageTitle" placeholder="쪽지의 제목을 입력해주세요" style="border: 0;width: 100%;height: 38px;"/>
+                            </div>
+                            <textarea name="messageContent" rows="10" cols="60" class="writeContentBox"placeholder="당신의 마음의 든 상대에게 쪽지를 보내주세요👀" style="width: 461px;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger">Send</button>
+                            <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+<!-- 쪽지 -->
+<input class="channel-talk-button" onclick="showPopup();"/>
+<!-- 쪽지 -->
+<!-- footer -->
+<!--<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <a href="../main.html">
+                <img src="/img/sumsum_logo.png">
+            </a>
+        </div>
+        <div>
+            <ul class="footer-list">
+                <li class="ft"><a href="../company.html">썸썸소개</a></li>
+                <li class="ft">이용약관</li>
+                <li class="ft">개인정보처리방침</li>
+                <li class="ft"><a href="../question.html">자주 묻는 질문(FAQ)</a></li>
+                <li class="ft">문의하기</li>
+            </ul>
+            <ul class="footer-info">
+                <li class="ft">법인명: 썸썸 코벤져스</li>
+                <li class="ft">사업자 등록번호:123-12-123456</li>
+                <li class="ft">사업자 정보확인</li>
+                <li class="ft">대표자: 코벤저스</li>
+                <li class="ft">주소: 서울 강남구 테헤란로 146</li>
+            </ul>
+            <div class="ft-1">
+                © 2022 SomeSome. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+    let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+    let maxSize = 5242880; // 5MB
+    const result = $("div.result ul");
+
+    function checkExtension(fileName, fileSize){
+        if(regex.test(fileName)){
+            alert("(" + fileName + ")업로드 할 수 없는 파일의 형식입니다.")
+            return false;
+        }
+
+        if(fileSize >= maxSize){
+            alert("(" + fileName + ")파일 사이즈 초과")
+            return false;
+        }
+
+        return true;
+    }
+
+    $("#upload").on("click", function(e){
+        let formData = new FormData();
+        let input = $("input[name='files']");
+        let files = input[0].files;
+        // console.log(files);
+        for(let i=0; i<files.length; i++){
+            if(checkExtension(files[i].name, files[i].size)){
+                formData.append("files", files[i]);
+            }
+        }
+
+        $.ajax({
+            url: "uploadAjax",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(fileList){
+                showUploadFile(fileList);
+            }
+        });
+    });
+
+    function showUploadFile(fileList){
+        let str = "";
+        $.each(fileList, function(i, file){
+            str += "<li><a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>";
+            str += file.image ? "<img style='position: relative; top:41px ;border-radius: 70%;' src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
+                : "<img class ='myimg' src='/images/attach.png' width='100'>";
+            str += "</a>"
+            str += "<span data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='display:block;cursor: pointer;font-size: 21px;position: relative;top: 51px;color: coral;\n" +
+                "    font-weight: 600;'>사진 삭제하기</span>"
+            str += "</li>";
+        });
+
+        result.append(str);
+    }
+
+    $(".result").on("click", "span", function(e){
+        let path = $(this).data("path");
+        let li = $(this).closest("li");
+        $.ajax({
+            url: "delete",
+            type: "delete",
+            data: {path: path},
+            success: function(){
+                li.remove();
+            }
+        });
+    });
+
+
+    $(document).ready(function(){
+        var fileTarget = $('.filebox .upload-hidden');
+
+        fileTarget.on('change', function(){  // 값이 변경되면
+            if(window.FileReader){  // modern browser
+                var filename = $(this)[0].files[0].name;
+            }
+            else {  // old IE
+                var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+            }
+
+            // 추출한 파일명 삽입
+            $(this).siblings('.upload-name').val(filename);
+        });
+    });
+
+
+
+
+
+
+
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    /* 쪽지 팝업창 */
+    function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+
+    function tabOpen(evt, contentName){
+        var i, tabcontent, tab_btn;
+
+        tabcontent = document.getElementsByClassName("myInfo");
+        for(i = 0; i<tabcontent.length; i++){ //내용을 나열
+            tabcontent[i].style.display = "none";
+        }
+
+        tab_btn = document.getElementsByClassName("tabs");
+        for(i = 0; i<tab_btn.length; i++){ // 탭 버튼 나열
+
+            //탭 버튼을 눌렀을 때 기존 탭 class 삭제
+            tab_btn[i].className = tab_btn[i].className.replace(" active","");
+
+
+        }
+        //탭을 눌렀을 때 해당 id의 내용을 출력
+        document.getElementById(contentName).style.display = "block";
+        //class 생성 이벤트 발생
+        evt.currentTarget.className += " active";
+    }
+
+</script>
+</html>

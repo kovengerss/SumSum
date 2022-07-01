@@ -102,7 +102,13 @@ public class UserController {
     // 메인페이지 이동(종임님) + 이용자 수(재원님)
     @GetMapping("main")
     public String home(Model model, HttpSession session){
+        // 잔여 포인트 타임리프
         String userCount = String.valueOf(userService.getUserTotalCount());
+        UserVO userVO = (UserVO) session.getAttribute("userList");
+        if (userVO != null) {
+            Integer point = userService.getUserPoint(userVO.getUserNum());
+            model.addAttribute("point", point);
+        }
 
         // 후기 리스트 가져오기
         BoardVO reviewBoardVO = new BoardVO();
@@ -146,7 +152,13 @@ public class UserController {
 
     //마이페이지 포인트 내역
     @GetMapping("myPagePoint")
-    public void getPointSelect(){
+    public String getPointSelect(Model model, HttpSession session){
+        UserVO userVO = (UserVO) session.getAttribute("userList");
+        Integer point = userService.getUserPoint(userVO.getUserNum());
+        model.addAttribute("point", point);
+        model.addAttribute("userVO", userVO);
+
+        return "myPagePoint";
 
     }
 
@@ -222,7 +234,7 @@ public class UserController {
     // 회원 로그아웃
     @GetMapping("user/logout")
     public String userLogout(HttpSession httpSession){
-        httpSession.invalidate();
+        httpSession.removeAttribute("userList");
         return "redirect:/main";
     }
 }

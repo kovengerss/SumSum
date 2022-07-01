@@ -37,7 +37,7 @@
                         <a href="../login.html">
                             <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
                         </a>
-                        <a class="user-info" href="../login.html">
+                        <a class="user-info" href="/login">
                             로그인하기 >
                         </a>
                     </div>
@@ -61,18 +61,18 @@
                     </div>
                 </div>
                 <div class="menuList">
-                    <a class="item" href="appilBoard.html">
+                    <a class="item" href="/board/appilBoardList">
                         어필하기
                     </a>
-                    <a class="item" href="board.html">
+                    <a class="item" href="/board/boardList">
                         고민상담
                     </a>
-                    <a class="item" href=reviewBoard.html"">
+                    <a class="item" href="/board/reviewBoardList">
                         후기
                     </a>
                 </div>
                 <div class="signup-btn">
-                    <a href="../sign.html">
+                    <a href="/sign">
                         회원가입
                     </a>
                 </div>
@@ -89,15 +89,17 @@
                 </a>
                 <!-- 채팅 받아오기 -->
                 <a class="chatting" href="../letter.html">
-                    쪽지
+                    채팅
                 </a>
-                <!-- 로그인 -->
-                <a class="login" href="../login.html">
+                <a th:if="${session.userList == null}" class="login" href="/login">
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="../sign.html">
+                <a th:if="${session.userList == null}" class="signup" href="/sign">
                     회원가입
+                </a>
+                <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                    로그아웃
                 </a>
             </div>
         </div>
@@ -224,30 +226,16 @@
                                     </header>
                                     <div class="a-card-content">
                                         <ul class="list-none">
-                                            <li class="listItem">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심하고 간이 작은 성격 고칠 수 있나요??
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격도 괜찮나요? 고칠 수는 없을까요?
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격을 변화할 수 있을까요~~
-                                                </a>
-                                            </li>
-                                            <li class="listItem" style="margin-top: 5px;">
-                                                <a>
-                                                    <i class="list-icon list-icon-tag">Q.</i>
-                                                    소심한 성격 어떻게 고칠수 있나요?
-                                                </a>
-                                            </li>
+                                            <th:block th:each="board,num:${boardList}">
+                                                <th:block th:if="${num.index <= 3}">
+                                                    <li class="listItem" th:object="${board}" style="margin-bottom: 10px;">
+                                                        <a th:href="@{/board/reviewBoard(boardNum=*{boardNum},boardField=*{boardField})}">
+                                                            <i class="list-icon list-icon-tag">Q.</i>
+                                                            <span th:text="*{boardTitle}"></span>
+                                                        </a>
+                                                    </li>
+                                                <th:block>
+                                            <th:block>
                                         </ul>
                                     </div>
                                 </div>

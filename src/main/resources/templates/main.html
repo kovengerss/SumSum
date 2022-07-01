@@ -120,7 +120,7 @@ a {
             </h1>
             <div class="right-header">
                 <!-- 포인트 점수 받아오기 -->
-                <a class="point" href="/myPagePoint">
+                <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}">
                     잔여포인트 0점 
                 </a>
                 <!-- 채팅 받아오기 -->

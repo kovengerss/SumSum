@@ -3,6 +3,8 @@ package com.example.kovengerss.domain.vo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Data
 public class IdealVO {/*이상형*/
@@ -23,4 +25,7 @@ public class IdealVO {/*이상형*/
     //직업
     private String job;//`
     private String userName;
+
+    //    일대다 관계
+    private List<AttachFileVO> fileList;
 }

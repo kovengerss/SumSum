@@ -35,15 +35,16 @@ public interface UserService {
     public void userGetGender(UserVO userVO);
     //해당 회원 이상형 번호(ideal_num)가져오기
     public void userGetIdealNum(UserVO userVO);
-
+    // 유저 탈퇴
     boolean userDeleteByIdAndPw(String userId, String userPw);
-
+    // 유저 문자 인증
     void sendSms(Map<String, Object> userPhoneNum);
-
+    // 유저 아이디 찾기
     void findIdSuccess(Map<String, Object> map);
-
+    // 유저 이용자 수
     int getUserTotalCount();
-
+    // 유저 이메일 인증
     void sendEmail(Map<String, Object> map);
-
+    // 유저 포인트 가져오기
+    Integer getUserPoint(Integer userNum);
 }

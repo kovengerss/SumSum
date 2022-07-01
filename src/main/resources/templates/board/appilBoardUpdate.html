@@ -23,10 +23,11 @@
 </head>
 <body>
 <div class="base">
+    <!-- 상단 고정 바 -->
     <div class="top-header">
         <div class="top-header-wrap">
             <button class="menuBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="slidebutton">
-                <span class="a-alarmBadge" style="top: 6px; right: 0px;"></span>
+                <span class="a-alarmBadge" style="top: 11px; right: 9px;"></span>
                 <span class="menuBar"></span>
                 <span class="menuBar" style="width:19px; height: 4px;"></span>
                 <span class="menuBar"></span>
@@ -45,7 +46,7 @@
                         <a href="../login.html">
                             <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
                         </a>
-                        <a class="user-info" href="../login.html">
+                        <a class="user-info" href="/login">
                             로그인하기 >
                         </a>
                     </div>
@@ -69,18 +70,18 @@
                     </div>
                 </div>
                 <div class="menuList">
-                    <a class="item" href="appilBoard.html">
+                    <a class="item" href="/board/appilBoardList">
                         어필하기
                     </a>
-                    <a class="item" href="board.html">
+                    <a class="item" href="/board/boardList">
                         고민상담
                     </a>
-                    <a class="item" href="reviewBoard.html">
+                    <a class="item" href="/board/reviewBoardList">
                         후기
                     </a>
                 </div>
                 <div class="signup-btn">
-                    <a href="../sign.html">
+                    <a href="/sign">
                         회원가입
                     </a>
                 </div>
@@ -97,15 +98,17 @@
                 </a>
                 <!-- 채팅 받아오기 -->
                 <a class="chatting" href="../letter.html">
-                    쪽지
+                    채팅
                 </a>
-                <!-- 로그인 -->
-                <a class="login" href="../login.html">
+                <a th:if="${session.userList == null}" class="login" href="/login">
                     로그인
                 </a>
                 <!-- 회원가입 -->
-                <a class="signup" href="../sign.html">
+                <a th:if="${session.userList == null}" class="signup" href="/sign">
                     회원가입
+                </a>
+                <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                    로그아웃
                 </a>
             </div>
         </div>
@@ -137,7 +140,7 @@
                                                     <span>
                                                         <i class="icon" style="font-size:20px; font-weight: 700; color:#989898; ">Q.</i>
                                                     </span>
-                                                     <input th:field="${appilBoard.boardTitle}" class="title-input" type="text" maxlength="60" placeholder="제목을 입력해주세요." style="padding-left: 5px;" >
+                                                     <input th:field="${appilBoard.boardTitle}" class="title-input title-chk" type="text" maxlength="60" placeholder="제목을 입력해주세요." style="padding-left: 5px;" >
                                                 <span class="title-check"></span>
                                                <input type="text" th:field="${appilBoard.boardNum}" style="display: none;">
                                             </header>
@@ -145,12 +148,12 @@
                                     </div>
                                 </div>
                                 <div class="editor-content"  style="margin-top:10px;">
-                                                        <textarea id="summernote" class="content content-length" th:field="*{appilBoard.boardContent}" placeholder="글을 입력해주세요." onclick="length()">
-                                                        </textarea>
+                                    <textarea id="summernote" class="content content-length" th:field="*{appilBoard.boardContent}" placeholder="글을 입력해주세요." onclick="length()">
+                                    </textarea>
                                 </div>
 
                             <div class="form-footer form-edit-footer">
-                                <button type="submit" class="footer-button-css btn123" style="border:1px solid #e3e3e3">글 수정</button>
+                                <button type="submit" class="footer-button-css btn123 btnSuccess" style="border:1px solid #e3e3e3">글 수정</button>
                             </div>
                             </form>
                         </div>
@@ -254,6 +257,27 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+<script th:inline="javascript">
+    let userNum = [[${session.userNum}]];
+
+    let btnSuccess = $(".btnSuccess");
+
+    btnSuccess.on("click", function () {
+        if (contentSub.text().length <= 80) {
+            alert("80글자이상 작성해주세요.");
+            return false;
+        } else if ($(".categorySelector").val() == null) {
+            alert("게시 카테고리를 선택해주세요.")
+            return false;
+        } else if($(".title-chk").val().length == 0){
+            alert("제목을 입력해주세요.")
+            return false;
+        }
+        console.log("1 : " + title.text());
+        return true;
+    });
+
+</script>
 <script>
     /* 쪽지 팝업창 */
     function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }

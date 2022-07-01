@@ -15,22 +15,22 @@ public class LikeServiceImpl implements LikeService{
 
 
     @Override
-    public void likeSelect(LikeVO likeVO) {
-
+    public Integer likeCount(Integer boardNum) {
+        return likeDAO.likeCount(boardNum);
     }
 
     @Override
     public void likeInsert(LikeVO likeVO) {
-
+        likeDAO.likeInsert(likeVO);
     }
 
     @Override
-    public void likeDelete(LikeVO likeVO) {
-
+    public void likeDown(LikeVO likeVO) {
+        likeDAO.likeDown(likeVO);
     }
 
     @Override
-    public void likeGetBoardNum(LikeVO likeVO) {
-
+    public boolean userCheck(LikeVO likeVO) {
+        return likeDAO.userCheck(likeVO);
     }
 }
