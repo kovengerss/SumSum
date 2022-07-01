@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.kovengerss.mapper.PointMapper">
-
+    <!--회원 잔여 포인트 (기존 포인트 + 충전 포인트)-->
+    <update id="updateUserPoint">
+        UPDATE TBL_USER
+        SET USER_POINT = USER_POINT  + #{point}
+            WHERE USER_NUM = #{userNum}
+    </update>
 </mapper>

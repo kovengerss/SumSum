@@ -15,4 +15,5 @@ public class UserVO {/*회원*/
     private String userPhoneNumber;
     private String userBirth;
     private Integer idealNum;
+    private Integer userPoint;
 }
