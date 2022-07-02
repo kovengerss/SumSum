@@ -39,10 +39,10 @@ public class UploadController {
     public List<AttachFileVO> uploadAjax(MultipartFile[] files) throws IOException {
         List<AttachFileVO> fileList = new ArrayList<>();
         String rootDirectory = "D:\\web_1900_kgw\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\";
-
+//
         File uploadDirectory = new File(rootDirectory, getDateDirectory());
         if(!uploadDirectory.exists()) {uploadDirectory.mkdirs();}
-
+//
         for (MultipartFile file : files){
             log.info("------------------------------------");
             log.info("upload file name : " + file.getOriginalFilename());

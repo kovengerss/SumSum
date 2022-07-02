@@ -76,7 +76,7 @@ public class IdealContoller {
         model.addAttribute("attachVO",idealService.idealGetFile(idealNum));
         return "/myPage";
     }
-
+//
 
     @GetMapping("moreSearch")
     public void getMore(Integer idealNum,Model model,HttpServletRequest req){
