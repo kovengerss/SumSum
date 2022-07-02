@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.dao.AttachDAO;
 import com.example.kovengerss.domain.dao.IdealDAO;
+import com.example.kovengerss.domain.vo.AttachFileVO;
 import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.MessageVO;
 import lombok.RequiredArgsConstructor;
@@ -99,5 +100,10 @@ public class IdealServiceImpl implements IdealService{
     @Override
     public void idealGetUserNum(IdealVO idealVO) {
 
+    }
+
+    @Override
+    public List<AttachFileVO> idealGetFile(Integer idealNum) {
+        return attachDAO.findByBoardNumber(idealNum);
     }
 }

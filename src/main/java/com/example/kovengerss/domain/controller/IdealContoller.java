@@ -10,6 +10,7 @@ import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -27,7 +28,6 @@ public class IdealContoller {
     public void goLove(){
         ;
     }
-
     @PostMapping("idealRegister")
     public String idealRegister(IdealVO idealVO, RedirectAttributes rttr,HttpServletRequest req,Model model){
         log.info("----------------------------");
@@ -63,16 +63,17 @@ public class IdealContoller {
     }
 
 
-    @GetMapping("getMyIdeal")
-    public String getOne(Integer idealNum, Model model,HttpServletRequest req){
+    @GetMapping("getMyIdeal/{idealNum}")
+    public String getOne(@PathVariable Integer idealNum, Model model,HttpServletRequest req){
         log.info("----------------------------");
         log.info("getMyIdeal............."+idealNum);
         log.info("----------------------------");
-        HttpSession session =  req.getSession();
-        Integer idealNums = (Integer)session.getAttribute("idealNum");
+       // HttpSession session =  req.getSession();
+       // Integer idealNums = (Integer)session.getAttribute("idealNum");
 
                                 //여기서 디비버의 sequence연동에 문제가 생김
-        model.addAttribute("idealVO", idealService.idealSelect(idealNums));
+        model.addAttribute("idealVO", idealService.idealSelect(idealNum));
+        model.addAttribute("attachVO",idealService.idealGetFile(idealNum));
         return "/myPage";
     }
 
