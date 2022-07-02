@@ -90,10 +90,10 @@ public class UserController {
         return "redirect:/main";
     }
 
-    // 메인페이지 이동(종임님) + 이용자 수(재원님)
+    // 메인페이지
     @GetMapping("main")
     public String home(Model model, HttpSession session){
-        // 잔여 포인트 타임리프
+        // 잔여 포인트
         String userCount = String.valueOf(userService.getUserTotalCount());
         UserVO userVO = (UserVO) session.getAttribute("userList");
         if (userVO != null) {
@@ -101,13 +101,13 @@ public class UserController {
             model.addAttribute("point", point);
         }
 
-        // 후기 리스트 가져오기
+        // 메인 후기 글 가져오기
         BoardVO reviewBoardVO = new BoardVO();
         reviewBoardVO.setBoardField("후기");
         Criteria criteria= new Criteria();
         model.addAttribute("reviewBoardList", boardService.getList(reviewBoardVO,criteria));
 
-        // 어필하기 리스트 가져오기
+        // 메인 어필하기 글 가져오기
         BoardVO applicationBoardVO = new BoardVO();
         applicationBoardVO.setBoardField("어필하기");
         model.addAttribute("appilcationBoardList", boardService.getList(applicationBoardVO,criteria));
@@ -141,16 +141,14 @@ public class UserController {
 
     }
 
-    //마이페이지 포인트 내역
+    //마이페이지 포인트
     @GetMapping("myPagePoint")
     public String getPointSelect(Model model, HttpSession session){
         UserVO userVO = (UserVO) session.getAttribute("userList");
         Integer point = userService.getUserPoint(userVO.getUserNum());
         model.addAttribute("point", point);
         model.addAttribute("userVO", userVO);
-
         return "myPagePoint";
-
     }
 
     //연애 선택
