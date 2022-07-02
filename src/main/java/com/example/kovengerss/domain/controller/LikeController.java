@@ -22,7 +22,6 @@ public class LikeController {
     public ResponseEntity<String> likeInsert(@RequestBody LikeVO likeVO)throws UnsupportedEncodingException {
         log.info("-------" + likeVO);
         likeService.likeInsert(likeVO);
-        boolean check = likeService.userCheck(likeVO);
 
         return new ResponseEntity<>(new String("하트버튼 성공".getBytes(), "UTF-8"), HttpStatus.OK);
     }
@@ -43,15 +42,6 @@ public class LikeController {
         likeService.likeDown(likeVO);
 
         return "하트 감소";
-    }
-
-    @GetMapping("{boardNum}/{userNum}")
-    public boolean userCheck(@PathVariable Integer boardNum,@PathVariable Integer userNum){
-        LikeVO likeVO = new LikeVO();
-        likeVO.setUserNum(userNum);
-        likeVO.setBoardNum(boardNum);
-
-        return likeService.userCheck(likeVO);
     }
 
 }

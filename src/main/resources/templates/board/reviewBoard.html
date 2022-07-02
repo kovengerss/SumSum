@@ -134,9 +134,9 @@
                             <section style=" border: 1px solid #e3e3e3;" >
                                 <article class="board">
                                     <aside class="board-side">
-                                        <button class="board-side-badge board-button badge" onclick="color()">
-                                            <i class=" icon good-button" onclick="color()">♥</i>
-                                            <p style="margin-top:12px;"class="number">1</p>
+                                        <button class="board-side-badge board-button badge heart heartDown" style="display: flex; flex-direction: column;">
+                                            <i class=" icon good-button like-cntBtn" style="margin-left: 12px;">♥</i>
+                                            <span style="margin-top:12px; margin-left: 18px;"class="number like-count"></span>
                                         </button>
                                     </aside>
                                     <div class="main-content-layout">
@@ -163,10 +163,12 @@
                                                         </div>
                                                         <span class="write-date" th:text="${reviewBoard.boardUpdateDate}"></span>
                                                     </div>
-                                                    <div>
-                                                        <button type="button" onclick="goUpdate()">수정</button>
-                                                        <button type="submit" >삭제</button>
-                                                    </div>
+                                                    <th:block th:if="${reviewBoard.userNum} == ${session.userNum}">
+                                                        <div>
+                                                            <button type="button" onclick="goUpdate()">수정</button>
+                                                            <button type="submit" >삭제</button>
+                                                        </div>
+                                                    <th:block>
                                                 </div>
                                             </header>
                                         </form>
@@ -178,7 +180,9 @@
                                         <footer class="main-content-footer">
                                             <div>
                                             <span class="float-none">
-                                                <button class="curious board-button question-button button-outline button-all" onclick="color()">좋아요 40</button>
+                                                <button class="curious board-button question-button button-outline button-all" onclick="color()">
+                                                    <span class="likeCount"></span>
+                                                </button>
                                                 <button class="question-button declaration-button button-outline" onclick="declaration()" style="margin-left: 0.75rem;">
                                                     <i class="declaration">🚨</i>
                                                     <span class="declaration-text">신고</span>
@@ -290,6 +294,7 @@
 </script>
 <script src= "https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/board.js"></script>
+<script src="/js/like.js"></script>
 <script src="/js/reply.js"></script>
 <script th:inline="javascript">
     let boardNum = [[${reviewBoard.boardNum}]];
@@ -471,6 +476,51 @@
             modifyCheck = false;
         });
     });
+
+
+    getCount(boardNum);
+    function getCount(boardNum){
+        likeService.heartCount(boardNum,function (result) {
+            $(".like-count").text(result);
+            $(".likeCount").text("좋아요 " +result);
+        });
+    }
+
+
+    let CountCheck = false;
+
+    $(".heart").on("click",function (e) {
+        e.preventDefault();
+
+        if (CountCheck) {
+            console.log("삭제");
+            likeService.heartDown({
+                boardNum: boardNum,
+                userNum: userNum
+            }, function (result) {
+                console.log("클래스 삭제 " + result);
+                curious.removeClass("color-changeAppil");
+                badge.removeClass("color-changeAppil");
+                good.removeClass("icon-changeAppil");
+                console.log(boardNum);
+                getCount(boardNum);
+            });
+            CountCheck = false;
+        }else if(!CountCheck){
+            likeService.heartUp({
+                boardNum: boardNum,
+                userNum : userNum
+            },function (result) {
+                console.log("추가");
+                curious.addClass("color-changeAppil");
+                badge.addClass("color-changeAppil");
+                good.addClass("icon-changeAppil");
+                getCount(boardNum);
+            });
+            CountCheck = true;
+        }
+    });
+
 
     function goUpdate(){
         location.href="/board/appilBoardUpdate?boardNum="+ boardNum + "&boardField=" + boardField;

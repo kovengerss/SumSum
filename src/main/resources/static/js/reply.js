@@ -1,8 +1,6 @@
 let replyService = (function(){
 
     function add(reply, callback){
-        console.log("add reply.........");
-        console.log(reply);
         $.ajax({
             url: "/reply/new",
             type: "post",
