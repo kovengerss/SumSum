@@ -39,6 +39,8 @@ public class MessageController {
         rttr.addFlashAttribute("userNum", messageVO.getUserNum());
         rttr.addFlashAttribute("messageNum", messageVO.getMessageNum());
         rttr.addAttribute("messageSendDate",messageVO.getMessageSendDate());
+        rttr.addFlashAttribute("userName",messageVO.getUserName());
+
 
       /*  model.addAttribute("messageSendDate",messageVO.get)*/
         return new RedirectView("/main");

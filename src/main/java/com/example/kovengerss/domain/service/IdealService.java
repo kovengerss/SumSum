@@ -1,5 +1,6 @@
 package com.example.kovengerss.domain.service;
 
+import com.example.kovengerss.domain.vo.AttachFileVO;
 import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.MessageVO;
 import org.springframework.stereotype.Service;
@@ -38,4 +39,6 @@ public interface IdealService {
     public void idealGetHouseExist(IdealVO idealVO);
     //해당 이상형 정보에 해당하는 userNum조회
     public void idealGetUserNum(IdealVO idealVO);
+    //파일 정보 가져오기
+    public List<AttachFileVO> idealGetFile(Integer idealNum);
 }

@@ -160,10 +160,9 @@
                         <a th:href="@{/upload/uploadAjax}">사진 추가하기</a>
                         <div class="userImage">
                            <!-- <img style="border-radius: 28px;" class="pimage" src="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-%EB%82%A8%EC%84%B1%EC%9D%84%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8-%EC%95%84%EB%B0%94%ED%83%80-%ED%94%84%EB%A1%9C%ED%95%84-%EC%95%84%EC%9D%B4%EC%BD%98-%ED%9A%8C%EC%83%89-%EC%82%AC%EC%A7%84-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C-%EC%9E%90-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%B2%A1%ED%84%B0.jpg?ver=6">-->
-                            <img style="border-radius: 28px;" class="pimage" >
+                            <img th:src="'/'+${attachVO.get(0).uploadDirectory}+'/'+${attachVO.get(0).fileName}" style="border-radius: 28px;" class="pimage" >
                         </div>
                         <div class="userName" th:text="${idealVO.userName}">
-
                         </div>
                         <div class="matching-num">
                             <div class="matching-info">
@@ -335,15 +334,7 @@
                             </select>-->
                         </div>
                     </div>
-                    <div class="myInfo">
-                        <div class="input-info">
-                            <label for="" class="labelTag">나의 이상형 :
-                                <input type="text" th:field="${idealVO.idealContent}" readonly/>
-                            <!--    <span th:text="${idealVO.idealContent}"></span>-->
-                            </label>
 
-                        </div>
-                    </div>
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">자가 :
@@ -355,9 +346,18 @@
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
+                            <label for="" class="labelTag">나의 이상형 :
+                                <!--                                <input type="text" th:field="${idealVO.idealContent}" readonly/>-->
+                                <span th:text="${idealVO.idealContent}"></span>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="myInfo">
+                        <div class="input-info">
                             <label for="" class="labelTag">자기소개 :
-                                <input type="text" th:field="${idealVO.selfIntroduce}" readonly/>
-                                <!--    <span th:text="${idealVO.idealContent}"></span>-->
+                               <!-- <input type="text" th:field="${idealVO.selfIntroduce}" readonly/>-->
+                                    <span th:text="${idealVO.selfIntroduce}"></span>
                             </label>
 
                         </div>
@@ -372,20 +372,6 @@
                         </div>
                     </div>
 
-                    <!--                        <div class="myInfo">-->
-                    <!--                            <div class="input-info">-->
-                    <!--                                <label for="" class="labelTag">음주:-->
-                    <!--                                    <span>정보 없음</span>-->
-                    <!--                                </label>-->
-                    <!--                                <button class="information-btn">수정</button>-->
-                    <!--                                <select class="information" name="job">-->
-                    <!--                                    <option value="" selected>음주 선택</option>-->
-                    <!--                                    <option value="good">좋아함</option>-->
-                    <!--                                    <option value="noGood">안좋아함</option>-->
-                    <!--                                    <option value="noDrink">안먹음</option>-->
-                    <!--                                </select>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
                 </div>
             </main>
 </form>
