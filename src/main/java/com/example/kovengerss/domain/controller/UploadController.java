@@ -42,7 +42,7 @@ public class UploadController {
 
         File uploadDirectory = new File(rootDirectory, getDateDirectory());
         if(!uploadDirectory.exists()) {uploadDirectory.mkdirs();}
-
+//
         for (MultipartFile file : files){
             log.info("------------------------------------");
             log.info("upload file name : " + file.getOriginalFilename());
