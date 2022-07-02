@@ -61,10 +61,6 @@ public class UploadController {
 
             if(checkImageType(saveFile)){
                 FileOutputStream thumbnail = new FileOutputStream(new File(uploadDirectory, "t_" + fileName));
-//                MultipartFile객체를 통해 바로 파일을 가져올 경우,
-//                임시로 저장될 영역을 임계 영역이라 한다.
-//                apllication.properties에서 임계 영역에 대한 용량을 설정해 주어야
-//                그 영역에 먼저 업로드 후 inputStream()을 가져올 수 있다.
                 Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 400, 400);
                 thumbnail.close();
                 attachFileVO.setImage(true);

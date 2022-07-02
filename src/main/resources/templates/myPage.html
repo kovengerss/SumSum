@@ -335,15 +335,7 @@
                             </select>-->
                         </div>
                     </div>
-                    <div class="myInfo">
-                        <div class="input-info">
-                            <label for="" class="labelTag">나의 이상형 :
-                                <input type="text" th:field="${idealVO.idealContent}" readonly/>
-                            <!--    <span th:text="${idealVO.idealContent}"></span>-->
-                            </label>
 
-                        </div>
-                    </div>
                     <div class="myInfo">
                         <div class="input-info">
                             <label for="" class="labelTag">자가 :
@@ -355,9 +347,18 @@
                     </div>
                     <div class="myInfo">
                         <div class="input-info">
+                            <label for="" class="labelTag">나의 이상형 :
+                                <!--                                <input type="text" th:field="${idealVO.idealContent}" readonly/>-->
+                                <span th:text="${idealVO.idealContent}"></span>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="myInfo">
+                        <div class="input-info">
                             <label for="" class="labelTag">자기소개 :
-                                <input type="text" th:field="${idealVO.selfIntroduce}" readonly/>
-                                <!--    <span th:text="${idealVO.idealContent}"></span>-->
+                               <!-- <input type="text" th:field="${idealVO.selfIntroduce}" readonly/>-->
+                                    <span th:text="${idealVO.selfIntroduce}"></span>
                             </label>
 
                         </div>
@@ -372,20 +373,6 @@
                         </div>
                     </div>
 
-                    <!--                        <div class="myInfo">-->
-                    <!--                            <div class="input-info">-->
-                    <!--                                <label for="" class="labelTag">음주:-->
-                    <!--                                    <span>정보 없음</span>-->
-                    <!--                                </label>-->
-                    <!--                                <button class="information-btn">수정</button>-->
-                    <!--                                <select class="information" name="job">-->
-                    <!--                                    <option value="" selected>음주 선택</option>-->
-                    <!--                                    <option value="good">좋아함</option>-->
-                    <!--                                    <option value="noGood">안좋아함</option>-->
-                    <!--                                    <option value="noDrink">안먹음</option>-->
-                    <!--                                </select>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
                 </div>
             </main>
 </form>

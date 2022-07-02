@@ -14,7 +14,7 @@
         </selectKey>
         INSERT INTO TBL_MESSAGE
         (MESSAGE_NUM, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_SEND_DATE,USER_NUM,USER_NAME)
-        VALUES(SEQ_MESSAGE.NEXTVAL,#{messageTitle} ,#{messageContent},SYSDATE,#{userNum},#{userName})
+        VALUES(#{messageNum},#{messageTitle} ,#{messageContent},SYSDATE,#{userNum},#{userName})
     </insert>
 
     <update id="update">

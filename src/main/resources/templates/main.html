@@ -320,9 +320,10 @@ a {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
     let messageNum = [[${messageNum}]];
+    let userName = [[${userName}]];
     if(messageNum!=null){
 
-        alert("쪽지를 전송하였습니다.")
+        alert(userName+"님에게 쪽지를 전송하였습니다.")
     }
 /* 쪽지 팝업창 */
 function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
