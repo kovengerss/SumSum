@@ -309,10 +309,10 @@ function checks(){
         return false;
     }
 
-    if(!codeCheck.test($("#codeNum").val())) {
+    if(!codeCheck.test($("#authInput").val())) {
         alert("인증번호를 다시 확인해주세요");
-        $("#codeNum").val("");
-        $("#codeNum").focus();
+        $("#authInput").val("");
+        $("#authInput").focus();
         return false;
     }
 

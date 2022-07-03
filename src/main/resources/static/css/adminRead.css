@@ -1,0 +1,462 @@
+a:link{
+    text-decoration: none;
+    color: black;
+}
+a:visited{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+a:active{
+    text-decoration: none;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    border: 0 solid #e3e3e3;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* 사이드 메뉴 바 */
+.menu-active {
+    background: orange;
+}
+
+.menu-ractive {
+    background: #00000078;
+}
+
+.offcanvas-body {
+    margin: auto;
+}
+
+/* 상단 고정바 css  */
+.top-header {
+    background-color: #fff;
+    border-bottom-width: 1px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 61px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
+    z-index: 1000;
+}
+
+.top-header .top-header-wrap {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1500px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+    text-align: center;
+
+}
+
+.top-header .top-header-wrap .menuBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1.28rem;
+    background: none;
+    border: none;
+}
+
+.top-header .top-header-wrap .a-alarmBadge {
+    position: absolute;
+    background-color: #fd5d5f;
+    border-radius: 9999px;
+    right: 0;
+    top: 0;
+    width: 6px;
+    height: 6px;
+}
+
+.top-header .top-header-wrap .menuBar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 4px;
+}
+
+.main-logo {
+    display: inline-block;
+    position: relative;
+    margin: 0px 0px 0px 317px;
+    z-index: 7;
+}
+
+.right-header {
+    white-space: nowrap;
+    float: right;
+    display: flex;
+    align-items: center;
+    line-height: 60px;
+    height: 60px;
+}
+
+.right-header a+a {
+    margin-left: 24px;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+
+#appilList, #all-list, #blackList, #boardList, #pointList, #reviewList {
+    position: relative;
+    left: 375px;
+    top: 90px;
+    border: 1px solid #333;
+    width: 1500px;
+    padding: 1%;
+    box-shadow: 0 0 15px 0 rgba(60, 31, 31, 0.07);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_list_wrap {
+    padding: 10px;
+    margin-top: -20px;
+}
+
+.board_list_head,
+.board_list_body .item {
+    padding: 15px 0;
+}
+
+.board_list_head {
+    border-bottom: 2px solid #ccc;
+    width: 1430px;
+}
+
+.board_list_body .item {
+    border-bottom: 2px solid #ccc;
+}
+
+.board_list_head > div,
+.board_list_body .item > div {
+    text-align: center;
+}
+
+.board_list_head > div {
+    font-weight: 600;
+}
+
+.board_list .num {  /* 게시판 번호 */
+    width: 100px;
+    font-weight: bolder;
+}
+.board_list .boardNum {  /* 게시판 번호 */
+    width: 100px;
+    font-weight: bolder;
+}
+.board_list .cate {  /* 카테고리 */
+    width: 150px;
+}
+.board_list .boardField {  /* 카테고리 */
+    width: 150px;
+    font-weight: bolder;
+}
+
+.board_list .tit {      /* 제목 */
+    width: 400px;
+}
+.board_list .boardTitle {      /* 제목 */
+    width: 400px;
+}
+
+.board_list .writer {       /* 작성자 */
+    width: 100px;
+    margin-left: 30px;
+}
+.board_list .userNum {       /* 작성자 */
+    width: 100px;
+    font-weight: bolder;
+    margin-left: 30px;
+}
+
+.board_list .date {     /* 작성일 */
+    width: 150px;
+    margin-left: 30px;
+    font-weight: bolder;
+}
+.board_list .boardUpdateDate {     /* 작성일 */
+    width: 150px;
+    margin-left: 30px;
+    font-weight: bolder;
+}
+
+.board_list .view {     /* 신고누적 */
+    width: 150px;
+}
+.board_list .warningCount {     /* 신고누적 */
+    width: 150px;
+    font-weight: bolder;
+}
+
+.board_list .regist_date {     /* 가입날짜 */
+    width: 100px;
+    margin-left: 20px;
+}
+.board_list .boardRegisterDate {     /* 가입날짜 */
+    width: 100px;
+    margin-left: 20px;
+    font-weight: bolder;
+}
+.board_list .dele {     /* 기능 */
+    width: 30px;
+    margin-left: 70px;
+}
+.board_list .live {     /* 상테 */
+    width: 30px;
+    margin-left: 70px;
+}
+
+.list-group >button {
+    border: none;
+}
+
+
+.board_list_body div.tit {
+    text-align: left;
+}
+
+.board_list_body div.tit a:hover {
+    text-decoration: underline;
+}
+/* paging */
+.paging {
+    margin-top: 230px;
+    text-align: center;
+    margin-right: 35px;
+}
+
+.paging a {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.paging a.bt {
+    width: 30px;
+    height: 30px;
+    background-color: #f9d9da;
+    background-image: url(../img/page_bt.png);
+    background-repeat: no-repeat;
+    border-radius: 100px;
+    text-indent: -1000px;
+    overflow: hidden;
+}
+
+.paging a.bt:hover {
+    background-color: #999;
+}
+
+.paging a.first {
+    background-position: 10px -40px;
+}
+
+.paging a.prev {
+    margin-right: 5px;
+    background-position: 10px 10px;
+}
+
+.paging a.next {
+    margin-left: 5px;
+    background-position: -40px 10px;
+}
+
+.paging a.last {
+    background-position: -40px -40px;
+}
+
+.paging a.num {
+    margin: 0 5px;
+}
+
+.paging a.num.on {
+    color: green;
+}
+
+.paging a.num:hover {
+    text-decoration: underline;
+}
+
+.update-btn{  /* 수정 버튼 */
+    background: #f5f5dc;
+    font-weight: bolder;
+    border: 3px solid #e0e094;
+    width: 50px;
+}
+.delete-btn{    /* 삭제 버튼 */
+    background: #cfcf5a ;
+    font-weight: bolder;
+    border: 3px solid #b8b836;
+    width: 50px;
+}
+
+.search{ /* 검색 */
+    position: absolute;
+    width: 1310px;
+    height: 60px;
+    left: 375px;
+    top: 125px;
+    background-color: #e3e3e3;
+    font-size: 18px;
+    color: #333;
+    font-weight: bolder;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
+}
+
+.search-btn{  /* 검색 버튼 */
+    position: absolute;
+    outline: none;
+    font-weight: bolder;
+    width: 160px;
+    height: 63px;
+    left: 1713px;
+    top: 125px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
+    cursor: pointer;
+}
+
+
+
+.writer{
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+}
+
+.num{
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+}
+.date{
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+}
+.view{
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+}
+.dele{
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+}
+.cate{
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+}
+
+.detail-view {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 15px;
+    font-size: 25px;
+    border-bottom: 2px solid #ccc;
+}
+
+.view1 {
+    display: inline-flex;
+    width: 100%;
+}
+
+.side-cate {
+    width: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* footer css */
+.footer {
+    font-size: .75rem;
+    border-top: 1px solid #f3f5f9;
+    height: 240px;
+    padding-top: 60px;
+    background-color: #f9d9da;
+    margin-top: 233px;
+}
+
+.footer-container {
+    display: flex;
+    height: 100%;
+    margin: auto;
+    max-width: 100%;
+    width: 1172px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    font-size: .875rem;
+    max-width: 520px;
+}
+
+.footer-logo {
+    margin-top: 20px;
+}
+
+.footer-info {
+    display: flex;
+    list-style-type: none;
+    margin-top: 1.25rem;
+}
+
+.ft {
+    margin-right: 0.75rem;
+}
+
+.ft-1 {
+    font-size: .875rem;
+    padding-left: 40px;
+    max-width: 520px;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+/*-----------------------------------------------*/
+.tabs{
+    border: none;
+    background-color: #fff;
+    margin-left: 8px;
+    margin-top: 5px;
+}
+
+.tab_box .active {
+    border: none;
+    color: #fff;
+}
