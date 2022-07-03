@@ -21,10 +21,8 @@
         WHERE IDEAL_NUM=#{idealNum}
     </update>
     <select id="getList" resultType="idealVO">
-        <![CDATA[
         SELECT ROWNUM,IDEAL_NUM, AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, USER_NUM, IDEAL_CONTENT, SMOKE, JOB,USER_NAME
-        FROM TBL_IDEAL WHERE ROWNUM < 5
-        ]]>
+        FROM TBL_IDEAL
     </select>
     <select id="match" resultType="string">
         SELECT USER_NAME FROM TBL_IDEAL WHERE IDEAL_NUM=#{idealNum}
