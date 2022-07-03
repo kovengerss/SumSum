@@ -85,6 +85,7 @@ public class IdealContoller {
         log.info("----------------------------");
 
         model.addAttribute("idealVO", idealService.idealSelect(idealNum));
+        model.addAttribute("attachVO",idealService.idealGetFile(idealNum));
 
     }
 

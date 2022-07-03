@@ -3,7 +3,7 @@
     font-size: 13px;
 }
 body{
-    background-color: rgb(147, 124, 202);
+    background-color: lightyellow;
 }
 .choice_love_box{
     height: 100%;
@@ -18,7 +18,7 @@ div.choice_ment{
 div.choice_ment span{
     font-family: 'Jalnan';
     font-size: 60px;
-    color: rgb(249, 216, 161);
+    color: coral;
 
 }
 div.choice_ment_p{
@@ -28,7 +28,7 @@ div.choice_ment_p{
 div.choice_ment_p p{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
-    color: rgb(249, 216, 161);
+    color: coral;
     margin-top: -20px;
 }
 /*input입력창 */
@@ -39,7 +39,7 @@ div.input input{
     font-size:13px;
     padding: 6px 12px;
     background-color:#f9f9f9 ;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #dfdf4b;
 }
 div.input input:focus{
     outline: none;
@@ -55,8 +55,11 @@ div.input textarea{
     font-size:13px;
     padding: 6px 12px;
     background-color:#f9f9f9 ;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #dfdf4b;
     resize: none;
+}
+select{
+    border: 1px solid #dfdf4b;
 }
 div.input textarea:focus{
     outline: none;
@@ -323,4 +326,123 @@ button{
     max-width: 520px;
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+}
+a {
+    text-decoration: none;
+    color:#333;
+}
+body{
+    background-color: rgba(147, 124, 202, 0.82);
+}
+.choice_love_box {
+    height: 100%;
+    width: 100%;
+    margin-left: 0%;
+    margin-top: 6%;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color:#333;
+}
+body{
+    background-color: lightyellow;
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: peachpuff;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: 0.25em;
+    width: 113px;
+}
+
+/* named upload */
+.filebox .upload-name {
+    display: inline-block;
+    padding: .5em .75em;  /* label의 패딩값과 일치 */
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    width: 203px;
+}
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+.btn-hover.color-10 {
+    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    width: 319px;
+    position: relative;
+    top: 46px;
+}
+.result{
+
+}
+ul{
+    list-style:none;
+}
+.label{
+    color: coral;
+}
+.coralHtag{
+    color: coral;
+}
+p{
+    color: coral;
+}
+select{
+    border: 1px solid #dfdf4b;
 }
