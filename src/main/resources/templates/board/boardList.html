@@ -136,13 +136,13 @@
                                         <span style="font-size: 24px;">고민상담 게시판</span>
                                     </div>
                                 </div>
-                                <div class="sorting-cate">
-                                    <div>
-                                        <button class="-active sort-button button1" onclick="buttonActive()">인기순</button>
-                                        |
-                                        <button class="sort-button button2" onclick="buttonActive()">최신순</button>
-                                    </div>
-                                </div>
+<!--                                <div class="sorting-cate">-->
+<!--                                    <div>-->
+<!--                                        <button class="-active sort-button button1" onclick="buttonActive()">인기순</button>-->
+<!--                                        |-->
+<!--                                        <button class="sort-button button2" onclick="buttonActive()">최신순</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                             <div>
                                     <th:block th:each="board:${boardList}">
@@ -151,7 +151,7 @@
                                             <div class="popover_wrapper full" style="cursor: pointer;">
                                                 <div class="aside-badge badge" style="margin-top: -20px;">
                                                     <i class="icon icon-active">❤</i>
-                                                    <span class="like-Count"></span>
+                                                    <span class="like-Count" th:text="${replyTotal}">0</span>
                                                 </div>
                                             </div>
                                         </aside>
@@ -169,7 +169,7 @@
                                                                 <i class="icon answer-icon">🗨</i>
                                                                 0
                                                             </span>
-                                                            <span class="question-total">좋아요 56</span>
+                                                            <span class="question-total">좋아요 0</span>
                                                         </span>
                                                 </div>
                                             </div>
@@ -259,10 +259,5 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
-
-
-
-
-
 </script>
 </html>

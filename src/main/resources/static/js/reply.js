@@ -67,6 +67,36 @@ let replyService = (function(){
         });
     }
 
-    return {add: add, getList: getList, read: read, remove: remove, modify: modify,getTotal:getTotal};
+    function getUserNum(replyNum,callback) {
+        console.log("댓글 번호 : " + replyNum)
+        $.get("/reply/num/" +replyNum,function (result) {
+            console.log("댓글번호 2 :" + result);
+            if(callback){
+                callback(result);
+            }
+        })
+    }
+
+
+    function getUserName(replyNum,callback) {
+        console.log("게시판 번호 정보 : " + replyNum);
+        $.get("/reply/name/" + replyNum,function (result) {
+            console.log("유저 이름 정보 : " + result);
+            if(callback){
+                callback(result);
+            }
+        })
+    }
+
+    return {
+        add: add,
+        getList: getList,
+        read: read,
+        remove: remove,
+        modify: modify,
+        getTotal:getTotal,
+        getUserName : getUserName,
+        getUserNum : getUserNum
+    };
 })();
 
