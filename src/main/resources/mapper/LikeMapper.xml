@@ -19,4 +19,10 @@
         WHERE BOARD_NUM = #{boardNum} AND USER_NUM = #{userNum}
     </delete>
 
+    <update id="CountUp" parameterType="_int">
+        UPDATE TBL_BOARD B
+        SET GOOD_COUNT = (SELECT COUNT(LIKE_NUM) FROM TBL_LIKE  T WHERE T.BOARD_NUM = #{boardNum})
+        WHERE B.BOARD_NUM = #{boardNum}
+    </update>
+
 </mapper>

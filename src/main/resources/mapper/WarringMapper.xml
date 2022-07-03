@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.kovengerss.mapper.WarringMapper">
+    <!-- 좋아요 갯수-->
+    <select id="warringCount" resultType="_int">
+        SELECT COUNT(WARRING_NUM)
+        FROM TBL_WARRING
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+    <!--갯수 추가-->
+    <insert id="warringInsert" parameterType="warringVO">
+        INSERT INTO TBL_WARRING
+        (WARRING_NUM,BOARD_NUM,USER_NUM)
+        VALUES (SEQ_WARRING.NEXTVAL , #{boardNum} , #{userNum} )
+    </insert>
+    <!--갯수 삭제-->
+    <delete id="warringDown">
+        DELETE FROM TBL_WARRING
+        WHERE BOARD_NUM = #{boardNum} AND USER_NUM = #{userNum}
+    </delete>
+
+    <update id="CountUp" parameterType="_int">
+        UPDATE TBL_BOARD B
+        SET WARNING_COUNT = (SELECT COUNT(WARRING_NUM) FROM TBL_WARRING  W WHERE W.BOARD_NUM = #{boardNum})
+        WHERE B.BOARD_NUM = #{boardNum}
+    </update>
+
+
+</mapper>

@@ -150,7 +150,7 @@
                                         <aside class="a-card-aside">
                                             <div class="popover_wrapper full" style="cursor: pointer;">
                                                 <div class="aside-badge badge" style="margin-top: -20px;">
-                                                    <i class="icon icon-active">❤</i>
+                                                    <i class="icon icon-active test">❤</i>
                                                     <span class="like-Count" th:text="${replyTotal}">0</span>
                                                 </div>
                                             </div>
@@ -254,10 +254,16 @@
 let boardList = [[${boardList}]];
 let $pageForm = $(pageForm);
 
+console.log(boardList);
+
 $("a.changePage").on("click", function(e){
     e.preventDefault();
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
+function list() {
+}
+
 </script>
 </html>

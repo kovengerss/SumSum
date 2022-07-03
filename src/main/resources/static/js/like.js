@@ -1,5 +1,3 @@
-let cnt;
-
 let likeService = (function(){
 
     function heartUp(like,callback) {
@@ -51,11 +49,26 @@ let likeService = (function(){
         });
     }
 
+    function CountUp(like,callback) {
+        $.ajax({
+            url:"/like/goodCount/",
+            type :"post",
+            data: JSON.stringify(like),
+            contentType: "application/json",
+            success : function (result) {
+                if (callback){
+                    callback(result);
+                }
+            }
+        });
+    }
+
     return{
         heartUp : heartUp,
         heartCount : heartCount,
         heartDown : heartDown,
-        likeCheck :likeCheck
+        likeCheck :likeCheck,
+        CountUp : CountUp
     }
 })();
 
