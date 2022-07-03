@@ -3,6 +3,7 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.dao.ReplyDAO;
 import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.ReplyVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +39,8 @@ public class ReplyService {
     public Integer getTotal(Integer boardNum){
         return replyDAO.getTotal(boardNum);
     }
+    // 유저 이름 가져오기
+    public UserVO getUserName(ReplyVO replyVO) {return replyDAO.getUserName(replyVO);}
+    // 유저 번호 가져오기
+    public Integer getUserNum(Integer replyNum){return replyDAO.getUserNum(replyNum);}
 }

@@ -136,13 +136,13 @@
                                         <span style="font-size: 24px;">어필 게시판</span>
                                     </div>
                                 </div>
-                                <div class="sorting-cate">
-                                    <div>
-                                        <button class="-active sort-button button1" onclick="buttonActive()">인기순</button>
-                                        |
-                                        <button class="sort-button button2" onclick="buttonActive()">최신순</button>
-                                    </div>
-                                </div>
+<!--                                <div class="sorting-cate">-->
+<!--                                    <div>-->
+<!--                                        <button class="-active sort-button button1" onclick="buttonActive()">인기순</button>-->
+<!--                                        |-->
+<!--                                        <button class="sort-button button2" onclick="buttonActive()">최신순</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                             <div>
                                 <th:block th:each="board:${appilBoardList}">
@@ -245,7 +245,7 @@
 <script src="/js/boardlist.js"></script>
 <script>
     /* 쪽지 팝업창 */
-    function showPopup() { window.open("/letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+    function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
 <script th:inline="javascript">;
 let $pageForm = $(pageForm);
