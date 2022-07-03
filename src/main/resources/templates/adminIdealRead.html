@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/adminRead.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>썸썸</title>
+</head>
+<body style="background-color: #f8f8f8">
+<!-- 상단 고정 바 -->
+<div class="top-header">
+    <div class="top-header-wrap">
+        <!--  <button class="menuBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="slidebutton">
+             <span class="a-alarmBadge" style="top: 11px; right: 9px;"></span>
+             <span class="menuBar"></span>
+             <span class="menuBar" style="width:19px; height: 4px;"></span>
+             <span class="menuBar"></span>
+         </button> -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    <div class = "sidebar-title">
+                        <strong>썸썸</strong>
+                    </div>
+                </h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body sidebodyGW">
+            </div>
+
+        </div>
+        <h1 class="main-logo">
+            <a href="main.html">
+                <img src="/img/sumsum_logo.png">
+            </a>
+        </h1>
+        <div class="right-header">
+            <!-- 포인트 점수 받아오기 -->
+            <a class="point" href="myPagePoint.html">
+
+            </a>
+            <!-- 채팅 받아오기 -->
+            <a class="chatting" href="letter.html">
+
+            </a>
+            <!-- 로그인 -->
+            <a class="login" href="login.html">
+
+            </a>
+            <!-- 회원가입 -->
+            <div class="login">
+                <span th:text="${session.adminId}+'님 어서오세요.'"></span>
+                <span style="font-weight: bold;"><a href="/logout">로그아웃</a></span>
+                <!--<h2 th:text="${#request.getSession().getAttribute('adminId')}"></h2>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div style="padding-top: 124px;">
+    <section>
+        <aside>
+            <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   왼쪽 상단-->
+            <div style="position:fixed;">
+                <div  class="list-group" style="width: 350px;border-radius: 10px; padding-left: 33px;">
+                    <button style="padding: 24px; background-color: #ff6347; font-weight: bolder; font-size: 22px; text-align: center;" type="button" class="list-group-item list-group-item-action" aria-current="true">
+                        사용자 관리
+                    </button>
+                    <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminpage">전체 게시판</a></button>
+                    <button style="padding: 15px; font-weight: bolder;"type="button"><a href="/adminAppilField">어필 하기</a></button>
+                    <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminBoardField">고민 상담</a></button>
+                    <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminReviewField">후기 게시판</a></button>
+                    <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminPointField">회원 결제 내역</a></button>
+                    <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminGetUser">유저 정보</a></button>
+                    <button style="padding: 15px; background-color: darkgrey; font-weight: bolder; text-align: center; font-size: 19px;" type="button"><a href="/adminBlackList">B L A C K  -  L I S T</a></button>
+                </div>
+            </div>
+        </aside>
+        <!-- 검색 창 -->
+        <div>
+            <input type="text" placeholder="검색어 입력" class="search" style="padding: 30px;">
+            <button type="submit" class="search-btn">검색</button>
+            <div id="all-list" class="all-list">
+                <div class="board_list_wrap">
+                        <div class="board_list_body">
+                            <form action="/delete" method="post">
+                                <div class="item">
+                                    <tr class="tBody" th:object="${board}">
+                                        <div class="detail-view">상세글</div>
+                                        <div class="view1">
+                                            <div class="side-cate">번호</div>
+                                            <div style="align-self: center;" class="boardNum" id="boardNum"><td th:text="*{boardNum}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">카테고리</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardField}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">제목</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardTitle}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">글 내용</div>
+                                            <div style="align-self: center; text-align: left;" class="boardField"><td th:utext="*{boardContent}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">신고 수</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{warningCount}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">좋아요 수</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{goodCount}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">등록 날짜</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardRegisterDate}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">수정 날짜</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardUpdateDate}"></td></div>
+                                        </div>
+                                    </tr>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </main>
+    </section>
+</div>
+
+
+
+
+
+
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<!-- footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <a href="main.html">
+                <img src="/img/sumsum_logo.png">
+            </a>
+        </div>
+        <div>
+            <ul class="footer-list">
+                <li class="ft">썸썸소개</li>
+                <li class="ft">이용약관</li>
+                <li class="ft">개인정보처리방침</li>
+                <li class="ft">자주 묻는 질문(FAQ)</li>
+                <li class="ft">문의하기</li>
+            </ul>
+            <ul class="footer-info">
+                <li class="ft">법인명: 썸썸 코벤져스</li>
+                <li class="ft">사업자 등록번호:123-12-123456</li>
+                <li class="ft">사업자 정보확인</li>
+                <li class="ft">대표자명: 한동석</li>
+                <li class="ft">주소: 서울 강남구 테헤란로 146</li>
+            </ul>
+            <div class="ft-1">
+                © 2022 kovengers. We are best team.
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let boardNum = [[${boardNum}]];
+
+    function ajax(){
+
+        $.ajax({
+            url: "/delete",
+            data: "boardNum=" + boardNum,
+            type: "POST",
+            success : function(data){
+                confirm("삭제 완료");
+            },
+            error : function(){
+                alert("삭제 실패");
+            }
+        });
+    }
+</script>
+</html>
