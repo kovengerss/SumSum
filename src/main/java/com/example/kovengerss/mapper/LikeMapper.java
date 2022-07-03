@@ -13,4 +13,6 @@ public interface LikeMapper {
     public void likeInsert(LikeVO likeVO);
 //  좋아요 갯수 감소
     public void likeDown(LikeVO likeVO);
+
+    public Integer CountUp(Integer boardNum);
 }

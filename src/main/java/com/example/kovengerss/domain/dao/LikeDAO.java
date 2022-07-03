@@ -23,4 +23,5 @@ public class LikeDAO {
         likeMapper.likeDown(likeVO);
     }
     //해당 좋아요 게시판 글 번호(boardnum) 조회
+    public boolean CountUp(Integer boardNum){return likeMapper.CountUp(boardNum) == 1;}
 }

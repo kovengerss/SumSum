@@ -29,4 +29,8 @@ public class LikeServiceImpl implements LikeService{
         likeDAO.likeDown(likeVO);
     }
 
+    @Override
+    public boolean CountUp(Integer boardNum){
+        return likeDAO.CountUp(boardNum);
+    }
 }
