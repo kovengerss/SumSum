@@ -21,6 +21,20 @@
             WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
          ]]>
     </select>
+    <select id="userList" resultType="userVO">
+        <![CDATA[
+            SELECT USER_NUM, USER_NAME,USER_GENDER, USER_ID, USER_PW, USER_EMAIL, USER_PHONE_NUMBER, USER_BIRTH, USER_POINT /*USER_IDEAL*/
+            FROM
+            (
+                SELECT /*+ INDEX_DESC(TBL_USER PK_USER) */
+                ROWNUM RN, USER_NUM, USER_NAME,USER_GENDER, USER_ID, USER_PW, USER_EMAIL, USER_PHONE_NUMBER, USER_BIRTH, USER_POINT/* USER_IDEAL*/
+                FROM TBL_USER
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+            )
+
+            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+         ]]>
+    </select>
     <select id="getFieldAppil" resultType="boardVO">
         <![CDATA[
             SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT, BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
@@ -72,6 +86,11 @@
         FROM TBL_BOARD
         WHERE BOARD_NUM = #{boardNum}
     </select>
+    <select id="ideal" resultType="idealVO">
+        SELECT IDEAL_NUM, AGE, GENDER, HOBBY, RESIDENCE, INCOME, MBTI, SELF_INTRODUCE, HOUSE_EXIST, USER_NUM, IDEAL_CONTENT, SMOKE, JOB, USER_NAME
+        FROM TBL_IDEAL
+        WHERE USER_NUM = #{userNum}
+    </select>
     <delete id="delete">
         DELETE FROM TBL_BOARD
         WHERE BOARD_NUM =#{boardNum}
@@ -103,6 +122,11 @@
     <select id="getTotal" parameterType="boardVO" resultType="_int">
         SELECT COUNT(BOARD_NUM)
         FROM TBL_BOARD
+    </select>
+    <!--총 유저-->
+    <select id="getTotalUser" parameterType="userVO" resultType="_int">
+        SELECT COUNT(USER_NUM)
+        FROM TBL_USER
     </select>
     <!--포인트 총갯수-->
     <select id="getPointTotal" parameterType="pointVO" resultType="_int">
