@@ -29,8 +29,4 @@ public class LikeServiceImpl implements LikeService{
         likeDAO.likeDown(likeVO);
     }
 
-    @Override
-    public boolean userCheck(LikeVO likeVO) {
-        return likeDAO.userCheck(likeVO);
-    }
 }

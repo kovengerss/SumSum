@@ -149,9 +149,9 @@
                                     <article class="a-card a-card-list" style="margin-bottom: 10px;" th:object="${board}">
                                         <aside class="a-card-aside">
                                             <div class="popover_wrapper full" style="cursor: pointer;">
-                                                <div class="aside-badge" style="margin-top: -20px;">
+                                                <div class="aside-badge badge" style="margin-top: -20px;">
                                                     <i class="icon icon-active">❤</i>
-                                                    <p>0</p>
+                                                    <span class="like-Count"></span>
                                                 </div>
                                             </div>
                                         </aside>
@@ -244,6 +244,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/boardlist.js"></script>
+<script src="/js/like.js"></script>
 <script>
     /* 쪽지 팝업창 */
     function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }
@@ -251,7 +252,6 @@
 <script th:inline="javascript">;
 
 let boardList = [[${boardList}]];
-
 let $pageForm = $(pageForm);
 
 $("a.changePage").on("click", function(e){
@@ -259,6 +259,10 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
+
+
+
 
 </script>
 </html>

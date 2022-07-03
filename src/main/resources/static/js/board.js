@@ -2,17 +2,6 @@ let curious = $(".curious");
 let badge = $(".badge");
 let good = $(".good-button");
 
-function color(){
-    if(curious.hasClass("color-changeAppil")){
-        curious.removeClass("color-changeAppil");
-        badge.removeClass("color-changeAppil");
-        good.removeClass("icon-changeAppil");
-    }else {
-        curious.addClass("color-changeAppil");
-        badge.addClass("color-changeAppil");
-        good.addClass("icon-changeAppil");
-    }
-}
 function declaration(){
     if($(".declaration-button").hasClass("declaration-color")){
         $(".declaration-button").removeClass("declaration-color");

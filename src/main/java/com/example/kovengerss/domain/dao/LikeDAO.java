@@ -23,8 +23,4 @@ public class LikeDAO {
         likeMapper.likeDown(likeVO);
     }
     //해당 좋아요 게시판 글 번호(boardnum) 조회
-    public boolean userCheck(LikeVO likeVO){
-        return likeMapper.userCheck(likeVO) == 1;
-    }
-    //해당 게시판 좋아요 눌럿는지 확인
 }

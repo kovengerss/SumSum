@@ -1,5 +1,6 @@
 package com.example.kovengerss.Mapper;
 
+import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.LikeVO;
 import com.example.kovengerss.mapper.LikeMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,12 @@ public class LikeMapperTests {
 //        likeVO.setBoardNum(6627);
 //        likeVO.setUserNum(2);
 //        likeMapper.likeDown(likeVO);
+//    }
+
+//    @Test
+//    public void test(){
+//        log.info("뭐라도 나와보자.. :" +likeMapper.likeCheck(2));
+//        likeMapper.likeCheck(2);
 //    }
 
 

@@ -11,6 +11,4 @@ public interface LikeService {
     public void likeInsert(LikeVO likeVO);
     //좋아요 누르면 delete 좋아요 취소 -1
     public void likeDown(LikeVO likeVO);
-    //해당 좋아요 게시판 글 번호(boardnum) 조회
-    public boolean userCheck(LikeVO likeVO);
 }
