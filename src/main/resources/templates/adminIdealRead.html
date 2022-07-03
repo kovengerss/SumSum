@@ -91,39 +91,51 @@
                         <div class="board_list_body">
                             <form action="/delete" method="post">
                                 <div class="item">
-                                    <tr class="tBody" th:object="${board}">
-                                        <div class="detail-view">상세글</div>
+                                    <tr class="tBody" th:object="${user}">
+                                        <div class="detail-view">나의 이상형 정보</div>
                                         <div class="view1">
-                                            <div class="side-cate">번호</div>
-                                            <div style="align-self: center;" class="boardNum" id="boardNum"><td th:text="*{boardNum}"></td></div>
+                                            <div class="side-cate">이름</div>
+                                            <div style="align-self: center;" class="boardNum"><td th:text="*{userName}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">카테고리</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardField}"></td></div>
+                                            <div class="side-cate">나이</div>
+                                            <div style="align-self: center;" class="boardNum"><td th:text="*{age}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">제목</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardTitle}"></td></div>
+                                            <div class="side-cate">성별</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{gender}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">글 내용</div>
-                                            <div style="align-self: center; text-align: left;" class="boardField"><td th:utext="*{boardContent}"></td></div>
+                                            <div class="side-cate">직업</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{job}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">신고 수</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{warningCount}"></td></div>
+                                            <div class="side-cate">사는 곳</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{residence}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">좋아요 수</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{goodCount}"></td></div>
+                                            <div class="side-cate">연봉</div>
+                                            <div style="align-self: center; text-align: left;" class="boardField"><td th:text="*{income}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">등록 날짜</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardRegisterDate}"></td></div>
+                                            <div class="side-cate">MBTI</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{mbti}"></td></div>
                                         </div>
                                         <div class="view1">
-                                            <div class="side-cate">수정 날짜</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardUpdateDate}"></td></div>
+                                            <div class="side-cate">자가 여부</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{houseExist}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">흡연 여부</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{smoke}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">취미</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{hobby}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">자기소개</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{idealContent}"></td></div>
                                         </div>
                                     </tr>
                                 </div>

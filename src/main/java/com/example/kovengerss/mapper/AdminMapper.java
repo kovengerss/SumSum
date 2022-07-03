@@ -17,6 +17,10 @@ public interface AdminMapper {
     public String getUserId(int userNum);
     //게시글 목록
     public List<BoardVO> getList(@Param("boardVO")BoardVO boardVO, @Param("criteria")Criteria criteria);
+    //유저 목록
+    public List<UserVO> userList(@Param("userVO")UserVO userVO, @Param("criteria")Criteria criteria);
+    //유저 수
+    public int getTotalUser(UserVO userVO);
     //게시글 목록
     public List<BoardVO> getFieldAppil(@Param("boardVO")BoardVO boardVO, @Param("criteria3")Criteria3 criteria3);
     public List<BoardVO> getFieldBoard(@Param("boardVO")BoardVO boardVO, @Param("criteria2")Criteria2 criteria2);
@@ -32,6 +36,8 @@ public interface AdminMapper {
     public int update(BoardVO boardVO);
     //게시글 한 개 가져오기
     public BoardVO select(Long boardNum);
+    //이상형정보 한개 가져오기
+    public IdealVO ideal(int userNum);
     //게시글 신고횟수 조회
     public List<BoardVO> getWarningCount(@Param("boardVO")BoardVO boardVO, @Param("criteria")Criteria criteria);
     //회원 탈퇴

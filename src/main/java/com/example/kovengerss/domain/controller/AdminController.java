@@ -95,6 +95,17 @@ public class AdminController {
         return "/adminPointField";
     }
 
+    @GetMapping("adminGetUser")
+    public String getUser(Criteria criteria, Model model, UserVO userVO){
+        log.info("----------------------------");
+        log.info("list............. : " + criteria);
+        log.info("----------------------------");
+        model.addAttribute("userList",adminService.userList(userVO, criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, adminService.getTotalUser(userVO)));
+        log.info("---------------완료-----------------");
+        return "/adminGetUser";
+    }
+
 
     @GetMapping("adminBlackList")
     public String getBlackList(Criteria criteria, Model model, BoardVO boardVO){
@@ -115,6 +126,15 @@ public class AdminController {
         log.info("----------------------------");
         adminService.get(boardNum);
         model.addAttribute("board", adminService.get(boardNum));
+    }
+    // 유저 이상형 정보
+    @GetMapping("adminIdealRead")
+    public void read(int userNum, HttpServletRequest req, Model model){
+        log.info("----------------------------");
+        log.info(req.getRequestURI() + "............. : " + userNum);
+        log.info("----------------------------");
+        adminService.getIdeal(userNum);
+        model.addAttribute("user", adminService.getIdeal(userNum));
     }
 
     @GetMapping("delete")
