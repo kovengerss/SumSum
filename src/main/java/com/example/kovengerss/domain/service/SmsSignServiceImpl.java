@@ -1,4 +1,4 @@
-/*package com.example.kovengerss.domain.service;
+package com.example.kovengerss.domain.service;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -31,4 +31,4 @@ public class SmsSignServiceImpl implements SmsSignService {
             System.out.println(e.getCode());
         }
     }
-}*/
+}
