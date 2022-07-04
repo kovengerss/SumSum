@@ -93,49 +93,51 @@
                                 <div class="item">
                                     <tr class="tBody" th:object="${user}">
                                         <div class="detail-view">나의 이상형 정보</div>
-                                        <div class="view1">
-                                            <div class="side-cate">이름</div>
-                                            <div style="align-self: center;" class="boardNum"><td th:text="*{userName}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">나이</div>
-                                            <div style="align-self: center;" class="boardNum"><td th:text="*{age}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">성별</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{gender}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">직업</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{job}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">사는 곳</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{residence}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">연봉</div>
-                                            <div style="align-self: center; text-align: left;" class="boardField"><td th:text="*{income}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">MBTI</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{mbti}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">자가 여부</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{houseExist}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">흡연 여부</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{smoke}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">취미</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{hobby}"></td></div>
-                                        </div>
-                                        <div class="view1">
-                                            <div class="side-cate">자기소개</div>
-                                            <div style="align-self: center;" class="boardField"><td th:text="*{idealContent}"></td></div>
+                                        <div>
+                                            <div class="view1">
+                                                <div class="side-cate">이름 : </div>
+                                                <div style="align-self: center;" class="boardNum"><td th:text="*{userName}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">나이 : </div>
+                                                <div style="align-self: center;" class="boardNum"><td th:text="*{age}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">성별 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{gender}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">직업 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{job}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">사는 곳 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{residence}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">연봉 : </div>
+                                                <div style="align-self: center; text-align: left;" class="boardField"><td th:text="*{income}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">MBTI : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{mbti}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">자가 여부 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{houseExist}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">흡연 여부 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{smoke}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">취미 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{hobby}"></td></div>
+                                            </div>
+                                            <div class="view1">
+                                                <div class="side-cate">자기소개 : </div>
+                                                <div style="align-self: center;" class="boardField"><td th:text="*{idealContent}"></td></div>
+                                            </div>
                                         </div>
                                     </tr>
                                 </div>
@@ -203,6 +205,13 @@
                 alert("삭제 실패");
             }
         });
+    }
+
+    let adminId = [[${session.adminId}]];
+    console.log(adminId);
+    if(adminId ==null){
+        alert("관리자 로그인이 필요합니다.")
+        location.href = "/adminLogin"
     }
 </script>
 </html>

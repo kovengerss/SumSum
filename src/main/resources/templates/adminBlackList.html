@@ -194,7 +194,12 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
-
+let adminId = [[${session.adminId}]];
+console.log(adminId);
+if(adminId ==null){
+    alert("관리자 로그인이 필요합니다.")
+    location.href = "/adminLogin"
+}
 </script>
 <script>
     $(".delete-btn").on('click', function(e) {
