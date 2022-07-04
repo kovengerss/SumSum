@@ -1,7 +1,3 @@
-$(".popover_wrapper").on("click",function(){
-    $(this).find(".icon-active").toggleClass("icon-action");
-});
-
 let sort = $(document.querySelectorAll(".sort-button"));
 
 console.log(sort);
