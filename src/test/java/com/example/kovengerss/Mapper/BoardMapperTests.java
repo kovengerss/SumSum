@@ -13,12 +13,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class BoardMapperTests {
     @Autowired
     private BoardMapper boardMapper;
-    @Test
-    public void getListTest(){
-        BoardVO boardVO = new BoardVO();
-        boardVO.setBoardField("어필하기");
-        boardMapper.getList(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void getListTest(){
+//        BoardVO boardVO = new BoardVO();
+//        boardVO.setBoardField("어필하기");
+//        boardMapper.getList(boardVO,new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+//    }
+
+//    @Test
+//    public void test(){
+//        boardMapper.replyCount(6649);
+//    }
 
 //    @Test
 //    public void insertTest(){

@@ -300,7 +300,6 @@
 <script th:inline="javascript">
     let boardNum = [[${appilBoard.boardNum}]];
     let boardField =[[${appilBoard.boardField}]];
-    let userName =[[${session.userName}]];
     let userNum = [[${session.userNum}]];
 
     function register(){
@@ -340,7 +339,7 @@
                 text += "</a>"
                 text += "<div class='justify-content overflow-hidden flex' style='flex-direction: column;'>"
                 text += "<div class='item-center flex'>"
-                text += "<span class='getUser'></span>"
+                text += "<span class='getUser'>"+reply.userName+"</span>"
                 text += "</div>"
                 text += "</div>"
                 text += "</div>"

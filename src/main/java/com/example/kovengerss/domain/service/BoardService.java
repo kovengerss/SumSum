@@ -26,4 +26,6 @@ public interface BoardService {
     public BoardVO boardGetTitle(BoardVO boardVO);
     //게시글 전부가져오기
     public List<BoardVO> getListAll(BoardVO boardVO);
+
+    public Integer replyCount(Integer boardNum);
 }

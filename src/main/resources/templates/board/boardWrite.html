@@ -252,7 +252,47 @@
             ['para', ['ul', 'ol', 'paragraph']],
         ],
         fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+        callbacks: {
+            onImageUpload: function(files, editor, welEditable) {
+                sendFile(files, this, welEditable);
+            }
+        }
     });
+
+    // function sendFile(files, editor, welEditable){
+    //     let data = new FormData();
+    //     data.append("uploadFiles", files[0]);
+    //     $.ajax({
+    //         url: "/boardFile/upload",
+    //         type: "post",
+    //         data: data,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function(file){
+    //             // 데이터 추출
+    //             let keys = Object.keys(file[0]);
+    //             let uuid = file[0][keys[1]];
+    //             let uploadPath = file[0][keys[2]];
+    //             let fileName = file[0][keys[3]];
+    //             // 데이터 저장
+    //             let stor= "<div class='stor' data-filename='" + fileName + "' data-uuid='" + uuid + "' data-uploadpath='" + uploadPath  + "'>";
+    //             $("div.writeArea").append(stor);
+    //             console.log($("div.writeArea > div.stor").eq(0).data("filename"));
+    //             console.log($("div.writeArea > div.stor").eq(0).data("uuid"));
+    //             console.log($("div.writeArea > div.stor").eq(0).data("uploadpath"));
+    //             // 써머노트 이미지 삽입
+    //             let url = "/boardFile/display?fileName=" + uploadPath + "/" + uuid + "_" + fileName;
+    //             $(editor).summernote('insertImage', url);
+    //
+    //             let imageId = "thumbnail " + count;
+    //             if (count == 1) {
+    //                 $('img[src=url]').attr("id", imageId);
+    //                 // console.log($("body").filter("li"))
+    //             }
+    //             count += 1;
+    //         }
+    //     });
+    // }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

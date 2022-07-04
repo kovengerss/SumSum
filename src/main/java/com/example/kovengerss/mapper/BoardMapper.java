@@ -31,4 +31,6 @@ public interface BoardMapper {
     public BoardVO getTitle(BoardVO boardVO);
 //    전체게시글 가져오기
     public List<BoardVO> getListAll(BoardVO boardVO);
+
+    public Integer replyCount(Integer boardNum);
 }

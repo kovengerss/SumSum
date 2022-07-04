@@ -300,7 +300,6 @@
 <script th:inline="javascript">
     let boardNum = [[${board.boardNum}]];
     let boardField =[[${board.boardField}]];
-    let userName =[[${session.userName}]];
     let userNum = [[${session.userNum}]];
 
     function register(){
@@ -340,7 +339,7 @@
                 text += "</a>"
                 text += "<div class='justify-content overflow-hidden flex' style='flex-direction: column;'>"
                 text += "<div class='item-center flex'>"
-                text += "<span class='getUser'></span>"
+                text += "<span class='getUser'>"+reply.userName+"</span>"
                 text += "</div>"
                 text += "</div>"
                 text += "</div>"
@@ -361,9 +360,6 @@
                 text += "</div>"
                 text += "</div>"
                 text += "</div>"
-                replyService.getUserName(reply.replyNum,function (name) {
-                    $(".getUser").text(name);
-                });
             });
             replyList.html(text);
             showReplyPage(total);
@@ -420,7 +416,13 @@
         }, function(result){
             $("input[name='comment']").val("");
              showList(1);
+            replyService.getReplyCount({
+                boardNum:boardNum
+            },function (result) {
+
             });
+            });
+
     });
 
     let contentOriginal = "";
@@ -470,7 +472,13 @@
     $("div.reply_list").on("click", "div a.delete", function(e){
         replyService.remove(this.classList[1], function(result){
             showList(pageNum);
+            replyService.getReplyCount({
+                boardNum:boardNum
+            },function (result) {
+
+            });
         });
+
     });
 
     $("div.reply_list").on("click", "div a.changeOk", function(e){

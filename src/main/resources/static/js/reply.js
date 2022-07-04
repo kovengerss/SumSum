@@ -103,6 +103,20 @@ let replyService = (function(){
         }
     }
 
+    function getReplyCount(reply,callback) {
+        $.ajax({
+            url:"/reply/replyCount/",
+            type :"post",
+            data: JSON.stringify(reply),
+            contentType: "application/json",
+            success : function (result) {
+                if (callback){
+                    callback(result);
+                }
+            }
+        });
+    }
+
     return {
         add: add,
         getList: getList,
@@ -111,7 +125,8 @@ let replyService = (function(){
         modify: modify,
         getTotal:getTotal,
         getUserName : getUserName,
-        getReplyDate : getReplyDate
+        getReplyDate : getReplyDate,
+        getReplyCount: getReplyCount
     };
 })();
 

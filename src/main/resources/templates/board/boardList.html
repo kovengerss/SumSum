@@ -149,7 +149,7 @@
                                     <article class="a-card a-card-list" style="margin-bottom: 10px;" th:object="${board}">
                                         <aside class="a-card-aside">
                                             <div class="popover_wrapper full" style="cursor: pointer;">
-                                                <div class="aside-badge badge" style="margin-top: -20px; display: flex; flex-direction: column;">
+                                                <div class="aside-badge badge gogo" style="margin-top: -20px; display: flex; flex-direction: column;">
                                                     <i class="icon icon-active test">❤</i>
                                                     <span class="like-Count" th:text="*{goodCount}" style="margin-top: 13px;"></span>
                                                 </div>
@@ -167,7 +167,7 @@
                                                         <span class="float-right">
                                                             <span class="answer">
                                                                 <i class="icon answer-icon">🗨</i>
-                                                                0
+                                                                <span class="replyCount" th:text="*{replyCount}"></span>
                                                             </span>
                                                             <span class="question-total"th:text="|좋아요 *{goodCount}|"></span>
                                                         </span>
@@ -245,25 +245,20 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/boardlist.js"></script>
 <script src="/js/like.js"></script>
+<script src="/js/reply.js"></script>
 <script>
     /* 쪽지 팝업창 */
     function showPopup() { window.open("../letter.html", "a", "width=400, height=600, left=1500, top=200"); }
 </script>
-<script th:inline="javascript">;
+<script th:inline="javascript">
 
 let boardList = [[${boardList}]];
 let $pageForm = $(pageForm);
-
-console.log(boardList);
 
 $("a.changePage").on("click", function(e){
     e.preventDefault();
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
-
-function list() {
-}
-
 </script>
 </html>

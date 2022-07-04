@@ -1,6 +1,7 @@
 package com.example.kovengerss.domain.dao;
 
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.ReplyDTO;
 import com.example.kovengerss.domain.vo.ReplyVO;
 import com.example.kovengerss.domain.vo.UserVO;
 import com.example.kovengerss.mapper.ReplyMapper;
@@ -31,7 +32,7 @@ public class ReplyDAO {
         replyMapper.update(replyVO);
     }
     //    댓글 목록
-    public List<ReplyVO> getList(Criteria criteria, Integer boardNum){
+    public List<ReplyDTO> getList(Criteria criteria, Integer boardNum){
         return replyMapper.getList(criteria, boardNum);
     }
     //    댓글 개수
@@ -47,4 +48,7 @@ public class ReplyDAO {
     public Integer getUserNum(Integer replyNum){
         return replyMapper.getUserNum(replyNum);
     }
+
+    //댓글 갯수 채우기
+    public Integer getReplyCount(Integer boardNum){return replyMapper.getReplyCount(boardNum);}
 }

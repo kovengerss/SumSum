@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.dao.UserDAO;
 import com.example.kovengerss.domain.service.BoardService;
+import com.example.kovengerss.domain.service.ReplyService;
 import com.example.kovengerss.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,8 @@ import java.util.List;
 @RequestMapping("/board/*")
 public class BoardController {
     private final BoardService boardService;
+    private final ReplyService replyService;
+
 //     글 목록
     @GetMapping("boardList")
     public String getList(BoardVO boardVO, Criteria criteria, Model model){
@@ -28,6 +31,7 @@ public class BoardController {
         log.info("list.............");
         log.info("----------------------------");
         boardVO.setBoardField("고민상담");
+
         model.addAttribute("boardList", boardService.getList(boardVO,criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, boardService.boardGetTotal(boardVO)));
         return "/board/boardList";
