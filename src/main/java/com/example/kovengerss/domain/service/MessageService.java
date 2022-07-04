@@ -26,4 +26,6 @@ public interface MessageService {
     public String msgSelectTitle(int messageNum);
     //메세지(쪽지) 내용 가져오기
     public String msgSelectContent(int messageNum);
+
+    void usePoint(Integer userNum);
 }

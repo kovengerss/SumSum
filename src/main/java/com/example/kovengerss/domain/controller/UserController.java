@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //TASK			        URL			           METHOD		PARAMETER		      FORM	    URL이동
@@ -135,13 +136,26 @@ public class UserController {
     }
     //마이페이지 글 목록
     @GetMapping("myPageText")
-    public void getMyPageList(){
+    public String getMyPageList(HttpSession httpSession, Model model){
+        UserVO userVO = (UserVO) httpSession.getAttribute("userList");
 
+        if (userVO != null) {
+            Integer point = userService.getUserPoint(userVO.getUserNum());
+            model.addAttribute("point", point);
+            List<BoardVO> boardVOList = boardService.findAllByUserVO(userVO);
+            model.addAttribute("boardVOList", boardVOList);
+        }
+
+        return "/myPageText";
     }
-    //마이페이지 답장 목록
-    @GetMapping("myPageAnswer")
-    public void getMyPageAnswerList(){
 
+    //마이페이지 댓글 목록
+    @GetMapping("myPageAnswer")
+    public String getMyPageAnswerList(HttpSession httpSession, Model model){
+            UserVO userVO = (UserVO) httpSession.getAttribute("userList");
+
+            
+        return "/myPageAnswer";
     }
 
     //마이페이지 매칭인

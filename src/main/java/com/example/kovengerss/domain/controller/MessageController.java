@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.MessageService;
 import com.example.kovengerss.domain.vo.MessageVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,10 @@ public class MessageController {
         messageVO.setUserNum(userNum);
 
         messageService.msgInsert(messageVO);
+
+        // 500 포인트 차감
+        messageService.usePoint(userNum);
+
         rttr.addFlashAttribute("userNum", messageVO.getUserNum());
         rttr.addFlashAttribute("messageNum", messageVO.getMessageNum());
         rttr.addAttribute("messageSendDate",messageVO.getMessageSendDate());

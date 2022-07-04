@@ -1,6 +1,7 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.IdealService;
+import com.example.kovengerss.domain.service.UserService;
 import com.example.kovengerss.domain.vo.IdealVO;
 import com.example.kovengerss.domain.vo.MessageVO;
 import com.example.kovengerss.domain.vo.UserVO;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class IdealContoller {
     private final IdealService idealService;
+    private final UserService userService;
 
     @GetMapping("marry")
     public void goLove(){
@@ -85,6 +87,11 @@ public class IdealContoller {
         log.info("----------------------------");
 
         model.addAttribute("idealVO", idealService.idealSelect(idealNum));
+        UserVO userVO = (UserVO) req.getSession().getAttribute("userList");
+        if (userVO != null) {
+            Integer point = userService.getUserPoint(userVO.getUserNum());
+            model.addAttribute("point", point);
+        }
 
     }
 
