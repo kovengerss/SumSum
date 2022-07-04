@@ -2,11 +2,10 @@ package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.dao.BoardDAO;
 import com.example.kovengerss.domain.service.BoardService;
+import com.example.kovengerss.domain.service.PointService;
+import com.example.kovengerss.domain.service.ReplyService;
 import com.example.kovengerss.domain.service.UserService;
-import com.example.kovengerss.domain.vo.BoardVO;
-import com.example.kovengerss.domain.vo.Criteria;
-import com.example.kovengerss.domain.vo.IdealVO;
-import com.example.kovengerss.domain.vo.UserVO;
+import com.example.kovengerss.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +50,9 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
     private final BoardService boardService;
+    private final ReplyService replyService;
+    private final PointService pointService;
+
     // 공통적으로 사용하는 키는 static 으로 선언해준다.
     private static final String USER_SESSION_KEY = "userId";
     //회원가입
@@ -153,15 +156,14 @@ public class UserController {
     @GetMapping("myPageAnswer")
     public String getMyPageAnswerList(HttpSession httpSession, Model model){
             UserVO userVO = (UserVO) httpSession.getAttribute("userList");
-
+        if (userVO != null) {
+            Integer point = userService.getUserPoint(userVO.getUserNum());
+            model.addAttribute("point", point);
+            List<ReplyVO> replyVOList = replyService.findReplyByUserVO(userVO);
+            model.addAttribute("replyVOList", replyVOList);
+        }
             
         return "/myPageAnswer";
-    }
-
-    //마이페이지 매칭인
-    @GetMapping("myPageMatching")
-    public void getMyPageMatching(){
-
     }
 
     //마이페이지 포인트
@@ -169,8 +171,16 @@ public class UserController {
     public String getPointSelect(Model model, HttpSession session){
         UserVO userVO = (UserVO) session.getAttribute("userList");
         Integer point = userService.getUserPoint(userVO.getUserNum());
+
+        // 충전 내역 가져오기 where POINT_WAY = 'SAVE'
+        List<Point> savePointList = pointService.findAllByUserNumAndSave(userVO.getUserNum());
+        // 충전 내역 가져오기 where POINT_WAY = 'USE'
+        List<Point> usePointList = pointService.findAllByUserNumAndUse(userVO.getUserNum());
+
         model.addAttribute("point", point);
         model.addAttribute("userVO", userVO);
+        model.addAttribute("savePointList", savePointList);
+        model.addAttribute("usePointList", usePointList);
         return "myPagePoint";
     }
 

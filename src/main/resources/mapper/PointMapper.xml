@@ -7,4 +7,27 @@
         SET USER_POINT = USER_POINT  + #{point}
             WHERE USER_NUM = #{userNum}
     </update>
+
+    <insert id="insertPointHistory">
+    INSERT INTO TBL_POINT
+    (POINT_NUM,
+    POINT_PRICE,
+    POINT_WAY,
+    POINT_USE,
+    POINT_REMAIN,
+    USER_NUM)
+    VALUES(SEQ_POINT.NEXTVAL, #{pointPrice}, #{pointWay}, #{pointUse}, #{pointRemain}, #{userNum})
+    </insert>
+
+    <select id="findAllByUserNumAndSave" resultType="pointVO">
+        SELECT *
+        FROM TBL_POINT
+        WHERE USER_NUM = #{userNum} and POINT_WAY = 'SAVE'
+    </select>
+
+    <select id="findAllByUserNumAndUse" resultType="pointVO">
+        SELECT *
+        FROM TBL_POINT
+        WHERE USER_NUM = #{userNum} and POINT_WAY = 'USE'
+    </select>
 </mapper>

@@ -6,6 +6,9 @@ import com.example.kovengerss.mapper.PointMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.awt.*;
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class PointDAO {
@@ -29,5 +32,17 @@ public class PointDAO {
     public boolean updateUserPoint(Integer userNum, int point) {
 
         return pointMapper.updateUserPoint(userNum, point) == 1;
+    }
+
+    public void insertPointHistory(int pointPrice, String pointWay, int pointUse, int pointRemain, Integer userNum, int point) {
+        pointMapper.insertPointHistory(pointPrice, pointWay, pointUse, pointRemain, userNum, point);
+    }
+
+    public List<Point> findAllByUserNumAndSave(Integer userNum) {
+        return pointMapper.findAllByUserNumAndSave(userNum);
+    }
+
+    public List<Point> findAllByUserNumAndUse(Integer userNum) {
+        return pointMapper.findAllByUserNumAndUse(userNum);
     }
 }

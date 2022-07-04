@@ -80,6 +80,11 @@
         FROM TBL_USER
         WHERE USER_NUM = #{userNum}
     </select>
+    <select id="findUserByUserNum" resultType="userVO">
+        SELECT *
+        FROM TBL_USER
+        WHERE USER_NUM = #{userNum}
+    </select>
 
 
 
