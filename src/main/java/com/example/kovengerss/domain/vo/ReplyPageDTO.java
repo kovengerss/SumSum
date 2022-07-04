@@ -13,6 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReplyPageDTO {
-    private List<ReplyVO> list;
+    private List<ReplyDTO> list;
     private int total;
 }

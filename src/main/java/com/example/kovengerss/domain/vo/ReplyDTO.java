@@ -1,0 +1,20 @@
+package com.example.kovengerss.domain.vo;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+@Data
+@NoArgsConstructor
+public class ReplyDTO {
+    private Integer replyNum;
+    private String replyContent;
+    private String replyRegisterDate;
+    private String replyUpdateDate;
+    private String userName;
+    private Integer userNum;
+    private Integer boardNum;
+}

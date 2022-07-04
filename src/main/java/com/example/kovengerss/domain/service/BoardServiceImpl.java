@@ -46,6 +46,9 @@ public class BoardServiceImpl implements BoardService{
     public List<BoardVO> getListAll(BoardVO boardVO){return boardDAO.getListAll(boardVO);}
 
     @Override
+    public Integer replyCount(Integer boardNum){return boardDAO.replyCount(boardNum);}
+    
+    @Override
     public List<BoardVO> findAllByUserVO(UserVO userVO) {
         return boardDAO.findAllByUserVO(userVO);
     }

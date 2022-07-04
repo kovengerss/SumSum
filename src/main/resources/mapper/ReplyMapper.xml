@@ -21,15 +21,15 @@
         WHERE REPLY_NUM = #{replyNum}
     </update>
 
-    <select id="getList" resultType="replyVO">
+    <select id="getList" resultType="replyDTO">
         <![CDATA[
-        SELECT REPLY_NUM, BOARD_NUM, REPLY_CONTENT, USER_NUM, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
+        SELECT REPLY_NUM, BOARD_NUM, REPLY_CONTENT, USER_NAME,R.USER_NUM,REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
         FROM
         (
             SELECT /*+ INDEX_DESC(TBL_REPLY PK_REPLY) */
             ROWNUM RN, REPLY_NUM, BOARD_NUM, REPLY_CONTENT, USER_NUM, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
             FROM TBL_REPLY WHERE BOARD_NUM = #{boardNum} AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
-        )
+        ) R JOIN TBL_USER U ON R.USER_NUM = U.USER_NUM
         WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
         ]]>
     </select>
@@ -53,6 +53,14 @@
         GROUP BY USER_NAME
     </select>
 
+
+    <update id="getReplyCount">
+        UPDATE TBL_BOARD B
+        SET REPLY_COUNT =(SELECT COUNT(REPLY_NUM) FROM TBL_REPLY R WHERE R.BOARD_NUM =#{boardNum})
+        WHERE B.BOARD_NUM =#{boardNum}
+    </update>
+
+
     <!--자신이 쓴 댓 글 목록 전부 가져오기-->
     <select id="findReplyByUserVO" parameterType="userVO" resultType="replyVO">
                 SELECT /*+ INDEX_DESC(TBL_BOARD PK_BNO) */
@@ -60,4 +68,5 @@
                 FROM TBL_REPLY
                 WHERE USER_NUM = #{userNum}
     </select>
+
 </mapper>

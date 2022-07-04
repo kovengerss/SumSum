@@ -1,10 +1,7 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.ReplyService;
-import com.example.kovengerss.domain.vo.Criteria;
-import com.example.kovengerss.domain.vo.ReplyPageDTO;
-import com.example.kovengerss.domain.vo.ReplyVO;
-import com.example.kovengerss.domain.vo.UserVO;
+import com.example.kovengerss.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -82,6 +79,12 @@ public class ReplyController {
         return replyService.getUserName(replyVO).getUserName();
     }
 
+    @PostMapping("/replyCount")
+    public String getReplyCount(@RequestBody ReplyVO replyVO){
+        Integer boardNum = replyVO.getBoardNum();
+        replyService.getReplyCount(boardNum);
+        return "댓글 갯수 넣기 성공";
+    }
 
 
 }

@@ -15,4 +15,5 @@ public class BoardVO {/*게시판*/
     private Integer userNum;
     private Integer warningCount;
     private Integer goodCount;
+    private Integer replyCount;
 }

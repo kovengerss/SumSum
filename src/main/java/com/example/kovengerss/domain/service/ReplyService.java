@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.dao.ReplyDAO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.ReplyDTO;
 import com.example.kovengerss.domain.vo.ReplyVO;
 import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class ReplyService {
         replyDAO.modify(replyVO);
     }
     //    댓글 목록
-    public List<ReplyVO> getList(Criteria criteria, Integer boardNum){
+    public List<ReplyDTO> getList(Criteria criteria, Integer boardNum){
         return replyDAO.getList(criteria, boardNum);
     }
     //    댓글 개수
@@ -43,8 +44,13 @@ public class ReplyService {
     public UserVO getUserName(ReplyVO replyVO) {return replyDAO.getUserName(replyVO);}
     // 유저 번호 가져오기
     public Integer getUserNum(Integer replyNum){return replyDAO.getUserNum(replyNum);}
+
+    // 댓글 개수
+    public Integer getReplyCount(Integer boardNum){return replyDAO.getReplyCount(boardNum);}
+
     // 유저 작성한 댓글 뿌려주기
     public List<ReplyVO> findReplyByUserVO(UserVO userVO) {
         return replyDAO.findReplyByUserVO(userVO);
     }
+
 }
