@@ -27,6 +27,7 @@ public interface BoardService {
     public BoardVO boardGetTitle(BoardVO boardVO);
     //게시글 전부가져오기
     public List<BoardVO> getListAll(BoardVO boardVO);
-
+    // 마이페이지에 작성한 글 불러오기
     public List<BoardVO> findAllByUserVO(UserVO userVO);
+
 }

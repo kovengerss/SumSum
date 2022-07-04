@@ -53,4 +53,11 @@
         GROUP BY USER_NAME
     </select>
 
+    <!--자신이 쓴 댓 글 목록 전부 가져오기-->
+    <select id="findReplyByUserVO" parameterType="userVO" resultType="replyVO">
+                SELECT /*+ INDEX_DESC(TBL_BOARD PK_BNO) */
+                REPLY_NUM, REPLY_CONTENT, BOARD_NUM, USER_NUM, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
+                FROM TBL_REPLY
+                WHERE USER_NUM = #{userNum}
+    </select>
 </mapper>

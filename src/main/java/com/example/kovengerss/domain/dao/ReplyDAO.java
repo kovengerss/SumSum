@@ -47,4 +47,8 @@ public class ReplyDAO {
     public Integer getUserNum(Integer replyNum){
         return replyMapper.getUserNum(replyNum);
     }
+    //유저 작성한 댓글 뿌려주기
+    public List<ReplyVO> findReplyByUserVO(UserVO userVO) {
+        return replyMapper.findReplyByUserVO(userVO);
+    }
 }

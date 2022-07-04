@@ -193,12 +193,12 @@ a {
                                         <div class="board-list">금액</div>
                                         <div class="board-list">잔여 포인트</div>
                                     </div>
-                                    <div class="price-content">
-                                        <div class="board-content">2022.06.17</div>
+                                    <div class="price-content" th:each="savePoint : ${savePointList}">
+                                        <div class="board-content" th:text="${savePoint.getPointDate()}">2022.06.17</div>
                                         <div class="board-content">신용카드</div>
                                         <div class="board-content">결제 성공</div>
-                                        <div class="board-content">10000원</div>
-                                        <div class="board-content">10000P</div>
+                                        <div class="board-content" th:text="${savePoint.getPointPrice() + '원'}">10000원</div>
+                                        <div class="board-content" th:text="${savePoint.getPointRemain() + 'P'}">10000P</div>
                                     </div>
                                 </div>
                             </div>
@@ -210,11 +210,11 @@ a {
                                         <div class="board-list">사용 포인트</div>
                                         <div class="board-list">잔여 포인트</div>
                                     </div>
-                                    <div class="price-content">
-                                        <div class="board-content">2022.06.17</div>
+                                    <div class="price-content" th:each="usePoint : ${usePointList}">
+                                        <div class="board-content" th:text="${usePoint.getPointDate()}">2022.06.17</div>
                                         <div class="board-content">추가 매칭</div>
-                                        <div class="board-content">100P</div>
-                                        <div class="board-content" style="margin-left: 55px;">9900P</div>
+                                        <div class="board-content" th:text="${usePoint.getPointPrice() + '원'}">100P</div>
+                                        <div class="board-content" th:text="${usePoint.getPointRemain() + 'P'}" style="margin-left: 55px;">9900P</div>
                                     </div>
                                 </div>
                             </div>

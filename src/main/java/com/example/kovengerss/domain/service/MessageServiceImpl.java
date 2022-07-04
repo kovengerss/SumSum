@@ -1,7 +1,10 @@
 package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.dao.MessageDAO;
+import com.example.kovengerss.domain.dao.PointDAO;
+import com.example.kovengerss.domain.dao.UserDAO;
 import com.example.kovengerss.domain.vo.MessageVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -14,6 +17,8 @@ import java.util.List;
 @Qualifier("message") @Primary
 public class MessageServiceImpl implements MessageService{
     private final MessageDAO messageDAO;
+    private final UserDAO userDAO;
+    private final PointDAO pointDAO;
 
 
     @Override
@@ -64,5 +69,20 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public void usePoint(Integer userNum) {
         messageDAO.usePoint(userNum);
+    }
+
+    @Override
+    public void insertPointHistory(Integer userNum) {
+        UserVO userVO = userDAO.findUserByUserNum(userNum);
+
+        int point = 500;
+        int pointPrice = 500;
+        // pointWay = USE이면 차감
+        String pointWay = "USE";
+        int pointUse = 0;
+        int pointRemain = userVO.getUserPoint();
+
+        pointDAO.insertPointHistory(pointPrice, pointWay, pointUse, pointRemain, userNum, point);
+
     }
 }

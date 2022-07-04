@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,7 +77,7 @@ a {
                         <a class="item" href="">
                             어필하기
                         </a>
-                        <a class="item" href=./board/boardlist.html">
+                        <a class="item" href="./board/boardlist.html">
                             고민상담
                         </a>
                         <a class="item" href="">
@@ -91,26 +91,29 @@ a {
                     </div>
                 </div>
                 <h1 class="main-logo">
-                    <a href="main.html">
+                    <a href="/main">
                         <img src="/img/sumsum_logo.png">
                     </a>
                 </h1>
                 <div class="right-header">
                     <!-- 포인트 점수 받아오기 -->
-                    <a class="point" href="myPagePoint.html">
-                        잔여포인트 0점 
+                    <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}">
+                        잔여포인트 0점
                     </a>
                     <!-- 채팅 받아오기 -->
-                    <a class="chatting" href="letter.html">
+                    <a class="chatting" href="/list">
                         쪽지
                     </a>
                     <!-- 로그인 -->
-                    <a class="login" href="login.html">
+                    <a th:if="${session.userList == null}" class="login" href="/login">
                         로그인
                     </a>
                     <!-- 회원가입 -->
-                    <a class="signup" href="sign.html">
+                    <a th:if="${session.userList == null}" class="signup" href="/sign">
                         회원가입
+                    </a>
+                    <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+                        로그아웃
                     </a>
                 </div>
             </div>
@@ -128,10 +131,7 @@ a {
                             <a class="a-tabList" href="myPage.html">내 정보</a>
                         </li>
                         <li class="profile-tabList">
-                            <a class="a-tabList" href="myPageMatching.html">나의 매칭인</a>
-                        </li>
-                        <li class="profile-tabList">
-                            <a class="a-tabList" href="myPageText.html">글 목록</a>
+                            <a class="a-tabList" href="/myPageText">글 목록</a>
                         </li>
                         <li class="profile-tabList">
                             <a style="font-weight: 700; font-size: 20px;" class="a-tabList" href="/myPageAnswer">댓글 목록</a>
@@ -170,34 +170,26 @@ a {
                 </aside>
                 <main class="profile-main">
                     <div class="profile-question">
-                        <div>
-                            <article class="a-card-question">
-                                <aside class="a-card-aside">
-                                    <button class="sideBadge">
-                                        <div>?</div>
-                                        <p>0</p>
-                                    </button>
-                                </aside>
+                        <div th:if="${replyVOList != null}">
+                            <article class="a-card-question" th:each = "replyVO : ${replyVOList}" style="width: 800px;height: 120px;">
                                 <div class="a-card-main">
                                     <header class="a-card-header">
                                         <!-- 내 글로 이동 -->
-                                        <a href="board/board.html">
-                                            <h3 class="a-card-headerTitle">
-                                                <img class="qImage" src="/img/Q.png">정보 없음
-                                            </h3>
-                                        </a>
+                                        <h3 class="a-card-headerTitle">
+                                            <img class="qImage" src="/img/Q.png" th:text="${replyVO.getReplyContent()}">
+                                        </h3>
                                         <div class="tw-flex">
                                             <div class="tw-flex-item">
                                                 <div class="write-userName">
-                                                    정보 없음
+
                                                 </div>
-                                                <span class="a-card-time">2022.06.15</span>
+                                                <span class="a-card-time" th:text="${replyVO.getReplyRegisterDate()}">2022.06.15</span>
                                             </div>
                                         </div>
                                     </header>
                                     <div class="a-card-content">
                                         <div>
-                                            <p>정보 없음</p>
+<!--                                            <p th:utext="${replyVO.getBoardContent()}">정보 없음</p>-->
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +207,7 @@ a {
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-logo">
-            <a href="main.html">
+            <a href="/main">
                 <img src="/img/sumsum_logo.png">
             </a>
         </div>
