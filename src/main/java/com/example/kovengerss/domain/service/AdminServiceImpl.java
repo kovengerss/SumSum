@@ -94,5 +94,5 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public int getPoint(int remainPoint, int userNum){return adminDAO.getPoint(remainPoint, userNum);}
+    public int getPoint(int userNum){return adminDAO.getPoint(userNum);}
 }

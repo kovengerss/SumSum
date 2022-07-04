@@ -45,5 +45,5 @@ public interface AdminMapper {
     //포인트 조회
     public List<PointVO> getPointList(@Param("PointVO")PointVO pointVO, @Param("criteria")Criteria criteria);
     //포인트 충전
-    public int remainPoint(int pointRemain, int userNum);
+    public int remainPoint(int userNum);
 }
