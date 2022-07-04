@@ -4,6 +4,7 @@ package com.example.kovengerss.mapper;
 import com.example.kovengerss.domain.service.BoardService;
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,4 +34,6 @@ public interface BoardMapper {
     public List<BoardVO> getListAll(BoardVO boardVO);
 
     public Integer replyCount(Integer boardNum);
+    
+    List<BoardVO> findAllByUserVO(UserVO userVO);
 }

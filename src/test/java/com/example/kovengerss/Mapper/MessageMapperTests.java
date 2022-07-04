@@ -1,21 +1,16 @@
 package com.example.kovengerss.Mapper;
 
 
-import com.example.kovengerss.domain.vo.BoardVO;
-import com.example.kovengerss.domain.vo.MessageVO;
 import com.example.kovengerss.mapper.MessageMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 @Slf4j
 public class MessageMapperTests {
     @Autowired
     private MessageMapper messageMapper;
 
-    @Test
+/*    @Test
     public void getListTest(){
         messageMapper.getList(22).stream().map(MessageVO::toString).forEach(log::info);
     }

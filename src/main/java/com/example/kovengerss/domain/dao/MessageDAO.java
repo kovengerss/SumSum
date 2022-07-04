@@ -30,4 +30,8 @@ public class MessageDAO {
     public String msgSelectTitle(int messageNum){return messageMapper.selectTitle(messageNum);}
     //메세지(쪽지) 내용 가져오기
     public String msgSelectContent(int messageNum){return messageMapper.selectContent(messageNum);}
+
+    public void usePoint(Integer userNum) {
+        messageMapper.usePoint(userNum);
+    }
 }

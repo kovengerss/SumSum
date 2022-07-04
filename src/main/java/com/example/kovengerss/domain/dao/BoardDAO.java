@@ -35,4 +35,7 @@ public class BoardDAO {
     public List<BoardVO> getListAll(BoardVO boardVO){return boardMapper.getListAll(boardVO);}
 
     public Integer replyCount(Integer boardNum){return boardMapper.replyCount(boardNum);}
+    public List<BoardVO> findAllByUserVO(UserVO userVO) {
+        return boardMapper.findAllByUserVO(userVO);
+    }
 }

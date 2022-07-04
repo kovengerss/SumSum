@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.UserVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,4 +29,5 @@ public interface BoardService {
     public List<BoardVO> getListAll(BoardVO boardVO);
 
     public Integer replyCount(Integer boardNum);
+    public List<BoardVO> findAllByUserVO(UserVO userVO);
 }

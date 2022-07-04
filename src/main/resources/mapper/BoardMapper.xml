@@ -66,5 +66,12 @@
         FROM TBL_BOARD
         WHERE BOARD_NUM =#{boardNum}
     </select>
+    <!--자신이 쓴 글 목록 전부 가져오기-->
+    <select id="findAllByUserVO" parameterType="userVO" resultType="boardVO">
+                SELECT /*+ INDEX_DESC(TBL_BOARD PK_BNO) */
+                BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, USER_NUM, WARNING_COUNT,GOOD_COUNT,BOARD_FIELD, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+                FROM TBL_BOARD
+                WHERE USER_NUM = #{userNum}
+    </select>
 
 </mapper>

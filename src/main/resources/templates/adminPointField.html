@@ -223,7 +223,12 @@ $(".delete-btn").on("click", function(e){
         })
     }
 });
-
+let adminId = [[${session.adminId}]];
+console.log(adminId);
+if(adminId ==null){
+    alert("관리자 로그인이 필요합니다.")
+    location.href = "/adminLogin"
+}
 </script>
 <!--<script>
     let id= sessionStorage.getItem("adminId");

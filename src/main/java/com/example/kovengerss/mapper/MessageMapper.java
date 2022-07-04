@@ -25,4 +25,6 @@ public interface MessageMapper {
     public String selectTitle(int messageNum);
     //메세지(쪽지) 내용 가져오기
     public String selectContent(int messageNum);
+
+    void usePoint(Integer userNum);
 }
