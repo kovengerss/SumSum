@@ -101,7 +101,7 @@
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
-                            <form name="pointForm" action="/point" method="post">
+                            <form name="pointForm" action="/" method="post">
                             <th:block th:each="point:${pointList}">
                                 <div class="item">
                                     <tr class="tBody" th:object="${point}">
@@ -113,15 +113,7 @@
                                         <div class="warningCount"><td th:text="*{pointDate}"></td></div>
                                         <div class="boardRegisterDate" id="userNum"><td th:text="*{userNum}"></td></div>
                                         <div class="dele" style="display: -webkit-inline-box;">
-                                                <select name="pointRemain" id="pointRemain" class="update-btn">
-                                                    <option value="">포인트</option>
-                                                    <option value="3000">3000P</option>
-                                                    <option value="5000">5000P</option>
-                                                    <option value="10000">10000P</option>
-                                                    <option value="30000">30000P</option>
-                                                    <option value="50000">50000P</option>
-                                                </select>
-                                            <button type="submit" class="delete-btn">충 전</button>
+                                            <button type="submit" class="delete-btn" style="margin-left: 60px;">회 수</button>
                                         </div>
                                     </tr>
                                 </div>
@@ -198,31 +190,14 @@ $("a.changePage").on("click", function(e){
 });
 
 $(".delete-btn").on('click', function(e) {
-    if (confirm("충전하시겠습니까 ?")) {
-        alert("충전완료");
+    if (confirm("정말 회수하시겠습니까 ?")) {
+        alert('삭제 완료');
+    }else {
+        return false;
     }
 });
 
-// let $pointForm = $(pointForm);
-let userNum = [[${userNum}]];
-let pointRemain = $pointForm.find("select[value='pointRemain']").val();
-console.log(pointRemain);
-console.log(userNum);
-$(".delete-btn").on("click", function(e){
-    if (confirm(pointRemain + "포인트를 충전하시겠습니까?")){
-        ajax({
-            url : '/point',
-            method: 'post',
-            data : {userNum : userNum ,
-                pointRemain : pointRemain
-            },
-            success : function (data) {
-                alert("충전 완료");
-            }
 
-        })
-    }
-});
 let adminId = [[${session.adminId}]];
 console.log(adminId);
 if(adminId ==null){

@@ -60,13 +60,14 @@ a {
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="sidebar-body">
-                        <div class="profile">
+                        <div class="" th:object="${user}">
                             <a href="/login">
-                                <img style="width: 70px; height: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
+                                <img style="width: 70px; height: 70px; margin-left: -94px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3MAdEhs1pDTSXdLl7RZn9t_WwnWNwsnt5ZA&usqp=CAU">
                             </a>
-                            <a class="user-info" href="/login">
-                                로그인하기 >
+                            <a th:if="${session.userName ==null}" class="user-info" href="/login">
+                                로그인하기
                             </a>
+                            <a th:if="${session.userName}" th:text="${session.userName} + '님 어서오세요.'" class="user-info" href="/getMyIdeal"></a>
                         </div>
                         <div class="main-link">
                             <a href="/myPagePoint">

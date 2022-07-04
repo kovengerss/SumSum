@@ -44,8 +44,8 @@ public class AdminController {
 //        if(httpSession.getAttribute(adminVO.getAdminId()).equals(null)){
 //            return "/adminLogin";
 //        }
-        model.addAttribute("boardList", adminService.getList(boardVO,criteria));
-        model.addAttribute("pageDTO", new PageDTO(criteria, adminService.boardGetTotal(boardVO)));
+        model.addAttribute("boardList", adminService.getList(criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, adminService.boardGetTotal(criteria)));
         log.info("---------------완료-----------------");
         return "/adminpage";
     }
@@ -181,15 +181,14 @@ public class AdminController {
         return "redirect:/adminpage";
     }
 
-    @PostMapping("point")
-    @ResponseBody
-    public String point(PointVO pointVO, int pointRemain, int userNum, Model model){
-        log.info("--------들어옴----------");
-        log.info(String.valueOf(userNum));
-        int remainPoint = pointRemain+userService.getUserPoint(userNum);
-        model.addAttribute(adminService.getPoint(remainPoint, userNum));
-        return "redirect:/adminPointField";
-    }
+//    @PostMapping("point")
+//    @ResponseBody
+//    public String point(int userNum){
+//        log.info("--------들어옴----------");
+//        PointVO pointVO = new PointVO();
+//        pointVO.getPointRemain();
+//        return "redirect:/adminPointField";
+//    }
 
     @GetMapping("logout")
     public String logout(HttpSession httpSession){

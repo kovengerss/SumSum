@@ -29,14 +29,14 @@ public class AdminDAO {
     //유저 수
     public int getTotalUser(UserVO userVO){return adminMapper.getTotalUser(userVO);}
     //게시글 목록
-    public List<BoardVO> getList(BoardVO boardVO, Criteria criteria){return adminMapper.getList(boardVO, criteria);}
+    public List<BoardVO> getList(Criteria criteria){return adminMapper.getList(criteria);}
     public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3){return adminMapper.getFieldAppil(boardVO, criteria3);}
     public List<BoardVO> getFieldBoard(BoardVO boardVO, Criteria2 criteria2){return adminMapper.getFieldBoard(boardVO, criteria2);}
     public List<BoardVO> getFieldReview(BoardVO boardVO, Criteria1 criteria1){return adminMapper.getFieldReview(boardVO, criteria1);}
 
     public List<PointVO> getPointList(PointVO pointVO, Criteria criteria){return adminMapper.getPointList(pointVO, criteria);}
     //게시글 전체 개수
-    public int boardGetTotal(BoardVO boardVO){return adminMapper.getTotal(boardVO);}
+    public int boardGetTotal(Criteria criteria){return adminMapper.getTotal(criteria);}
 
     public int boardGetTotalField(BoardVO boardVO){return adminMapper.getTotalField(boardVO);}
 

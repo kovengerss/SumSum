@@ -333,10 +333,13 @@ a {
     box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
 }
 
-.search-btn{  /* 검색 버튼 */
+.search-btn {
     position: absolute;
     outline: none;
+    text-align: -webkit-center;
+    line-height: 4;
     font-weight: bolder;
+    background: #ff6347;
     width: 160px;
     height: 63px;
     left: 1713px;
