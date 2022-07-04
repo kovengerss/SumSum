@@ -41,6 +41,9 @@ public class MessageController {
         // 500 포인트 차감
         messageService.usePoint(userNum);
 
+        // 포인트 사용내역 저장
+        messageService.insertPointHistory(userNum);
+
         rttr.addFlashAttribute("userNum", messageVO.getUserNum());
         rttr.addFlashAttribute("messageNum", messageVO.getMessageNum());
         rttr.addAttribute("messageSendDate",messageVO.getMessageSendDate());

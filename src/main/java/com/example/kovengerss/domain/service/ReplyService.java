@@ -44,6 +44,13 @@ public class ReplyService {
     public UserVO getUserName(ReplyVO replyVO) {return replyDAO.getUserName(replyVO);}
     // 유저 번호 가져오기
     public Integer getUserNum(Integer replyNum){return replyDAO.getUserNum(replyNum);}
+
     // 댓글 개수
     public Integer getReplyCount(Integer boardNum){return replyDAO.getReplyCount(boardNum);}
+
+    // 유저 작성한 댓글 뿌려주기
+    public List<ReplyVO> findReplyByUserVO(UserVO userVO) {
+        return replyDAO.findReplyByUserVO(userVO);
+    }
+
 }

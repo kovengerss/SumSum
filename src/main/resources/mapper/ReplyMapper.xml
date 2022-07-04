@@ -53,10 +53,20 @@
         GROUP BY USER_NAME
     </select>
 
+
     <update id="getReplyCount">
         UPDATE TBL_BOARD B
         SET REPLY_COUNT =(SELECT COUNT(REPLY_NUM) FROM TBL_REPLY R WHERE R.BOARD_NUM =#{boardNum})
         WHERE B.BOARD_NUM =#{boardNum}
     </update>
+
+
+    <!--자신이 쓴 댓 글 목록 전부 가져오기-->
+    <select id="findReplyByUserVO" parameterType="userVO" resultType="replyVO">
+                SELECT /*+ INDEX_DESC(TBL_BOARD PK_BNO) */
+                REPLY_NUM, REPLY_CONTENT, BOARD_NUM, USER_NUM, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
+                FROM TBL_REPLY
+                WHERE USER_NUM = #{userNum}
+    </select>
 
 </mapper>

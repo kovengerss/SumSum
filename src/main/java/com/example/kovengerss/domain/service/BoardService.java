@@ -28,6 +28,11 @@ public interface BoardService {
     //게시글 전부가져오기
     public List<BoardVO> getListAll(BoardVO boardVO);
 
+
     public Integer replyCount(Integer boardNum);
+
+    // 마이페이지에 작성한 글 불러오기
+
     public List<BoardVO> findAllByUserVO(UserVO userVO);
+
 }

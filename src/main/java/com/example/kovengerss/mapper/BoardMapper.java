@@ -30,10 +30,14 @@ public interface BoardMapper {
     public String getField(BoardVO boardVO);
     //제목 가져오기 (DESC)
     public BoardVO getTitle(BoardVO boardVO);
-//    전체게시글 가져오기
+    //전체게시글 가져오기
     public List<BoardVO> getListAll(BoardVO boardVO);
+
 
     public Integer replyCount(Integer boardNum);
     
+
+    // 마이페이지에 작성한 글 불러오기
+
     List<BoardVO> findAllByUserVO(UserVO userVO);
 }

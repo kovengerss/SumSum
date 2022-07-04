@@ -3,6 +3,9 @@ package com.example.kovengerss.mapper;
 import com.example.kovengerss.domain.vo.PointVO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.awt.*;
+import java.util.List;
+
 @Mapper
 public interface PointMapper {
     //포인트 결제
@@ -21,4 +24,10 @@ public interface PointMapper {
     public String getWay(PointVO pointVO);
 
     int updateUserPoint(Integer userNum, int point);
+
+    void insertPointHistory(int pointPrice, String pointWay, int pointUse, int pointRemain, Integer userNum, int point);
+
+    List<Point> findAllByUserNumAndSave(Integer userNum);
+
+    List<Point> findAllByUserNumAndUse(Integer userNum);
 }

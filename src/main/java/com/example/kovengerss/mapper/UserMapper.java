@@ -44,4 +44,6 @@ public interface UserMapper {
     UserVO findUserByEmail(String userEmail);
 
     Integer findUserPoint(Integer userNum);
+
+    UserVO findUserByUserNum(Integer userNum);
 }

@@ -24,6 +24,11 @@ public interface ReplyMapper {
     public UserVO getUserName(ReplyVO replyVO);
     // 유저 번호 가져오기
     public Integer getUserNum(Integer replyNum);
+
     // 댓글갯수 채우기
     public Integer getReplyCount(Integer boardNum);
+
+    //유저 작성한 댓글 뿌려주기
+    List<ReplyVO> findReplyByUserVO(UserVO userVO);
+
 }

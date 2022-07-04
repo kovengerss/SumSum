@@ -71,4 +71,8 @@ public class UserDAO {
     public Integer findUserPoint(Integer userNum) {
         return userMapper.findUserPoint(userNum);
     }
+
+    public UserVO findUserByUserNum(Integer userNum) {
+        return userMapper.findUserByUserNum(userNum);
+    }
 }

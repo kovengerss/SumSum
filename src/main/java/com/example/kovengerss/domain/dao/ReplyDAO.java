@@ -49,6 +49,13 @@ public class ReplyDAO {
         return replyMapper.getUserNum(replyNum);
     }
 
+
     //댓글 갯수 채우기
     public Integer getReplyCount(Integer boardNum){return replyMapper.getReplyCount(boardNum);}
+
+    //유저 작성한 댓글 뿌려주기
+    public List<ReplyVO> findReplyByUserVO(UserVO userVO) {
+        return replyMapper.findReplyByUserVO(userVO);
+    }
+
 }

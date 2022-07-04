@@ -3,6 +3,8 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.vo.PointVO;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,4 +25,8 @@ public interface PointService {
     public void pointGetWay(PointVO pointVO);
 
     void pointSuccess(Map<String, Object> map);
+
+    List<Point> findAllByUserNumAndSave(Integer userNum);
+
+    List<Point> findAllByUserNumAndUse(Integer userNum);
 }

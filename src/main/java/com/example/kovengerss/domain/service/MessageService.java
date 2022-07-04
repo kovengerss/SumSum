@@ -28,4 +28,6 @@ public interface MessageService {
     public String msgSelectContent(int messageNum);
 
     void usePoint(Integer userNum);
+
+    void insertPointHistory(Integer userNum);
 }
