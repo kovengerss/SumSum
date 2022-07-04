@@ -194,7 +194,7 @@
     </select>
     <update id="remainPoint">
         UPDATE TBL_POINT
-        SET POINT_REMAIN = #{pointRemain}
+        SET POINT_REMAIN = 0
         WHERE USER_NUM =#{userNum}
     </update>
 </mapper>

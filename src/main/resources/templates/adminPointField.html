@@ -112,8 +112,8 @@
                                         <div style="width: 150px;" class="boardUpdateDate"><td th:text="*{pointRemain}"></td></div>
                                         <div class="warningCount"><td th:text="*{pointDate}"></td></div>
                                         <div class="boardRegisterDate" id="userNum"><td th:text="*{userNum}"></td></div>
-                                        <div class="dele" style="display: -webkit-inline-box;">
-                                            <button type="submit" class="delete-btn" style="margin-left: 60px;">회 수</button>
+                                        <div class="dele" style="width: 100px;margin-left: 66px; display: -webkit-inline-box;">
+                                            <a class="delete-btn" th:href="@{/point(userNum=*{userNum})}">회 수</a>
                                         </div>
                                     </tr>
                                 </div>
@@ -191,7 +191,7 @@ $("a.changePage").on("click", function(e){
 
 $(".delete-btn").on('click', function(e) {
     if (confirm("정말 회수하시겠습니까 ?")) {
-        alert('삭제 완료');
+        alert('회수 완료');
     }else {
         return false;
     }

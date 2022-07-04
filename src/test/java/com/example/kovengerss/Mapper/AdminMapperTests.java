@@ -111,9 +111,9 @@ public class AdminMapperTests {
         adminMapper.getPointList(pointVO ,new Criteria()).stream().map(PointVO::toString).forEach(log::info);
     }*/
 
-    @Test
-    public void test(){
-        PointVO pointVO =new PointVO();
-        adminMapper.remainPoint(50000, 54);
-    }
+//    @Test
+//    public void test(){
+//        PointVO pointVO =new PointVO();
+//        adminMapper.remainPoint(50000, 54);
+//    }
 }

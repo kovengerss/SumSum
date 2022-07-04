@@ -64,5 +64,5 @@ public class AdminDAO {
         return adminMapper.deleteUser(userNum) == 1;
     }
     //포인트 충전
-    public int getPoint(int remainPoint, int userNum){return adminMapper.remainPoint(remainPoint, userNum);}
+    public int getPoint(int userNum){return adminMapper.remainPoint(userNum);}
 }

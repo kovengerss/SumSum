@@ -43,5 +43,5 @@ public interface AdminService {
     //회원 탈퇴
     public boolean deleteUser(int userNum);
     //포인트 충전
-    public int getPoint(int remainPoint, int userNum);
+    public int getPoint(int userNum);
 }
