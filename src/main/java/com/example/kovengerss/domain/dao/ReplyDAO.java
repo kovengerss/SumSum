@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.dao;
 
 import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.ReplyVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import com.example.kovengerss.mapper.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -36,5 +37,14 @@ public class ReplyDAO {
     //    댓글 개수
     public int getTotal(Integer boardNum){
         return replyMapper.getTotal(boardNum);
+    }
+    // 댓글 작성한 유저의 이름
+    public UserVO getUserName(ReplyVO replyVO){
+        return replyMapper.getUserName(replyVO);
+    }
+
+    //유저번호 가져오기
+    public Integer getUserNum(Integer replyNum){
+        return replyMapper.getUserNum(replyNum);
     }
 }

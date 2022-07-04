@@ -4,6 +4,7 @@ import com.example.kovengerss.domain.service.ReplyService;
 import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.ReplyPageDTO;
 import com.example.kovengerss.domain.vo.ReplyVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -62,5 +63,25 @@ public class ReplyController {
         replyService.getTotal(boardNum);
         return replyService.getTotal(boardNum);
     }
+
+
+    @GetMapping("/num/{replyNum}")
+    public Integer userNum(@PathVariable("replyNum") Integer replyNum){
+        log.info("댓글 번호 : " +replyNum);
+        log.info("유저 번호 22222: " + replyService.getUserNum(replyNum));
+        return replyService.getUserNum(replyNum);
+    }
+
+    @GetMapping("/name/{replyNum}")
+    public String getUserName(@PathVariable("replyNum") Integer replyNum){
+        ReplyVO replyVO = new ReplyVO();
+        Integer userNum = replyService.getUserNum(replyNum);
+        replyVO.setUserNum(userNum);
+
+        log.info("이름 : " + replyService.getUserName(replyVO).getUserName());
+        return replyService.getUserName(replyVO).getUserName();
+    }
+
+
 
 }

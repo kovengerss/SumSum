@@ -5,9 +5,7 @@ import com.example.kovengerss.domain.vo.ReplyVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 @Slf4j
 public class ReplyDAOTests {
     @Autowired
@@ -50,5 +48,14 @@ public class ReplyDAOTests {
 //    public void getTotalTest(){
 //        log.info("COUNT : " + replyDAO.getTotal(6496));
 //    }
-
+//    @Test
+//    public void getUserName(){
+//        ReplyVO replyVO = new ReplyVO();
+//        replyVO.setUserNum(2);
+//        log.info("유저의 이름 가져온다 :: " + replyDAO.getUserName(replyVO));
+//    }
+//    @Test
+//    public void userNum(){
+//        log.info("유저 번호" + replyDAO.userNum(140));
+//    }
 }

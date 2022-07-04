@@ -244,21 +244,24 @@
         </h1>
         <div class="right-header">
             <!-- 포인트 점수 받아오기 -->
-            <a class="point" href="myPagePoint.html" style="color:black;text-decoration: none;">
+            <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}"style="color: black;text-decoration: none;">
                 잔여포인트 0점
             </a>
             <!-- 채팅 받아오기 -->
-            <a class="chatting" href="letter.html" style="color:black;text-decoration: none;">
+            <a class="chatting" href="/list"style="color: black;text-decoration: none;">
                 쪽지
             </a>
             <!-- 로그인 -->
-            <a class="login" href="login.html" style="color:black;text-decoration: none;">
-                로그아웃
+            <a th:if="${session.userList == null}" class="login" href="/login"style="color: black;text-decoration: none;">
+                로그인
             </a>
             <!-- 회원가입 -->
-           <!-- <a class="signup" href="sign.html" style="color:black;text-decoration: none;">
+            <a th:if="${session.userList == null}" class="signup" href="/sign"style="color: black;text-decoration: none;">
                 회원가입
-            </a>-->
+            </a>
+            <a th:if="${session.userList != null}" class="signup" href="/user/logout"style="color: black;text-decoration: none;">
+                로그아웃
+            </a>
         </div>
     </div>
 </div>
@@ -275,9 +278,9 @@
                 </span>
         </h1>
 
-        <div class="felx-container">
+        <div class="felx-container" style="margin-left: 24px;">
 
-                <th:block th:each="ideal,index:${idealList}" th:if="${index.index}<3">
+                <th:block th:each="ideal,index:${idealList}" th:if="${index.index}<5">
                     <form name="WriteForm" action="/register" method="post">
                     <div th:object="${ideal}" class="card" style="  width: 20rem;height: 756px;border: 3px solid rgba(0,0,0,.125); float: right;margin-right: 48px;" >
 
@@ -444,7 +447,7 @@
 
              </p> -->
             <button  type = "button"class="writeFormBoxBtn" >
-                글 쓰러가기
+                <a href="/board/boardWrite" style="color: white;text-decoration: none;">글 쓰러가기</a>
             </button>
         </div>
 

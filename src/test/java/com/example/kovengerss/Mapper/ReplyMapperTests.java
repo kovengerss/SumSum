@@ -2,15 +2,14 @@ package com.example.kovengerss.Mapper;
 
 import com.example.kovengerss.domain.vo.Criteria;
 import com.example.kovengerss.domain.vo.ReplyVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import com.example.kovengerss.mapper.ReplyMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.stream.IntStream;
 
-@SpringBootTest
 @Slf4j
 public class ReplyMapperTests {
     @Autowired
@@ -57,5 +56,19 @@ public class ReplyMapperTests {
 //    @Test
 //    public void getTotalTest(){
 //        log.info("COUNT : " + replyMapper.getTotal(6496));
+//    }
+//    @Test
+//    public void test(){
+//        ReplyVO replyVO = new ReplyVO();
+//
+//        replyVO.setUserNum(2);
+//
+//        log.info("나오는지 보려고 : " + replyMapper.getUserName(replyVO));
+//
+//    }
+
+//    @Test
+//    public void test(){
+//        log.info("유저의 번호: "  +replyMapper.userNum(143));
 //    }
 }

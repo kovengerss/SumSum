@@ -78,6 +78,7 @@
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminBoardField">고민 상담</a></button>
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminReviewField">후기 게시판</a></button>
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminPointField">회원 결제 내역</a></button>
+                <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminGetUser">유저 정보</a></button>
                 <button style="padding: 15px; background-color: darkgrey; font-weight: bolder; text-align: center; font-size: 19px;" type="button"><a href="/adminBlackList">B L A C K  -  L I S T</a></button>
             </div>
         </div>
@@ -94,37 +95,37 @@
                         <div class="cate">충전금액</div>
                         <div class="tit">충전방법</div>
                         <div class="writer">포인트 사용</div>
-                        <div class="date">포인트 잔액</div>
+                        <div style="width: 150px;" class="date">포인트 잔액</div>
                         <div class="view">충전 날짜</div>
                         <div class="regist_date">유저 번호</div>
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
-                            <form name="pointForm" action="/point" method="get">
-                                <th:block th:each="point:${pointList}">
-                                    <div class="item">
-                                        <tr class="tBody" th:object="${point}">
-                                            <div class="boardNum"><td th:text="*{pointNum}"></td></div>
-                                            <div class="boardField"><td th:text="*{pointPrice}"></td></div>
-                                            <div class="boardTitle"><td th:text="*{pointWay}" ></td></div>
-                                            <div class="userNum"><td th:text="*{pointUse}"></td></div>
-                                            <div class="boardUpdateDate"><td th:text="*{pointRemain}"></td></div>
-                                            <div class="warningCount"><td th:text="*{pointDate}"></td></div>
-                                            <div class="boardRegisterDate" ><td th:text="*{userNum}"></td></div>
-                                            <div class="dele" style="display: -webkit-inline-box;">
-                                                    <select name="pointRemain" id="pointRemain" class="update-btn">
-                                                        <option value="">포인트</option>
-                                                        <option value="3000">3000P</option>
-                                                        <option value="5000">5000P</option>
-                                                        <option value="10000">10000P</option>
-                                                        <option value="30000">30000P</option>
-                                                        <option value="50000">50000P</option>
-                                                    </select>
-                                                    <a th:href="@{/point(userNum=*{userNum},pointRemain=*{pointRemain})}" class="delete-btn">충 전</a>
-                                            </div>
-                                        </tr>
-                                    </div>
-                                </th:block>
+                            <form name="pointForm" action="/point" method="post">
+                            <th:block th:each="point:${pointList}">
+                                <div class="item">
+                                    <tr class="tBody" th:object="${point}">
+                                        <div class="boardNum"><td th:text="*{pointNum}"></td></div>
+                                        <div class="boardField"><td th:text="*{pointPrice}"></td></div>
+                                        <div class="boardTitle"><td th:text="*{pointWay}" ></td></div>
+                                        <div class="userNum"><td th:text="*{pointUse}"></td></div>
+                                        <div style="width: 150px;" class="boardUpdateDate"><td th:text="*{pointRemain}"></td></div>
+                                        <div class="warningCount"><td th:text="*{pointDate}"></td></div>
+                                        <div class="boardRegisterDate" id="userNum"><td th:text="*{userNum}"></td></div>
+                                        <div class="dele" style="display: -webkit-inline-box;">
+                                                <select name="pointRemain" id="pointRemain" class="update-btn">
+                                                    <option value="">포인트</option>
+                                                    <option value="3000">3000P</option>
+                                                    <option value="5000">5000P</option>
+                                                    <option value="10000">10000P</option>
+                                                    <option value="30000">30000P</option>
+                                                    <option value="50000">50000P</option>
+                                                </select>
+                                            <button type="submit" class="delete-btn">충 전</button>
+                                        </div>
+                                    </tr>
+                                </div>
+                            </th:block>
                             </form>
                         </div>
                     </div>
@@ -187,25 +188,47 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">;
-let boardNum = [[${boardNum}]];
 let $pageForm = $(pageForm);
 let params = [[${pageDTO.criteria.listLink}]];
-
+let $pointForm = $(pointForm);
 $("a.changePage").on("click", function(e){
     e.preventDefault();
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
 
-</script>
-<script>
+$(".delete-btn").on('click', function(e) {
+    if (confirm("충전하시겠습니까 ?")) {
+        alert("충전완료");
+    }
+});
 
+// let $pointForm = $(pointForm);
+let userNum = [[${userNum}]];
+let pointRemain = $pointForm.find("select[value='pointRemain']").val();
+console.log(pointRemain);
+console.log(userNum);
+$(".delete-btn").on("click", function(e){
+    if (confirm(pointRemain + "포인트를 충전하시겠습니까?")){
+        ajax({
+            url : '/point',
+            method: 'post',
+            data : {userNum : userNum ,
+                pointRemain : pointRemain
+            },
+            success : function (data) {
+                alert("충전 완료");
+            }
 
-    $(".delete-btn").on('click', function(e) {
-        if (confirm("충전하시겠습니까 ?")) {
-            alert('충전 완료');
-        }
-    });
+        })
+    }
+});
+let adminId = [[${session.adminId}]];
+console.log(adminId);
+if(adminId ==null){
+    alert("관리자 로그인이 필요합니다.")
+    location.href = "/adminLogin"
+}
 </script>
 <!--<script>
     let id= sessionStorage.getItem("adminId");

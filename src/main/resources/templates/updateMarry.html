@@ -16,12 +16,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <style>
+
     a {
         text-decoration: none;
         color:#333;
     }
     body{
-        background-color: rgba(147, 124, 202, 0.82);
+        background-color: lightyellow;
     }
 </style>
 <body>
@@ -90,25 +91,56 @@
         </div>
         <h1 class="main-logo">
             <a href="main.html">
-                <img src="../static/img/sumsum_logo.png">
+                <img src="/img/sumsum_logo.png">
             </a>
         </h1>
         <div class="right-header">
             <!-- 포인트 점수 받아오기 -->
-            <a class="point" href="myPagePoint.html">
+            <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}" style="color: black;text-decoration: none;">
                 잔여포인트 0점
             </a>
             <!-- 채팅 받아오기 -->
-            <a class="chatting" href="letter.html">
+            <a class="chatting" href="/list" style="color: black;text-decoration: none;">
                 쪽지
             </a>
             <!-- 로그인 -->
-            <a class="login" href="login.html">
+            <a th:if="${session.userList == null}" class="login" href="/login"style="color: black;text-decoration: none;">
                 로그인
             </a>
             <!-- 회원가입 -->
-            <a class="signup" href="sign.html">
+            <a th:if="${session.userList == null}" class="signup" href="/sign"style="color: black;text-decoration: none;">
                 회원가입
+            </a>
+            <a th:if="${session.userList != null}" class="signup" href="/user/logout"style="color: black;text-decoration: none;">
+                로그아웃
+            </a>
+        </div>
+    </div>
+</div>
+        <h1 class="main-logo">
+            <a href="main.html">
+                <img src="/img/sumsum_logo.png">
+            </a>
+        </h1>
+        <div class="right-header">
+            <!-- 포인트 점수 받아오기 -->
+            <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}" style="color: black;text-decoration: none;">
+                잔여포인트 0점
+            </a>
+            <!-- 채팅 받아오기 -->
+            <a class="chatting" href="/list" style="color: black;text-decoration: none;">
+                쪽지
+            </a>
+            <!-- 로그인 -->
+            <a th:if="${session.userList == null}" class="login" href="/login" style="color: black;text-decoration: none;">
+                로그인
+            </a>
+            <!-- 회원가입 -->
+            <a th:if="${session.userList == null}" class="signup" href="/sign" style="color: black;text-decoration: none;">
+                회원가입
+            </a>
+            <a th:if="${session.userList != null}" class="signup" href="/user/logout" style="color: black;text-decoration: none;">
+                로그아웃
             </a>
         </div>
     </div>
@@ -123,7 +155,7 @@
         <p>질문지 작성 후 매칭이 시작됩니다!</p>
     </div>
 
-    <form action="/modifyIdeal" id="marry_form" method="post" ><!--onsubmit="marry"-->
+    <form action="/modifyIdeal" id="marry_form" method="post"  style="position: relative;left: -81px;"><!--onsubmit="marry"-->
         <div class="choice_love1"th:object="${ideal}">
             <div class="choice_love">
                 <!-- 이름 -->
@@ -303,7 +335,11 @@
                     </div>
                 </div>
                 <!-- 작성완료 -->
-                <button  class="sumsignup_button" style="margin: 50px 0px 100px 23px;">수정완료</button>
+                <ul class="actions special">
+                    <li><input type="submit" class="button btn-hover color-10" value="등록" style="position: relative;top: -7px;left: 24px;"/></li>
+                    <!--  <button id="upload" class="btn-hover color-10">사진을 올리셨다면 여기를 눌러주세요</button>-->
+                </ul>
+              <!--  <button  class="sumsignup_button" style="margin: 50px 0px 100px 23px;">수정완료</button>-->
             </div>
         </div>
     </form>

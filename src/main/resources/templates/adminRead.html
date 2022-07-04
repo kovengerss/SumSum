@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/adminpage.css">
+    <link rel="stylesheet" href="/css/adminRead.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>썸썸</title>
 </head>
@@ -77,6 +77,7 @@
                     <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminBoardField">고민 상담</a></button>
                     <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminReviewField">후기 게시판</a></button>
                     <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminPointField">회원 결제 내역</a></button>
+                    <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminGetUser">유저 정보</a></button>
                     <button style="padding: 15px; background-color: darkgrey; font-weight: bolder; text-align: center; font-size: 19px;" type="button"><a href="/adminBlackList">B L A C K  -  L I S T</a></button>
                 </div>
             </div>
@@ -91,21 +92,38 @@
                             <form action="/delete" method="post">
                                 <div class="item">
                                     <tr class="tBody" th:object="${board}">
-                                        <div class="boardNum" id="boardNum"><td th:text="*{boardNum}"></td></div>
-                                        <div class="boardField"><td th:text="*{boardField}"></td></div>
-                                        <div class="board-content"><td th:text="*{boardContent}"></td></div>
-                                        <div class="boardTitle"><td th:text="*{boardTitle}"></td></div>
-                                        <div class="userNum"><td th:text="*{userNum}"></td></div>
-                                        <div class="boardUpdateDate"><td th:text="*{boardUpdateDate}"></td></div>
-                                        <div class="warningCount"><td th:text="*{warningCount}"></td></div>
-                                        <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
-                                        <div class="dele" style="display: -webkit-inline-box;">
-                                            <div style="width: 37px; margin-left: -36px; margin-right: 5px;">
-                                                <button class="update-btn" id="purge-btn">정 지</button>
-                                            </div>
-                                            <div style="width: 60px;">
-                                                <button type="submit" class="delete-btn" onclick="ajax()">삭제</button>
-                                            </div>
+                                        <div class="detail-view">상세글</div>
+                                        <div class="view1">
+                                            <div class="side-cate">번호</div>
+                                            <div style="align-self: center;" class="boardNum" id="boardNum"><td th:text="*{boardNum}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">카테고리</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardField}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">제목</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardTitle}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">글 내용</div>
+                                            <div style="align-self: center; text-align: left;" class="boardField"><td th:utext="*{boardContent}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">신고 수</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{warningCount}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">좋아요 수</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{goodCount}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">등록 날짜</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardRegisterDate}"></td></div>
+                                        </div>
+                                        <div class="view1">
+                                            <div class="side-cate">수정 날짜</div>
+                                            <div style="align-self: center;" class="boardField"><td th:text="*{boardUpdateDate}"></td></div>
                                         </div>
                                     </tr>
                                 </div>
@@ -173,6 +191,12 @@
                 alert("삭제 실패");
             }
         });
+    }
+    let adminId = [[${session.adminId}]];
+    console.log(adminId);
+    if(adminId ==null){
+        alert("관리자 로그인이 필요합니다.")
+        location.href = "/adminLogin"
     }
 </script>
 </html>

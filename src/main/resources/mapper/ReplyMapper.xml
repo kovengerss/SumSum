@@ -38,10 +38,19 @@
         SELECT COUNT(REPLY_NUM) FROM TBL_REPLY WHERE BOARD_NUM = #{boardNum}
     </select>
 
-    <select id="getUserName">
-        SELECT * FROM TBL_USER
-        LEFT JOIN TBL_REPLY
-        ON TBL_USER.USER_NUM = TBL_REPLY.USER_NUM;
+    <select id="getUserNum" resultType="_int">
+        SELECT USER_NUM
+        FROM TBL_REPLY
+        WHERE REPLY_NUM = #{replyNum}
+    </select>
+
+
+    <select id="getUserName" resultType="userVO">
+        SELECT USER_NAME FROM TBL_USER U
+        LEFT JOIN TBL_REPLY R
+        ON U.USER_NUM=#{userNum} AND R.USER_NUM = #{userNum}
+        WHERE U.USER_NUM = R.USER_NUM
+        GROUP BY USER_NAME
     </select>
 
 </mapper>

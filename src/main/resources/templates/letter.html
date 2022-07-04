@@ -209,7 +209,7 @@
         </div>
 
         <th:block th:each="message:${messageList}">
-            <div class="chat-wrap"th:object="${message}">
+            <div class="chat-wrap"th:object="${message}" style="margin: 32px 6px;">
                 <div style="width: 100%;">
                     <span name="userName" th:text="|수신자 : *{userName}|" style="position: relative;left: 3px;top: -4px;"></span>
                     <div class="chat-header">

@@ -78,6 +78,7 @@
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminBoardField">고민 상담</a></button>
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminReviewField">후기 게시판</a></button>
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminPointField">회원 결제 내역</a></button>
+                <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminGetUser">유저 정보</a></button>
                 <button style="padding: 15px; background-color: darkgrey; font-weight: bolder; text-align: center; font-size: 19px;" type="button"><a href="/adminBlackList">B L A C K  -  L I S T</a></button>
             </div>
         </div>
@@ -96,7 +97,6 @@
                         <div class="writer">회원 ID</div>
                         <div class="date">작성 날짜</div>
                         <div class="view">신고누적</div>
-                        <div class="regist_date">가입 날짜</div>
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
@@ -109,12 +109,11 @@
                                     <div class="userNum"><td th:text="*{userNum}"></td></div>
                                     <div class="boardUpdateDate"><td th:text="*{boardUpdateDate}"></td></div>
                                     <div class="warningCount"><td th:text="*{warningCount}"></td></div>
-                                    <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
                                     <div class="dele" style="display: -webkit-inline-box;">
                                         <div style="width: 46px; margin-left: -26px;">
                                             <a class="update-btn" th:href="@{/deleteUser(userNum=*{userNum})}">탈 퇴</a>
                                         </div>
-                                        <div style="width: 60px; margin-left: -15px;">
+                                        <div style="width: 60px; margin-left: -14px;">
                                             <a class="delete-btn" th:href="@{/deleteReview(boardNum=*{boardNum})}">삭 제</a>
                                         </div>
                                     </div>
@@ -182,24 +181,45 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">;
+let boardNum = [[${boardNum}]];
 let $pageForm = $(pageForm);
+let params = [[${pageDTO.criteria1.listLink}]];
+$("a#goRead").on("click", function(e){
+    e.preventDefault();
+    location.href = "/adminRead" + params + "&boardNum=" + $(this).attr("href");
+})
 
 $("a.changePage").on("click", function(e){
     e.preventDefault();
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
+$("a#goRead").on("click", function(e){
+    e.preventDefault();
+    location.href = "/adminRead" + params + "&boardNum=" + $(this).attr("href");
+})
+let adminId = [[${session.adminId}]];
+console.log(adminId);
+if(adminId ==null){
+    alert("관리자 로그인이 필요합니다.")
+    location.href = "/adminLogin"
+}
 </script>
 <script>
     $(".delete-btn").on('click', function(e) {
         if (confirm("정말 삭제하시겠습니까 ?")) {
             alert('삭제 완료');
+        }else {
+            return false;
         }
     });
 
     $(".update-btn").on('click', function(e) {
         if (confirm("정말 탈퇴하시겠습니까 ?")) {
             alert('탈퇴 완료');
+        }else {
+            return false;
         }
     });
 </script>

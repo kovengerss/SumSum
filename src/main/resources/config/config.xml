@@ -14,5 +14,6 @@
         <typeAlias type="com.example.kovengerss.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.BlackListVO" alias="blackListVO"/>
         <typeAlias type="com.example.kovengerss.domain.vo.AttachFileVO" alias="attachVO"/>
+        <typeAlias type="com.example.kovengerss.domain.vo.WarringVO" alias="warringVO"/>
     </typeAliases>
 </configuration>

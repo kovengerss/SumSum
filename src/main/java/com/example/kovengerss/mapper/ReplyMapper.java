@@ -1,7 +1,9 @@
 package com.example.kovengerss.mapper;
 
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.LikeVO;
 import com.example.kovengerss.domain.vo.ReplyVO;
+import com.example.kovengerss.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,6 +24,8 @@ public interface ReplyMapper {
     //    댓글 개수
     public int getTotal(Integer boardNum);
 //    이름가져오기
-    public void getUserName(Integer userNum);
+    public UserVO getUserName(ReplyVO replyVO);
+    // 유저 번호 가져오기
+    public Integer getUserNum(Integer replyNum);
 
 }

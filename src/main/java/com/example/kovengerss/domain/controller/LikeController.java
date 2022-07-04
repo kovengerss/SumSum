@@ -17,12 +17,10 @@ import java.io.UnsupportedEncodingException;
 public class LikeController {
     private final LikeService likeService;
 
-    //버튼 누르면 db에 올라감
     @PostMapping(value="/heart", consumes="application/json" )
     public ResponseEntity<String> likeInsert(@RequestBody LikeVO likeVO)throws UnsupportedEncodingException {
         log.info("-------" + likeVO);
         likeService.likeInsert(likeVO);
-        boolean check = likeService.userCheck(likeVO);
 
         return new ResponseEntity<>(new String("하트버튼 성공".getBytes(), "UTF-8"), HttpStatus.OK);
     }
@@ -45,14 +43,12 @@ public class LikeController {
         return "하트 감소";
     }
 
-    @GetMapping("{boardNum}/{userNum}")
-    public boolean userCheck(@PathVariable Integer boardNum,@PathVariable Integer userNum){
-        LikeVO likeVO = new LikeVO();
-        likeVO.setUserNum(userNum);
-        likeVO.setBoardNum(boardNum);
+    @PostMapping("/goodCount")
+    public String CountUp(@RequestBody LikeVO likeVO){
+        Integer boardNum = likeVO.getBoardNum();
 
-        return likeService.userCheck(likeVO);
+        likeService.CountUp(boardNum);
+        return "업뎃 성공";
     }
-
 }
 

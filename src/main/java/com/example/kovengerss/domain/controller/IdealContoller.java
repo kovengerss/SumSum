@@ -87,12 +87,13 @@ public class IdealContoller {
         log.info("----------------------------");
 
         model.addAttribute("idealVO", idealService.idealSelect(idealNum));
+
         UserVO userVO = (UserVO) req.getSession().getAttribute("userList");
         if (userVO != null) {
             Integer point = userService.getUserPoint(userVO.getUserNum());
             model.addAttribute("point", point);
         }
-
+        model.addAttribute("attachVO",idealService.idealGetFile(idealNum));
     }
 
 
