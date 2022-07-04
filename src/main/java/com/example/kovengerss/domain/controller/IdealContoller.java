@@ -65,7 +65,7 @@ public class IdealContoller {
     }
 
 
-    @GetMapping("getMyIdeal/{idealNum}")
+    @GetMapping("getMyIdeal")
     public String getOne(@PathVariable Integer idealNum, Model model,HttpServletRequest req){
         log.info("----------------------------");
         log.info("getMyIdeal............."+idealNum);
