@@ -307,15 +307,15 @@ a {
 }
 
 .update-btn{  /* 수정 버튼 */
-    background: #f5f5dc;
+    background: #ffffff;
     font-weight: bolder;
-    border: 3px solid #e0e094;
+    border: 1px solid #333;
     width: 50px;
 }
 .delete-btn{    /* 삭제 버튼 */
-    background: #cfcf5a ;
+    background: #fff ;
     font-weight: bolder;
-    border: 3px solid #b8b836;
+    border: 1px solid #333;
     width: 50px;
 }
 
@@ -332,10 +332,13 @@ a {
     box-shadow: 0 0 5px 0 rgb(0 0 0 / 40%);
 }
 
-.search-btn{  /* 검색 버튼 */
+.search-btn {
     position: absolute;
     outline: none;
+    text-align: -webkit-center;
+    line-height: 4;
     font-weight: bolder;
+    background: #ff6347;
     width: 160px;
     height: 63px;
     left: 1713px;
