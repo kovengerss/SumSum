@@ -275,15 +275,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 직장 -->
-                <!--<div class="sumchoice">
-                    <div class="sumchoice_age">
-                        <label class="label"  >직장</label>
-                        <div class="input">
-                            <input type="text" maxlength="15" placeholder="15자 이내로 작성 부탁드립니다." value="" required >
-                        </div>
-                    </div>
-                </div>-->
+
                 <!-- 이상형 -->
                 <div class="sumchoice">
                     <div class="sumchoice_age">
@@ -313,7 +305,7 @@
                         <input type="file" name="files" multiple  id="ex_filename" class="upload-hidden">
                     </div>
 
-                   <!-- <input type="file" name="files" multiple>-->
+
                 </div>
                 <div class="field">
                     <div class="result">
@@ -322,19 +314,11 @@
                 </div>
                 <ul class="actions special">
                     <li><input type="submit" class="button btn-hover color-10" value="등록" /></li>
-                  <!--  <button id="upload" class="btn-hover color-10">사진을 올리셨다면 여기를 눌러주세요</button>-->
+
                 </ul>
 
 
-                <!--<div class="sumchoice">
-                    <div class="sumchoice_age">
-                        <label class="label"  >유저 넘버</label>
-                            <input type="number" th:field="${session.user}"/>
-                    </div>
-                </div>-->
-                <!-- 작성완료 -->
 
-               <!-- <button  class="sumsignup_button" style="margin: 50px 0px 100px 23px;" onclick="javascript:btn()">작성완료</button>-->
                 </form>
             </div>
         </div>
@@ -344,35 +328,7 @@
 <!-- 쪽지 -->
 <input class="channel-talk-button" onclick="showPopup();"/>
 <!-- 쪽지 -->
-<!-- footer -->
-<!--<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <a href="main.html">
-                <img src="/img/sumsum_logo.png">
-            </a>
-        </div>
-        <div>
-            <ul class="footer-list">
-                <li class="ft"><a href="company.html">썸썸소개</a></li>
-                <li class="ft">이용약관</li>
-                <li class="ft">개인정보처리방침</li>
-                <li class="ft"><a href="question.html">자주 묻는 질문(FAQ)</a></li>
-                <li class="ft">문의하기</li>
-            </ul>
-            <ul class="footer-info">
-                <li class="ft">법인명: 썸썸 코벤져스</li>
-                <li class="ft">사업자 등록번호:123-12-123456</li>
-                <li class="ft">사업자 정보확인</li>
-                <li class="ft">대표자: 코벤저스</li>
-                <li class="ft">주소: 서울 강남구 테헤란로 146</li>
-            </ul>
-            <div class="ft-1">
-                © 2022 SomeSome. All rights reserved.
-            </div>
-        </div>
-    </div>
-</footer>-->
+
 </body>
 <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="love.js"></script>
@@ -456,7 +412,7 @@
             str += "<a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>"
             str += file.image ? "<img  style='border-radius: 70%' src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
                 : "<img src='/images/attach.png' width='100'>";
-            str += "</a><p>" + file.originalFileName + "</p>";
+      /*      str += "</a><p>" + file.originalFileName + "</p>";*/
             str += "</li>";
         });
 
