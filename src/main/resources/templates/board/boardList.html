@@ -149,9 +149,9 @@
                                     <article class="a-card a-card-list" style="margin-bottom: 10px;" th:object="${board}">
                                         <aside class="a-card-aside">
                                             <div class="popover_wrapper full" style="cursor: pointer;">
-                                                <div class="aside-badge badge" style="margin-top: -20px;">
+                                                <div class="aside-badge badge" style="margin-top: -20px; display: flex; flex-direction: column;">
                                                     <i class="icon icon-active test">❤</i>
-                                                    <span class="like-Count" th:text="${replyTotal}">0</span>
+                                                    <span class="like-Count" th:text="*{goodCount}" style="margin-top: 13px;"></span>
                                                 </div>
                                             </div>
                                         </aside>
@@ -169,7 +169,7 @@
                                                                 <i class="icon answer-icon">🗨</i>
                                                                 0
                                                             </span>
-                                                            <span class="question-total">좋아요 0</span>
+                                                            <span class="question-total"th:text="|좋아요 *{goodCount}|"></span>
                                                         </span>
                                                 </div>
                                             </div>

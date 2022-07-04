@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface WarringService {
-
     //신고 갯수 조회
     public Integer warringCount(Integer boardNum);
     //신고 누르면 insert 신고 +1

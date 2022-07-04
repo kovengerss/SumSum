@@ -180,12 +180,12 @@
                                             <footer class="main-content-footer">
                                                 <div>
                                                     <span class="float-none">
-                                                    <button class="curious board-button question-button button-outline button-all" onclick="color()">
+                                                    <button class="curious board-button question-button button-outline button-all heart">
                                                         <span class="likeCount"></span>
                                                     </button>
-                                                    <button class="question-button declaration-button button-outline" onclick="declaration()" style="margin-left: 0.75rem;">
+                                                    <button class="question-button declaration-button button-outline warringButton" onclick="declaration()" style="margin-left: 0.75rem;">
                                                         <i class="declaration">🚨</i>
-                                                        <span class="declaration-text">신고</span>
+                                                        <span class="declaration-text warringCount"></span>
                                                     </button>
                                                     </span>
                                                     <button class="board-button button-comment button-none comment-button ">
@@ -296,10 +296,11 @@
 <script src="/js/board.js"></script>
 <script src="/js/like.js"></script>
 <script src="/js/reply.js"></script>
+<script src="/js/warring.js"></script>
 <script th:inline="javascript">
     let boardNum = [[${appilBoard.boardNum}]];
     let boardField =[[${appilBoard.boardField}]];
-    let userName =[[${session.userName}]]
+    let userName =[[${session.userName}]];
     let userNum = [[${session.userNum}]];
 
     function register(){
@@ -317,18 +318,17 @@
 
     showList(pageNum);
 
-
     function showList(page) {
+
         replyService.getList({
             boardNum: boardNum,
-            page: page
+            page: page,
         }, function (list, total) {
             let text = "";
             if (list == null || list.length == 0) {
                 replyList.html("<p style='margin: 0; padding:5px 41px; font-size: 13px; '>등록된 댓글이 없습니다.</p>");
                 return;
             }
-
             $.each(list, function (i, reply) {
                 text += "<div style='border-bottom-width: 1px;'>"
                 text += "<div style='padding-top: 0.75rem;'>"
@@ -340,17 +340,20 @@
                 text += "</a>"
                 text += "<div class='justify-content overflow-hidden flex' style='flex-direction: column;'>"
                 text += "<div class='item-center flex'>"
-                text += "<span>" + userName + "</span>"
+                text += "<span class='getUser'></span>"
                 text += "</div>"
                 text += "</div>"
                 text += "</div>"
-                text += "<span style='margin-left:8px; font-size:10px; padding-top:5px;color:#aaa;'>" + reply.replyUpdateDate + "</span>"//등록날짜
-                text += "<div>"
-                text += "<a class='change " + reply.replyNum + "' style='cursor: pointer; '>수정</a>"
-                text += "<a class='delete " + reply.replyNum + "' style='cursor: pointer; '>삭제</a>"
-                text += "<a class='changeOk " + reply.replyNum + "'style='display: none; cursor: pointer;'>수정완료</a>"
-                text += "<a class='cancel " + reply.replyNum + "'style='display: none; cursor: pointer;'>취소</a>"
-                text += "</div>"
+                text += "<span style='margin-left:8px; font-size:10px; padding-top:5px;color:#aaa;'>"+ replyService.getReplyDate(reply.replyUpdateDate) + "</span>"//등록날짜
+                if(reply.userNum == userNum){
+                    text += "<div>"
+                    text += "<span th:text='${board.boardTitle}'></span>"
+                    text += "<a class='change " + reply.replyNum + "' style='cursor: pointer; '>수정</a>"
+                    text += "<a class='delete " + reply.replyNum + "' style='cursor: pointer; '>삭제</a>"
+                    text += "<a class='changeOk " + reply.replyNum + "'style='display: none; cursor: pointer;'>수정완료</a>"
+                    text += "<a class='cancel " + reply.replyNum + "'style='display: none; cursor: pointer;'>취소</a>"
+                    text += "</div>"
+                }
                 text += "</div>"
                 text += "<div class='comment-content'>"
                 text += "<p class='" + reply.replyNum + "' style='padding-left:24px; padding-top: 5px;'>" + reply.replyContent + "</p>"
@@ -358,13 +361,16 @@
                 text += "</div>"
                 text += "</div>"
                 text += "</div>"
+                replyService.getUserName(reply.replyNum,function (name) {
+                    $(".getUser").text(name);
+                });
             });
-
             replyList.html(text);
             showReplyPage(total);
             replyTotal.text(total);
         });
     }
+
     function showReplyPage(total){
         const $paging = $("div.paging");
         let text = "";
@@ -505,6 +511,11 @@
                 good.removeClass("icon-changeAppil");
                 console.log(boardNum);
                 getCount(boardNum);
+                likeService.CountUp({
+                    boardNum:boardNum
+                },function (result) {
+                    console.log("업뎃 성공 : " + result);
+                });
             });
             CountCheck = false;
         }else if(!CountCheck){
@@ -517,14 +528,67 @@
                 badge.addClass("color-changeAppil");
                 good.addClass("icon-changeAppil");
                 getCount(boardNum);
+                likeService.CountUp({
+                    boardNum:boardNum
+                },function (result) {
+                    console.log("업뎃 성공 : " + result);
+                });
             });
             CountCheck = true;
         }
     });
 
+    getWarringCount(boardNum);
+    function getWarringCount(boardNum){
+        warringService.warringCount(boardNum,function (result) {
+            $(".warringCount").text("신고 "+ result);
+        });
+    }
+
+    let warringCountCheck = false;
+
+    $(".warringButton").on("click",function (e) {
+        e.preventDefault();
+
+        if (warringCountCheck) {
+            console.log("삭제");
+            warringService.warringDown({
+                boardNum: boardNum,
+                userNum: userNum
+            }, function (result) {
+                console.log(boardNum);
+                $(".declaration-button").removeClass("declaration-color");
+                $(".declaration-text").removeClass("declaration-text-color");
+                getWarringCount(boardNum);
+                warringService.warringCountUp({
+                    boardNum:boardNum
+                },function (result) {
+                    console.log("업뎃 성공 : " + result);
+                });
+            });
+            warringCountCheck = false;
+        }else if(!warringCountCheck){
+            warringService.warringUp({
+                boardNum: boardNum,
+                userNum : userNum
+            },function (result) {
+                console.log("추가");
+                $(".declaration-button").addClass("declaration-color");
+                $(".declaration-text").addClass("declaration-text-color");
+                getWarringCount(boardNum);
+                warringService.warringCountUp({
+                    boardNum:boardNum
+                },function (result) {
+                    console.log("업뎃 성공 : " + result);
+                });
+            });
+            warringCountCheck = true;
+        }
+    });
 
     function goUpdate(){
-        location.href="/board/appilBoardUpdate?boardNum="+ boardNum + "&boardField=" + boardField;
+        location.href="/board/appilBoardUpdate?boardNum="+ boardNum + "&boardField=" + boardField ;
     }
+
 </script>
 </html>
