@@ -7,9 +7,7 @@ import com.example.kovengerss.mapper.IdealMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 @Slf4j
 public class AttachMapperTests {
     @Autowired
@@ -31,8 +29,10 @@ public class AttachMapperTests {
         attachMapper.insert(attachFileVO);
     }*/
 
-    @Test
+    /*@Test
     public void selectTest(){
         attachMapper.select(28).stream().map(fileVO -> fileVO.getFileName()).forEach(log::info);
     }
+
+     */
 }
