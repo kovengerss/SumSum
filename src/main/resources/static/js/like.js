@@ -37,18 +37,6 @@ let likeService = (function(){
         });
     }
 
-    function likeCheck(callback) {
-        $.ajax({
-            url:"/like/check/" + boardNum + "/" +userNum,
-            type: "get",
-            success : function (result) {
-                if(callback){
-                    callback(result);
-                }
-            }
-        });
-    }
-
     function CountUp(like,callback) {
         $.ajax({
             url:"/like/goodCount/",
@@ -67,7 +55,6 @@ let likeService = (function(){
         heartUp : heartUp,
         heartCount : heartCount,
         heartDown : heartDown,
-        likeCheck :likeCheck,
         CountUp : CountUp
     }
 })();
