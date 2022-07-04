@@ -16,7 +16,7 @@ public interface AdminMapper {
     //유저아이디
     public String getUserId(int userNum);
     //게시글 목록
-    public List<BoardVO> getList(@Param("boardVO")BoardVO boardVO, @Param("criteria")Criteria criteria);
+    public List<BoardVO> getList(Criteria criteria);
     //유저 목록
     public List<UserVO> userList(@Param("userVO")UserVO userVO, @Param("criteria")Criteria criteria);
     //유저 수
@@ -26,7 +26,7 @@ public interface AdminMapper {
     public List<BoardVO> getFieldBoard(@Param("boardVO")BoardVO boardVO, @Param("criteria2")Criteria2 criteria2);
     public List<BoardVO> getFieldReview(@Param("boardVO")BoardVO boardVO, @Param("criteria1")Criteria1 criteria1);
     //게시글 전체 개수
-    public int getTotal(BoardVO boardVO);
+    public int getTotal(Criteria criteria);
     public int getTotalField(BoardVO boardVO);
     public int getWarning(BoardVO boardVO);
     public int getPointTotal(PointVO pointVO);

@@ -84,8 +84,21 @@
     </aside>
     <!-- 검색 창 -->
     <div>
-    <input type="text" placeholder="검색어 입력" class="search" style="padding: 30px;">
-    <button type="submit" class="search-btn">검색</button>
+        <form method="get" action="/adminpage" id="searchForm" th:object="${pageDTO}" >
+            <div class="fields">
+                <div class="field">
+                    <div id="searchWrap" th:object="${criteria}">
+                        <select name="type" style="display: none;">
+                            <option value="T" th:selected="*{type == 'T'}">제목</option>
+                        </select>
+                        <input class="search"id="keyword" style="padding: 30px;" placeholder="검색어 입력" type="text" th:field="*{keyword}"/>
+                        <a href="#" class="search-btn">검색</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+<!--    <input type="text" placeholder="검색어 입력" class="search" style="padding: 30px;">-->
+<!--    <button type="submit" class="search-btn">검색</button>-->
         <div id="all-list" class="all-list">
             <div class="board_list_wrap">
                 <div class="board_list" style="width: 1440px;">
@@ -132,6 +145,8 @@
                     <form action="/adminpage" th:object="${criteria}" name="pageForm">
                         <input type="hidden" th:field="*{pageNum}">
                         <input type="hidden" th:field="*{amount}">
+                        <input type="hidden" th:field="*{type}">
+                        <input type="hidden" th:field="*{keyword}">
                     </form>
             </div>
         </div>
@@ -182,6 +197,7 @@
 <script th:inline="javascript">;
 let boardNum = [[${boardNum}]];
 let $pageForm = $(pageForm);
+let $serachForm = $(searchForm);
 let params = [[${pageDTO.criteria.listLink}]];
 $("a#goRead").on("click", function(e){
     e.preventDefault();
@@ -193,6 +209,23 @@ $("a.changePage").on("click", function(e){
     $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
     $pageForm.submit();
 });
+
+$("#searchForm a").on("click", function(e){
+    e.preventDefault();
+
+    if(!$serachForm.find("option:selected").val()){
+        alert("검색종류를 선택하세요");
+        return false;
+    }
+
+    if(!$serachForm.find("input[name='keyword']").val()){
+        alert("키워드를 입력하세요");
+        return false;
+    }
+
+    $serachForm.submit();
+});
+
 let adminId = [[${session.adminId}]];
 console.log(adminId);
 if(adminId ==null){

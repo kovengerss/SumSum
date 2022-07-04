@@ -18,7 +18,7 @@ public interface AdminService {
     //유저 수
     public int getTotalUser(UserVO userVO);
     //게시글 목록
-    public List<BoardVO> getList(BoardVO boardVO, Criteria criteria);
+    public List<BoardVO> getList(Criteria criteria);
     public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3);
     public List<BoardVO> getFieldBoard(BoardVO boardVO, Criteria2 criteria2);
     public List<BoardVO> getFieldReview(BoardVO boardVO, Criteria1 criteria1);
@@ -26,7 +26,7 @@ public interface AdminService {
     public List<PointVO> getPointList(PointVO pointVO, Criteria criteria);
     public List<BoardVO> getCount(BoardVO boardVO, Criteria criteria);
     //게시글 전체 개수
-    public int boardGetTotal(BoardVO boardVO);
+    public int boardGetTotal(Criteria criteria);
     public int boardGetTotalField(BoardVO boardVO);
     public int getPointTotal(PointVO pointVO);
     //게시글 한개조회

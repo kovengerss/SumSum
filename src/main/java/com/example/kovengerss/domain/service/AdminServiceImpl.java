@@ -48,8 +48,8 @@ public class AdminServiceImpl implements AdminService{
     public int getTotalUser(UserVO userVO) {return adminDAO.getTotalUser(userVO);}
 
     @Override
-    public List<BoardVO> getList(BoardVO boardVO,Criteria criteria) {
-        return adminDAO.getList(boardVO, criteria);
+    public List<BoardVO> getList(Criteria criteria) {
+        return adminDAO.getList(criteria);
     }
     @Override
     public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3) {
@@ -75,7 +75,7 @@ public class AdminServiceImpl implements AdminService{
         return adminDAO.getPointList(pointVO, criteria);
     }
     @Override
-    public int boardGetTotal(BoardVO boardVO) {return adminDAO.boardGetTotal(boardVO);}
+    public int boardGetTotal(Criteria criteria) {return adminDAO.boardGetTotal(criteria);}
     @Override
     public int boardGetTotalField(BoardVO boardVO) {return adminDAO.boardGetTotalField(boardVO);}
     @Override
