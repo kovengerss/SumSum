@@ -3,6 +3,7 @@ package com.example.kovengerss.domain.service;
 import com.example.kovengerss.domain.dao.BoardDAO;
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -43,4 +44,9 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public List<BoardVO> getListAll(BoardVO boardVO){return boardDAO.getListAll(boardVO);}
+
+    @Override
+    public List<BoardVO> findAllByUserVO(UserVO userVO) {
+        return boardDAO.findAllByUserVO(userVO);
+    }
 }

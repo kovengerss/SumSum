@@ -60,4 +60,9 @@ public class MessageServiceImpl implements MessageService{
     public String msgSelectContent(int messageNum) {
         return messageDAO.msgSelectContent(messageNum);
     }
+
+    @Override
+    public void usePoint(Integer userNum) {
+        messageDAO.usePoint(userNum);
+    }
 }

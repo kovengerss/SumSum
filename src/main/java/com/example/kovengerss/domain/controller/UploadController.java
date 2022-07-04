@@ -38,7 +38,7 @@ public class UploadController {
     @PostMapping("/uploadAjax")
     public List<AttachFileVO> uploadAjax(MultipartFile[] files) throws IOException {
         List<AttachFileVO> fileList = new ArrayList<>();
-        String rootDirectory = "D:\\web_1900_kgw\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\";
+        String rootDirectory = "E:\\web_1900_JW\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\";
 //
         File uploadDirectory = new File(rootDirectory, getDateDirectory());
         if(!uploadDirectory.exists()) {uploadDirectory.mkdirs();}
@@ -73,13 +73,13 @@ public class UploadController {
     @GetMapping("display")
     @ResponseBody
     public byte[] getFile(String path) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("D:\\web_1900_kgw\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\" + path));
+        return FileCopyUtils.copyToByteArray(new File("E:\\web_1900_JW\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\" + path));
     }
 
     @GetMapping("/download")
     @ResponseBody
     public ResponseEntity<Resource> download(String path) throws UnsupportedEncodingException {
-        Resource resource = new FileSystemResource("D:\\web_1900_kgw\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\" + path);
+        Resource resource = new FileSystemResource("E:\\web_1900_JW\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\" + path);
         String name = resource.getFilename();
         name = name.substring(name.indexOf("_") + 1);
         HttpHeaders headers = new HttpHeaders();
@@ -91,7 +91,7 @@ public class UploadController {
     @ResponseBody
     public void deleteFile(String path){
 //        썸네일 삭제
-        File file = new File("D:\\web_1900_kgw\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\", path);
+        File file = new File("E:\\web_1900_JW\\spring\\workspace\\kovengerss\\src\\main\\resources\\static\\", path);
         if(file.exists()) {file.delete();}
 
 //        원본파일 삭제

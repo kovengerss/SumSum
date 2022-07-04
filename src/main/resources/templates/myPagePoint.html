@@ -91,8 +91,8 @@ a {
                     </div>
                 </div>
                 <h1 class="main-logo">
-                    <a href="main.html">
-                        <img src="../static/img/sumsum_logo.png">
+                    <a href="/main">
+                        <img src="/img/sumsum_logo.png">
                     </a>
                 </h1>
                 <div class="right-header">
@@ -110,7 +110,7 @@ a {
                     </a>
                     <!-- 회원가입 -->
                     <a th:if="${session.userList == null}" class="signup" href="/sign">
-                        회원가입네
+                        회원가입
                     </a>
                     <a th:if="${session.userList != null}" class="signup" href="/user/logout">
                         로그아웃
@@ -134,10 +134,10 @@ a {
                             <a class="a-tabList" href="myPageMatching.html">나의 매칭인</a>
                         </li>
                         <li class="profile-tabList">
-                            <a class="a-tabList" href="myPageText.html">글 목록</a>
+                            <a class="a-tabList" href="/myPageText">글 목록</a>
                         </li>
                         <li class="profile-tabList">
-                            <a class="a-tabList" href="myPageAnswer.html">댓글 목록</a>
+                            <a class="a-tabList" href="/myPageAnswer">댓글 목록</a>
                         </li>
                         <li class="profile-tabList">
                             <a style="font-weight: 700; font-size: 20px;" class="a-tabList" href="myPagePoint.html">포인트 내역</a>
@@ -341,7 +341,7 @@ a {
     const userVO = [[${userVO}]];
 
     /* 쪽지 팝업창 */
-    function showPopup() { window.open("letter.html", "a", "width=400, height=600, left=1500, top=200"); }
+    function showPopup() { window.open("/list", "a", "width=400, height=600, left=1500, top=200"); }
 
     function tabOpen(evt, contentName){
 			var i, tabcontent, tab_btn;

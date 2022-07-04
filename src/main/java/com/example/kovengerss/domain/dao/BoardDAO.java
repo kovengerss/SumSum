@@ -33,4 +33,8 @@ public class BoardDAO {
     public BoardVO boardGetTitle(BoardVO boardVO){return boardMapper.getTitle(boardVO);}
     //전체게시글가져오기
     public List<BoardVO> getListAll(BoardVO boardVO){return boardMapper.getListAll(boardVO);}
+
+    public List<BoardVO> findAllByUserVO(UserVO userVO) {
+        return boardMapper.findAllByUserVO(userVO);
+    }
 }

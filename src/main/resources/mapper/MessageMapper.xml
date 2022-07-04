@@ -53,8 +53,10 @@
          FROM TBL_MESSAGE
          WHERE MESSAGE_NUM = #{messageNum}
     </select>
-
-
-
+    <update id="usePoint">
+        UPDATE TBL_USER
+        SET USER_POINT = USER_POINT - 500
+            WHERE USER_NUM = #{userNum}
+    </update>
 
 </mapper>

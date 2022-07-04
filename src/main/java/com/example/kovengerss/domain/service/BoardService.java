@@ -2,6 +2,7 @@ package com.example.kovengerss.domain.service;
 
 import com.example.kovengerss.domain.vo.BoardVO;
 import com.example.kovengerss.domain.vo.Criteria;
+import com.example.kovengerss.domain.vo.UserVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,4 +27,6 @@ public interface BoardService {
     public BoardVO boardGetTitle(BoardVO boardVO);
     //게시글 전부가져오기
     public List<BoardVO> getListAll(BoardVO boardVO);
+
+    public List<BoardVO> findAllByUserVO(UserVO userVO);
 }
