@@ -77,6 +77,7 @@
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminBoardField">고민 상담</a></button>
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminReviewField">후기 게시판</a></button>
                 <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminPointField">회원 결제 내역</a></button>
+                <button style="padding: 15px; font-weight: bolder;" type="button"><a href="/adminGetUser">유저 정보</a></button>
                 <button style="padding: 15px; background-color: darkgrey; font-weight: bolder; text-align: center; font-size: 19px;" type="button"><a href="/adminBlackList">B L A C K  -  L I S T</a></button>
             </div>
         </div>
@@ -95,7 +96,6 @@
                         <div class="writer">회원 ID</div>
                         <div class="date">작성 날짜</div>
                         <div class="view">신고누적</div>
-                        <div class="regist_date">가입 날짜</div>
                         <div class="dele">관리</div>
                     </div>
                         <div class="board_list_body">
@@ -108,12 +108,11 @@
                                     <div class="userNum" id="userNum"><td th:text="*{userNum}"></td></div>
                                     <div class="boardUpdateDate"><td th:text="*{boardUpdateDate}"></td></div>
                                     <div class="warningCount"><td th:text="*{warningCount}"></td></div>
-                                    <div class="boardRegisterDate"><td th:text="*{boardRegisterDate}"></td></div>
                                     <div class="dele" style="display: -webkit-inline-box;">
                                         <div style="width: 46px; margin-left: -26px;">
                                             <a class="update-btn" th:href="@{/deleteUser(userNum=*{userNum})}">탈 퇴</a>
                                         </div>
-                                        <div style="width: 60px; margin-left: -15px;">
+                                        <div style="width: 60px; margin-left: -14px;">
                                             <a class="delete-btn" th:href="@{/delete(boardNum=*{boardNum})}">삭 제</a>
                                         </div>
                                     </div>
@@ -206,12 +205,16 @@ $("a.changePage").on("click", function(e){
     $(".delete-btn").on('click', function(e) {
         if (confirm("정말 삭제하시겠습니까 ?")) {
             alert('삭제 완료');
+        }else {
+            return false;
         }
     });
 
     $(".update-btn").on('click', function(e) {
         if (confirm("정말 탈퇴하시겠습니까 ?")) {
             alert('탈퇴 완료');
+        } else {
+            return false;
         }
     });
 

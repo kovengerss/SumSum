@@ -24,13 +24,17 @@ public class AdminDAO {
     public String getUserId(int userNum){
         return adminMapper.getUserId(userNum);
     }
+    //유저 목록
+    public List<UserVO> getUserList(UserVO userVO, Criteria criteria){return adminMapper.userList(userVO, criteria);}
+    //유저 수
+    public int getTotalUser(UserVO userVO){return adminMapper.getTotalUser(userVO);}
     //게시글 목록
     public List<BoardVO> getList(BoardVO boardVO, Criteria criteria){return adminMapper.getList(boardVO, criteria);}
     public List<BoardVO> getFieldAppil(BoardVO boardVO, Criteria3 criteria3){return adminMapper.getFieldAppil(boardVO, criteria3);}
     public List<BoardVO> getFieldBoard(BoardVO boardVO, Criteria2 criteria2){return adminMapper.getFieldBoard(boardVO, criteria2);}
     public List<BoardVO> getFieldReview(BoardVO boardVO, Criteria1 criteria1){return adminMapper.getFieldReview(boardVO, criteria1);}
-    public List<PointVO> getPointList(PointVO pointVO, Criteria criteria){return adminMapper.getPointList(pointVO, criteria);}
 
+    public List<PointVO> getPointList(PointVO pointVO, Criteria criteria){return adminMapper.getPointList(pointVO, criteria);}
     //게시글 전체 개수
     public int boardGetTotal(BoardVO boardVO){return adminMapper.getTotal(boardVO);}
 
@@ -42,6 +46,10 @@ public class AdminDAO {
     //게시글 한 개 가져오기
     public BoardVO findByBoardNumber(Long boardNum){
         return adminMapper.select(boardNum);
+    }
+    //유저 이상형 정보 한 개 가져오기
+    public IdealVO getIdeal(int userNum){
+        return adminMapper.ideal(userNum);
     }
     //게시글 삭제
     public boolean boardDelete(Long boardNum){

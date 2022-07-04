@@ -1,6 +1,7 @@
 package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.service.AdminService;
+import com.example.kovengerss.domain.service.UserService;
 import com.example.kovengerss.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     private static final String ADMIN_SESSION_KEY = "adminId";
     private final AdminService adminService;
+    private final UserService userService;
     // 관리자 로그인
     @GetMapping("adminLogin")
     public void login(){
@@ -93,6 +95,17 @@ public class AdminController {
         return "/adminPointField";
     }
 
+    @GetMapping("adminGetUser")
+    public String getUser(Criteria criteria, Model model, UserVO userVO){
+        log.info("----------------------------");
+        log.info("list............. : " + criteria);
+        log.info("----------------------------");
+        model.addAttribute("userList",adminService.userList(userVO, criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, adminService.getTotalUser(userVO)));
+        log.info("---------------완료-----------------");
+        return "/adminGetUser";
+    }
+
 
     @GetMapping("adminBlackList")
     public String getBlackList(Criteria criteria, Model model, BoardVO boardVO){
@@ -113,6 +126,15 @@ public class AdminController {
         log.info("----------------------------");
         adminService.get(boardNum);
         model.addAttribute("board", adminService.get(boardNum));
+    }
+    // 유저 이상형 정보
+    @GetMapping("adminIdealRead")
+    public void read(int userNum, HttpServletRequest req, Model model){
+        log.info("----------------------------");
+        log.info(req.getRequestURI() + "............. : " + userNum);
+        log.info("----------------------------");
+        adminService.getIdeal(userNum);
+        model.addAttribute("user", adminService.getIdeal(userNum));
     }
 
     @GetMapping("delete")
@@ -159,13 +181,14 @@ public class AdminController {
         return "redirect:/adminpage";
     }
 
-    @GetMapping("point")
+    @PostMapping("point")
+    @ResponseBody
     public String point(PointVO pointVO, int pointRemain, int userNum, Model model){
         log.info("--------들어옴----------");
-        int remainPoint = pointRemain+pointVO.getPointRemain();
-        log.info(remainPoint+ " =" + pointRemain + " + "+pointVO.getPointRemain());
+        log.info(String.valueOf(userNum));
+        int remainPoint = pointRemain+userService.getUserPoint(userNum);
         model.addAttribute(adminService.getPoint(remainPoint, userNum));
-        return "/adminPointField";
+        return "redirect:/adminPointField";
     }
 
     @GetMapping("logout")

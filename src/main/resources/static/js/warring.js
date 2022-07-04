@@ -1,10 +1,11 @@
-let likeService = (function(){
 
-    function heartUp(like,callback) {
+let warringService = (function(){
+
+    function warringUp(warring,callback) {
         $.ajax({
-            url:"/like/heart",
+            url:"/warring/warring",
             type: "post",
-            data: JSON.stringify(like),
+            data: JSON.stringify(warring),
             contentType: "application/json",
             success: function(result){
                 if(callback){
@@ -14,19 +15,19 @@ let likeService = (function(){
         });
     }
 
-    function heartCount(like, callback) {
+    function warringCount(warring, callback) {
         console.log("가져왓지?? : " + boardNum)
-        $.get("/like/count/" + boardNum ,function (like) {
-            console.log("like : " + like);
+        $.get("/warring/count/" + boardNum ,function (warring) {
+            console.log("warring : " + warring);
             if (callback){
-                callback(like);
+                callback(warring);
             }
         });
     }
 
-    function heartDown(like, callback) {
+    function warringDown(warring, callback) {
         $.ajax({
-            url: "/like/" + boardNum + "/" + userNum,
+            url: "/warring/" + boardNum + "/" + userNum,
             type: "delete",
             success: function (result) {
                 console.log("삭제 들어옴" + result);
@@ -37,11 +38,11 @@ let likeService = (function(){
         });
     }
 
-    function CountUp(like,callback) {
+    function warringCountUp(warring,callback) {
         $.ajax({
-            url:"/like/goodCount/",
+            url:"/warring/warringCount/",
             type :"post",
-            data: JSON.stringify(like),
+            data: JSON.stringify(warring),
             contentType: "application/json",
             success : function (result) {
                 if (callback){
@@ -52,10 +53,10 @@ let likeService = (function(){
     }
 
     return{
-        heartUp : heartUp,
-        heartCount : heartCount,
-        heartDown : heartDown,
-        CountUp : CountUp
+        warringUp : warringUp,
+        warringCount : warringCount,
+        warringDown : warringDown,
+        warringCountUp : warringCountUp
     }
 })();
 

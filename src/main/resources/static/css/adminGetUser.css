@@ -185,7 +185,6 @@ a {
 }
 
 .board_list .tit {      /* 제목 */
-    width: 400px;
 }
 .board_list .boardTitle {      /* 제목 */
     width: 400px;
@@ -202,12 +201,12 @@ a {
 }
 
 .board_list .date {     /* 작성일 */
-    width: 300px;
+    width: 150px;
     margin-left: 30px;
     font-weight: bolder;
 }
 .board_list .boardUpdateDate {     /* 작성일 */
-    width: 300px;
+    width: 150px;
     margin-left: 30px;
     font-weight: bolder;
 }

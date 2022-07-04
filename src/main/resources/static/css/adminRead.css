@@ -158,10 +158,7 @@ a {
 
 .board_list_head > div,
 .board_list_body .item > div {
-    display: inline-block;
     text-align: center;
-    font-size: 14px;
-    margin-top: -10px;
 }
 
 .board_list_head > div {
@@ -202,12 +199,12 @@ a {
 }
 
 .board_list .date {     /* 작성일 */
-    width: 300px;
+    width: 150px;
     margin-left: 30px;
     font-weight: bolder;
 }
 .board_list .boardUpdateDate {     /* 작성일 */
-    width: 300px;
+    width: 150px;
     margin-left: 30px;
     font-weight: bolder;
 }
@@ -379,7 +376,27 @@ a {
     cursor: pointer;
 }
 
+.detail-view {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 15px;
+    font-size: 25px;
+    border-bottom: 2px solid #ccc;
+}
 
+.view1 {
+    display: inline-flex;
+    width: 100%;
+}
+
+.side-cate {
+    width: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
 
 /* ---------------------------------------------------------------------------------------------------- */
 /* footer css */

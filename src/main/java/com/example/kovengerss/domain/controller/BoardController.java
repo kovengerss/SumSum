@@ -2,10 +2,7 @@ package com.example.kovengerss.domain.controller;
 
 import com.example.kovengerss.domain.dao.UserDAO;
 import com.example.kovengerss.domain.service.BoardService;
-import com.example.kovengerss.domain.vo.BoardVO;
-import com.example.kovengerss.domain.vo.Criteria;
-import com.example.kovengerss.domain.vo.PageDTO;
-import com.example.kovengerss.domain.vo.UserVO;
+import com.example.kovengerss.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -26,7 +23,7 @@ public class BoardController {
     private final BoardService boardService;
 //     글 목록
     @GetMapping("boardList")
-    public String getList(BoardVO boardVO, Criteria criteria,Model model){
+    public String getList(BoardVO boardVO, Criteria criteria, Model model){
         log.info("----------------------------");
         log.info("list.............");
         log.info("----------------------------");

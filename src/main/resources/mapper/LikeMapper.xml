@@ -18,17 +18,11 @@
         DELETE FROM TBL_LIKE
         WHERE BOARD_NUM = #{boardNum} AND USER_NUM = #{userNum}
     </delete>
-    <!--누른 게시판 -->
-    <select id="likeCheck" resultType="_int">
-        SELECT COUNT(LIKE_NUM)
-        FROM TBL_LIKE
-        WHERE BOARD_NUM = #{boardNum} AND USER_NUM = #{userNum}
-    </select>
 
-    <!--눌럿는지 안 눌럿지 확인-->
-    <select id="userCheck" resultType="_int">
-        SELECT USER_NUM
-        FROM TBL_LIKE
-        WHERE USER_NUM = #{userNum}
-    </select>
+    <update id="CountUp" parameterType="_int">
+        UPDATE TBL_BOARD B
+        SET GOOD_COUNT = (SELECT COUNT(LIKE_NUM) FROM TBL_LIKE  T WHERE T.BOARD_NUM = #{boardNum})
+        WHERE B.BOARD_NUM = #{boardNum}
+    </update>
+
 </mapper>

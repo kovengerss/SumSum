@@ -30,7 +30,7 @@ public class LikeServiceImpl implements LikeService{
     }
 
     @Override
-    public boolean userCheck(LikeVO likeVO) {
-        return likeDAO.userCheck(likeVO);
+    public boolean CountUp(Integer boardNum){
+        return likeDAO.CountUp(boardNum);
     }
 }

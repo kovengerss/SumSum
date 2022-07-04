@@ -1,14 +1,14 @@
 package com.example.kovengerss.domain.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @Data
 @NoArgsConstructor
-public class UserNumDTO {
-    private String userName;
+public class LikeCountDTO {
+    private Integer boardNum;
+    private Integer l_boardNum;
 }
