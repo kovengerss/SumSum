@@ -22,7 +22,6 @@ import java.util.List;
 @RequestMapping("/board/*")
 public class BoardController {
     private final BoardService boardService;
-    private final ReplyService replyService;
 
 //     글 목록
     @GetMapping("boardList")
