@@ -203,6 +203,7 @@ public class UserController {
         log.info("deleteUser : " + userPw + userVO.getUserId());
         boolean isSuccess = userService.userDeleteByIdAndPw(userVO.getUserId(), userPw);
         model.addAttribute("deleteSuccess",isSuccess);
+        httpSession.invalidate();
         return "redirect:/main";
     }
 
