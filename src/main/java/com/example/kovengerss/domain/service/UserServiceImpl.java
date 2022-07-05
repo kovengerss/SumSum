@@ -205,7 +205,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer getUserPoint(Integer userNum) {
         Integer userPoint = userDAO.findUserPoint(userNum);
-
         return userPoint;
     }
 

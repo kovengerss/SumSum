@@ -29,19 +29,19 @@ public class PointDAO {
     //포인트 결제 수단 조회
     public void pointGetWay(PointVO pointVO){;}
 
+    // 포인트 업데이트
     public boolean updateUserPoint(Integer userNum, int point) {
-
         return pointMapper.updateUserPoint(userNum, point) == 1;
     }
-
+    // 포인트 사용 내역 저장
     public void insertPointHistory(int pointPrice, String pointWay, int pointUse, int pointRemain, Integer userNum, int point) {
         pointMapper.insertPointHistory(pointPrice, pointWay, pointUse, pointRemain, userNum, point);
     }
-
+    // 포인트 충전 내역 조회
     public List<Point> findAllByUserNumAndSave(Integer userNum) {
         return pointMapper.findAllByUserNumAndSave(userNum);
     }
-
+    // 포인트 사용 내력 조회
     public List<Point> findAllByUserNumAndUse(Integer userNum) {
         return pointMapper.findAllByUserNumAndUse(userNum);
     }

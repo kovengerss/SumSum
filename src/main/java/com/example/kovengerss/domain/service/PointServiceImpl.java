@@ -76,12 +76,12 @@ public class PointServiceImpl implements PointService {
         map.put("res", result);
 
     }
-
+    // 충전 일 때
     @Override
     public List<Point> findAllByUserNumAndSave(Integer userNum) {
         return pointDAO.findAllByUserNumAndSave(userNum);
     }
-
+    // 사용 할 때
     @Override
     public List<Point> findAllByUserNumAndUse(Integer userNum) {
         return pointDAO.findAllByUserNumAndUse(userNum);
