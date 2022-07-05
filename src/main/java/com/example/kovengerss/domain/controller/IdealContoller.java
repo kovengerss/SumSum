@@ -65,15 +65,15 @@ public class IdealContoller {
     }
 
 
-    @GetMapping("getMyIdeal")
+    @GetMapping("getMyIdeal/{idealNum}")
     public String getOne(@PathVariable Integer idealNum, Model model,HttpServletRequest req){
         log.info("----------------------------");
         log.info("getMyIdeal............."+idealNum);
         log.info("----------------------------");
-       // HttpSession session =  req.getSession();
-       // Integer idealNums = (Integer)session.getAttribute("idealNum");
+        // HttpSession session =  req.getSession();
+        // Integer idealNums = (Integer)session.getAttribute("idealNum");
 
-                                //여기서 디비버의 sequence연동에 문제가 생김
+        //여기서 디비버의 sequence연동에 문제가 생김
         model.addAttribute("idealVO", idealService.idealSelect(idealNum));
         model.addAttribute("attachVO",idealService.idealGetFile(idealNum));
         return "/myPage";

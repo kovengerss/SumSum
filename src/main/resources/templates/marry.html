@@ -19,6 +19,10 @@
     body{
         background-color: lightyellow;
     }
+    .top-header a{
+        color: black;
+        text-decoration: none;
+    }
 </style>
 <body>
 <!-- 상단 고정 바 -->
@@ -68,13 +72,22 @@
                 </div>
             </div>
             <div class="menuList">
-                <a class="item" href="">
+                <a class="item" href="/idealList">
+                    이상형 찾기
+                </a>
+                <a class="item" href="/marry">
+                    나의 결혼이상형
+                </a>
+                <a class="item" href="/love">
+                    나의 연애이상형
+                </a>
+                <a class="item" href="/board/appilBoardList">
                     어필하기
                 </a>
-                <a class="item" href="./board/board.html">
+                <a class="item" href="/board/boardList">
                     고민상담
                 </a>
-                <a class="item" href="">
+                <a class="item" href="/board/reviewBoardList">
                     후기
                 </a>
             </div>
@@ -91,22 +104,22 @@
         </h1>
         <div class="right-header">
             <!-- 포인트 점수 받아오기 -->
-            <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}">
+            <a class="point" href="/myPagePoint" th:text="${point == null ? '잔여포인트 0원' : '잔여포인트 ' + point + '원'}" style="color: black; text-decoration: none">
                 잔여포인트 0점
             </a>
             <!-- 채팅 받아오기 -->
-            <a class="chatting" href="/list">
+            <a class="chatting" href="/list"style="color: black; text-decoration: none">
                 쪽지
             </a>
             <!-- 로그인 -->
-            <a th:if="${session.userList == null}" class="login" href="/login">
+            <a th:if="${session.userList == null}" class="login" href="/login" style="color: black; text-decoration: none">
                 로그인
             </a>
             <!-- 회원가입 -->
-            <a th:if="${session.userList == null}" class="signup" href="/sign">
+            <a th:if="${session.userList == null}" class="signup" href="/sign"style="color: black; text-decoration: none">
                 회원가입
             </a>
-            <a th:if="${session.userList != null}" class="signup" href="/user/logout">
+            <a th:if="${session.userList != null}" class="signup" href="/user/logout" style="color: black; text-decoration: none">
                 로그아웃
             </a>
         </div>
