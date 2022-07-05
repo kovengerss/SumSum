@@ -69,4 +69,11 @@
                 WHERE USER_NUM = #{userNum}
     </select>
 
+    <select id="getUser" parameterType="replyVO" resultType="idealVO">
+        SELECT DISTINCT D.IDEAL_NUM , D.AGE ,D.GENDER ,D.USER_NUM,D.HOBBY,D.RESIDENCE ,D.INCOME ,D.MBTI ,D.SELF_INTRODUCE ,D.HOUSE_EXIST ,D.IDEAL_CONTENT ,D.SMOKE ,D.JOB ,D.USER_NAME
+        FROM TBL_IDEAL D
+        JOIN TBL_REPLY R ON D.USER_NUM AND R.USER_NUM
+        WHERE R.USER_NUM = #{userNum}
+    </select>
+
 </mapper>

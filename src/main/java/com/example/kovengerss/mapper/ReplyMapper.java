@@ -31,4 +31,6 @@ public interface ReplyMapper {
     //유저 작성한 댓글 뿌려주기
     List<ReplyVO> findReplyByUserVO(UserVO userVO);
 
+    //이상형 정보 가져오기
+    public List<IdealVO> getUser(ReplyVO replyVO);
 }

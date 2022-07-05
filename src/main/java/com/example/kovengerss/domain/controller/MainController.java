@@ -41,6 +41,8 @@ public class MainController {
     }
 
 
+    @GetMapping("question")
+    public void qAnda(){;}
 
 
 
