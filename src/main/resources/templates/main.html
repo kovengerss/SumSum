@@ -247,13 +247,13 @@ a {
                                 <div class="text-back">
                                     <img class="q-img" src="/img/Q.png">
                                     <a th:href="@{/board/reviewBoard(boardNum=*{review.boardNum},boardField=*{review.boardField})}">
-                                    <span th:text="${review.getBoardTitle()}" style="color: black;font-weight: bold;"></span>
+                                    <span th:text="*{review.getBoardTitle()}" style="color: black;font-weight: bold;"></span>
                                     </a>
                                 </div> 
                             </a>
                             <div class="card-bottom" style="display: flex; justify-content: flex-end;">
-                                <span th:text="|💬 ${review.getReplyCount}|"></span>
-                                <span style="margin-left: 14px;color: red;" th:text="|❤ ${review.getGoodCount}|"></span>
+                                <span th:text="|💬 *{review.getReplyCount}|"></span>
+                                <span style="margin-left: 14px;color: red;" th:text="|❤ *{review.getGoodCount}|"></span>
                             </div>
                         </div>
                     </div>

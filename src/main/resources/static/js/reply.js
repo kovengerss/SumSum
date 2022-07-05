@@ -85,15 +85,14 @@ let replyService = (function(){
         if (gap < 1000 * 60) {
             let s = new Date().getSeconds() - rDate.getSeconds();
 
-            return s + '초 전';
-        }else if(gap < 1000 * 60 * 60) {
-            let m = new Date().getMinutes() - rDate.getMinutes();
-
-            return m + '분 전';
-        }else if(gap < 1000 * 60 * 60 * 24){
+            return s + ' 초 전';
+        }else if (gap < 1000* 60 * 60){
+            let m = 60 - rDate.getSeconds();
+            return  m+' 분 전';
+        } else if(gap < 1000 * 60 * 60 * 24){
             let h = new Date().getHours() - rDate.getHours();
 
-            return h + '시간 전';
+            return h + ' 시간 전';
         } else{
             let y = rDate.getFullYear();
             let m = rDate.getMonth() + 1;
