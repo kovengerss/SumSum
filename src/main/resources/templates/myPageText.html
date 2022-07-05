@@ -157,7 +157,7 @@ a {
                                 <img style="border-radius: 28px;" class="pimage" src="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-%EB%82%A8%EC%84%B1%EC%9D%84%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8-%EC%95%84%EB%B0%94%ED%83%80-%ED%94%84%EB%A1%9C%ED%95%84-%EC%95%84%EC%9D%B4%EC%BD%98-%ED%9A%8C%EC%83%89-%EC%82%AC%EC%A7%84-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C-%EC%9E%90-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%B2%A1%ED%84%B0.jpg?ver=6">
                             </div>
                             <div class="userName">
-                                썸썸
+                                <span th:text="${session.userName}"></span>
                             </div>
                             <div class="matching-num">
                                 <div class="matching-info">
@@ -177,29 +177,29 @@ a {
                         <div th:if="${boardVOList != null}">
                             <article class="a-card-question" th:each = "boardVO : ${boardVOList}">
                                 <aside class="a-card-aside">
-                                    <button class="sideBadge">
-                                        <div class="heart-icon" style="color: #e3e3; font-size: 27px;">❤</div>
-                                        <p th:text="${boardVO.getGoodCount() == null ? '0' : boardVO.getGoodCount()}">0</p>
+                                    <button class="sideBadge" style="cursor: none;">
+                                        <div class="heart-icon" style="color: #e3e3; font-size: 22px;margin-top: -6px;">❤</div>
+                                        <p th:text="*{boardVO.getGoodCount}"></p>
                                     </button>
                                 </aside>
                                 <div class="a-card-main">
                                     <header class="a-card-header">
                                         <!-- 내 글로 이동 -->
                                             <h3 class="a-card-headerTitle">
-                                                <img class="qImage" src="/img/Q.png" th:text="${boardVO.getBoardTitle()}">
+                                                <img class="qImage" src="/img/Q.png" th:text="*{boardVO.getBoardTitle()}">
                                             </h3>
                                         <div class="tw-flex">
                                             <div class="tw-flex-item">
                                                 <div class="write-userName">
 
                                                 </div>
-                                                <span class="a-card-time" th:text="${boardVO.getBoardRegisterDate()}">2022.06.15</span>
+                                                <span class="a-card-time" th:text="${boardVO.getBoardRegisterDate}"></span>
                                             </div>
                                         </div>
                                     </header>
                                     <div class="a-card-content">
                                         <div>
-                                            <p th:utext="${boardVO.getBoardContent()}">정보 없음</p>
+                                            <p th:utext="${boardVO.getBoardContent()}" style="word-break: break-word;word-wrap: break-word;">정보없음</p>
                                         </div>
                                     </div>
                                 </div>

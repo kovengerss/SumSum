@@ -133,5 +133,6 @@ public class BoardController {
 
         boardService.boardDelete(boardNum);
         return getList(boardVO, criteria, model);
-    }
+   }
+
 }

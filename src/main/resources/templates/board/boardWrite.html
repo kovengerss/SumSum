@@ -262,40 +262,10 @@
             ['fontsize', ['fontsize']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['color', ['forecolor', 'color']],
-            ['insert', ['picture']],
             ['para', ['ul', 'ol', 'paragraph']],
         ],
         fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36', '50', '72'],
-        callbacks: {
-            onImageUpload: function (files) {
-                uploadImage(files[0], this);
-            }
-        }
         });
-    function uploadImage(files, editor) {
-        let data = new FormData();
-        data.append("files", files);
-        $.ajax({
-            url: '/upload/uploadAjax',
-            type: "post",
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(fileList) {
-                let keys = Object.keys(fileList[0]);
-                let fileName = fileList[0][keys[0]];
-                let uploadPath = fileList[0][keys[1]];
-
-                let url = "/upload/display?path=" + uploadPath + "/" + fileName;
-                console.log("나오나? :" + url);
-                $(editor).summernote('insertImage', url);
-            },
-            error: function(e) {
-                console.log(e);
-            }
-        });
-    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
