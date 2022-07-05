@@ -340,6 +340,7 @@ function checks(){
     }
 
     if(count ==true){
+        alert("회원가입이 완료되었습니다.");
         return true;
     }else if(count==false){
         alert("중복 확인을 눌러주세요.")
@@ -348,6 +349,5 @@ function checks(){
         return false;
     }
 
-    alert("회원가입이 완료되었습니다.");
 }
 
