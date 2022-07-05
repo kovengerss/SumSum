@@ -35,7 +35,10 @@ public class MainController {
         log.info("글 내용 : "+ boardVO.getBoardContent());
     }
 
-
+    @GetMapping("company")
+    public void intruCompany(){
+        ;
+    }
 
 
 

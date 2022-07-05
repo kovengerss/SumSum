@@ -23,10 +23,10 @@ public interface PointService {
     public void pointGetDate(PointVO pointVO);
     //포인트 결제 수단 조회
     public void pointGetWay(PointVO pointVO);
-
+    //포인트 충전
     void pointSuccess(Map<String, Object> map);
-
+    //포인트 충전 내역
     List<Point> findAllByUserNumAndSave(Integer userNum);
-
+    //포인트 사용 내역
     List<Point> findAllByUserNumAndUse(Integer userNum);
 }
