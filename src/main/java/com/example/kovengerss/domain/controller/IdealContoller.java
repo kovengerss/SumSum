@@ -61,7 +61,7 @@ public class IdealContoller {
         /*  log.info(idealVO.getIdealNum().toString());*/
         /* rttr.addFlashAttribute("ideal",idealService.idealSelect(idealVO.getIdealNum()));*/
 
-        return getOne(idealNum,model,req);
+        return getOne(idealNum,model,req);//
     }
 
 
