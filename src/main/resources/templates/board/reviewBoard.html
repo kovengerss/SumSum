@@ -430,6 +430,11 @@
         }, function(result){
             $("input[name='comment']").val("");
             showList(1);
+            replyService.getReplyCount({
+                boardNum:boardNum
+            },function (result) {
+
+            });
         });
     });
 
