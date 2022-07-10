@@ -257,19 +257,20 @@ a {
                             </div>
                         </div>
                     </div>
-<!--                    &lt;!&ndash>-->
+<!--                    &lt;!&ndash-->
                 </div>
             </section>
         </form>
-        <!-- 커뮤니티 -->
+        <!-- 커뮤니티 -->>
         <form action="AllBoardList" name="" id="" method="post">
             <section style="margin-top: 10px;" class="homeSection">
-                <h4 class="homeSection-title">커뮤니티</h4>
+                <h4 class="homeSection-title">어필하기 게시판</h4>
                 <div class="community-wrap">
                     <div class="community">
                         <form action="" class ="joinform">
 
-                            <section class="join1_box on" th:each="app : ${appilcationBoardList}">
+                            <section class="join1_box on" th:each="app ,num: ${appilcationBoardList}">
+                                <th:block th:if="${num.index <= 3}">
                                 <input type="checkbox" id="agre0">
                                 <div class ="community-title">
                                     <span>
@@ -282,7 +283,8 @@ a {
                                 <div class="con" style="display:none"><img data-v-1fe26c93="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjYxNjk1IDMuNDc3NDJMOS4yNTYxMSA4Ljk1ODc0SDQuMzgzODJMNi42MTY5NSAzLjQ3NzQyWk0xMS43MTkyIDE0LjA3NDNMMTAuNDE5NiAxMS4zNzUySDMuMzk5MzJMMi4zMjc1MiAxNC4wMDZDMi4wNzU3NSAxNC42MjQgMS4zNzA2OCAxNC45MjA5IDAuNzUyNzAxIDE0LjY2OTFDMC4xMzQ3MiAxNC40MTczIC0wLjE2MjE1MiAxMy43MTIyIDAuMDg5NjE3OSAxMy4wOTQzTDQuOTk1MTcgMS4wNTMzNkM1LjU0ODQ0IC0wLjMwNDY2OSA3LjQ0OTY1IC0wLjM2MzQ3OCA4LjA4NTggMC45NTc3NTZMMTMuODk2NCAxMy4wMjZDMTQuMTg1OSAxMy42MjcyIDEzLjkzMzIgMTQuMzQ5MyAxMy4zMzE5IDE0LjYzODhDMTIuNzMwNyAxNC45MjgzIDEyLjAwODYgMTQuNjc1NSAxMS43MTkyIDE0LjA3NDNaTTE3LjE1NzQgMTQuOTk5OUMxNy45NTgyIDE0Ljk5OTkgMTguNjA3MyAxNC4zNTA4IDE4LjYwNzMgMTMuNTVDMTguNjA3MyAxMi43NDkyIDE3Ljk1ODIgMTIuMTAwMSAxNy4xNTc0IDEyLjEwMDFDMTYuMzU2NyAxMi4xMDAxIDE1LjcwNzUgMTIuNzQ5MiAxNS43MDc1IDEzLjU1QzE1LjcwNzUgMTQuMzUwOCAxNi4zNTY3IDE0Ljk5OTkgMTcuMTU3NCAxNC45OTk5WiIgZmlsbD0iI0E5QUZCMyIvPgo8L3N2Zz4K" 
                                     alt="answer-icon" class="FAQ-card__answer__icon"> <p class="answer-content" th:utext="*{app.getBoardContent + '.'}" style="word-break: break-word;word-wrap: break-word;"></p> </div>
                             </section>
-
+                            <th:block>
+                            <th:block>
                         </form>
                     </div>
                 </div>

@@ -485,6 +485,11 @@
     $("div.reply_list").on("click", "div a.delete", function(e){
         replyService.remove(this.classList[1], function(result){
             showList(pageNum);
+            replyService.getReplyCount({
+                boardNum:boardNum
+            },function (result) {
+
+            });
         });
     });
 

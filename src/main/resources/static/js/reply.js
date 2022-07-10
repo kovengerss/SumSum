@@ -83,7 +83,7 @@ let replyService = (function(){
         let gap = today.getTime() - rDate.getTime();
 
         if (gap < 1000 * 60) {
-            let s = new Date().getSeconds() - rDate.getSeconds();
+            let s = 1 * (new Date().getSeconds() - rDate.getSeconds());
 
             return s + ' 초 전';
         }else if (gap < 1000* 60 * 60){
