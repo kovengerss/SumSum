@@ -92,10 +92,9 @@
                 <div class="board_list" style="width: 1440px;">
                     <div class="board_list_head">
                         <div class="num">번호</div>
-                        <div class="cate">충전금액</div>
+                        <div class="cate">포인트내역</div>
                         <div class="tit">충전방법</div>
-                        <div class="writer">포인트 사용</div>
-                        <div style="width: 150px;" class="date">포인트 잔액</div>
+                        <div style="width: 250px;" class="date">포인트 잔액</div>
                         <div class="view">충전 날짜</div>
                         <div class="regist_date">유저 번호</div>
                         <div class="dele">관리</div>
@@ -108,8 +107,7 @@
                                         <div class="boardNum"><td th:text="*{pointNum}"></td></div>
                                         <div class="boardField"><td th:text="*{pointPrice}"></td></div>
                                         <div class="boardTitle"><td th:text="*{pointWay}" ></td></div>
-                                        <div class="userNum"><td th:text="*{pointUse}"></td></div>
-                                        <div style="width: 150px;" class="boardUpdateDate"><td th:text="*{pointRemain}"></td></div>
+                                        <div style="width: 250px;" class="boardUpdateDate"><td th:text="*{pointRemain}"></td></div>
                                         <div class="warningCount"><td th:text="*{pointDate}"></td></div>
                                         <div class="boardRegisterDate" id="userNum"><td th:text="*{userNum}"></td></div>
                                         <div class="dele" style="width: 100px;margin-left: 66px; display: -webkit-inline-box;">

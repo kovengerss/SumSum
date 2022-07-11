@@ -86,7 +86,7 @@
     <!-- 검색 창 -->
     <div>
     <input type="text" placeholder="검색어 입력" class="search" style="padding: 30px;">
-    <a type="submit" class="search-btn">검색</a>
+    <a style="border: 2px solid #333;color: #000;text-decoration-line: none;" type="submit" class="search-btn">검색</a>
         <div id="all-list" class="all-list">
             <div class="board_list_wrap">
                 <div class="board_list" style="width: 1440px;">
@@ -111,7 +111,7 @@
                                     <div class="warningCount"><td th:text="*{warningCount}"></td></div>
                                     <div class="dele" style="display: -webkit-inline-box;">
                                         <div style="width: 46px; margin-left: -26px;">
-                                            <a class="update-btn" th:href="@{/deleteUser(userNum=*{userNum})}">탈 퇴</a>
+                                            <a style="color: #fff;" class="update-btn" th:href="@{/deleteUser(userNum=*{userNum})}">탈 퇴</a>
                                         </div>
                                         <div style="width: 60px; margin-left: -14px;">
                                             <a class="delete-btn" th:href="@{/deleteBoard(boardNum=*{boardNum})}">삭 제</a>
