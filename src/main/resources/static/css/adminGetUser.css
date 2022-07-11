@@ -307,14 +307,18 @@ a {
 }
 
 .update-btn{  /* 수정 버튼 */
-    background: #ffffff;
+    background: #ff2424;
     font-weight: bolder;
+    border-radius: 4px;
+    padding: 3px;
     border: 1px solid #333;
     width: 50px;
 }
 .delete-btn{    /* 삭제 버튼 */
-    background: #fff ;
+    background: #ff2424;
     font-weight: bolder;
+    border-radius: 4px;
+    padding: 3px;
     border: 1px solid #333;
     width: 50px;
 }
