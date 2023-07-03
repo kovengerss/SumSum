@@ -63,11 +63,6 @@
   <img src="https://img.shields.io/badge/Sourcetree-0052CC.svg?style=flat&logo=Sourcetree&logoColor=white"></a>&nbsp 
 </div>
 
-## 📝 아키텍쳐
-
-![1](https://user-images.githubusercontent.com/107843779/233069317-4c3051d3-626a-4da0-b93e-740d4ea8dbb4.png)
-
-
 ## 💡 주요기능
 ### 일반 회원
 ### 1. 회원가입
