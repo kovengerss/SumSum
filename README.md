@@ -91,3 +91,6 @@
 
 ## 🧱 ERD
 ![image](https://github.com/kovengerss/SumSum/assets/34277606/9a1652fc-af3c-4e94-8c50-3bdd1d0a56f1)
+
+## Query
+![image](https://github.com/kovengerss/SumSum/assets/34277606/e9b6a3c9-ac95-498a-b49c-61e40dc15fa3)
